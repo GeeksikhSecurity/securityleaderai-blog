@@ -129,6 +129,12 @@ export default function ResearchArticle({ params }: ResearchArticlePageProps) {
           </nav>
         )}
 
+        {article.hookQuestion && (
+          <p className="mt-14 text-lg italic text-secondary">
+            {article.hookQuestion}
+          </p>
+        )}
+
         <div className="prose prose-lg mt-14 max-w-none text-secondary">
           {article.content.map((paragraph, index) => {
             const section = article.sections?.[index];
@@ -144,6 +150,13 @@ export default function ResearchArticle({ params }: ResearchArticlePageProps) {
             );
           })}
         </div>
+
+        {article.takeaway && (
+          <div className="mt-14 rounded-lg border border-primary-200 bg-primary-50/50 px-6 py-5">
+            <p className="text-sm font-semibold text-primary-800">Your next move</p>
+            <p className="mt-2 text-secondary">{article.takeaway}</p>
+          </div>
+        )}
 
         {article.videos && article.videos.length > 0 && (
           <section className="mt-16 space-y-8">

@@ -8,6 +8,8 @@ tags: ["OAuth Security", "Supply Chain", "Identity Security", "MITRE ATT&CK", "P
 
 # Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist
 
+*A single vendor compromise exposed 700+ organizations without stealing a password or triggering MFA. How many of your third-party integrations hold over-privileged OAuth tokens right now?*
+
 > **Executive Summary**
 > The UNC6395 campaign weaponized legitimate OAuth tokens from Salesloft/Drift to access 700+ Salesforce environments without stealing a single password or triggering MFA. This analysis provides a forensic deconstruction of the attack mapped to MITRE ATT&CK (T1528, T1550), a GWAPT-aligned penetration testing methodology for auditing OAuth integrations, and a Zero Trust remediation framework. Every organization with third-party SaaS integrations is exposed to this attack pattern.
 
@@ -127,6 +129,8 @@ Findings scored using [CVSS v4.0](https://www.first.org/cvss/v4.0/specification-
 The Identity Supply Chain is the new perimeter. As demonstrated by the token heists of 2025 and 2026, static credentials are dying, but delegated authority is growing unchecked. For the security practitioner, the focus must shift from cracking passwords to auditing trust.
 
 By applying GWAPT methodologies of enumeration, analysis, and exploitation to OAuth tokens, we can illuminate the Shadow Trust network and close the doors that legitimate vendors inadvertently left open.
+
+**Your next move:** Audit every third-party connected app for over-privileged OAuth scopes. Enforce 24-hour refresh token expiry and block the "full" scope at the org level. Start with any integration that was granted access more than 12 months ago.
 
 ---
 

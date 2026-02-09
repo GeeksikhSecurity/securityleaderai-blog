@@ -8,6 +8,8 @@ tags: ["Security ROI", "Risk Management", "Executive Leadership", "Business Stra
 
 # Security ROI: Why Your British Teenager Problem Costs More Than Your APT Defense
 
+*Can you tell your board what percentage of your security budget directly addresses the 75% of breaches that originate from phishing and compromised credentials?*
+
 > **Executive Summary**
 > 75% of breaches originate from phishing and compromised credentials, yet most organizations allocate less than 5% of their security budget to these vectors — a 19:1 negative ROI. This analysis presents a three-pillar framework (IAM transformation, human firewall development, detection optimization) with a 90-day implementation roadmap that delivers measurable risk reduction. Procedural excellence resolves 98% of security incidents without requiring advanced technological solutions.
 
@@ -225,6 +227,8 @@ Your competitors are likely overspending on complex solutions while leaving thei
 **The choice is binary:** Continue preparing for theoretical APTs while suffering actual breaches from phishing, or reallocate resources to address the threats actually targeting your organization.
 
 **The data has spoken. The question is whether you're listening.**
+
+**Your next move:** Deploy MFA on 100% of privileged accounts within 30 days. Launch monthly phishing simulations with departmental scorecards. Present risk-adjusted security spend to the board at the next quarterly review.
 
 ---
 

@@ -30,6 +30,8 @@ export interface ResearchItem {
 export interface ResearchArticle extends ResearchItem {
   heroImage: string;
   readTime: string;
+  hookQuestion?: string;
+  takeaway?: string;
   downloadUrl?: string;
   githubUrl?: string;
   sections?: ResearchSection[];
@@ -49,6 +51,8 @@ const researchArticles: ResearchArticle[] = [
     heroImage: '/images/llm-threat-surface.svg',
     date: 'January 12, 2025',
     readTime: '4',
+    hookQuestion: 'How confident is your security team that they can identify where an adversary would first exploit your LLM deployment?',
+    takeaway: 'Map your LLM threat surface against the pre-deployment, runtime, and post-deployment risk categories in this framework — then validate control coverage for each interaction point.',
     tags: ['LLM Security', 'Threat Modeling', 'Enterprise'],
     sections: [
       { id: 'threat-landscape', title: 'Threat Landscape Overview' },
@@ -78,6 +82,8 @@ const researchArticles: ResearchArticle[] = [
     heroImage: '/images/oauth-red-team.svg',
     date: 'February 8, 2026',
     readTime: '5',
+    hookQuestion: 'If your vendor\'s AWS infrastructure were compromised tomorrow, which of your SaaS environments would the attacker inherit access to — without triggering a single alert?',
+    takeaway: 'Run a SOQL enumeration of your OauthToken table to identify every active token with over-privileged scopes, then enforce 24-hour refresh token expiry and IP restrictions on all third-party connected apps.',
     tags: ['OAuth', 'Supply Chain', 'Salesloft/Drift', 'MITRE ATT&CK', 'Penetration Testing'],
     githubUrl: 'https://github.com/GeeksikhSecurity/mcp-sentinel-scanner',
     sections: [
@@ -110,6 +116,8 @@ const researchArticles: ResearchArticle[] = [
     heroImage: '/images/mcp-sentinel.svg',
     date: 'February 8, 2026',
     readTime: '4',
+    hookQuestion: 'How would your security team detect a malicious MCP server that passes every traditional security scan?',
+    takeaway: 'Integrate the MCP Sentinel Scanner into your AI agent validation pipeline — the seven-layer detection pipeline addresses all 12 attack categories identified in peer-reviewed MCP security research.',
     tags: ['MCP', 'AI Security', 'Seven-Layer Pipeline', 'Vulnerability Scanner'],
     sections: [
       { id: 'detection-pipeline', title: 'Seven-Layer Detection Pipeline' },
@@ -132,6 +140,8 @@ const researchArticles: ResearchArticle[] = [
     heroImage: '/images/autonomous-defense.svg',
     date: 'November 5, 2024',
     readTime: '3',
+    hookQuestion: 'When your SOC receives 500 alerts at 2 AM, how many of those could an AI agent triage, enrich, and escalate before a human analyst even logs in?',
+    takeaway: 'Identify your three highest-volume, lowest-complexity alert categories and build bounded AI agent playbooks with mandatory human-in-the-loop checkpoints — start with automated enrichment before graduating to automated response.',
     tags: ['Automation', 'Blue Team', 'Incident Response'],
     sections: [
       { id: 'scenarios', title: 'Scenario Coverage' },
@@ -154,6 +164,8 @@ const researchArticles: ResearchArticle[] = [
     heroImage: '/images/supply-chain-guardian.svg',
     date: 'October 14, 2024',
     readTime: '4',
+    hookQuestion: 'Can your team produce a complete inventory of every open-source model, dataset, and orchestration service running in production — and the last time each was audited?',
+    takeaway: 'Implement a three-layer checkpoint system (procurement, development, runtime) mapped to your existing GRC workflows, starting with a full asset inventory of AI models and third-party services within 30 days.',
     tags: ['Supply Chain', 'Governance', 'Frameworks'],
     sections: [
       { id: 'asset-inventory', title: 'Asset Inventory' },
@@ -176,6 +188,8 @@ const researchArticles: ResearchArticle[] = [
     heroImage: '/images/executive-insights.svg',
     date: 'September 8, 2024',
     readTime: '3',
+    hookQuestion: 'If your board asked tomorrow how AI investments align with enterprise risk tolerance, could your CISO answer with data — or only with anecdotes?',
+    takeaway: 'Build a quarterly board narrative using three leading indicators — credential coverage rate, AI model inventory completeness, and mean time to detection — and present risk-adjusted security spend against actual threat intelligence.',
     tags: ['Leadership', 'Reporting', 'Strategy'],
     sections: [
       { id: 'messaging', title: 'Messaging the Risk' },

@@ -8,6 +8,8 @@ tags: ["MCP Security", "AI Security", "Vulnerability Scanner", "Research"]
 
 # MCP Sentinel Scanner
 
+*Can your existing security scanners detect a malicious MCP server that hides attack instructions inside legitimate-looking tool descriptions?*
+
 > **Executive Summary**
 > Traditional security scanners cannot detect MCP-specific vulnerabilities — they lack protocol understanding, miss semantic attacks in tool descriptions, and don't track data flow through AI agent communication channels. The MCP Sentinel Scanner addresses this with a seven-layer detection pipeline combining static analysis, LLM-based metadata inspection, AST deep parsing, and Attack Success Rate scoring. Based on peer-reviewed research identifying 12 MCP attack categories, all of which are practical and impactful.
 
@@ -214,6 +216,8 @@ Visit the [GitHub repository](https://github.com/GeeksikhSecurity/mcp-sentinel-s
 - Deployment documentation
 - Architecture diagrams
 - Security scan reports
+
+**Your next move:** Run the MCP Sentinel Scanner against any MCP implementations in your environment before they reach production. The seven-layer detection pipeline identifies vulnerabilities that traditional scanners are architecturally unable to detect.
 
 ---
 
