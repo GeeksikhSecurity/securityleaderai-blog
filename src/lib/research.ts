@@ -50,7 +50,6 @@ const researchArticles: ResearchArticle[] = [
     date: 'January 12, 2025',
     readTime: '12',
     tags: ['LLM Security', 'Threat Modeling', 'Enterprise'],
-    downloadUrl: '#',
     sections: [
       { id: 'threat-landscape', title: 'Threat Landscape Overview' },
       { id: 'attack-paths', title: 'Attack Paths & Failure Modes' },
@@ -171,7 +170,6 @@ const researchArticles: ResearchArticle[] = [
     date: 'October 14, 2024',
     readTime: '11',
     tags: ['Supply Chain', 'Governance', 'Frameworks'],
-    downloadUrl: '#',
     sections: [
       { id: 'asset-inventory', title: 'Asset Inventory' },
       { id: 'policy-enforcement', title: 'Policy Enforcement' },

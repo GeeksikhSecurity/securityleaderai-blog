@@ -214,7 +214,4 @@ Visit the [GitHub repository](https://github.com/GeeksikhSecurity/mcp-sentinel-s
 
 ---
 
-**Official Websites:**
-- [GeeksikhSecurity.com](https://geeksikhsecurity.com) - Security research and open source tools
-- [SecurityLeader.ai](https://securityleader.ai) - AI security leadership and training
-- [Geeksikh.com](https://geeksikh.com) - Technology innovation insights
+*Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — [SecurityLeader.ai](https://securityleader.ai)*
