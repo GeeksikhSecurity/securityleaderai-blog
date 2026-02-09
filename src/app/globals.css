@@ -111,6 +111,13 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -346,11 +353,20 @@ a:focus-visible {
 
 .card-clickable {
   cursor: pointer;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-clickable:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary-300);
+}
+
+.card-clickable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 
 .card-header {
@@ -668,7 +684,7 @@ pre code {
    ============================================ */
 
 .hero {
-  padding: var(--space-20) 0;
+  padding: var(--space-24) 0;
   text-align: center;
   background-color: var(--bg-secondary);
 }
@@ -1239,6 +1255,76 @@ pre code {
 }
 
 /* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+  z-index: 200;
+  transition: width 100ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    display: none;
+  }
+}
+
+/* ============================================
+   ARTICLE ACCENT LINE
+   ============================================ */
+
+.article-accent-line {
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+}
+
+/* ============================================
+   CARD ENTRANCE ANIMATIONS
+   ============================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .grid > * {
+    animation: fadeSlideUp 0.4s ease-out both;
+  }
+
+  .grid > *:nth-child(2) {
+    animation-delay: 80ms;
+  }
+
+  .grid > *:nth-child(3) {
+    animation-delay: 160ms;
+  }
+
+  .grid > *:nth-child(4) {
+    animation-delay: 240ms;
+  }
+
+  .grid > *:nth-child(5) {
+    animation-delay: 320ms;
+  }
+
+  .grid > *:nth-child(6) {
+    animation-delay: 400ms;
+  }
+}
+
+/* ============================================
    PRINT STYLES
    ============================================ */
 
@@ -1255,6 +1341,8 @@ pre code {
   .tabs-list,
   .btn,
   .security-tag,
+  .scroll-progress-bar,
+  .article-accent-line,
   footer {
     display: none !important;
   }

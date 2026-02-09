@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +10,7 @@ import {
   CalendarIcon,
   ClockIcon,
 } from '@/components/icons';
+import { ScrollProgress } from '@/components/scroll-progress';
 import { getResearchArticle, getResearchItems } from '@/lib/research';
 import type { ResearchType } from '@/lib/research';
 
@@ -38,18 +38,19 @@ export default function ResearchArticle({ params }: ResearchArticlePageProps) {
 
   return (
     <article className="bg-neutral-50">
-      <div className="relative aspect-[21/9] w-full overflow-hidden">
-        <Image
-          src={article.heroImage}
-          alt={article.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-      </div>
+      <ScrollProgress />
+
+      <div className="article-accent-line" />
 
       <div className="container pb-20 pt-16">
+        <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-2 text-sm text-muted">
+          <Link href="/" className="transition-colors hover:text-primary-600">Home</Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/research" className="transition-colors hover:text-primary-600">Research</Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-secondary line-clamp-1">{article.title}</span>
+        </nav>
+
         <div className="flex flex-col gap-6 border-b border-color pb-10 md:flex-row md:items-end md:justify-between">
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-3 small text-muted">
@@ -111,7 +112,7 @@ export default function ResearchArticle({ params }: ResearchArticlePageProps) {
         )}
 
         {article.sections && (
-          <nav className="mt-12 card">
+          <nav className="mt-14 card">
             <h2 className="text-base font-semibold text-primary-800">Table of contents</h2>
             <ul className="mt-4 flex flex-col gap-2 small text-secondary">
               {article.sections.map((section) => (
@@ -128,13 +129,13 @@ export default function ResearchArticle({ params }: ResearchArticlePageProps) {
           </nav>
         )}
 
-        <div className="prose prose-lg mt-12 max-w-none text-secondary">
+        <div className="prose prose-lg mt-14 max-w-none text-secondary">
           {article.content.map((paragraph, index) => {
             const section = article.sections?.[index];
             return (
               <div key={index}>
                 {section && (
-                  <h2 id={section.id} className="scroll-mt-8 text-2xl font-bold text-primary-800 mt-10 first:mt-0 mb-4">
+                  <h2 id={section.id} className="scroll-mt-24 text-2xl font-bold text-primary-800 mt-14 first:mt-0 mb-4">
                     {section.title}
                   </h2>
                 )}

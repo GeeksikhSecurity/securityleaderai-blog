@@ -4,6 +4,7 @@ import html from 'remark-html';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { CalendarIcon, ClockIcon } from '@/components/icons';
+import { ScrollProgress } from '@/components/scroll-progress';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -21,12 +22,20 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   return (
     <article className="bg-neutral-50">
+      <ScrollProgress />
+
+      <div className="article-accent-line" />
+
       <header className="border-b border-color bg-primary-50 pb-16 pt-12">
         <div className="container max-w-4xl">
-          <Link href="/" className="text-primary-600 link-underline">
-            ← Back to home
-          </Link>
-          <h1 className="mt-8 text-4xl font-bold md:text-5xl text-primary-800">
+          <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-sm text-muted">
+            <Link href="/" className="transition-colors hover:text-primary-600">Home</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/blog" className="transition-colors hover:text-primary-600">Blog</Link>
+            <span aria-hidden="true">/</span>
+            <span className="text-secondary line-clamp-1">{post.title}</span>
+          </nav>
+          <h1 className="text-4xl font-bold md:text-5xl text-primary-800">
             {post.title}
           </h1>
           <div className="mt-6 flex flex-wrap items-center gap-4 small text-muted">
