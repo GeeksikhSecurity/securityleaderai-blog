@@ -129,9 +129,19 @@ export default function ResearchArticle({ params }: ResearchArticlePageProps) {
         )}
 
         <div className="prose prose-lg mt-12 max-w-none text-secondary">
-          {article.content.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {article.content.map((paragraph, index) => {
+            const section = article.sections?.[index];
+            return (
+              <div key={index}>
+                {section && (
+                  <h2 id={section.id} className="scroll-mt-8 text-2xl font-bold text-primary-800 mt-10 first:mt-0 mb-4">
+                    {section.title}
+                  </h2>
+                )}
+                <p>{paragraph}</p>
+              </div>
+            );
+          })}
         </div>
 
         {article.videos && article.videos.length > 0 && (
