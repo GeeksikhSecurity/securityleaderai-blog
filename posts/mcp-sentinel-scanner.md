@@ -8,6 +8,9 @@ tags: ["MCP Security", "AI Security", "Vulnerability Scanner", "Research"]
 
 # MCP Sentinel Scanner
 
+> **Executive Summary**
+> Traditional security scanners cannot detect MCP-specific vulnerabilities — they lack protocol understanding, miss semantic attacks in tool descriptions, and don't track data flow through AI agent communication channels. The MCP Sentinel Scanner addresses this with a seven-layer detection pipeline combining static analysis, LLM-based metadata inspection, AST deep parsing, and Attack Success Rate scoring. Based on peer-reviewed research identifying 12 MCP attack categories, all of which are practical and impactful.
+
 A research-inspired security analysis tool designed to protect Model Context Protocol (MCP) infrastructures by addressing critical gaps in MCP security scanning.
 
 ## Project Overview
@@ -214,4 +217,11 @@ Visit the [GitHub repository](https://github.com/GeeksikhSecurity/mcp-sentinel-s
 
 ---
 
-*Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — [SecurityLeader.ai](https://securityleader.ai)*
+**What to tell your board:**
+- AI agent-to-agent communication (MCP) is an emerging attack surface where malicious servers are trivially easy to create and existing scanners cannot detect them
+- The MCP Sentinel Scanner provides open-source detection capabilities specifically designed for this threat, based on peer-reviewed research
+- Organizations deploying AI agents into enterprise workflows should integrate MCP-specific security scanning into their validation pipelines now, before adoption outpaces security controls
+
+---
+
+*Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — Security Researcher and Advisor at [SecurityLeader.ai](https://securityleader.ai)*

@@ -60,12 +60,6 @@ const researchArticles: ResearchArticle[] = [
       'We segment each threat vector into pre-deployment, runtime, and post-deployment risk categories. This allows security teams to map control coverage and identify blind spots across data ingestion, orchestration layers, and user access flows.',
       'By combining traditional application security controls with LLM-aware guardrails, organizations can move toward measurable risk reduction aligned with executive security objectives.',
     ],
-    videos: [
-      {
-        title: 'Live Threat Modeling Workshop',
-        url: 'https://www.youtube.com/embed/TPsQ7RFMzSM',
-      },
-    ],
     repositories: [
       {
         name: 'mcp-sentinel-scanner',
@@ -129,25 +123,15 @@ const researchArticles: ResearchArticle[] = [
   },
   {
     slug: 'autonomous-defense-demos',
-    title: 'Autonomous Defense Demonstrations',
+    title: 'Autonomous Defense: AI Agent Playbooks for Incident Response',
     summary:
-      'Video walk-throughs showcasing how AI agents can execute defensive playbooks and ticket resolution.',
-    type: 'video',
+      'Research on how AI agents can execute defensive playbooks, automate ticket resolution, and augment human responders in security operations.',
+    type: 'insight',
     visual: '/images/autonomous-defense.svg',
     heroImage: '/images/autonomous-defense.svg',
     date: 'November 5, 2024',
     readTime: '6',
-    tags: ['Automation', 'Blue Team', 'Video Demo'],
-    videos: [
-      {
-        title: 'Containment Workflow',
-        url: 'https://www.youtube.com/embed/k85KCIq1FQ8',
-      },
-      {
-        title: 'Ticket Automation Patterns',
-        url: 'https://www.youtube.com/embed/q8sX2G9x4U0',
-      },
-    ],
+    tags: ['Automation', 'Blue Team', 'Incident Response'],
     sections: [
       { id: 'scenarios', title: 'Scenario Coverage' },
       { id: 'guardrails', title: 'Guardrails & Limits' },

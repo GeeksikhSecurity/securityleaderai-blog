@@ -28,6 +28,13 @@ const typeLabels: Record<ResearchItem['type'], string> = {
   tool: 'Tool / Framework',
 };
 
+const badgeClasses: Record<ResearchItem['type'], string> = {
+  paper: 'badge-research-paper',
+  video: 'badge-video',
+  insight: 'badge-insight',
+  tool: 'badge-tool',
+};
+
 export function ResearchCard({
   slug,
   title,
@@ -53,7 +60,7 @@ export function ResearchCard({
             priority={false}
           />
           <div className="absolute left-5 top-5">
-            <Badge variant="secondary" className="flex items-center gap-2 !normal-case">
+            <Badge variant="secondary" className={`flex items-center gap-2 !normal-case ${badgeClasses[type]}`}>
               <Icon className="h-4 w-4" />
               {typeLabels[type]}
             </Badge>

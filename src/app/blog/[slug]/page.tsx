@@ -78,7 +78,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           >
             Gurvinder Singh, CISSP, CISA
           </a>
-          {' '}— Information Security Officer &amp; Board Advisor
+          {' '}— Security Researcher &amp; Advisor
         </div>
       </footer>
     </article>

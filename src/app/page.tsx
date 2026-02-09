@@ -50,7 +50,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="small text-muted mt-8">
-              Information Security Officer • CISSP • CISA • AI Security & Cyber Risk • Board Advisor
+              20+ Years Experience • CISSP • CISA • Security Researcher & Advisor
             </div>
           </div>
         </div>

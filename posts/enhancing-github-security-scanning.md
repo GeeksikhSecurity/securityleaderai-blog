@@ -8,6 +8,9 @@ tags: ["AI Security", "DevSecOps", "Prompt Injection", "Supply Chain Security", 
 
 # Enhancing GitHub Security Scanning: Integrating AI Threat Taxonomies Into Your DevSecOps Pipeline
 
+> **Executive Summary**
+> 45% of AI-generated code introduces security vulnerabilities, and existing scanners weren't designed to detect AI-specific attack patterns like prompt injection, tool poisoning, or slopsquatting. This article presents five practical enhancements — from the Arcanum Prompt Injection Taxonomy to automated Nuclei template generation — that harden DevSecOps pipelines against the emerging wave of AI-driven threats. Applicable to any organization using AI coding assistants or deploying AI agent frameworks.
+
 ## The Problem: Your Security Scanners Weren't Built for This
 
 If you're running Semgrep, Gitleaks, or CodeQL in your CI/CD pipeline, you're already ahead of most organizations. But here's the uncomfortable truth: those tools were designed for a world where humans write code. We no longer live in that world.
@@ -110,7 +113,14 @@ If you're working on similar challenges, I'd welcome collaboration. The security
 
 ---
 
-*Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — Information Security Officer and Board Advisor. Independent security researcher at [SecurityLeader.ai](https://securityleader.ai) specializing in AI security, MCP vulnerability analysis, and enterprise cyber risk.*
+**What to tell your board:**
+- 45% of AI-generated code contains security vulnerabilities, and your existing scanners cannot detect AI-specific attack patterns like prompt injection or tool poisoning
+- Immediate action: integrate Gitleaks and Semgrep into CI/CD pipelines this week; deploy AI code anti-pattern guardrails this month
+- Organizations that delay will face an expanding attack surface as AI coding assistants become standard developer tooling
+
+---
+
+*Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — Security Researcher and Advisor. Independent security research at [SecurityLeader.ai](https://securityleader.ai) specializing in AI security, MCP vulnerability analysis, and enterprise cyber risk.*
 
 ---
 

@@ -8,7 +8,10 @@ tags: ["OAuth Security", "Supply Chain", "Identity Security", "MITRE ATT&CK", "P
 
 # Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist
 
-## Executive Summary
+> **Executive Summary**
+> The UNC6395 campaign weaponized legitimate OAuth tokens from Salesloft/Drift to access 700+ Salesforce environments without stealing a single password or triggering MFA. This analysis provides a forensic deconstruction of the attack mapped to MITRE ATT&CK (T1528, T1550), a GWAPT-aligned penetration testing methodology for auditing OAuth integrations, and a Zero Trust remediation framework. Every organization with third-party SaaS integrations is exposed to this attack pattern.
+
+## The Attack
 
 Between August 8-18, 2025, the cybersecurity landscape shifted from "breaking the perimeter" to "inheriting the trust." The UNC6395 campaign did not exploit a software vulnerability in the victim organizations. It weaponized legitimate OAuth 2.0 tokens to access Salesforce environments across Google, Cisco, Disney, and major security vendors, compromising more than 700 organizations.
 
@@ -127,6 +130,11 @@ By applying GWAPT methodologies of enumeration, analysis, and exploitation to OA
 
 ---
 
-**Research by Gurvinder Singh, CISSP, CISA, GWAPT**
+**What to tell your board:**
+- A single vendor compromise (Salesloft/Drift) exposed 700+ organizations through OAuth token theft — no passwords were stolen and MFA was bypassed entirely
+- Immediate action: audit all third-party connected apps for over-privileged OAuth scopes and enforce 24-hour refresh token expiry
+- This attack pattern is systemic — subsequent incidents at Gainsight and n8n confirm that Non-Human Identity management is the next major enterprise risk category
 
-*This analysis is part of ongoing independent research into OAuth supply-chain vulnerabilities and AI agent identity security. See also: [MCP Sentinel Scanner](/blog/mcp-sentinel-scanner) for related work on securing AI agent-to-agent communication frameworks.*
+---
+
+*Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — Security Researcher and Advisor. This analysis is part of ongoing independent research into OAuth supply-chain vulnerabilities and AI agent identity security. See also: [MCP Sentinel Scanner](/blog/mcp-sentinel-scanner) for related work on securing AI agent-to-agent communication frameworks.*

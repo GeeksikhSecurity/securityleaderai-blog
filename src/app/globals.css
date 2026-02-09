@@ -1184,3 +1184,110 @@ pre code {
     linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
 }
+
+/* ============================================
+   EXECUTIVE SUMMARY & BOARD TALKING POINTS
+   ============================================ */
+
+.blog-content blockquote strong {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-700);
+  margin-bottom: var(--space-2);
+}
+
+.blog-content blockquote {
+  background-color: var(--primary-50);
+  border-left: 4px solid var(--primary-600);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0;
+  color: var(--text-primary);
+  font-style: normal;
+  line-height: 1.7;
+}
+
+/* ============================================
+   DISTINCT CONTENT TYPE BADGES
+   ============================================ */
+
+.badge-research-paper {
+  background-color: var(--primary-900);
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.badge-tool {
+  background-color: #065f46;
+  color: #d1fae5;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.badge-insight {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+}
+
+.badge-video {
+  background-color: var(--neutral-800);
+  color: #ffffff;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  body {
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+  }
+
+  .hero,
+  .navbar,
+  .hero-cta,
+  .tabs-list,
+  .btn,
+  .security-tag,
+  footer {
+    display: none !important;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .blog-post,
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+
+  h1, h2, h3 {
+    break-after: avoid;
+  }
+
+  .blog-content blockquote {
+    background-color: #f5f5f5;
+    border-left: 3px solid #333;
+  }
+}
