@@ -71,7 +71,7 @@ const researchArticles: ResearchArticle[] = [
       {
         name: 'llm-threat-surface-kit',
         description: 'Reference diagrams and checklists to map LLM attack paths.',
-        url: 'https://github.com/securityleaderai/llm-threat-surface-kit',
+        url: 'https://github.com/GeeksikhSecurity/llm-threat-surface-kit',
       },
     ],
   },
@@ -86,7 +86,7 @@ const researchArticles: ResearchArticle[] = [
     date: 'February 8, 2026',
     readTime: '12',
     tags: ['OAuth', 'Supply Chain', 'Salesloft/Drift', 'MITRE ATT&CK', 'Penetration Testing'],
-    githubUrl: 'https://github.com/securityleaderai/oauth-red-team-lab',
+    githubUrl: 'https://github.com/GeeksikhSecurity/oauth-red-team-lab',
     sections: [
       { id: 'threat-landscape', title: 'Threat Landscape: UNC6395 & the Identity Supply Chain' },
       { id: 'attack-scenarios', title: 'Shadow Trust: Attack Scenarios & Token Persistence' },
@@ -102,7 +102,7 @@ const researchArticles: ResearchArticle[] = [
       {
         name: 'oauth-red-team-lab',
         description: 'GWAPT-aligned automation scripts, SOQL enumeration queries, and OAuth exploit validation scenarios based on the Salesloft/Drift breach analysis.',
-        url: 'https://github.com/securityleaderai/oauth-red-team-lab',
+        url: 'https://github.com/GeeksikhSecurity/oauth-red-team-lab',
       },
     ],
   },
