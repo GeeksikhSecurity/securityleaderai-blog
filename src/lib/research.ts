@@ -69,9 +69,9 @@ const researchArticles: ResearchArticle[] = [
     ],
     repositories: [
       {
-        name: 'llm-threat-surface-kit',
-        description: 'Reference diagrams and checklists to map LLM attack paths.',
-        url: 'https://github.com/GeeksikhSecurity/llm-threat-surface-kit',
+        name: 'mcp-sentinel-scanner',
+        description: 'Seven-layer detection pipeline for MCP and LLM threat surface analysis.',
+        url: 'https://github.com/GeeksikhSecurity/mcp-sentinel-scanner',
       },
     ],
   },
@@ -86,7 +86,7 @@ const researchArticles: ResearchArticle[] = [
     date: 'February 8, 2026',
     readTime: '12',
     tags: ['OAuth', 'Supply Chain', 'Salesloft/Drift', 'MITRE ATT&CK', 'Penetration Testing'],
-    githubUrl: 'https://github.com/GeeksikhSecurity/oauth-red-team-lab',
+    githubUrl: 'https://github.com/GeeksikhSecurity/mcp-sentinel-scanner',
     sections: [
       { id: 'threat-landscape', title: 'Threat Landscape: UNC6395 & the Identity Supply Chain' },
       { id: 'attack-scenarios', title: 'Shadow Trust: Attack Scenarios & Token Persistence' },
@@ -100,9 +100,9 @@ const researchArticles: ResearchArticle[] = [
     ],
     repositories: [
       {
-        name: 'oauth-red-team-lab',
-        description: 'GWAPT-aligned automation scripts, SOQL enumeration queries, and OAuth exploit validation scenarios based on the Salesloft/Drift breach analysis.',
-        url: 'https://github.com/GeeksikhSecurity/oauth-red-team-lab',
+        name: 'mcp-sentinel-scanner',
+        description: 'Security analysis tool with OAuth supply-chain detection capabilities, SOQL enumeration patterns, and MCP vulnerability scanning.',
+        url: 'https://github.com/GeeksikhSecurity/mcp-sentinel-scanner',
       },
     ],
   },
