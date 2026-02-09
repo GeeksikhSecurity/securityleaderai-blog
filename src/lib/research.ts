@@ -48,7 +48,7 @@ const researchArticles: ResearchArticle[] = [
     visual: '/images/llm-threat-surface.svg',
     heroImage: '/images/llm-threat-surface.svg',
     date: 'January 12, 2025',
-    readTime: '12',
+    readTime: '4',
     tags: ['LLM Security', 'Threat Modeling', 'Enterprise'],
     sections: [
       { id: 'threat-landscape', title: 'Threat Landscape Overview' },
@@ -77,7 +77,7 @@ const researchArticles: ResearchArticle[] = [
     visual: '/images/oauth-red-team.svg',
     heroImage: '/images/oauth-red-team.svg',
     date: 'February 8, 2026',
-    readTime: '12',
+    readTime: '5',
     tags: ['OAuth', 'Supply Chain', 'Salesloft/Drift', 'MITRE ATT&CK', 'Penetration Testing'],
     githubUrl: 'https://github.com/GeeksikhSecurity/mcp-sentinel-scanner',
     sections: [
@@ -109,7 +109,7 @@ const researchArticles: ResearchArticle[] = [
     visual: '/images/mcp-sentinel.svg',
     heroImage: '/images/mcp-sentinel.svg',
     date: 'February 8, 2026',
-    readTime: '10',
+    readTime: '4',
     tags: ['MCP', 'AI Security', 'Seven-Layer Pipeline', 'Vulnerability Scanner'],
     sections: [
       { id: 'detection-pipeline', title: 'Seven-Layer Detection Pipeline' },
@@ -131,7 +131,7 @@ const researchArticles: ResearchArticle[] = [
     visual: '/images/autonomous-defense.svg',
     heroImage: '/images/autonomous-defense.svg',
     date: 'November 5, 2024',
-    readTime: '6',
+    readTime: '3',
     tags: ['Automation', 'Blue Team', 'Incident Response'],
     sections: [
       { id: 'scenarios', title: 'Scenario Coverage' },
@@ -153,7 +153,7 @@ const researchArticles: ResearchArticle[] = [
     visual: '/images/supply-chain-guardian.svg',
     heroImage: '/images/supply-chain-guardian.svg',
     date: 'October 14, 2024',
-    readTime: '11',
+    readTime: '4',
     tags: ['Supply Chain', 'Governance', 'Frameworks'],
     sections: [
       { id: 'asset-inventory', title: 'Asset Inventory' },
@@ -175,7 +175,7 @@ const researchArticles: ResearchArticle[] = [
     visual: '/images/executive-insights.svg',
     heroImage: '/images/executive-insights.svg',
     date: 'September 8, 2024',
-    readTime: '7',
+    readTime: '3',
     tags: ['Leadership', 'Reporting', 'Strategy'],
     sections: [
       { id: 'messaging', title: 'Messaging the Risk' },
@@ -249,25 +249,25 @@ export function getResearchTopics() {
       name: 'LLM Threats',
       slug: 'llm-security',
       icon: 'shield',
-      count: 12,
+      count: 4,
     },
     {
       name: 'Model Context Protocol',
       slug: 'mcp',
       icon: 'layers',
-      count: 9,
+      count: 3,
     },
     {
       name: 'Supply Chain',
       slug: 'supply-chain',
       icon: 'package',
-      count: 7,
+      count: 4,
     },
     {
       name: 'Automation & Tools',
       slug: 'automation',
       icon: 'workflow',
-      count: 11,
+      count: 4,
     },
   ];
 }

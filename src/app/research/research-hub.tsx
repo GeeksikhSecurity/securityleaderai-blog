@@ -15,11 +15,6 @@ const categories: Array<{ label: string; value: ResearchType; blurb: string }> =
     blurb: 'Deep dives, frameworks, and executive-ready analysis.',
   },
   {
-    value: 'video',
-    label: 'Videos & Demos',
-    blurb: 'Agent walkthroughs, automation showcases, and talks.',
-  },
-  {
     value: 'insight',
     label: 'Insights & Analysis',
     blurb: 'Strategic commentary for security leaders.',
