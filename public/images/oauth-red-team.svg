@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d1438" />
+      <stop offset="100%" stop-color="#0c0b2a" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f06292" />
+      <stop offset="100%" stop-color="#ffb6c1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" rx="40" />
+  <g opacity="0.45" stroke="#ff6f91" stroke-width="2" fill="none">
+    <rect x="220" y="190" width="760" height="320" rx="28" />
+    <rect x="280" y="250" width="640" height="200" rx="22" />
+  </g>
+  <g stroke="#ff6f91" stroke-width="2" fill="none" opacity="0.65">
+    <path d="M340 300 H860" stroke-dasharray="12 10" />
+    <path d="M340 360 H860" stroke-dasharray="12 10" />
+  </g>
+  <g fill="url(#accent)" opacity="0.9">
+    <circle cx="340" cy="330" r="22" />
+    <circle cx="600" cy="330" r="22" />
+    <circle cx="860" cy="330" r="22" />
+  </g>
+  <g opacity="0.3" stroke="#f48fb1" stroke-linecap="round">
+    <path d="M340 330 Q470 220 600 330" />
+    <path d="M600 330 Q730 440 860 330" />
+  </g>
+  <g opacity="0.2">
+    <circle cx="340" cy="330" r="60" stroke="#ff9bb5" stroke-width="1.5" fill="none" />
+    <circle cx="600" cy="330" r="70" stroke="#ff9bb5" stroke-width="1.5" fill="none" />
+    <circle cx="860" cy="330" r="60" stroke="#ff9bb5" stroke-width="1.5" fill="none" />
+  </g>
+</svg>
+

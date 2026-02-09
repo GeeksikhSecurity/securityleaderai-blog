@@ -2,6 +2,8 @@ import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import { CalendarIcon, ClockIcon } from '@/components/icons';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -18,58 +20,67 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   const contentHtml = processedContent.toString();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
-      <header className="bg-slate-900 border-b border-slate-700">
-        <div className="container mx-auto px-4 py-6">
-          <Link href="/" className="text-blue-400 hover:text-blue-300">
-            ← Back to Home
+    <article className="bg-neutral-50">
+      <header className="border-b border-color bg-primary-50 pb-16 pt-12">
+        <div className="container max-w-4xl">
+          <Link href="/" className="text-primary-600 link-underline">
+            ← Back to home
           </Link>
+          <h1 className="mt-8 text-4xl font-bold md:text-5xl text-primary-800">
+            {post.title}
+          </h1>
+          <div className="mt-6 flex flex-wrap items-center gap-4 small text-muted">
+            <span className="inline-flex items-center gap-2">
+              <CalendarIcon className="h-4 w-4 text-primary-600" />
+              <time dateTime={post.date}>{post.date}</time>
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <ClockIcon className="h-4 w-4 text-primary-600" />
+              {post.readingTime} min read
+            </span>
+            {post.author && <span>By {post.author}</span>}
+          </div>
         </div>
       </header>
 
-      <article className="container mx-auto px-4 py-12 max-w-4xl">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">{post.title}</h1>
-          <div className="flex items-center text-slate-400">
-            <time dateTime={post.date}>{post.date}</time>
-            <span className="mx-2">•</span>
-            <span>{post.readingTime} min read</span>
-            {post.author && (
-              <>
-                <span className="mx-2">•</span>
-                <span>By {post.author}</span>
-              </>
-            )}
-          </div>
-        </header>
-
-        <div 
-          className="prose prose-invert prose-lg max-w-none"
+      <div className="container max-w-3xl py-16">
+        <div
+          className="prose prose-lg max-w-none text-secondary"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
         {post.tags && post.tags.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-slate-700">
-            <h3 className="text-white font-semibold mb-4">Tags:</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="mt-12 border-t border-color pt-8">
+            <h3 className="small font-semibold uppercase tracking-[0.3em] text-muted">
+              Tags
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <span 
-                  key={tag}
-                  className="bg-slate-700 text-slate-300 px-3 py-1 rounded-full text-sm"
-                >
+                <Badge key={tag} variant="outline" className="!normal-case">
                   {tag}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>
         )}
-      </article>
+      </div>
 
-      <footer className="bg-slate-900 border-t border-slate-700 mt-20">
-        <div className="container mx-auto px-4 py-8 text-center text-slate-400">
-          <p>&copy; 2025 SecurityLeader.ai. All rights reserved.</p>
+      <footer className="border-t border-color bg-neutral-50 py-10">
+        <div className="container text-center small text-secondary">
+          <p className="mb-2">
+            &copy; 2026 SecurityLeader.ai. All rights reserved.
+          </p>
+          <a
+            href="https://www.linkedin.com/in/gurvindersinghb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-600 link-underline"
+          >
+            Gurvinder Singh, CISSP, CISA
+          </a>
+          {' '}— Information Security Officer &amp; Board Advisor
         </div>
       </footer>
-    </div>
+    </article>
   );
 }

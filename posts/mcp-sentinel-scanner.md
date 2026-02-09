@@ -2,7 +2,7 @@
 title: "MCP Sentinel Scanner: Security Analysis for Model Context Protocol"
 date: "2025-10-05"
 excerpt: "A comprehensive security analysis tool addressing critical gaps in Model Context Protocol implementations, based on peer-reviewed research."
-author: "GeeksikhSecurity"
+author: "Gurvinder Singh"
 tags: ["MCP Security", "AI Security", "Vulnerability Scanner", "Research"]
 ---
 
@@ -43,14 +43,17 @@ Standard security scanners are inadequate for MCP because they:
 
 ## Core Features
 
-### Multi-Layer Analysis Pipeline
+### Seven-Layer Detection Pipeline
 
-The scanner employs a sophisticated four-layer detection system:
+The scanner employs a research-backed seven-layer detection pipeline that addresses the full spectrum of MCP-specific threats:
 
-1. **Pattern Matching** - Static vulnerability signatures
-2. **AST Analysis** - Abstract Syntax Tree inspection
-3. **Secret Detection** - Shannon entropy-based credential scanning
-4. **Taint Analysis** - Data flow tracking from user input to dangerous sinks
+1. **Semgrep Taint Scan** — Static analysis using custom Semgrep rules optimized for MCP, tracking data flow from untrusted sources to dangerous sinks with CWE-mapped precision
+2. **LLM-Based Metadata Analysis** — Semantic detection of malicious intent hidden in tool descriptions, identifying prompt injection patterns and tool poisoning attempts in natural language
+3. **AST Deep Inspection** — Abstract Syntax Tree parsing that structures source code into analyzable representations, enabling deep pattern recognition beyond surface-level scanning
+4. **Cross-File Flow Extraction** — Inter-procedural data flow tracking across multiple files and modules, mapping component interactions and identifying vulnerabilities that span code boundaries
+5. **Secret Detection** — Shannon entropy-based credential scanning that identifies hardcoded secrets, API keys, and tokens embedded in MCP server configurations
+6. **Pattern Matching** — Static vulnerability signature detection using curated rule sets targeting MCP-specific authentication bypasses, context injection, and protocol-level exploits
+7. **Risk Judgment & ASR Scoring** — Attack Success Rate quantification on a 0–1 scale, factoring exploit complexity, required privileges, and user interaction to produce actionable severity ratings
 
 ### Attack Success Rate (ASR) Scoring
 
@@ -73,38 +76,17 @@ Quantifies exploit feasibility on a 0-1 scale:
 | Parallel Workers | 4-8 workers |
 | Vulnerabilities Detected (v1.5) | 652 findings |
 
-## Multi-Stage Scanning Process
+## Pipeline Execution Stages
 
-### Stage 1: Semgrep Taint Scan
+The seven-layer pipeline executes in coordinated stages, with each layer feeding results into subsequent analysis:
 
-**Static Analysis Engine**
-- Pattern-matching using custom Semgrep rules optimized for MCP
-- Tracks data flow from untrusted sources to dangerous sinks
-- Detects CWE-mapped vulnerabilities with high precision
-- Analyzes code without execution for safe scanning
+**Stages 1–2 (Static & Semantic):** Semgrep taint scanning and LLM-based metadata analysis run in parallel, identifying both code-level and natural-language attack vectors.
 
-### Stage 2: LLM-Based Metadata Description Monitoring
+**Stages 3–4 (Structural):** AST deep inspection and cross-file flow extraction build a comprehensive map of code structure and data movement across module boundaries.
 
-**Semantic Analysis Layer**
-- Analyzes tool descriptions using LLM capabilities
-- Detects malicious intent hidden in natural language
-- Identifies prompt injection patterns in metadata
-- Recognizes tool poisoning attempts
+**Stages 5–6 (Detection):** Secret detection and pattern matching apply targeted rule sets to identify credentials, authentication bypasses, and protocol-level exploits.
 
-### Stage 3: Cross-File Flow Extraction
-
-**Abstract Syntax Tree (AST) Deep Inspection**
-- Parses source code into structured tree representation
-- Tracks data flow across multiple files and modules
-- Identifies inter-procedural vulnerabilities
-- Maps component interactions
-
-### Stage 4: Risk Judgment & Quantification
-
-**Attack Success Rate (ASR) Scoring**
-- Quantifies exploit feasibility on 0-1 scale
-- Considers exploit complexity, required privileges, user interaction
-- Provides actionable severity ratings
+**Stage 7 (Scoring):** Risk judgment synthesizes all findings into ASR scores, prioritizing results by exploit feasibility and business impact.
 
 ### Flexible CLI Configuration
 
@@ -217,7 +199,7 @@ The research proposes a component-based taxonomy comprising **12 attack categori
 
 1. **MCP-Specific Focus:** Purpose-built for Model Context Protocol security
 2. **Research-Backed:** Based on peer-reviewed academic research (Zhao et al., 2025)
-3. **Multi-Layer Detection:** Combines 4 detection techniques for comprehensive coverage
+3. **Multi-Layer Detection:** Seven-layer detection pipeline for comprehensive coverage
 4. **High Accuracy:** 96% test coverage with quantified ASR scores
 5. **Production Ready:** Docker images, CI/CD templates, 5 output formats
 6. **Active Development:** Regular updates addressing emerging MCP threats

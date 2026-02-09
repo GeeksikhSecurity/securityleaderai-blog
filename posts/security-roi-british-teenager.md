@@ -2,7 +2,7 @@
 title: "Security ROI: Why Your British Teenager Problem Costs More Than Your APT Defense"
 date: "2025-09-22"
 excerpt: "Your organization spends millions preparing for nation-state attacks while 75% of breaches originate from phishing and compromised credentials. Time to reallocate."
-author: "Security Leader AI"
+author: "Gurvinder Singh"
 tags: ["Security ROI", "Risk Management", "Executive Leadership", "Business Strategy"]
 ---
 

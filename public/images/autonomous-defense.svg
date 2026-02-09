@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151c36" />
+      <stop offset="100%" stop-color="#04060f" />
+    </linearGradient>
+    <linearGradient id="pulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7ce8ff" />
+      <stop offset="100%" stop-color="#9b7cff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" rx="40" />
+  <g opacity="0.35" stroke="#7ce8ff" stroke-width="2" stroke-linecap="round" fill="none">
+    <polyline points="220 420 420 280 600 340 780 240 980 360" stroke-dasharray="14 10" />
+    <polyline points="220 320 420 420 600 280 780 380 980 260" stroke-dasharray="18 12" />
+  </g>
+  <g opacity="0.5" fill="url(#pulse)">
+    <circle cx="420" cy="280" r="26" />
+    <circle cx="600" cy="340" r="28" />
+    <circle cx="780" cy="240" r="24" />
+    <circle cx="780" cy="380" r="24" />
+    <circle cx="420" cy="420" r="26" />
+  </g>
+  <g opacity="0.2" fill="url(#pulse)">
+    <circle cx="420" cy="280" r="78" />
+    <circle cx="780" cy="240" r="68" />
+    <circle cx="600" cy="340" r="88" />
+  </g>
+  <g opacity="0.15" stroke="#7ce8ff" stroke-width="1.5">
+    <circle cx="600" cy="340" r="160" />
+  </g>
+</svg>
+

@@ -2,7 +2,7 @@
 title: "The DevOps Security Paradox: When More Tools Mean Less Security"
 date: "2025-09-16"
 excerpt: "Modern DevOps toolchains often include 20+ tools creating more attack vectors than they prevent. Learn the security-first approach to simplification."
-author: "Security Leader AI"
+author: "Gurvinder Singh"
 tags: ["DevOps", "Security", "Tool Management", "Best Practices"]
 ---
 
