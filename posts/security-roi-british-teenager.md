@@ -15,7 +15,7 @@ tags: ["Security ROI", "Risk Management", "Executive Leadership", "Business Stra
 
 Your organization spends millions preparing for sophisticated nation-state attacks while 75% of actual breaches originate from phishing emails and compromised credentials. This misallocation of resources represents both your greatest vulnerability and your most immediate opportunity for measurable security ROI.
 
-Recent data from the Verizon Data Breach Investigation Report, analyzed by security leader Jonathan Price, reveals a fundamental disconnect between security spending and actual threat vectors.
+Recent data from the [Verizon Data Breach Investigation Report](https://www.verizon.com/business/resources/reports/dbir/), analyzed by security leader Jonathan Price, reveals a fundamental disconnect between security spending and actual threat vectors.
 
 ## The Threat Landscape Reality Check
 

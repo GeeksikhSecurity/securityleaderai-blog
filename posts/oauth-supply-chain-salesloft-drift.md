@@ -27,9 +27,9 @@ Subsequent campaigns, notably the Gainsight incident (November 2025) and the n8n
 
 **MITRE ATT&CK Mapping:**
 
-- **Initial Access:** Trusted Relationship (T1199)
-- **Credential Access:** Steal Application Access Token (T1528)
-- **Defense Evasion:** Use Alternate Authentication Material (T1550.001)
+- **Initial Access:** [Trusted Relationship (T1199)](https://attack.mitre.org/techniques/T1199/)
+- **Credential Access:** [Steal Application Access Token (T1528)](https://attack.mitre.org/techniques/T1528/)
+- **Defense Evasion:** [Use Alternate Authentication Material (T1550.001)](https://attack.mitre.org/techniques/T1550/001/)
 
 **Operational Pattern:**
 
@@ -67,7 +67,7 @@ The core failure in 2025 was the Infinite Refresh Token:
 
 ## Penetration Testing Methodology: Auditing OAuth Integrations
 
-This methodology adapts standard web application testing to the OAuth layer, aligned with GIAC GWAPT assessment techniques.
+This methodology adapts standard web application testing to the OAuth layer, aligned with [GIAC GWAPT](https://www.giac.org/certifications/web-application-penetration-tester-gwapt/) assessment techniques.
 
 ### Phase 1: Reconnaissance & Enumeration
 
@@ -96,7 +96,7 @@ For JWT-based tokens, decode the payload to verify claims: `aud` (is it too broa
 
 ## Risk Scoring
 
-Findings scored using CVSS v4.0:
+Findings scored using [CVSS v4.0](https://www.first.org/cvss/v4.0/specification-document):
 
 | Vulnerability | Vector | Impact | Severity |
 |---------------|--------|--------|----------|
@@ -116,7 +116,7 @@ Findings scored using CVSS v4.0:
 ### Technical Controls
 
 - **IP Enforcement:** Change Connected App policies from "Relax IP restrictions" to "Enforce IP restrictions," ensuring tokens only work from whitelisted ranges
-- **Session Introspection:** Implement RFC 7662 (Token Introspection) at the gateway level to validate token status on every request, not just at creation
+- **Session Introspection:** Implement [RFC 7662](https://datatracker.ietf.org/doc/html/rfc7662) (Token Introspection) at the gateway level to validate token status on every request, not just at creation
 
 ### Monitoring
 

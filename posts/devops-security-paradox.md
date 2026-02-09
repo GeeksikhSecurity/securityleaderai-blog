@@ -208,3 +208,14 @@ The goal isn't to eliminate all tools or complexity—it's to ensure that every 
 ---
 
 *Ready to simplify your DevOps security? Start with a tool inventory and security gap analysis. Identify your top 3 overlapping tools and evaluate consolidated alternatives.*
+
+---
+
+**References & Further Reading:**
+
+- [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/) — Baseline Application Security Requirements
+- [Arcanum DevOps Attack Surface](https://github.com/jhaddix/devops-attack-surface) — Interactive Reference for Pentesting DevOps Pipelines
+- [OpenSSF Scorecard](https://github.com/ossf/scorecard) — Security Health Metrics for Open Source
+- [Aqua Security Trivy](https://github.com/aquasecurity/trivy) — Comprehensive Vulnerability Scanner for Containers and Code
+- [Semgrep](https://github.com/semgrep/semgrep) — Lightweight Static Analysis for Security
+- [Gitleaks](https://github.com/gitleaks/gitleaks) — Secret Detection in Git Repositories

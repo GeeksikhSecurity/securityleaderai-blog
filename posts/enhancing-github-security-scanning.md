@@ -127,9 +127,14 @@ If you're working on similar challenges, I'd welcome collaboration. The security
 **References & Further Reading:**
 
 - [Arcanum PI Taxonomy v1.5](https://arcanum-sec.github.io/arc_pi_taxonomy/) — Prompt Injection Attack Classification
-- [Arcanum sec-context Project](https://github.com/Arcanum-Sec/sec-context) — AI Code Security Anti-Patterns
+- [Arcanum sec-context Project](https://github.com/Arcanum-Sec/sec-context) — AI Code Security Anti-Patterns (150+ sources)
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — Industry Standard LLM Security Risks
+- [MITRE ATLAS](https://atlas.mitre.org/) — Adversarial Threat Landscape for AI Systems
+- [NVIDIA Garak](https://github.com/NVIDIA/garak) — LLM Vulnerability Scanner (40+ probe modules)
+- [Microsoft PyRIT](https://github.com/Azure/PyRIT) — Python Risk Identification Tool for Generative AI
 - [Invariant Labs mcp-scan](https://github.com/invariantlabs-ai/mcp-scan) — MCP Server Security Scanner
 - [Cisco AI Defense MCP Scanner](https://github.com/cisco-ai-defense/mcp-scanner) — Multi-Engine MCP Security Analysis
+- [OpenSSF Scorecard](https://github.com/ossf/scorecard) — Security Health Metrics for Open Source
 - [Shadow IT Research: Intruder.io](https://www.intruder.io/research/shadow-it-risks) — Attack Surface Expansion Study
 - [AI Vibe Coding Security Risks: BayTech Consulting](https://www.baytechconsulting.com/blog/ai-vibe-coding-security-risk-2025) — 45% Vulnerability Rate Analysis
 - [Arcanum AI Security Resource Hub](https://arcanum-sec.github.io/ai-sec-resources/) — Training Environment and Tools

@@ -225,3 +225,14 @@ Visit the [GitHub repository](https://github.com/GeeksikhSecurity/mcp-sentinel-s
 ---
 
 *Research by [Gurvinder Singh](https://www.linkedin.com/in/gurvindersinghb), CISSP, CISA — Security Researcher and Advisor at [SecurityLeader.ai](https://securityleader.ai)*
+
+---
+
+**Additional Resources:**
+
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — Industry Standard LLM Security Risks
+- [MITRE ATLAS](https://atlas.mitre.org/) — Adversarial Threat Landscape for AI Systems
+- [Model Context Protocol Specification](https://github.com/modelcontextprotocol/modelcontextprotocol) — Official MCP Specification
+- [Arcanum PI Taxonomy v1.5](https://arcanum-sec.github.io/arc_pi_taxonomy/) — Prompt Injection Attack Classification
+- [Invariant Labs mcp-scan](https://github.com/invariantlabs-ai/mcp-scan) — MCP Server Security Scanner
+- [Cisco AI Defense MCP Scanner](https://github.com/cisco-ai-defense/mcp-scanner) — Multi-Engine MCP Security Analysis
