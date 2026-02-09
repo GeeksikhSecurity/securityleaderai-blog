@@ -109,7 +109,7 @@ export default function Home() {
                     </p>
                   </div>
                   <Link
-                    href={`/research?topic=${topic.slug}`}
+                    href="/research"
                     className="mt-auto text-primary-600 link-underline"
                   >
                     Explore topic →
