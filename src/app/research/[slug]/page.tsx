@@ -15,7 +15,7 @@ import { getResearchArticle, getResearchItems } from '@/lib/research';
 import type { ResearchType } from '@/lib/research';
 
 interface ResearchArticlePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
@@ -29,8 +29,9 @@ const typeLabels: Record<ResearchType, string> = {
   tool: 'Tool / Framework',
 };
 
-export default function ResearchArticle({ params }: ResearchArticlePageProps) {
-  const article = getResearchArticle(params.slug);
+export default async function ResearchArticle({ params }: ResearchArticlePageProps) {
+  const { slug } = await params;
+  const article = getResearchArticle(slug);
 
   if (!article) {
     notFound();
