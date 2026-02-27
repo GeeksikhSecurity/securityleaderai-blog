@@ -6,8 +6,6 @@ author: "Gurvinder Singh"
 tags: ["Security ROI", "Risk Management", "Executive Leadership", "Business Strategy"]
 ---
 
-# Security ROI: Why Your British Teenager Problem Costs More Than Your APT Defense
-
 *Can you tell your board what percentage of your security budget directly addresses the 75% of breaches that originate from phishing and compromised credentials?*
 
 > **Executive Summary**

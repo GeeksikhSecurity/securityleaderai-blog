@@ -6,8 +6,6 @@ author: "Gurvinder Singh"
 tags: ["AI Security", "DevSecOps", "Prompt Injection", "Supply Chain Security", "GitHub Security", "MCP Security"]
 ---
 
-# Enhancing GitHub Security Scanning: Integrating AI Threat Taxonomies Into Your DevSecOps Pipeline
-
 *If 45% of AI-generated code introduces security vulnerabilities, what percentage of your organization's codebase was written by AI assistants last quarter — and who is scanning it?*
 
 > **Executive Summary**

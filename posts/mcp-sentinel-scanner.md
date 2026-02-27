@@ -6,8 +6,6 @@ author: "Gurvinder Singh"
 tags: ["MCP Security", "AI Security", "Vulnerability Scanner", "Research"]
 ---
 
-# MCP Sentinel Scanner
-
 *Can your existing security scanners detect a malicious MCP server that hides attack instructions inside legitimate-looking tool descriptions?*
 
 > **Executive Summary**

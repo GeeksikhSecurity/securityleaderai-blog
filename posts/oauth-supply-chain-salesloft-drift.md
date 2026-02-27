@@ -6,8 +6,6 @@ author: "Gurvinder Singh"
 tags: ["OAuth Security", "Supply Chain", "Identity Security", "MITRE ATT&CK", "Penetration Testing"]
 ---
 
-# Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist
-
 *A single vendor compromise exposed 700+ organizations without stealing a password or triggering MFA. How many of your third-party integrations hold over-privileged OAuth tokens right now?*
 
 > **Executive Summary**
