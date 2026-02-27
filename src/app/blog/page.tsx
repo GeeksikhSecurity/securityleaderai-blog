@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { CalendarIcon, ClockIcon } from '@/components/icons';
-import { getAllPosts } from '@/lib/posts';
+import { getPublicPosts } from '@/lib/posts';
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const posts = getPublicPosts();
 
   return (
     <main className="bg-neutral-50">

@@ -223,7 +223,7 @@ export default async function ResearchArticle({ params }: ResearchArticlePagePro
             >
               Gurvinder Singh
             </a>
-            , CISSP, CISA — Security Researcher &amp; Advisor with 20+ years of experience. Specializing in AI security, cyber risk and resilience, and public-sector and critical infrastructure security. Creator of the MCP Sentinel Scanner and researcher on OAuth supply-chain vulnerabilities.
+            , CISSP, CISA, GWAPT — Security Researcher &amp; Advisor with 20+ years of experience. Specializing in AI security, cyber risk and resilience, and public-sector and critical infrastructure security. Creator of the MCP Sentinel Scanner and researcher on OAuth supply-chain vulnerabilities.
           </p>
         </footer>
       </div>

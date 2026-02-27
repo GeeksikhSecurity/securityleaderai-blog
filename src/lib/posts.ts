@@ -13,6 +13,7 @@ export interface Post {
   readingTime: number;
   author?: string;
   tags?: string[];
+  hidden?: boolean;
 }
 
 export function getAllPosts(): Post[] {
@@ -38,10 +39,16 @@ export function getAllPosts(): Post[] {
         readingTime,
         author: data.author,
         tags: data.tags,
+        hidden: data.hidden === true,
       };
     });
 
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+/** Returns only public (non-hidden) posts for listing pages. */
+export function getPublicPosts(): Post[] {
+  return getAllPosts().filter((post) => !post.hidden);
 }
 
 export function getPostBySlug(slug: string): Post {
@@ -62,5 +69,6 @@ export function getPostBySlug(slug: string): Post {
     readingTime,
     author: data.author,
     tags: data.tags,
+    hidden: data.hidden === true,
   };
 }

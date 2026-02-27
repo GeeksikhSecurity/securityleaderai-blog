@@ -90,7 +90,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             rel="noopener noreferrer"
             className="text-primary-600 link-underline"
           >
-            Gurvinder Singh, CISSP, CISA
+            Gurvinder Singh, CISSP, CISA, GWAPT
           </a>
           {' '}— Security Researcher &amp; Advisor
         </div>

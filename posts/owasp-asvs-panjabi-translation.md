@@ -184,8 +184,8 @@ A major inspiration for this glossary work is Sikhri's [Guru Granth Sahib Dictio
 
 **Phase A is complete** and live in [PR #3254](https://github.com/OWASP/ASVS/pull/3254):
 
-- Bilingual Frontispiece with full project credits
-- Bilingual Preface covering ASVS 5.0 principles, levels, and scope
+- Bilingual title page with full project credits
+- Bilingual introduction covering ASVS 5.0 principles, levels, and scope
 - 100+ term security glossary with Gurmukhi translations and romanization
 - Translation notes with QA checklist and terminology decision log
 - Peer review plan for security researchers
@@ -218,7 +218,7 @@ Open [PR #3254](https://github.com/OWASP/ASVS/pull/3254), click "Files changed,"
 
 You don't need to be both a Panjabi speaker AND a security expert — either qualification helps:
 
-- **Panjabi speakers**: Does the translation read naturally, or does it feel like word-for-word transliteration? Are there better Gurmukhi equivalents for any term?
+- **Panjabi speakers**: Does the translation read naturally, or does it feel like a forced word-for-word conversion? Are there better Gurmukhi equivalents for any term?
 - **Security researchers**: Is the English source meaning preserved? Do any translations introduce ambiguity that could affect a developer's implementation?
 - **Gurmukhi linguists**: Any Devanagari script contamination? Proper vowel signs (ਮਾਤਰਾ)? Clean Unicode?
 
@@ -258,7 +258,7 @@ Security knowledge should be accessible to all.
 
 ---
 
-*Gurvinder Singh is a Principal Security Researcher at [SecurityLeader.ai](https://securityleader.ai) and Information Security Manager with 20+ years of cybersecurity experience. He leads the first Panjabi translation of OWASP ASVS 5.0 as part of his Digital Seva commitment to making security knowledge accessible across language barriers.*
+*Gurvinder Singh, CISSP, CISA, GWAPT, is a Principal Security Researcher at [SecurityLeader.ai](https://securityleader.ai) and Information Security Manager with 20+ years of cybersecurity experience. He leads the first Panjabi translation of OWASP ASVS 5.0 as part of his Digital Seva commitment to making security knowledge accessible across language barriers.*
 
 ---
 
@@ -268,9 +268,11 @@ Security knowledge should be accessible to all.
 - [OWASP ASVS 5.0](https://github.com/OWASP/ASVS)
 - [Guru Granth Sahib Dictionary (Sikhri)](https://gurugranthsahibdictionary.io/) — inspiration for Gurmukhi digital accessibility
 
-**Read the translated content directly:**
-- [Frontispiece (ਮੁੱਖ ਪੰਨਾ)](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/0x01-Frontispiece.md)
-- [Preface (ਮੁਖਬੰਧ)](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/0x02-Preface.md)
+**Read and review the translated content:**
+- [Review Hub — Start Here](/blog/asvs-panjabi-review-hub)
+- [Title Page (ਮੁੱਖ ਪੰਨਾ)](/blog/asvs-panjabi-review-frontispiece)
+- [Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface)
+- [Glossary (ਸ਼ਬਦਾਵਲੀ)](/blog/asvs-panjabi-review-glossary)
 - [Translation Notes](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/TRANSLATION-NOTES.md)
 - [Review Plan](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/REVIEW-PLAN.md)
 

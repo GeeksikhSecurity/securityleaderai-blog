@@ -12,7 +12,7 @@ These are the canonical standards for all content and code changes on this site.
 - **Research articles:** Hardcoded in `src/lib/research.ts` (not markdown)
 - **Blog listing:** `/blog` (src/app/blog/page.tsx)
 - **Research hub:** `/research` with tabbed filtering (client component)
-- **Author:** Gurvinder Singh, CISSP, CISA — Security Researcher & Advisor
+- **Author:** Gurvinder Singh, CISSP, CISA, GWAPT — Security Researcher & Advisor
 - **GitHub:** GeeksikhSecurity
 
 ---
@@ -245,7 +245,7 @@ Run a link audit on any changed content. Check:
 
 - Update topic counts in `getResearchTopics()` if content changes affect tag distributions
 - Verify `generateStaticParams()` returns all valid slugs
-- Run `npm run build` to confirm all static pages generate (currently 17 pages)
+- Run `npm run build` to confirm all static pages generate (currently 22 pages)
 
 ---
 
@@ -320,7 +320,7 @@ Every 3 months, review:
 1. `npm audit` — zero critical/high in production deps (dev dep warnings are acceptable)
 2. `npm run lint` (`tsc --noEmit`) — zero type errors
 3. `npm run build` — must succeed with zero errors
-4. Verify page count matches expected (currently 17)
+4. Verify page count matches expected (currently 22)
 5. Review AI-generated changes for understanding — can you explain every diff?
 6. `git add` specific files (never `git add -A`)
 7. Commit with descriptive message (conventional style: `feat:`, `fix:`, `docs:`, `security:`)
@@ -338,6 +338,54 @@ Every 3 months, review:
 - **Takeaways:** Specific, actionable, time-bound. "Do X within Y days."
 - **Board talking points:** 3 bullets max, lead with data, end with urgency.
 - **No emojis** in content unless explicitly requested.
+
+---
+
+## ASVS Panjabi Review Pages — Plain Language Standards
+
+### Context
+
+The 4 hidden review pages (`asvs-panjabi-review-hub`, `asvs-panjabi-review-frontispiece`, `asvs-panjabi-review-preface`, `asvs-panjabi-review-glossary`) target Panjabi speakers who may never use GitHub, may not work in tech, and may be reached via LinkedIn, WhatsApp, or Sikh community channels. The wrapper/navigation/instructional text must use plain language. The ASVS source content (bilingual frontispiece, preface body) is verbatim from OWASP and must not be simplified.
+
+### Hidden Post Mechanism
+
+- Posts with `hidden: true` in frontmatter are excluded from `/blog` listing and home page "Latest insights" via `getPublicPosts()` in `src/lib/posts.ts`
+- `getAllPosts()` still returns hidden posts — `generateStaticParams` depends on this so SSG builds pages for direct URL access
+- Hidden review pages are exempt from standard blog content structure (no hook question, no board talking points, no "Your next move", no author attribution block)
+
+### Jargon Reduction Rules
+
+When writing or editing the ASVS review page wrapper text, apply these substitutions:
+
+| Jargon | Plain Alternative | Notes |
+|--------|-------------------|-------|
+| Frontispiece | Title Page | OWASP's section name; use plain label in our navigation and titles |
+| Preface | Introduction | Use in our titles/links; keep "Preface / ਮੁਖਬੰਧ" inside the OWASP content |
+| Romanization | Pronunciation | In glossary table headers |
+| T/L/R/H classification | Translation approach | Expand shorthand on first use; keep T/L/R/H in table Type column |
+| Transliteration | Word-for-word conversion | In reviewer instructions |
+| PR #3254 | The translation submission (PR #3254 on GitHub) | Explain on first reference; short form OK after |
+| Fork | Working copy | In source material links |
+| QA | Quality checks | In timeline descriptions |
+
+**Keep as-is** (correctly scoped or widely understood):
+- "Bilingual" — clear and descriptive
+- "Gurmukhi" — necessary script name, explained on first use
+- "Unicode" — only in linguist-specific reviewer bullet
+- "Inline comments" — only in Git-specific reviewer section
+- "Devanagari script contamination" — only in linguist-specific reviewer bullet
+- "Matra (ਮਾਤਰਾ)" — only in linguist-specific reviewer bullet
+- "Digital Seva" — explained in context in the main blog post
+
+### What NOT to simplify
+
+- The ASVS source content itself (bilingual sections in frontispiece and preface pages) — this is verbatim from the OWASP repository and must remain faithful to the original
+- Security terminology in the glossary tables — these are the actual translation choices under review
+- The T/L/R/H codes in the glossary Type column — these are compact labels explained in the legend table above
+
+### Current Page Count
+
+With 4 hidden review pages, expected build output is **22 pages** (was 18). Update if review pages are added or removed.
 
 ---
 

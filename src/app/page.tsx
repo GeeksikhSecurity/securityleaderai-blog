@@ -10,7 +10,7 @@ import {
   WorkflowIcon,
 } from '@/components/icons';
 import { ResearchCard } from '@/components/research-card';
-import { getAllPosts } from '@/lib/posts';
+import { getPublicPosts } from '@/lib/posts';
 import { getResearchItems, getResearchTopics } from '@/lib/research';
 
 const topicIcons = {
@@ -22,7 +22,7 @@ const topicIcons = {
 
 export default function Home() {
   const researchHighlights = getResearchItems().slice(0, 3);
-  const posts = getAllPosts().slice(0, 3);
+  const posts = getPublicPosts().slice(0, 3);
   const topics = getResearchTopics();
 
   return (
@@ -50,7 +50,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="small text-muted mt-8">
-              20+ Years Experience • CISSP • CISA • Security Researcher & Advisor
+              20+ Years Experience • CISSP • CISA • GWAPT • Security Researcher & Advisor
             </div>
           </div>
         </div>
