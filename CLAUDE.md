@@ -35,7 +35,7 @@ tags: ["Tag1", "Tag2", "Tag3"]
 
 ### Content Structure (in order)
 
-1. **H1 title** — matches frontmatter title
+1. **H1 title** — matches frontmatter title. The H1 **must** remain in the markdown for standalone readability (e.g., on GitHub), but the blog template (`src/app/blog/[slug]/page.tsx`) strips it before rendering to avoid duplication with the template-rendered `<h1>`. The strip uses `post.content.replace(/^\s*# .+\n+/, '')` — the `\s*` is required because gray-matter returns content with a leading newline. Do NOT remove the H1 from markdown files. Do NOT render it twice in the template. After any build, verify with `grep -c '<h1' .next/server/app/blog/<slug>.html` — the count must be **1**.
 2. **Italic hook question** — CSO-level, challenges the reader directly. Format: `*Question that makes the executive stop scrolling?*`
 3. **Executive Summary blockquote** — `> **Executive Summary**` followed by 2-3 sentences with key data points
 4. **Body sections** — H2 headings, scan-friendly, data-driven
@@ -220,6 +220,7 @@ These patterns were identified from recurring AI-assisted debugging failures acr
 ### Frontmatter (gray-matter)
 
 - Blog post frontmatter is parsed by `gray-matter`. All required fields are validated by the rendering pipeline — missing fields will cause build failures (this is intentional; fail fast).
+- **Known behavior:** `gray-matter` returns `content` with a leading `\n` before the first line of markdown. Any regex that anchors on `^` (e.g., stripping the H1) must account for this with `^\s*`. This caused a duplicate H1 bug in production — do not regress.
 - Date format in frontmatter: `YYYY-MM-DD` (ISO 8601). No other formats.
 
 ---
@@ -348,6 +349,7 @@ Every 3 months, review:
 - Do NOT use the `video` research type (removed — no video content exists)
 - Do NOT inflate read times or topic counts
 - Do NOT create links to pages that don't exist
+- Do NOT render the blog post title twice — the template `<h1>` handles it; the markdown H1 is stripped at render time. Verify `<h1>` count = 1 after build.
 - Do NOT skip `prefers-reduced-motion` wrapping on animations
 
 ### Dependencies and Security
@@ -384,4 +386,6 @@ The following sibling projects have been patched and retired. They are no longer
 | mindweave | `/Volumes/2TBSSD/Development/Archive/mindweave/` | 0 vulns | Upgraded to Next.js 15.5.12. Removed eslint. |
 | f1-tracker | `/Volumes/2TBSSD/iCloud/AI-assited-Coding/vercel-monorepo-baseline_starter-pack/apps/f1-tracker/` | 1 vuln (Next.js 14.x CVE) | Updated to Next.js 14.2.35. Removed eslint. |
 
-These projects should not receive new features. If reactivated, run `npm audit` first and address any new findings.
+**Vercel projects deleted** on February 21, 2026 via `vercel project remove` to clear CVE-2025-55184 alerts. Local source code remains archived at the paths above.
+
+These projects should not receive new features. If reactivated, create a new Vercel project and run `npm audit` first.

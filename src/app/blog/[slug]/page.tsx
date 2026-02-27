@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -16,9 +17,12 @@ export async function generateStaticParams() {
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  // Strip the leading H1 from markdown — the template already renders post.title in the header
+  const contentWithoutH1 = post.content.replace(/^\s*# .+\n+/, '');
   const processedContent = await remark()
+    .use(remarkGfm)
     .use(html)
-    .process(post.content);
+    .process(contentWithoutH1);
   const contentHtml = processedContent.toString();
 
   return (
