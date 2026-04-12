@@ -1,0 +1,232 @@
+# Vercel Security Monitor — SHA-pinned, least-privilege, zero third-party actions
+# Deploys: copy to .github/workflows/ in every GeeksikhSecurity repo
+# Maintainer: tech@jasgur.com
+#
+# Supply Chain Audit  → runs on push/PR to main + weekly
+# Deployment Health   → runs weekly (checks live domain headers & robots.txt)
+
+name: Vercel Security Monitor
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly Monday 9 AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  # ── Supply Chain Audit ─────────────────────────────────────────────
+  supply-chain-audit:
+    name: Supply Chain Audit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Verify action pin integrity
+        run: |
+          echo "::group::Checking for unpinned actions"
+          UNPINNED=$(grep -rn 'uses:' .github/workflows/ \
+            | grep -v '@[a-f0-9]\{40\}' \
+            | grep -v '^\s*#' \
+            | grep -v 'actions/checkout@11bd71901' || true)
+          if [ -n "$UNPINNED" ]; then
+            echo "::error::Found unpinned actions (tag-only references):"
+            echo "$UNPINNED"
+            exit 1
+          else
+            echo "✅ All actions are SHA-pinned"
+          fi
+          echo "::endgroup::"
+
+      - name: Check workflow permissions
+        run: |
+          echo "::group::Checking for overly permissive workflows"
+          PERMISSIVE=$(grep -rn 'permissions:' .github/workflows/ || true)
+          if [ -z "$PERMISSIVE" ]; then
+            echo "::warning::No explicit permissions blocks found — defaults to read-all in public repos"
+          else
+            echo "✅ Permissions blocks found:"
+            echo "$PERMISSIVE"
+          fi
+
+          # Flag write-all or permissions: write-all
+          WRITE_ALL=$(grep -rn 'write-all\|permissions: write' .github/workflows/ || true)
+          if [ -n "$WRITE_ALL" ]; then
+            echo "::warning::Broad write permissions detected:"
+            echo "$WRITE_ALL"
+          fi
+          echo "::endgroup::"
+
+      - name: Scan for hardcoded secrets
+        run: |
+          echo "::group::Scanning for secret patterns"
+          PATTERNS=(
+            'AKIA[0-9A-Z]{16}'          # AWS Access Key
+            'ghp_[a-zA-Z0-9]{36}'       # GitHub PAT
+            'sk-[a-zA-Z0-9]{48}'        # OpenAI API Key
+            'xox[bpors]-[a-zA-Z0-9-]+'  # Slack Token
+            'AIza[0-9A-Za-z_-]{35}'     # Google API Key
+            'sq0atp-[0-9A-Za-z_-]{22}'  # Square Access Token
+            'sk_live_[0-9a-zA-Z]{24}'   # Stripe Secret Key
+            'SG\.[a-zA-Z0-9_-]{22}\.[a-zA-Z0-9_-]{43}' # SendGrid
+          )
+
+          FOUND=0
+          for pattern in "${PATTERNS[@]}"; do
+            MATCHES=$(grep -rnE "$pattern" --include='*.{js,ts,jsx,tsx,json,env,yml,yaml,md,py}' . \
+              | grep -v node_modules \
+              | grep -v '.git/' \
+              | grep -v 'package-lock.json' || true)
+            if [ -n "$MATCHES" ]; then
+              echo "::error::Potential secret found matching pattern $pattern:"
+              echo "$MATCHES"
+              FOUND=1
+            fi
+          done
+
+          if [ "$FOUND" -eq 0 ]; then
+            echo "✅ No hardcoded secrets detected"
+          else
+            exit 1
+          fi
+          echo "::endgroup::"
+
+      - name: Verify npm integrity
+        run: |
+          echo "::group::Checking package integrity"
+          if [ -f "package-lock.json" ]; then
+            # Check for integrity field presence
+            MISSING_INTEGRITY=$(node -e "
+              const lock = require('./package-lock.json');
+              const pkgs = lock.packages || {};
+              const missing = Object.entries(pkgs)
+                .filter(([k,v]) => k && !v.integrity && !v.link)
+                .map(([k]) => k);
+              if (missing.length > 0) {
+                console.log('Packages missing integrity hash:');
+                missing.forEach(p => console.log('  ' + p));
+                process.exit(1);
+              } else {
+                console.log('✅ All packages have integrity hashes');
+              }
+            ")
+          else
+            echo "⚠️  No package-lock.json found — skipping npm integrity check"
+          fi
+          echo "::endgroup::"
+
+  # ── Deployment Health Check (weekly only) ──────────────────────────
+  deployment-health:
+    name: Deployment Health Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Detect domain from vercel.json or repo name
+        id: domain
+        run: |
+          # Try to extract domain from vercel.json alias
+          if [ -f "vercel.json" ]; then
+            DOMAIN=$(node -e "
+              try {
+                const v = require('./vercel.json');
+                const alias = v.alias || [];
+                if (alias.length > 0) console.log(alias[0]);
+              } catch(e) {}
+            " 2>/dev/null || true)
+          fi
+
+          # Fallback: derive from repo name
+          if [ -z "$DOMAIN" ]; then
+            REPO_NAME="${GITHUB_REPOSITORY##*/}"
+            case "$REPO_NAME" in
+              securityleaderai-blog) DOMAIN="securityleader.ai" ;;
+              singhskaurs-blog)     DOMAIN="singhskaurs.com" ;;
+              sayvainc-blog)        DOMAIN="sayvainc.com" ;;
+              jasgur-com)           DOMAIN="jasgur.com" ;;
+              whatsonmybill-com)    DOMAIN="whatsonmybill.com" ;;
+              decisionbarista)      DOMAIN="decisionbarista.com" ;;
+              secgraph-ai)          DOMAIN="secgraph.ai" ;;
+              *)                    DOMAIN="" ;;
+            esac
+          fi
+
+          echo "domain=$DOMAIN" >> "$GITHUB_OUTPUT"
+          echo "Detected domain: ${DOMAIN:-none}"
+
+      - name: Check security headers
+        if: steps.domain.outputs.domain != ''
+        run: |
+          DOMAIN="${{ steps.domain.outputs.domain }}"
+          echo "::group::Security headers for $DOMAIN"
+
+          HEADERS=$(curl -sI "https://$DOMAIN" 2>/dev/null || true)
+
+          check_header() {
+            local header="$1"
+            if echo "$HEADERS" | grep -qi "$header"; then
+              echo "✅ $header present"
+            else
+              echo "::warning::Missing header: $header"
+            fi
+          }
+
+          check_header "x-frame-options"
+          check_header "x-content-type-options"
+          check_header "strict-transport-security"
+          check_header "referrer-policy"
+          check_header "x-xss-protection"
+          check_header "content-security-policy"
+          check_header "permissions-policy"
+
+          echo "::endgroup::"
+
+      - name: Verify robots.txt AI bot blocking
+        if: steps.domain.outputs.domain != ''
+        run: |
+          DOMAIN="${{ steps.domain.outputs.domain }}"
+          echo "::group::Robots.txt AI bot check for $DOMAIN"
+
+          ROBOTS=$(curl -s "https://$DOMAIN/robots.txt" 2>/dev/null || true)
+
+          if [ -z "$ROBOTS" ]; then
+            echo "::warning::No robots.txt found at https://$DOMAIN/robots.txt"
+            exit 0
+          fi
+
+          AI_BOTS=(
+            "GPTBot" "ChatGPT-User" "CCBot" "anthropic-ai"
+            "ClaudeBot" "Google-Extended" "Bytespider"
+            "PerplexityBot" "Amazonbot"
+          )
+
+          MISSING=0
+          for bot in "${AI_BOTS[@]}"; do
+            if echo "$ROBOTS" | grep -qi "$bot"; then
+              echo "✅ $bot blocked"
+            else
+              echo "::warning::$bot NOT blocked in robots.txt"
+              MISSING=1
+            fi
+          done
+
+          if [ "$MISSING" -eq 0 ]; then
+            echo "✅ All priority AI bots blocked"
+          fi
+
+          echo "::endgroup::"
