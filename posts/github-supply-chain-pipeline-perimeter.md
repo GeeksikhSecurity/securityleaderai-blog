@@ -1,1 +1,92 @@
-<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;padding-left:1.5rem;max-width:60rem}@media (width <= 720px){.main-content{margin-top:4rem}}#challenge-error-text{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+");background-repeat:no-repeat;background-size:contain;padding-left:34px}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cvId: '3',cZone: 'claude.ai',cType: 'managed',cRay: '9eb2dd64be48c920',cH: 'NDFOU4RjJZE0_XLmt7ROd2bqDiUsrEbattUAAuV3Djw-1776003554-1.2.1.1-pqzXuTXsHFE._FCVBSuECaTxHhrMOmzSKWVj3NNKXyflpRoGqRJ6KRrPZsWLWMTY',cUPMDTk:"\/?__cf_chl_tk=sH6VJdBtfXuug2goKfc7mbhgZBiutNsNFFkGqbckAic-1776003554-1.0.1.1-Rk0fcdq0dZIng39F0Qm6WEztChFU6PtPhi07gpRluG0",cFPWv: 'g',cITimeS: '1776003554',cTplC:0,cTplO:0,cTplV:5,cTplB: '0',fa:"\/?__cf_chl_f_tk=sH6VJdBtfXuug2goKfc7mbhgZBiutNsNFFkGqbckAic-1776003554-1.0.1.1-Rk0fcdq0dZIng39F0Qm6WEztChFU6PtPhi07gpRluG0",md: 'yV2QJkEwoLghcYUkZl34jrBNpsH7x7jnHeMSEAw8c20-1776003554-1.2.1.1-81bX1H8BnJKGsa1pUlzdpXwFIsVL3KawRHvFmXsqCUpEx2sGpDR0GrcqBoZdfUykH0bMg8bD3JDbvI4NyWXUZhF2wOXuxIE7c_JzGofuCB7rxNC4FTNPRAvwy15VMhBcToxfqEmQJ7mPU3VOOwBdg7CWlaP91v.xuT1cUc6ZC_Gf_aforSsfQVs0e.rQE786dtPELjmKvk7u5ktkkOVVYIqMq5SrT6Ohbp4qCwiAZQe1SvTzJ5G65zACuK2ukuYgUmeqsH7Y0cF3CY6dgCTen_4BqPcdwLCc2pcZRVeDX90uX9FQaSASeQyeE90BRo3F_hNjlMdbwr..W7RLcULiSnkqXtsxPaJ0y4P_yxOpvqWvUdRAWm9lvaOHC_OletPshyXOuuJQPyl_OJczNq0XOXIP1.stUe_QmROKS5C8QNwKouigKedZWVrS62v21VoAhpVY_sUW87uhhK9L9fOy__EpggRw.ukzbqebEP0D_mzevp5vt0bZzSfGwR.Yrhulu_3fJ_fhvYLQ2cNZh1jZicGQkmw5aZdd3_plNW9a7OGCBlDerF6I8GcZ9sTqGjTDRbqtyxcnwfqDAnZtjcBxantpOV3tir.gbTBLQdpehNxUIluEUZO1eAXvjTbeIdEJkyFaZ2MCR0k6ZU2FbIFkdHhdALCsRAGOnqOrsYqog3rPXYae3HSzJpp4qvpfd1Qm4Jryxr2vXcMSmxwfTLUOmIMiyVgkJkQL7vZMBnEGIA4GNXv59GxNFlaI_iBkg9J_HAm5hcf79OYFolVRoSijJxscrRucZP6nufhyxlmWqQ3_ejgJfCoUpbXYqj4h2qcoSWboTaXYQVFmadmNLTdDDtuAE.pypcjxYK1TsDzoiwuHCK8FtFX5Yq3dNoCxINL364GCusefPfkJR87OdcL7majReBDADWhgJHHgUMydUzJOrosrBonyU8U544l1nrbBY58c98buwN33MUp0VTcNrg',mdrd: 'EgOTTGYOjkOQ1Dj5MQQXASAjYqR8VTylyDdF8mMYdas-1776003554-1.2.1.1-2jRyEN.nlC5Ws2IlTW23xLokqfcvwwv6Mo3dELRqx.5H.S38fxewNCzp79fhmJffKsvXotc91bY58N1_3C0AVobaeI6RLJWUJ7vgn5aqH5nK5PGbrKO3rpTHEhstvZuK.i16.d3guk.W1IVFKzybTzfwqanNjOYr997.TLTgtvuNaQDRnOsbeTQiI0XClai1hSBzE58I0EylVUAlh6runlNe8FJ2VGP1R57LKtW.bhXPoT9jypzKUGsiaWIlFbnMnd_GKXZxGxja9KWJ.R8HUp0dyzyPW711BII4Pq09n9ChHxE50qEqK6KsOkp8mDAi3s8B.t87bukaz_1tAGyC5u1S2kKMfOy01DBG_N_9QwhvstLE6B40RusXsQg3GJKJsBVfF72weZlcmt4RhSIjPnLEg0vniv0JMeprDb8fToP6T.gTr8qeO.U3dT3LoUUL37CJyXROSVUBYWRWtJLoLPgx37i3xQu_g_b2U0ZOFlhcxHWclZaGRMSjJN2RlPaLT0gl_qOF4_94GmJ.NK9590o8BVwnw48_NkORKQGhlSnJ29P6shyHQk.mBX3WQLNxgbO4Rm6Uyjxt52oRqOkQEd2Khg0ZsUvvKV8JsEGPgLDzaWaH0GvQKHe5oKjlRDdVAwho_9UlppI7x83JDkRHd8vzRr1jnUMX8DzcFLAZTblYGT5w.oeQu7uh0Hsz6aV8Xp.KE0o96..PDAB868pGrdyP0jTZTgESxTzImQM1YRTsSMBpoLNUz5nUbhLHfzgIsqJaj8YlAud1ziaphVs0iCmzidGF.tOcw1g3hNjPahbsJdGKZcuzmAplpX7selRDHYt9WRv63FeLGD3SVAcjTMfEpZtQAtgM5s0Iu0tGhMEmDHJWIcvxGOxU41CSxsISJSDr95otqdJYxEqQ5rkuy47Vvjs50PA2JisqKN82zQ5o6WPZ9sxBSuB0mFPNdiV3RNew30s_O7e7WlXAoCXRZVaVchXnaS3DIicWqeapVS0.7m3UbWQralvf8SSIE2ueHnox2H2HodqswjxnVPcxGuKEiLeEomSGxfr_95ZfM9Buf37JFnGyCepxLnL2lHqKyxHrZ1Uds8ABjdt1hDSI8TAy14mtsVyFHFfvGsS5tERjKvGW.McgvhMXuetqKtwn9YcB7qJ5ZFxT1EXInxZ8rjKqAOx9FvzCLdU.Vim.T4xWzGdNpkTDkkCeeeAQCLTaPyOTo0JtXvRvCOjpC6puwijjx4GS8cQXk2MqA.EWYPAPrsPI7fmNDhV5zJWAkr.AQJ51TSijY1PVMXWf2wvrvA_Z.aGGj7zLnieVU5yCSONHY1Cr0xB_XOUfwT6eCcRvVXY.9Ay2KxfsChLXyf8BoaZBPpmk5TqS3hF9L0SwypHyWtB.EuTLA3ugjShRieI1jJGW_TzmBrQzA.r8LWrGss8nwRBw5XJ9um2EH4ZuZocwkcqhco.my1dNMB3Ddr5.YDzAs7t0p31k9KU4w.kAXUYlp91Xd.9mkEfH1xOKb2eQe0i_n7JUYczFKgGJxA.kV2Wp4gsoaX_uJt_MsxqCFSTz4Rn4zstnDMiPahwiN.nrne5hjacAFWprkmRHb8wgvOi1vJOfegq3Cepk3byTQv.Sa8fpOlEHQHKS1Vu0KDNLhFGWJ3X3Pb0VrF1ALT0vB0udtp112DwdAW6iqp0jec3nDDCqt3sGJBAULBGCQRaEiePt6gLo7j5WWESanqsL_N3WqOHJt3I6gbi4EuVcgqmUBTAvKhMnqwzgrIn9QBANapjs7ZNIDTz9_TSEWN1LMIhkoLnNh6Q8k_OsE0TsPNlDvF5MwpXtiifeyoFN4V0I5Mpk7L8obY9H32WsY4eYLKOufWhJowLEDGELw32oliIYAk6WXsXe2xWrdDH7Ka65IIVy_SyLTLS7FONimJvdTWL1SJgCLQp2kakzAkleH07k0isQhxEY.XytEjSK4VeJjbNF1Olx6em_oNAQHFStb9_AQGdVa37c5j8KPQrnToj6YohJJv0WweDiKp5ASelba1JiMYEiC81Es0ZA99HoF3Di54KtDDncfKwFpYOwbeNuoFD1iMqLSNXZFb7xLe.gb29iJqkB_WptWa9b0b.EGo2XtitmCqod8X755Dn1lrHhXV8Mc0CtTZg33kDtxF.nYy_Egucu7ZhVfxa1g80lrm736HIlNRF26TKuRWKDcSmSWrvJYadJbEaUfeF1HcxYYga5ogBzhepifuQF2REzcGSetoczY6UnyHH98L_qVu3o4gSGIAtZ5LJdeks.W8fsfnxBrbXNZQgDhbo9XdB_0xM5BRLuxwoWmlYLw95oJRT2fSgzCMHAOtqJNri8p5wVk2RVsAfI9FBpPhs11A3B.6ugLZxyKahFVsNoHyQEOZzrkaA4AzTwigaJ8hKjRlf8IXpaZ274IX88RD3Bz3k8tetFxjeDmxDpDeLofLYxx3OJRhB1n9C75HgZLXqoiAZqI_d1YwTu_xSmIBK95cH93XudPVWyvLw85MjRk1Zg_Q',};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=9eb2dd64be48c920';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"\/?__cf_chl_rt_tk=sH6VJdBtfXuug2goKfc7mbhgZBiutNsNFFkGqbckAic-1776003554-1.0.1.1-Rk0fcdq0dZIng39F0Qm6WEztChFU6PtPhi07gpRluG0"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>
+---
+title: "The Pipeline Is the Perimeter — and GitHub Just Admitted It"
+date: "2026-04-12"
+excerpt: "GitHub's 2026 Actions security roadmap confirms what CVE-2025-30066 proved: your CI/CD pipeline is a Tier-0 attack surface. SHA pinning, OIDC federation, and immutable releases are no longer optional. Here's what to do this week."
+author: "Gurvinder Singh"
+tags: ["Supply Chain Security", "GitHub Actions", "CI/CD Security", "OIDC", "DevSecOps"]
+---
+
+*CVE-2025-30066 compromised 23,000 repositories by rewriting a single GitHub Action's version tag. GitHub's 2026 roadmap treats this as a turning point — not a one-off.*
+
+> **Executive Summary**
+> The tj-actions/changed-files supply chain attack (CVE-2025-30066, March 2025) extracted CI/CD secrets from 23,000+ repositories by exploiting tag-pinned GitHub Actions — the default pinning method most teams still use. GitHub's 2026 Actions security roadmap responds with dependency locking, immutable releases, and policy-driven execution controls. Combined with the Shai-Hulud 2.0 worm campaign that weaponized GitHub Actions as self-hosted runner backdoors, these incidents confirm that the CI/CD pipeline is the new perimeter. Organizations that still pin actions by tag, store static deploy tokens, or skip permission blocks in workflows are operating with 2019-era assumptions against 2026-era threats.
+
+## What CVE-2025-30066 Actually Proved
+
+Between March 12–15, 2025, attackers compromised the GitHub Personal Access Token (PAT) used by the tj-actions bot account. They retroactively rewrote version tags across the tj-actions/changed-files repository — pointing existing tags like `@v4` to a malicious commit that extracted CI/CD secrets from runner process memory and printed them to workflow logs.
+
+The attack worked because tag-based pinning (`uses: actions/checkout@v4`) trusts a mutable pointer. A tag is a name. A name can be moved. A commit SHA cannot.
+
+CISA issued an [advisory](https://www.cisa.gov/news-events/alerts/2025/03/18/supply-chain-compromise-third-party-tj-actionschanged-files-cve-2025-30066-and-reviewdogaction) on March 18, 2025. Wiz Research documented the full attack chain, including exposed GitHub PATs, npm tokens, AWS access keys, and private RSA keys across all affected repositories.
+
+The fix was not a patch. The fix was a practice: pin every action to a full 40-character commit SHA. `actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683` is v4.2.2 — and it cannot be moved.
+
+## Shai-Hulud 2.0: The Worm That Ate the Pipeline
+
+If CVE-2025-30066 was a targeted theft, Shai-Hulud 2.0 was an ecosystem infection.
+
+First documented by Unit 42 and Wiz Research in November 2025, the Shai-Hulud campaign combined npm supply chain poisoning with GitHub Actions exploitation. The attack registered compromised hosts as self-hosted runners, harvested maintainers' publishing credentials, and used those credentials to propagate — automatically publishing malicious packages under legitimate maintainer accounts.
+
+The campaign affected 25,000+ repositories across approximately 350 unique GitHub users, including organizations like AsyncAPI, PostHog, and Postman. Microsoft's Security Response Center published detection guidance in December 2025. The destructive variant deleted victim home directories when exfiltration failed.
+
+The critical insight: GitHub Actions runners are compute environments with credential access. A compromised action does not just read your code. It inherits your deploy tokens, your API keys, and your publishing rights. Every secret available to the runner is available to the attacker.
+
+## GitHub's 2026 Roadmap: The Admission
+
+GitHub's [2026 Actions security roadmap](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/) reads like a post-incident remediation plan because that is what it is.
+
+**Dependency locking** introduces a `dependencies` section in workflow YAML — analogous to Go's `go.sum` — that locks all direct and transitive action dependencies to commit SHAs. SHA pinning support shipped as a policy option in August 2025; the 2026 roadmap makes it enforceable at the organization level.
+
+**Immutable releases** prevent version tags from being rewritten after publication. Release assets and tags become permanent. This directly addresses the CVE-2025-30066 attack vector — if tj-actions/changed-files had used immutable releases, the tag rewrite would have failed.
+
+**Policy-driven execution** consolidates fragmented security controls into a single governance surface. Organizations can define which actions are permitted, require attestation before execution, and enforce approval gates on sensitive workflow triggers.
+
+**Endpoint monitoring** adds enterprise-grade visibility via the Actions Data Stream and a native egress firewall. The egress firewall is the quiet game-changer — it restricts which external endpoints a workflow runner can reach, limiting the exfiltration channels available to a compromised action.
+
+## OIDC Federation: Killing the Static Token
+
+The most impactful change is not in the roadmap document. It has been available since 2023, and most teams still are not using it.
+
+OpenID Connect (OIDC) federation allows GitHub Actions to authenticate to cloud providers — AWS, Azure, Google Cloud Platform (GCP) — without storing static credentials as repository secrets. The workflow requests a short-lived OIDC token from GitHub's identity provider, presents it to the target cloud provider, and receives a temporary access credential scoped to that specific workflow run.
+
+No `AWS_ACCESS_KEY_ID` in repository secrets. No `VERCEL_TOKEN` with 12-month expiry sitting in seven repos. No secret rotation calendar that everyone forgets.
+
+For Vercel deployments specifically, OIDC federation replaces the pattern of storing a long-lived `VERCEL_TOKEN` in every repository. The workflow authenticates to Vercel's API using a token that exists for the duration of the deployment and expires automatically.
+
+AWS IAM recommends evaluating the `token.actions.githubusercontent.com:sub` condition key in trust policies — this restricts which repositories and branches can assume the deployment role. A compromised fork cannot assume production credentials.
+
+## What We Did: SHA-Pinning Seven Repos in One Session
+
+The audit across the GeeksikhSecurity organization found the same pattern in every repository: tag-pinned actions, missing permission blocks, and third-party actions with no supply chain verification.
+
+Across seven Vercel-deployed projects — SecurityLeader.ai, SinghsKaurs.com, SayvaInc.com, Jasgur.com, WhatsonMyBill.com, DecisionBarista.com, and SecGraph.ai — we deployed a hardened workflow that enforces four principles:
+
+**SHA-pinned actions only.** `actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683` (v4.2.2). The workflow itself verifies that no unpinned actions exist in the repository and fails the build if it finds one.
+
+**Least-privilege permissions.** Every job declares explicit permissions: `contents: read` and `security-events: write`. No job inherits the default `write-all` that GitHub grants to workflows in private repositories.
+
+**Zero third-party actions.** The entire workflow uses only GitHub-maintained actions. No `amondnet/vercel-action`, no `treosh/lighthouse-ci-action`, no trust decisions delegated to maintainers we have never audited.
+
+**Automated supply chain audit.** The workflow scans for eight secret patterns (AWS keys, GitHub PATs, OpenAI keys, Slack tokens, Stripe keys, SendGrid keys), verifies npm package integrity hashes, and checks for overly permissive workflow permissions — on every push and PR to main.
+
+A weekly deployment health check verifies security headers and robots.txt AI bot blocking on the live domain. The CI pipeline watches the code. The health check watches the deployment.
+
+## Your Next Move
+
+**This week:** Audit every GitHub Actions workflow in your organization. Run `grep -rn 'uses:' .github/workflows/ | grep -v '@[a-f0-9]\{40\}'` to find unpinned actions. Every result is a CVE-2025-30066 attack surface. Replace tag pins with SHA pins using the [GitHub Actions SHA Pinning guide](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#using-third-party-actions).
+
+**This month:** Implement OIDC federation for every cloud provider your pipelines authenticate to. Start with your highest-privilege deployments. AWS, Azure, and GCP all support GitHub Actions OIDC natively. Eliminate every static credential that OIDC can replace.
+
+**This quarter:** Enable GitHub's organization-level Actions policies. Restrict which actions can run. Require SHA pinning via policy. Review your `CODEOWNERS` file to ensure workflow changes require security team approval.
+
+## Board Talking Points
+
+- Our CI/CD pipelines authenticate to cloud infrastructure using credentials stored in GitHub. CVE-2025-30066 demonstrated that a single compromised GitHub Action can extract those credentials from 23,000 repositories simultaneously. We have eliminated tag-based action pinning across all production repositories.
+- GitHub's 2026 roadmap introduces dependency locking and immutable releases — features designed to prevent the specific attack vector that CVE-2025-30066 exploited. We are positioned to adopt these controls on day one because our workflows already enforce SHA pinning.
+- OIDC federation eliminates static deploy credentials entirely. Short-lived, scope-limited tokens replace long-lived secrets, reducing our exposure window from months to minutes.
+
+---
+
+*Gurvinder Singh, CISSP, CISA, GWAPT is the founder of SecurityLeader.ai and Information Security Manager at the American Psychological Association. He writes about supply chain security, AI security governance, and building security programs that practitioners can actually use.*
+
+*Previously: [Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist](/posts/oauth-supply-chain-salesloft-drift) | [MCP Sentinel Scanner: Automated Security for AI Tool Pipelines](/posts/mcp-sentinel-scanner)*
