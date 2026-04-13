@@ -1,0 +1,23 @@
+posts/cognitive-debt.md
+  0e297c2b2268adac 1-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "d6a76783cd9101c442798268441d66c0b1458080",
+  "prompts": {
+    "0e297c2b2268adac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "754c7f3b-4ca8-4d9b-9a8d-49ea20c4c2f5",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "GeeksikhSecurity",
+      "messages": [],
+      "total_additions": 89,
+      "total_deletions": 0,
+      "accepted_lines": 89,
+      "overriden_lines": 0
+    }
+  }
+}
