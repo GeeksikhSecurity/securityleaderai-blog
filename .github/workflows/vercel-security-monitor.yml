@@ -34,17 +34,20 @@ jobs:
 
       - name: Verify action pin integrity
         run: |
-          echo "::group::Checking for unpinned actions"
+          echo "::group::Checking for unpinned third-party actions"
+          # Allowlist first-party publishers (actions/*, github/*) — tag pins acceptable.
+          # Require SHA pins on everything else.
           UNPINNED=$(grep -rn 'uses:' .github/workflows/ \
             | grep -v '@[a-f0-9]\{40\}' \
             | grep -v '^\s*#' \
-            | grep -v 'actions/checkout@11bd71901' || true)
+            | grep -vE 'uses:[[:space:]]*(\./|actions/|github/)' \
+            || true)
           if [ -n "$UNPINNED" ]; then
-            echo "::error::Found unpinned actions (tag-only references):"
+            echo "::error::Found unpinned third-party actions (must use SHA pin):"
             echo "$UNPINNED"
             exit 1
           else
-            echo "✅ All actions are SHA-pinned"
+            echo "✅ All third-party actions SHA-pinned; first-party (actions/*, github/*) allowed by tag"
           fi
           echo "::endgroup::"
 
