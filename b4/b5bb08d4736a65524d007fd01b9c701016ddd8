@@ -1,0 +1,22 @@
+posts/reporting-centers-onepager.md
+  s_ae09f572dac9db::t_1311c1ffb51613 122
+  s_ae09f572dac9db::t_8f1c8814d54433 128
+posts/owasp-asvs-panjabi-translation.md
+  s_ae09f572dac9db::t_6379d3bb78267f 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "b4b5bb08d4736a65524d007fd01b9c701016ddd8",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
