@@ -1,58 +1,70 @@
-import { getPostBySlug, getAllPosts, getAvailableTranslations } from '@/lib/posts';
+import { notFound } from 'next/navigation';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import {
+  getLocalePostBySlug,
+  getAllLocalePostParams,
+  translationExists,
+} from '@/lib/posts';
+import { LOCALE_META, isLocale, postUrl, type Locale } from '@/lib/locales';
 import { Badge } from '@/components/ui/badge';
 import { CalendarIcon, ClockIcon } from '@/components/icons';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
-import { LOCALE_META, postUrl } from '@/lib/locales';
 
 const SITE_ORIGIN = 'https://securityleader.ai';
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return getAllLocalePostParams();
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
-  const siblings = getAvailableTranslations(slug);
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) return {};
+  if (!translationExists(slug, locale)) return {};
 
-  // hreflang map: English canonical + every available translation + x-default.
-  const languages: Record<string, string> = {
+  const post = getLocalePostBySlug(slug, locale);
+
+  // Hreflang map: this locale + English + x-default.
+  const alternates: Record<string, string> = {
     en: `${SITE_ORIGIN}${postUrl(slug, 'en')}`,
     'x-default': `${SITE_ORIGIN}${postUrl(slug, 'en')}`,
   };
-  for (const loc of siblings) {
-    languages[LOCALE_META[loc].hreflang] = `${SITE_ORIGIN}${postUrl(slug, loc)}`;
-  }
+  alternates[LOCALE_META[locale].hreflang] = `${SITE_ORIGIN}${postUrl(slug, locale)}`;
 
   return {
     title: post.title,
     description: post.excerpt,
     alternates: {
-      canonical: `${SITE_ORIGIN}${postUrl(slug, 'en')}`,
-      languages,
+      canonical: `${SITE_ORIGIN}${postUrl(slug, locale)}`,
+      languages: alternates,
     },
   };
 }
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
-  const siblings = getAvailableTranslations(slug);
-  // Strip the leading H1 from markdown — the template already renders post.title in the header
+export default async function LocaleBlogPost({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+
+  // Validate locale against the allow-list. Any other value 404s.
+  if (!isLocale(locale)) notFound();
+  const validLocale: Locale = locale;
+
+  if (!translationExists(slug, validLocale)) notFound();
+  const post = getLocalePostBySlug(slug, validLocale);
+
+  // Strip the leading H1 from markdown — the template already renders post.title.
   const contentWithoutH1 = post.content.replace(/^\s*# .+\n+/, '');
   const processedContent = await remark()
     .use(remarkGfm)
@@ -60,8 +72,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     .process(contentWithoutH1);
   const contentHtml = processedContent.toString();
 
+  const meta = LOCALE_META[validLocale];
+
+  // Available sibling locales for the language switcher — exclude current.
+  // English is always offered back from a non-English page.
+  // Other non-English locales offered if a translation exists for this slug.
+  const otherLocaleSiblings = (Object.keys(LOCALE_META) as Locale[]).filter(
+    (l) => l !== validLocale && translationExists(slug, l),
+  );
+
   return (
-    <article className="bg-neutral-50">
+    <article className="bg-neutral-50" lang={meta.hreflang}>
       <ScrollProgress />
 
       <div className="article-accent-line" />
@@ -69,15 +90,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <header className="border-b border-color bg-primary-50 pb-16 pt-12">
         <div className="container max-w-4xl">
           <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-sm text-muted">
-            <Link href="/" className="transition-colors hover:text-primary-600">Home</Link>
+            <Link href="/" className="transition-colors hover:text-primary-600">
+              Home
+            </Link>
             <span aria-hidden="true">/</span>
-            <Link href="/blog" className="transition-colors hover:text-primary-600">Blog</Link>
+            <Link href="/blog" className="transition-colors hover:text-primary-600">
+              Blog
+            </Link>
             <span aria-hidden="true">/</span>
             <span className="text-secondary line-clamp-1">{post.title}</span>
           </nav>
-          <h1 className="text-4xl font-bold md:text-5xl text-primary-800">
-            {post.title}
-          </h1>
+          <h1 className="text-4xl font-bold md:text-5xl text-primary-800">{post.title}</h1>
           <div className="mt-6 flex flex-wrap items-center gap-4 small text-muted">
             <span className="inline-flex items-center gap-2">
               <CalendarIcon className="h-4 w-4 text-primary-600" />
@@ -88,13 +111,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               {post.readingTime} min read
             </span>
             {post.author && <span>By {post.author}</span>}
-            <LanguageSwitcher slug={slug} currentLocale="en" siblings={siblings} />
+            <LanguageSwitcher
+              slug={slug}
+              currentLocale={validLocale}
+              siblings={otherLocaleSiblings}
+            />
           </div>
         </div>
       </header>
 
       <div className="container max-w-3xl py-16">
-        <TranslationBanner locale="en" status={post.translation_status} />
+        <TranslationBanner locale={validLocale} status={post.translation_status} />
 
         <div
           className="prose prose-lg max-w-none text-secondary"
@@ -103,9 +130,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
         {post.tags && post.tags.length > 0 && (
           <div className="mt-12 border-t border-color pt-8">
-            <h3 className="small font-semibold uppercase tracking-[0.3em] text-muted">
-              Tags
-            </h3>
+            <h3 className="small font-semibold uppercase tracking-[0.3em] text-muted">Tags</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <Badge key={tag} variant="outline" className="!normal-case">
@@ -119,9 +144,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <footer className="border-t border-color bg-neutral-50 py-10">
         <div className="container text-center small text-secondary">
-          <p className="mb-2">
-            &copy; 2026 SecurityLeader.ai. All rights reserved.
-          </p>
+          <p className="mb-2">&copy; 2026 SecurityLeader.ai. All rights reserved.</p>
           <a
             href="https://www.linkedin.com/in/gurvindersinghb"
             target="_blank"
@@ -129,8 +152,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             className="text-primary-600 link-underline"
           >
             Gurvinder Singh, CISSP, CISA, GWAPT
-          </a>
-          {' '}— Security Researcher &amp; Advisor
+          </a>{' '}
+          — Security Researcher &amp; Advisor
         </div>
       </footer>
     </article>
