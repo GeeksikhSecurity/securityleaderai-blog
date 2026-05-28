@@ -119,10 +119,10 @@ This directory is part of the **Digital Seva** community fraud-awareness series.
 
 ## Reviewer note
 
-This document is **v0.1 — an initial AI-assisted draft**. The Panjabi sibling post has not yet been reviewed by the local sangat. We invite Panjabi-speaking community members — especially elders, language teachers, and gurdwara families — to review the [Panjabi version](/blog/reporting-centers-onepager-pa) for accuracy, cultural fit, and clarity for the audience this serves.
+This document is **v0.1 — an initial AI-assisted draft**. The Panjabi sibling post has not yet been reviewed by the local sangat. We invite Panjabi-speaking community members — especially elders, language teachers, and gurdwara families — to review the [Panjabi version](/blog/pa-in/reporting-centers-onepager) for accuracy, cultural fit, and clarity for the audience this serves.
 
 Email feedback to **gurvinder@securityleader.ai** with the subject line **"Digital Seva Review — Reporting Centers"**. Even a single correction or suggestion is valuable.
 
 ---
 
-> 🌐 **A Panjabi (ਪੰਜਾਬੀ) translation of this directory is in sangat review.** Bilingual access via `/pa-in/` URL prefix will land in the next site update. Email **gurvinder@securityleader.ai** with subject **"Digital Seva Review — Reporting Centers"** to receive the draft for early review.
+> 🌐 **A Panjabi (ਪੰਜਾਬੀ) translation of this directory is in sangat review.** Read the [bilingual version at `/blog/pa-in/reporting-centers-onepager`](/blog/pa-in/reporting-centers-onepager). Email **gurvinder@securityleader.ai** with subject **"Digital Seva Review — Reporting Centers"** to suggest corrections.
