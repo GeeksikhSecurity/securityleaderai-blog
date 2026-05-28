@@ -1,0 +1,44 @@
+# Content Rigor — translation & editorial accuracy checks.
+# Runs on every push/PR to main. Failures block deploy.
+# Rule catalog: docs/content-rigor.md
+# Implementation: scripts/lint-content.mjs (zero npm deps)
+
+name: Content Rigor
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-content:
+    name: Lint blog content
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: '20'
+
+      - name: Run content rigor lint
+        run: node scripts/lint-content.mjs
+
+      - name: Run content rigor lint (with directional notices)
+        if: github.event_name == 'pull_request'
+        env:
+          LINT_DIRECTIONAL: '1'
+        run: |
+          # Notices-only pass on PRs — never fails. Surfaces R7 directional
+          # pointers for human review in the workflow log.
+          node scripts/lint-content.mjs || true

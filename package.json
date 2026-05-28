@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "lint:content": "node scripts/lint-content.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
