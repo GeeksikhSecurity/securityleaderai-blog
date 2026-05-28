@@ -1,0 +1,21 @@
+posts/tech-support-scam-elders.md
+  s_ae09f572dac9db::t_52ff7e6b2bf17d 1-132
+posts-i18n/pa-in/tech-support-scam-elders.md
+  s_ae09f572dac9db::t_de56c737816354 1-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "2099ccf34a00a4752cd98f186441475c75104450",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
