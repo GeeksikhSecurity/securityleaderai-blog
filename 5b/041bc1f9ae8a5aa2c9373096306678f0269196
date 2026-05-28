@@ -1,0 +1,21 @@
+posts/whatsapp-family-emergency-scams.md
+  s_ae09f572dac9db::t_d724cd640caf24 1-136
+posts-i18n/pa-in/whatsapp-family-emergency-scams.md
+  s_ae09f572dac9db::t_5b3d79056b7486 1-140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "5b041bc1f9ae8a5aa2c9373096306678f0269196",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
