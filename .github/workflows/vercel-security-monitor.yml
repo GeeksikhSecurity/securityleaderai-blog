@@ -37,9 +37,13 @@ jobs:
           echo "::group::Checking for unpinned third-party actions"
           # Allowlist first-party publishers (actions/*, github/*) — tag pins acceptable.
           # Require SHA pins on everything else.
-          UNPINNED=$(grep -rn 'uses:' .github/workflows/ \
+          # Anchored grep: only match YAML `uses:` directives (line-start, optional
+          # leading `-` list marker, then `uses:`). Avoids false-positives on
+          # script lines that contain the literal string `uses:` (e.g., this
+          # very block's own grep command).
+          UNPINNED=$(grep -rnE '^[[:space:]]*-?[[:space:]]*uses:' .github/workflows/ \
             | grep -v '@[a-f0-9]\{40\}' \
-            | grep -v '^\s*#' \
+            | grep -v '^[^:]*:[[:space:]]*#' \
             | grep -vE 'uses:[[:space:]]*(\./|actions/|github/)' \
             || true)
           if [ -n "$UNPINNED" ]; then
