@@ -1,0 +1,20 @@
+posts-i18n/pa-in/reporting-centers-onepager.md
+  s_ae09f572dac9db::t_6797fffcf9e532 18
+  s_ae09f572dac9db::t_387117f94dc3b0 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "fbb3fb82f61570051192c6893a9d26f48b93fdd7",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
