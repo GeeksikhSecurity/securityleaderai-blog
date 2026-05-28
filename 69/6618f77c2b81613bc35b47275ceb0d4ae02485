@@ -1,0 +1,26 @@
+.github/workflows/content-rigor.yml
+  s_ae09f572dac9db::t_6769393dbc4054 1-44
+scripts/lint-content.mjs
+  s_ae09f572dac9db::t_f338e4132f69d1 1-29,37-376
+  s_ae09f572dac9db::t_5ce7937569d86b 30-36
+package.json
+  s_ae09f572dac9db::t_217593fec3c9b2 9-10
+docs/content-rigor.md
+  s_ae09f572dac9db::t_fe8ef201b3fd00 1-231
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "696618f77c2b81613bc35b47275ceb0d4ae02485",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
