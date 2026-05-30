@@ -1,0 +1,24 @@
+src/app/blog/page.tsx
+  s_ae09f572dac9db::t_5f728511204722 4-5,19-43,47-99,101-104,106,108-109
+src/app/blog/[locale]/page.tsx
+  s_ae09f572dac9db::t_6eebd68a223200 1-78,103-177
+  s_ae09f572dac9db::t_d17dbc66555b7f 79-102
+src/lib/posts.ts
+  s_ae09f572dac9db::t_2182395893036f 97-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "6aa88661a97fdb3ba9e8a3f7a37f1ff4e3643c76",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
