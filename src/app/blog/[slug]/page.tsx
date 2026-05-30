@@ -9,15 +9,22 @@ import { CalendarIcon, ClockIcon } from '@/components/icons';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
-import { LOCALE_META, postUrl } from '@/lib/locales';
+import { LocaleBlogIndex } from '@/components/locale-blog-index';
+import { LOCALE_META, LOCALES, isLocale, postUrl } from '@/lib/locales';
 
 const SITE_ORIGIN = 'https://securityleader.ai';
 
 export async function generateStaticParams() {
+  // This route handles two URL shapes that share the same dynamic segment
+  // because Next.js 16 forbids sibling dynamic routes with different param
+  // names ([locale] vs [slug] would collide):
+  //   /blog/<post-slug>   → post detail
+  //   /blog/<locale>      → locale-specific index (e.g. /blog/pa-in)
+  // Static params cover both shapes; the page component dispatches.
   const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const postParams = posts.map((post) => ({ slug: post.slug }));
+  const localeParams = LOCALES.map((locale) => ({ slug: locale }));
+  return [...postParams, ...localeParams];
 }
 
 export async function generateMetadata({
@@ -26,6 +33,27 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+
+  // If slug is a known locale, build metadata for the locale index page.
+  if (isLocale(slug)) {
+    const meta = LOCALE_META[slug];
+    const languages: Record<string, string> = {
+      en: `${SITE_ORIGIN}/blog`,
+      'x-default': `${SITE_ORIGIN}/blog`,
+    };
+    for (const l of LOCALES) {
+      languages[LOCALE_META[l].hreflang] = `${SITE_ORIGIN}/blog/${l}`;
+    }
+    return {
+      title: `${meta.nativeName} — Blog`,
+      description: `${meta.englishName} translations of SecurityLeader.ai posts.`,
+      alternates: {
+        canonical: `${SITE_ORIGIN}/blog/${slug}`,
+        languages,
+      },
+    };
+  }
+
   const post = getPostBySlug(slug);
   const siblings = getAvailableTranslations(slug);
 
@@ -50,13 +78,24 @@ export async function generateMetadata({
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+
+  // Dispatch: when the [slug] segment matches a known locale, this URL is
+  // actually /blog/<locale> (the locale index), not /blog/<post-slug>.
+  // Render the locale index UI and return early.
+  if (isLocale(slug)) {
+    return <LocaleBlogIndex locale={slug} />;
+  }
+
   const post = getPostBySlug(slug);
   const siblings = getAvailableTranslations(slug);
   // Strip the leading H1 from markdown — the template already renders post.title in the header
   const contentWithoutH1 = post.content.replace(/^\s*# .+\n+/, '');
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(html)
+    // sanitize:false allows raw HTML (e.g. <span class="badge"> in our
+    // research-tier posts) to flow through. Safe because all post content
+    // lives in our git repo — no user-submitted markdown.
+    .use(html, { sanitize: false })
     .process(contentWithoutH1);
   const contentHtml = processedContent.toString();
 

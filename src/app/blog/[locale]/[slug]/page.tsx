@@ -68,7 +68,10 @@ export default async function LocaleBlogPost({
   const contentWithoutH1 = post.content.replace(/^\s*# .+\n+/, '');
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(html)
+    // sanitize:false matches the English-route behavior — allows raw HTML
+    // in markdown (badges, figures, chat-excerpt callouts). Safe because
+    // all post content is in our git repo.
+    .use(html, { sanitize: false })
     .process(contentWithoutH1);
   const contentHtml = processedContent.toString();
 
