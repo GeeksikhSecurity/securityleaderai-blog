@@ -80,6 +80,12 @@ The implication is not "we need better Actions runners" or "GitHub should add an
 
 ## Indicators of Compromise
 
+<p>
+  <span class="badge badge-severity-critical">Critical</span>
+  <span class="badge badge-conf-high">High confidence</span>
+  <span class="badge badge-severity-info">Source: SafeDep Team (2026)</span>
+</p>
+
 The campaign's IoCs are unusually clean — by design, since the attacker prioritized speed over stealth in the mass-variant phase. Organizations should grep their repository histories for the following (SafeDep Team, 2026):
 
 | Indicator | Value |
@@ -88,7 +94,7 @@ The campaign's IoCs are unusually clean — by design, since the attacker priori
 | Workflow `name:` field | `SysDiag` or `Optimize-Build` |
 | Commit author names | `build-bot`, `auto-ci`, `ci-bot`, `pipeline-bot` |
 | Commit author emails | `build-bot@noreply.github.com`, `pipeline-bot@noreply.github.com` and rotations |
-| Suspect commit messages | "ci: add build optimization step", "build: improve ci performance", "chore: optimize pipeline runtime" |
+| Suspect commit messages | `ci: add build optimization step`, `build: improve ci performance`, `chore: optimize pipeline runtime` |
 | Account-name pattern | Eight-character lowercase alphanumeric (e.g., `rkb8el9r`, `bhlru9nr`) |
 | Command-and-control | `216.126.225.129:8443` (block in egress) |
 | Compromised package | `@tiledesk/tiledesk-server` 2.18.6 through 2.18.12 |

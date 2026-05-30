@@ -1379,3 +1379,223 @@ pre code {
     border-left: 3px solid #333;
   }
 }
+
+/* ============================================
+   RESEARCH-POST DESIGN TOKENS (Phase A)
+   See docs/research-blog-visual-plan.md
+   All pure CSS, zero new npm deps.
+   ============================================ */
+
+/* ── Severity & confidence badges ────────────────────────────────────────
+   Extends the existing .badge system with semantic severity and
+   confidence variants. Use inline: <span class="badge badge-severity-critical">Critical</span>.
+*/
+.badge-severity-critical { background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.badge-severity-high     { background-color: #fff7ed; color: #9a3412; border: 1px solid #fed7aa; }
+.badge-severity-medium   { background-color: #fefce8; color: #854d0e; border: 1px solid #fef08a; }
+.badge-severity-low      { background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.badge-severity-info     { background-color: var(--primary-50); color: var(--primary-700); border: 1px solid var(--primary-200); }
+
+.badge-conf-high   { background-color: var(--primary-100); color: var(--primary-800); }
+.badge-conf-medium { background-color: var(--neutral-100); color: var(--neutral-700); }
+.badge-conf-low    { background-color: var(--neutral-50);  color: var(--neutral-600); border: 1px dashed var(--neutral-300); }
+
+/* ── TL;DR / Executive Summary panel ─────────────────────────────────────
+   Auto-applies to any blockquote inside .prose whose first <strong> matches
+   "Executive Summary". Falls back to manual .tldr-panel class for custom use.
+*/
+.prose blockquote:has(> p > strong:first-child:first-of-type),
+.tldr-panel {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-50), color-mix(in srgb, var(--primary-100) 60%, white));
+  border-left: 4px solid var(--primary-600);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+  margin: 2rem 0;
+  font-style: normal;
+  color: var(--text-primary);
+}
+.tldr-panel::before {
+  content: "Executive Summary";
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-700);
+  margin-bottom: 0.375rem;
+}
+
+/* ── IoC table treatment ─────────────────────────────────────────────────
+   Activates when a table contains any <code> cells (IoC-style data).
+   Slightly smaller, monospace cells highlighted, hoverable rows.
+*/
+.prose table:has(td code) {
+  font-size: 0.875rem;
+}
+.prose table:has(td code) td code {
+  background-color: var(--neutral-100);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  word-break: break-all;
+  user-select: all;
+  font-size: 0.8125rem;
+}
+.prose table:has(td code) tbody tr {
+  transition: background-color 150ms ease;
+}
+.prose table:has(td code) tbody tr:hover {
+  background-color: var(--primary-50);
+}
+
+/* ── Chat-excerpt callout (operator-leak / quoted-message style) ─────────
+   Authored as raw HTML in markdown:
+   <div class="chat-excerpt">
+     <div class="chat-excerpt-meta">2026-02-02 — zeta88</div>
+     "Если крысы…"
+     <div class="chat-excerpt-translation"><strong>Translation.</strong> "If the rats…"</div>
+     <div class="chat-excerpt-note"><strong>Analyst note.</strong> Russian слова мафии…</div>
+   </div>
+*/
+.chat-excerpt {
+  background-color: var(--neutral-50);
+  border-left: 3px solid var(--neutral-400);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+.chat-excerpt-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--neutral-600);
+  margin-bottom: 0.375rem;
+  letter-spacing: 0.02em;
+}
+.chat-excerpt-translation {
+  margin-top: 0.625rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--neutral-300);
+  font-style: italic;
+  color: var(--neutral-700);
+}
+.chat-excerpt-note {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dotted var(--neutral-300);
+  font-size: 0.8125rem;
+  color: var(--neutral-700);
+}
+
+/* ── Redaction inline tag ────────────────────────────────────────────────
+   <span class="redacted"></span>  renders [redacted].
+   <span class="redacted" data-reveal="…">…</span>  optionally reveals on hover.
+*/
+.redacted {
+  background-color: var(--neutral-800);
+  color: var(--neutral-800);
+  padding: 0 0.4em;
+  border-radius: var(--radius-sm);
+  user-select: none;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+.redacted::before {
+  content: "[REDACTED]";
+  color: var(--neutral-50);
+  letter-spacing: 0.05em;
+}
+
+/* ── Numbered figures with auto-counter ──────────────────────────────────
+   <figure class="numbered">
+     <img src="…" alt="…" />
+     <figcaption>Operator panel showing G-BOT beacon status.</figcaption>
+   </figure>
+*/
+.prose { counter-reset: figure-counter; }
+.prose figure.numbered {
+  counter-increment: figure-counter;
+  margin: 2rem 0;
+  background-color: var(--neutral-50);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+}
+.prose figure.numbered img,
+.prose figure.numbered svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+.prose figure.numbered figcaption {
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--neutral-700);
+  text-align: center;
+}
+.prose figure.numbered figcaption::before {
+  content: "Figure " counter(figure-counter) ". ";
+  font-weight: 600;
+  color: var(--primary-700);
+}
+
+/* ── References panel ────────────────────────────────────────────────────
+   Auto-applies to any H2 with id="references" and the <ul> immediately after.
+   Authored naturally as `## References` followed by a bulleted list.
+*/
+.prose h2#references,
+.prose h2[id^="references"] {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--neutral-700);
+  border-top: 2px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+}
+.prose h2#references + ul,
+.prose h2[id^="references"] + ul {
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem 1.25rem 2.5rem;
+  font-size: 0.9375rem;
+}
+.prose h2#references + ul li,
+.prose h2[id^="references"] + ul li {
+  margin-bottom: 0.625rem;
+  line-height: 1.5;
+}
+.prose h2#references + ul li:last-child,
+.prose h2[id^="references"] + ul li:last-child {
+  margin-bottom: 0;
+}
+.prose h2#references + ul a,
+.prose h2[id^="references"] + ul a {
+  color: var(--primary-700);
+  word-break: break-word;
+}
+
+/* ── Section auto-numbering (opt-in via <article data-numbered="true">) ── */
+article[data-numbered="true"] .prose { counter-reset: h2-counter; }
+article[data-numbered="true"] .prose h2 { counter-increment: h2-counter; counter-reset: h3-counter; }
+article[data-numbered="true"] .prose h2::before {
+  content: counter(h2-counter) ". ";
+  color: var(--primary-600);
+  font-weight: 700;
+  margin-right: 0.25em;
+}
+article[data-numbered="true"] .prose h3 { counter-increment: h3-counter; }
+article[data-numbered="true"] .prose h3::before {
+  content: counter(h2-counter) "." counter(h3-counter) " ";
+  color: var(--primary-500);
+  font-weight: 600;
+  margin-right: 0.25em;
+}
+
