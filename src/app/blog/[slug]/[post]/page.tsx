@@ -18,33 +18,53 @@ import { TranslationBanner } from '@/components/translation-banner';
 
 const SITE_ORIGIN = 'https://securityleader.ai';
 
+/**
+ * Locale-prefixed post page: /blog/<locale>/<post-slug>
+ *
+ * The directory tree uses `[slug]/[post]/` (not `[locale]/[slug]/`) because
+ * Next.js 16 forbids two sibling dynamic segments with different param names
+ * at the same routing level. Keeping all level-1 dynamic routes under
+ * `[slug]/` (whether that segment is a post slug, a locale prefix, or the
+ * locale prefix of a locale-post URL) is the only way both routes coexist.
+ *
+ * Semantically:
+ *   - The first param `slug` is the locale (e.g., "pa-in")
+ *   - The second param `post` is the actual post slug
+ * The isLocale() guard in the page body 404s if the first segment isn't a
+ * known locale, preserving the URL contract.
+ */
 export async function generateStaticParams() {
-  return getAllLocalePostParams();
+  // Rename param key from getAllLocalePostParams() output to match the route
+  // shape: { locale, slug } → { slug: <locale>, post: <slug> }.
+  return getAllLocalePostParams().map(({ locale, slug }) => ({
+    slug: locale,
+    post: slug,
+  }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string; post: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
-  if (!isLocale(locale)) return {};
-  if (!translationExists(slug, locale)) return {};
+  const { slug: localeSegment, post: postSlug } = await params;
+  if (!isLocale(localeSegment)) return {};
+  if (!translationExists(postSlug, localeSegment)) return {};
 
-  const post = getLocalePostBySlug(slug, locale);
+  const post = getLocalePostBySlug(postSlug, localeSegment);
 
   // Hreflang map: this locale + English + x-default.
   const alternates: Record<string, string> = {
-    en: `${SITE_ORIGIN}${postUrl(slug, 'en')}`,
-    'x-default': `${SITE_ORIGIN}${postUrl(slug, 'en')}`,
+    en: `${SITE_ORIGIN}${postUrl(postSlug, 'en')}`,
+    'x-default': `${SITE_ORIGIN}${postUrl(postSlug, 'en')}`,
   };
-  alternates[LOCALE_META[locale].hreflang] = `${SITE_ORIGIN}${postUrl(slug, locale)}`;
+  alternates[LOCALE_META[localeSegment].hreflang] = `${SITE_ORIGIN}${postUrl(postSlug, localeSegment)}`;
 
   return {
     title: post.title,
     description: post.excerpt,
     alternates: {
-      canonical: `${SITE_ORIGIN}${postUrl(slug, locale)}`,
+      canonical: `${SITE_ORIGIN}${postUrl(postSlug, localeSegment)}`,
       languages: alternates,
     },
   };
@@ -53,16 +73,16 @@ export async function generateMetadata({
 export default async function LocaleBlogPost({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string; post: string }>;
 }) {
-  const { locale, slug } = await params;
+  const { slug: localeSegment, post: postSlug } = await params;
 
   // Validate locale against the allow-list. Any other value 404s.
-  if (!isLocale(locale)) notFound();
-  const validLocale: Locale = locale;
+  if (!isLocale(localeSegment)) notFound();
+  const validLocale: Locale = localeSegment;
 
-  if (!translationExists(slug, validLocale)) notFound();
-  const post = getLocalePostBySlug(slug, validLocale);
+  if (!translationExists(postSlug, validLocale)) notFound();
+  const post = getLocalePostBySlug(postSlug, validLocale);
 
   // Strip the leading H1 from markdown — the template already renders post.title.
   const contentWithoutH1 = post.content.replace(/^\s*# .+\n+/, '');
@@ -78,10 +98,8 @@ export default async function LocaleBlogPost({
   const meta = LOCALE_META[validLocale];
 
   // Available sibling locales for the language switcher — exclude current.
-  // English is always offered back from a non-English page.
-  // Other non-English locales offered if a translation exists for this slug.
   const otherLocaleSiblings = (Object.keys(LOCALE_META) as Locale[]).filter(
-    (l) => l !== validLocale && translationExists(slug, l),
+    (l) => l !== validLocale && translationExists(postSlug, l),
   );
 
   return (
@@ -101,6 +119,10 @@ export default async function LocaleBlogPost({
               Blog
             </Link>
             <span aria-hidden="true">/</span>
+            <Link href={`/blog/${validLocale}`} className="transition-colors hover:text-primary-600">
+              {meta.nativeName}
+            </Link>
+            <span aria-hidden="true">/</span>
             <span className="text-secondary line-clamp-1">{post.title}</span>
           </nav>
           <h1 className="text-4xl font-bold md:text-5xl text-primary-800">{post.title}</h1>
@@ -115,7 +137,7 @@ export default async function LocaleBlogPost({
             </span>
             {post.author && <span>By {post.author}</span>}
             <LanguageSwitcher
-              slug={slug}
+              slug={postSlug}
               currentLocale={validLocale}
               siblings={otherLocaleSiblings}
             />
