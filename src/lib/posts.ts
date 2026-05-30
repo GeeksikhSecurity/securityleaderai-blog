@@ -94,6 +94,11 @@ export function getAllLocalePosts(locale: Locale): Post[] {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+/** Returns only public (non-hidden) posts for a locale's listing page. */
+export function getPublicLocalePosts(locale: Locale): Post[] {
+  return getAllLocalePosts(locale).filter((post) => !post.hidden);
+}
+
 /**
  * Read a specific locale's translation of a post by slug.
  * Throws if the file does not exist — callers should validate the slug via
