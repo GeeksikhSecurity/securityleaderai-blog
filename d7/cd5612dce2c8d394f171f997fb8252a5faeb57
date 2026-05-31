@@ -1,0 +1,64 @@
+posts-i18n/pa-in/gurdwara-charity-donation-fraud.md
+  s_ae09f572dac9db::t_ad2b3894d7a265 129
+  s_ae09f572dac9db::t_e65ebe5c331f51 2
+  s_ae09f572dac9db::t_44e3cd0a9382b6 16
+  s_ae09f572dac9db::t_81d70915930cac 93,98-99,101-102,104
+  s_ae09f572dac9db::t_8f8a2e8ce7d428 95
+  s_ae09f572dac9db::t_a4a81bdfc6bc9d 10,12
+  s_ae09f572dac9db::t_7c0082bd19912c 34
+  s_ae09f572dac9db::t_cb344c285356da 79
+  s_ae09f572dac9db::t_be4301df9dc078 50
+  s_ae09f572dac9db::t_f50bac9a232252 20,22
+  s_ae09f572dac9db::t_8c45fbb962c63b 30
+posts-i18n/pa-in/tech-support-scam-elders.md
+  s_ae09f572dac9db::t_eb4dd8ba24930e 90
+  s_ae09f572dac9db::t_48272e506bac18 100
+  s_ae09f572dac9db::t_0cf8833e9f7b14 137
+  s_ae09f572dac9db::t_633cb6f561c104 24
+  s_ae09f572dac9db::t_74a397042796eb 48
+  s_ae09f572dac9db::t_7383da51fac9ba 56
+  s_ae09f572dac9db::t_b38d50e8183723 98,101-108,110-112
+  s_ae09f572dac9db::t_de4acbf97cf479 38
+scripts/lint-content.mjs
+  s_ae09f572dac9db::t_eb93567882981f 309-331
+  s_ae09f572dac9db::t_80367875f14852 62-87
+posts-i18n/pa-in/whatsapp-family-emergency-scams.md
+  s_ae09f572dac9db::t_400f1e94773521 28
+  s_ae09f572dac9db::t_b3ef27da509f3e 65
+  s_ae09f572dac9db::t_3a79cf0c8d9cb3 136
+  s_ae09f572dac9db::t_20b96d826ee305 96
+  s_ae09f572dac9db::t_e48934f05a697d 102,104-108,110-112
+posts-i18n/pa-in/reporting-centers-onepager.md
+  s_ae09f572dac9db::t_56fafe6c3ab7dc 124
+  s_ae09f572dac9db::t_6ee8396882978c 80
+  s_ae09f572dac9db::t_9f064f3c388d55 14
+  s_ae09f572dac9db::t_8bb51ded0261db 32
+  s_ae09f572dac9db::t_8504f97bbe66d9 23
+  s_ae09f572dac9db::t_0ca254a4f1670e 44
+  s_ae09f572dac9db::t_0fcf56bf7a12a5 94
+  s_ae09f572dac9db::t_64e48c8a63bca9 72
+  s_ae09f572dac9db::t_f4eeb9b0586df9 47
+  s_ae09f572dac9db::t_1d9c79164bf18d 70
+  s_ae09f572dac9db::t_5c0f38848394ae 68
+  s_ae09f572dac9db::t_c46be03606890a 89,91,95,99-101,103-104,106
+  s_ae09f572dac9db::t_896bdfab2fd1b9 118
+docs/content-rigor.md
+  s_ae09f572dac9db::t_afa230b9d06e1c 202-231
+  s_ae09f572dac9db::t_8a65a0183aa574 46-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "d7cd5612dce2c8d394f171f997fb8252a5faeb57",
+  "prompts": {},
+  "sessions": {
+    "s_ae09f572dac9db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8eef97e8-b430-4e52-8beb-b343c3c5a1e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
