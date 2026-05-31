@@ -59,6 +59,32 @@ const BRAND_FORBIDDEN = [
 const DIRECTIONAL_EN = /\b(above|below|next|previous)\b/i;
 const DIRECTIONAL_PA = /(ਉੱਪਰ|ਹੇਠਾਂ|ਅੱਗੇ|ਪਿੱਛੇ)/;
 
+// R21 — fraud-term policy in pa-in (locked 2026-05-30).
+// Standalone ਫ਼ਰਾਡ / ਫਰਾਡ / ਘੋਟਾਲਾ are disallowed. The single allowed compound
+// is ਰੋਮਾਂਸ ਫ਼ਰਾਡ — we whitelist that exact sequence and flag any other
+// occurrence of the bare token.
+const FRAUD_POLICY_RES = [
+  // ਘੋਟਾਲਾ family (Hindi-origin, never allowed)
+  { re: /ਘੋਟਾਲ[ਾਿੇੋਯੀਆਂ]?/, label: 'ਘੋਟਾਲਾ (Hindi-origin; use ਠੱਗੀ)' },
+  // standalone ਫ਼ਰਾਡ / ਫਰਾਡ — exclude when immediately preceded by ਰੋਮਾਂਸ
+  // (followed by optional space) which is the one allowed hybrid.
+  { re: /(?<!ਰੋਮਾਂਸ\s)ਫ਼?ਰਾਡ/, label: 'ਫ਼ਰਾਡ / ਫਰਾਡ standalone (use ਠੱਗੀ; only ਰੋਮਾਂਸ ਫ਼ਰਾਡ is allowed)' },
+];
+
+// R23 — English-style romanization patterns (disallowed; use IAST).
+// We flag the doubled-vowel and trailing-ee patterns that English-style
+// romanization produces, and a few specific glossary-known offenders.
+const ROMANIZATION_DISALLOWED = [
+  { re: /\bthaggee\b/i,    suggest: 'ṭhaggī' },
+  { re: /\btasdeeq\b/i,    suggest: 'tasdīq' },
+  { re: /\bpachhaan\b/i,   suggest: 'pachhāṇ' },
+  { re: /\bnaklee\b/i,     suggest: 'naklī' },
+  { re: /\bjaali\b/i,      suggest: 'jāʼlī' },
+  { re: /\bsurakhya\b/i,   suggest: 'surakkhiā' },
+  { re: /\bsarkaree\b/i,   suggest: 'sarkārī' },
+  { re: /\bshakkee\b/i,    suggest: 'shakkī' },
+];
+
 const errors = [];
 const notices = [];
 
@@ -277,6 +303,29 @@ function lintLocaleSpecific(doc, parsed) {
       for (const { re, label } of PROHIBITED_PA_RES) {
         if (re.test(line)) {
           reportErr('R10', doc.path, lineNo, `prohibited vocabulary: ${label}`);
+        }
+      }
+    });
+
+    // R21 — fraud-term policy (use ਠੱਗੀ; only ਰੋਮਾਂਸ ਫ਼ਰਾਡ hybrid allowed)
+    parsed.lines.forEach((line, i) => {
+      const lineNo = i + 1 + offset;
+      if (lineHasAllowance(line, 'R21')) return;
+      for (const { re, label } of FRAUD_POLICY_RES) {
+        if (re.test(line)) {
+          reportErr('R21', doc.path, lineNo, `fraud-term policy: ${label}`);
+        }
+      }
+    });
+
+    // R23 — IAST canonical romanization (no English-style)
+    parsed.lines.forEach((line, i) => {
+      const lineNo = i + 1 + offset;
+      if (lineHasAllowance(line, 'R23')) return;
+      for (const { re, suggest } of ROMANIZATION_DISALLOWED) {
+        const m = line.match(re);
+        if (m) {
+          reportErr('R23', doc.path, lineNo, `English-style romanization "${m[0]}" — IAST canonical is "${suggest}"`);
         }
       }
     });

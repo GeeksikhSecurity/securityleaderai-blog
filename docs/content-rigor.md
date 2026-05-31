@@ -43,6 +43,9 @@ Locales follow BCP 47 (`pa-in` for Panjabi/India Gurmukhi). The locale dir-name 
 | R18 | T/L/R/H glossary classification present in translations | Translation | **REVIEW** |
 | R19 | `posts/<slug>` H1 is stripped by template — do not duplicate title in body | Document | **REVIEW** |
 | R20 | Phone numbers / URLs preserved character-for-character | Translation | **REVIEW** |
+| R21 | `pa-in` standalone fraud term uses `ਠੱਗੀ` (not `ਫ਼ਰਾਡ` / `ਘੋਟਾਲਾ`); `ਰੋਮਾਂਸ ਫ਼ਰਾਡ` is the sole hybrid exception | Translation | **AUTO** |
+| R22 | `pa-in` "community" uses `ਭਾਈਚਾਰਾ` (not `ਸੰਗਤ` / `ਸਮਾਜ`) outside named Sikh religious contexts | Translation | **REVIEW** |
+| R23 | `pa-in` romanization uses IAST canonical (`ṭhaggī`, `tasdīq`, `naklī`); no `thaggee` / `tasdeeq` / `naklee` style | Translation | **AUTO** |
 
 ---
 
@@ -195,6 +198,36 @@ Convention: keep the leading H1 in the markdown. The template handles removal.
 ## R20 — Phone numbers / URLs character-exact  **REVIEW**
 
 Translation never alters a phone number or URL. `1-888-495-8501` is the same in every locale; do not convert digits to Gurmukhi numerals (those are reserved for editorial use like version numbers `੫.੦`). URLs are sacred — re-typing them is the easiest way to introduce a phishing-grade typo.
+
+## R21 — Fraud-term policy in `pa-in`  **AUTO**
+
+Locked 2026-05-30 after corpus-wide consistency audit. The standalone word for "scam" or "fraud" in `posts-i18n/pa-in/` **must** be `ਠੱਗੀ`. The following are disallowed in standalone use:
+
+- `ਫ਼ਰਾਡ` (with nukta) — retired except in the single hybrid term below.
+- `ਫਰਾਡ` (no nukta) — was a spelling inconsistency; retire.
+- `ਘੋਟਾਲਾ` — Hindi-origin; not in our glossary.
+
+**Sole exception:** `ਰੋਮਾਂਸ ਫ਼ਰਾਡ` is retained as a type-H hybrid loan term, anchor for the dedicated romance-fraud post. The compound is permitted; the bare `ਫ਼ਰਾਡ` token is not.
+
+Why the policy: bilingual readers said the corpus felt inconsistent ("Is this `ਠੱਗੀ` the same as `ਫ਼ਰਾਡ`?"). Pinning to a single Gurbani-rooted term reduces cognitive load and matches the audience the Digital Seva series serves. See policy block at the bottom of `panjabi-translation-reference.md`.
+
+## R22 — "Community" term policy in `pa-in`  **REVIEW**
+
+`ਭਾਈਚਾਰਾ` is the standard translation of generic "community." `ਸੰਗਤ` is reserved for named Sikh religious contexts (e.g., quoting "sangat review" as a process name). `ਸਮਾਜ` is not used.
+
+Cannot be fully automated because the legitimate `ਸੰਗਤ` usage is context-sensitive. Reviewers verify on every translation that "community" → `ਭਾਈਚਾਰਾ` unless the context is explicitly Sikh-religious.
+
+## R23 — Romanization style in `pa-in`  **AUTO**
+
+All Panjabi romanizations in `posts-i18n/pa-in/` use IAST canonical (Punjabi University Patiala convention, modified ISO 15919):
+
+- Retroflex: `ṭ ḍ ṇ` (dot below) — *not* `t d n`
+- Long vowels: `ā ī ū` (macron) — *not* doubled letters (`aa`, `ii`, `oo`)
+- Nasal: `ṅ` (velar), `ñ` (palatal)
+- Aspirated cluster: `chh`
+- Glottal / apostrophe-like: `ʼ`
+
+Lint detects English-style romanization patterns (`thaggee`, `tasdeeq`, `pachhaan`, `naklee`, `surakhya`) and flags them as errors. Allowlist with `<!-- rigor: allow R23 -->` only when the romanization is *intentionally* using a different convention (e.g., quoting a published source verbatim).
 
 ---
 
