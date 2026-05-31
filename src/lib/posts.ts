@@ -7,6 +7,13 @@ const WORDS_PER_MINUTE = 200;
 const postsDirectory = path.join(process.cwd(), 'posts');
 const postsI18nDirectory = path.join(process.cwd(), 'posts-i18n');
 
+/** Single author entry, used by multi-author posts (Phase B). */
+export interface Author {
+  name: string;
+  credentials?: string;
+  url?: string;
+}
+
 export interface Post {
   slug: string;
   title: string;
@@ -14,13 +21,46 @@ export interface Post {
   excerpt: string;
   content: string;
   readingTime: number;
+  /** Legacy single-author scalar. Use `authors` for new posts. */
   author?: string;
+  /** Multi-author byline. Overrides `author` when present. */
+  authors?: Author[];
+  /** Category chip shown in the post header (e.g., "Supply Chain Research"). */
+  category?: string;
   tags?: string[];
   hidden?: boolean;
   /** Locales for which a translation of this post exists. */
   translations?: Locale[];
   /** Editorial review status. ai_draft posts render a sangat-review banner. */
   translation_status?: 'human_reviewed' | 'ai_draft';
+}
+
+function parseAuthors(data: Record<string, unknown>): Author[] | undefined {
+  // Accept frontmatter shapes:
+  //   authors:
+  //     - name: "Gurvinder Singh"
+  //       credentials: "CISSP, CISA, GWAPT"
+  //       url: "https://…"
+  //     - "Co-Author Name"   ← string shorthand
+  const raw = data.authors;
+  if (!Array.isArray(raw)) return undefined;
+
+  const result: Author[] = [];
+  for (const entry of raw) {
+    if (typeof entry === 'string') {
+      result.push({ name: entry });
+    } else if (entry && typeof entry === 'object') {
+      const obj = entry as Record<string, unknown>;
+      const name = typeof obj.name === 'string' ? obj.name : null;
+      if (!name) continue;
+      result.push({
+        name,
+        credentials: typeof obj.credentials === 'string' ? obj.credentials : undefined,
+        url: typeof obj.url === 'string' ? obj.url : undefined,
+      });
+    }
+  }
+  return result.length > 0 ? result : undefined;
 }
 
 function readPostFile(fullPath: string, slug: string): Post {
@@ -38,6 +78,8 @@ function readPostFile(fullPath: string, slug: string): Post {
     content,
     readingTime,
     author: data.author,
+    authors: parseAuthors(data),
+    category: typeof data.category === 'string' ? data.category : undefined,
     tags: data.tags,
     hidden: data.hidden === true,
     translations: Array.isArray(data.translations)

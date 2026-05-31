@@ -10,6 +10,7 @@ import { ScrollProgress } from '@/components/scroll-progress';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
 import { LocaleBlogIndex } from '@/components/locale-blog-index';
+import { AuthorByline } from '@/components/author-byline';
 import { LOCALE_META, LOCALES, isLocale, postUrl } from '@/lib/locales';
 
 const SITE_ORIGIN = 'https://securityleader.ai';
@@ -114,6 +115,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <span aria-hidden="true">/</span>
             <span className="text-secondary line-clamp-1">{post.title}</span>
           </nav>
+          {post.category && (
+            <span className="category-chip mb-4">{post.category}</span>
+          )}
           <h1 className="text-4xl font-bold md:text-5xl text-primary-800">
             {post.title}
           </h1>
@@ -126,7 +130,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <ClockIcon className="h-4 w-4 text-primary-600" />
               {post.readingTime} min read
             </span>
-            {post.author && <span>By {post.author}</span>}
+            <AuthorByline authors={post.authors} author={post.author} />
             <LanguageSwitcher slug={slug} currentLocale="en" siblings={siblings} />
           </div>
         </div>

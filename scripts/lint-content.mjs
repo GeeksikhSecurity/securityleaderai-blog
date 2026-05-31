@@ -169,8 +169,22 @@ function lineHasAllowance(line, ruleId) {
 }
 
 function lintFrontmatter(doc, parsed) {
-  // R1 — required fields
+  // R1 — required fields. `author` and `authors` are interchangeable: posts
+  // may use the scalar `author:` shorthand OR the multi-author `authors:` array
+  // (Phase B). Either satisfies the byline requirement.
   for (const k of REQUIRED_FRONTMATTER) {
+    if (k === 'author') {
+      // `author` and `authors` are interchangeable. The minimal YAML parser
+      // sets the `authors` key even when the value is a block list of maps
+      // (children parsed as siblings); accept key presence as evidence.
+      const author = parsed.frontmatter.author;
+      const hasAuthor = (typeof author === 'string' && author !== '');
+      const hasAuthors = 'authors' in parsed.frontmatter;
+      if (!hasAuthor && !hasAuthors) {
+        reportErr('R1', doc.path, 1, `missing required frontmatter field: author (or authors[])`);
+      }
+      continue;
+    }
     const v = parsed.frontmatter[k];
     if (v === undefined || v === null || (typeof v === 'string' && v === '')) {
       reportErr('R1', doc.path, 1, `missing required frontmatter field: ${k}`);

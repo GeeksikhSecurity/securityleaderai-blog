@@ -2,7 +2,11 @@
 title: "Megalodon — What 5,718 Backdoored GitHub Repositories Reveal About CI/CD as Attack Surface"
 date: "2026-05-28"
 excerpt: "On May 18, 2026, an automated campaign designated Megalodon pushed 5,718 malicious commits across 5,561 GitHub repositories in six hours, weaponizing GitHub Actions to exfiltrate cloud credentials, OIDC tokens, and source-code secrets to a single command-and-control endpoint. No software vulnerability was exploited. The attack surface was developer trust in commit messages that look like routine CI maintenance — and the operational reality that CI pipelines already hold root-equivalent access to everything an organization values."
-author: "Gurvinder Singh"
+category: "Supply Chain Research"
+authors:
+  - name: "Gurvinder Singh"
+    credentials: "CISSP, CISA, GWAPT"
+    url: "https://www.linkedin.com/in/gurvindersinghb"
 tags: ["supply-chain", "github-actions", "cicd-security", "secrets-exfiltration", "incident-research", "appsec"]
 translation_status: "human_reviewed"
 ---
@@ -28,6 +32,53 @@ The attack used two payload variants, deployed against different repository clas
 **The targeted variant (workflow name: `Optimize-Build`)** replaced existing workflows rather than adding new ones. It triggered on `workflow_dispatch` — the manual-invocation trigger callable via the GitHub API. This is the key behavioral difference: the targeted variant installs a *dormant* backdoor that activates only when the attacker chooses to fire it, allowing reconnaissance and timing control across a fleet of compromised repositories.
 
 Both variants embedded the same payload — a base64-encoded bash blob invoked as `set +e; echo "..." | base64 -d | bash` — a single-line pattern that is trivially obvious in retrospect but blends into legitimate CI scripts that already use heredocs, jq invocations, and inline shell.
+
+### Six-hour automated window
+
+<ol class="research-timeline">
+  <li class="timeline-item" data-severity="info">
+    <time class="timeline-date">2026-05-18<br/>11:36 UTC</time>
+    <div class="timeline-content">
+      <div class="timeline-title">First malicious commit lands</div>
+      <div class="timeline-detail">Throwaway account <code>rkb8el9r</code> opens the campaign. Workflow file <code>.github/workflows/ci.yml</code> added; mass-variant `SysDiag` payload deployed.</div>
+    </div>
+  </li>
+  <li class="timeline-item" data-severity="high">
+    <time class="timeline-date">2026-05-18<br/>~13:00 UTC</time>
+    <div class="timeline-content">
+      <div class="timeline-title">Targeted variant deployed to high-value repos</div>
+      <div class="timeline-detail">Second author identity (<code>auto-ci</code>) appears. Targeted-variant <code>Optimize-Build</code> workflow replaces existing files in Black-Iron-Project (8 repos), WISE-Community, and Tiledesk subsidiary repositories. Dormant — fires on <code>workflow_dispatch</code>.</div>
+    </div>
+  </li>
+  <li class="timeline-item" data-severity="critical">
+    <time class="timeline-date">2026-05-18<br/>~14:30 UTC</time>
+    <div class="timeline-content">
+      <div class="timeline-title">tiledesk-server compromised</div>
+      <div class="timeline-detail">Commit <code>acac5a9</code> modifies <code>.github/workflows/docker-community-worker-push-latest.yml</code> in the primary tiledesk-server repository. Maintainer team unaware. This is the commit that propagates to npm.</div>
+    </div>
+  </li>
+  <li class="timeline-item" data-severity="high">
+    <time class="timeline-date">2026-05-18<br/>17:48 UTC</time>
+    <div class="timeline-content">
+      <div class="timeline-title">Push activity ceases — 5,718 commits total</div>
+      <div class="timeline-detail">Across 5,561 distinct repositories. Two attacker emails account for the full set: 2,878 + 2,841 commits.</div>
+    </div>
+  </li>
+  <li class="timeline-item" data-severity="medium">
+    <time class="timeline-date">2026-05-18<br/>through 2026-05-21</time>
+    <div class="timeline-content">
+      <div class="timeline-title">npm publishes pull the backdoor downstream</div>
+      <div class="timeline-detail"><code>@tiledesk/tiledesk-server</code> versions 2.18.6 → 2.18.12 published from the backdoored repository state. npm registry sees a normal authenticated publish; nothing flags.</div>
+    </div>
+  </li>
+  <li class="timeline-item" data-severity="info">
+    <time class="timeline-date">2026-05-21</time>
+    <div class="timeline-content">
+      <div class="timeline-title">SafeDep Malysis engine flags the contaminated package</div>
+      <div class="timeline-detail">Detection on <code>@tiledesk/tiledesk-server@2.18.12</code> triggers backwards investigation. Campaign attributed and published as <em>Megalodon</em>.</div>
+    </div>
+  </li>
+</ol>
 
 ---
 
@@ -57,10 +108,24 @@ The most consequential downstream effect of the campaign was the contamination o
 
 The compromise chain is worth stating explicitly because it is the chain every modern open-source maintainer should understand:
 
-1. The attacker compromised a Personal Access Token (PAT) or deploy key with write access to the repository — not the maintainer's npm account, not the maintainer's GitHub login.
-2. The malicious commit modified a workflow file with a message indistinguishable from routine CI maintenance.
-3. The legitimate maintainer subsequently ran a release, publishing from the backdoored repository state.
-4. The npm package was thereby contaminated despite no compromise of the npm registry, no compromise of the maintainer's npm credentials, and no anomaly in the maintainer's local development workflow.
+<ol class="attack-chain">
+  <li class="chain-step" data-status="critical">
+    <div class="chain-step-title">PAT or deploy-key compromise</div>
+    <p>The attacker compromised a Personal Access Token (PAT) or deploy key with <strong>write access to the repository</strong> — not the maintainer's npm account, not the maintainer's GitHub login. The entry point was upstream of every credential the registry-side defenses know how to check.</p>
+  </li>
+  <li class="chain-step">
+    <div class="chain-step-title">Workflow file modified with a routine-looking message</div>
+    <p>The malicious commit edited <code>.github/workflows/docker-community-worker-push-latest.yml</code> with a message indistinguishable from routine CI maintenance (<code>ci: add build optimization step</code>, etc.). On code review, a workflow-only diff with a maintenance-shaped subject reads as low-risk noise.</p>
+  </li>
+  <li class="chain-step">
+    <div class="chain-step-title">Legitimate release runs from backdoored state</div>
+    <p>The maintainer subsequently cut a release — normally authenticated, normally signed, normally published. The npm registry observed nothing anomalous: same maintainer, same package, same release cadence. The contamination was already inside the source tree.</p>
+  </li>
+  <li class="chain-step" data-status="critical">
+    <div class="chain-step-title">Downstream consumers receive the contaminated package</div>
+    <p>Versions 2.18.6 through 2.18.12 of <code>@tiledesk/tiledesk-server</code> were thereby contaminated despite <em>no compromise of the npm registry, no compromise of the maintainer's npm credentials, and no anomaly in the maintainer's local development workflow</em>. Every npm-side mitigation in the field correctly classified the resulting package as legitimate.</p>
+  </li>
+</ol>
 
 This is the model. The npm registry sees a normally authenticated, normally signed publish from a maintainer with normal release history. The contamination is upstream of the publish event — and upstream of every npm-side mitigation that has been built over the last decade.
 
