@@ -27,7 +27,7 @@ Phase A is complete. Three documents are ready for review:
 |----------|-----------------|------|
 | **Title Page** (ਮੁੱਖ ਪੰਨਾ) | Project credits, copyright, license, contributors | [Read Title Page](/blog/asvs-panjabi-review-frontispiece) |
 | **Introduction** (ਮੁਖਬੰਧ) | ASVS 5.0 introduction, principles, levels, scope | [Read Introduction](/blog/asvs-panjabi-review-preface) |
-| **Glossary** (ਸ਼ਬਦਾਵਲੀ) | 100+ security terms with Gurmukhi translations | [Read Glossary](/blog/asvs-panjabi-review-glossary) |
+| **Glossary** (ਸ਼ਬਦਾਵਲੀ) | 70 security terms with Gurmukhi translations | [Read Glossary](/blog/asvs-panjabi-review-glossary) |
 
 ## Who Should Review
 
@@ -53,9 +53,9 @@ Every translated term in the glossary is classified by its translation approach 
 | Phase | Content | Target |
 |-------|---------|--------|
 | **A** (Complete) | Title Page, Introduction, Glossary, Translation Notes, Review Plan | February 2026 |
-| **B** | Core chapters: Architecture, Authentication, Session Management, Access Control | March–April 2026 |
-| **C** | Remaining 13 security requirement chapters | May–July 2026 |
-| **D** | Appendices, final quality checks, PDF generation, community review window | August 2026 |
+| **B** (In Progress) | Core chapters: *What-is-the-ASVS*, *Assessment & Certification*, *For Users of 4.0* bilingual; *V6 Authentication* and *V8 Authorization* actively translating | 2026 |
+| **C** | Remaining 14 security-requirement chapters: Encoding, Validation, Web Frontend, API & Web Service, File Handling, Session Management, Tokens, OAuth/OIDC, Cryptography, Communication, Configuration, Data Protection, Secure Coding, Logging, WebRTC | 2026 |
+| **D** | Appendices, final quality checks, PDF generation, community review window | 2026 |
 
 ## How to Send Feedback
 

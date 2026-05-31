@@ -107,7 +107,7 @@ For a complete bilingual reporting directory, see *[Where to Report Cyber Fraud 
 | Block | ਬਲੌਕ ਕਰੋ | blauk karo | L | Loan word |
 | Report | ਰਿਪੋਰਟ ਕਰੋ | report karo | L | Loan word |
 | Safety Word | ਸੁਰੱਖਿਆ ਸ਼ਬਦ | surakkhiā shabad | T | surakkhiā = safety; shabad = word |
-| Verify | ਤਸਦੀਕ ਕਰੋ | tasdeeq karo | T | tasdeeq = confirmation (Persian/Arabic origin) |
+| Verify | ਤਸਦੀਕ ਕਰੋ | tasdīq karo | T | tasdīq = confirmation (Persian/Arabic origin) |
 
 *Type codes: T = Translated, L = Loan, R = Retained, H = Hybrid.*
 

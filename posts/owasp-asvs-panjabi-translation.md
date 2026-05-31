@@ -11,7 +11,7 @@ translation_status: "human_reviewed"
 
 *What happens when 130 million speakers can finally read the security requirements their applications need to meet?*
 
-> **Executive Summary:** The OWASP Application Security Verification Standard (ASVS) 5.0 — the global benchmark for application security requirements — now has its first-ever Panjabi translation underway. Using a bilingual English/Gurmukhi format with a 100+ term security glossary, this open-source project (PR #3254) makes 350 security requirements accessible to Panjabi-speaking developers and security professionals worldwide. Phase A is complete. Reviewers needed — no GitHub experience required.
+> **Executive Summary:** The OWASP Application Security Verification Standard (ASVS) 5.0 — the global benchmark for application security requirements — now has its first-ever Panjabi translation underway. Using a bilingual English/Gurmukhi format with a 70-term security glossary, this open-source project (PR #3254) makes 350 security requirements accessible to Panjabi-speaking developers and security professionals worldwide. Phase A is complete; Phase B is actively in progress on V6 Authentication and V8 Authorization. Reviewers needed — no GitHub experience required.
 
 There are over 130 million Panjabi speakers worldwide. Until now, none of them could read the OWASP Application Security Verification Standard in their own language.
 
@@ -59,7 +59,7 @@ We built a glossary of 100+ security terms, each classified into one of four cat
 
 This T/L/R/H system came from spending real time with the source material and asking a practical question: if a Panjabi-speaking developer reads this term in a code review, which version will they actually recognize?
 
-The answer varies by term, and that's the point. "Verification" becomes ਤਸਦੀਕ (tasdeeq) because Panjabi has a rich word for it. "CSRF" stays as CSRF because no translation improves on the acronym every developer already knows.
+The answer varies by term, and that's the point. "Verification" becomes ਤਸਦੀਕ (tasdīq) because Panjabi has a rich word for it. "CSRF" stays as CSRF because no translation improves on the acronym every developer already knows.
 
 ## Complete Security Terminology Glossary
 
@@ -71,7 +71,7 @@ Below is the working glossary for the OWASP ASVS 5.0 Panjabi translation. Each t
 |---------|-------------------|--------------|------|---------|
 | Application | ਐਪਲੀਕੇਸ਼ਨ | aiplicaishan | L | Software application |
 | Security | ਸੁਰੱਖਿਆ | surakkhiā | T | Protection, safety |
-| Verification | ਤਸਦੀਕ | tasdeeq | T | Validation, confirmation |
+| Verification | ਤਸਦੀਕ | tasdīq | T | Validation, confirmation |
 | Standard | ਮਿਆਰ | miyār | T | Benchmark, criterion |
 | Requirement | ਲੋੜ | loṛ | T | Need, specification |
 | Architecture | ਆਰਕੀਟੈਕਚਰ | ārkīṭaikchar | L | System design |
@@ -191,11 +191,11 @@ A major inspiration for this glossary work is Sikhri's [Guru Granth Sahib Dictio
 - Translation notes with QA checklist and terminology decision log
 - Peer review plan for security researchers
 
-**Phase B (March–April 2026)** targets the core chapters: Architecture & Threat Modeling, Authentication, Session Management, and Access Control.
+**Phase B (in progress, 2026)** covers core chapters: Architecture & Threat Modeling, Authentication, Session Management, and Access Control. *What-is-the-ASVS* (0x03), *Assessment & Certification* (0x04), and *For Users of 4.0* (0x05) are bilingual; *V6 Authentication* (0x15) and *V8 Authorization* (0x17) are actively translating now.
 
-**Phase C (May–July 2026)** covers the remaining 13 security requirement chapters — everything from Cryptography to OAuth/OIDC.
+**Phase C** covers the remaining security-requirement chapters — Cryptography, OAuth/OIDC, Configuration, Data Protection, Secure Coding, Logging, WebRTC, and others.
 
-**Phase D (August 2026)** is appendices, final QA, PDF generation, and a 4-week community review window.
+**Phase D** is appendices, final QA, PDF generation, and a 4-week community review window.
 
 ## The Bigger Picture: Digital Seva
 
@@ -229,7 +229,7 @@ These specific terms need community input:
 
 | English | Current Choice | Alternative | Your Preference? |
 |---------|---------------|-------------|-----------------|
-| Verification | ਤਸਦੀਕ (tasdeeq) | ਪੜਤਾਲ (paṛtāl) | ? |
+| Verification | ਤਸਦੀਕ (tasdīq) | ਪੜਤਾਲ (paṛtāl) | ? |
 | Requirement | ਲੋੜ (loṛ) | ਸ਼ਰਤ (shart) | ? |
 | Vulnerability | ਕਮਜ਼ੋਰੀ (kamzorī) | ਖ਼ਾਮੀ (khāmī) | ? |
 | Threat Modeling | ਖ਼ਤਰਾ ਮਾਡਲਿੰਗ | ਖ਼ਤਰਾ ਨਮੂਨਾਕਰਨ | ? |
@@ -248,7 +248,7 @@ Security knowledge should be accessible to all.
 
 - **Security leaders:** Share this with Panjabi-speaking team members or forward the glossary to your localization team as a model for multilingual security documentation.
 - **Panjabi-speaking professionals:** Email gurvinder@securityleader.ai with "ASVS Panjabi Review" in the subject — even one term correction makes a difference.
-- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. Phase B chapters are coming March–April 2026.
+- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. Phase B chapters (V6 Authentication, V8 Authorization) are actively translating now and ready for in-progress review.
 
 ## Board Talking Points
 

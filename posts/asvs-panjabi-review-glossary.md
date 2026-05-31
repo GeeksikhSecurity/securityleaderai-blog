@@ -32,7 +32,7 @@ The practical question behind every classification: **if a Panjabi-speaking deve
 |---------|-------------------|--------------|------|---------|
 | Application | ਐਪਲੀਕੇਸ਼ਨ | aiplicaishan | L | Software application |
 | Security | ਸੁਰੱਖਿਆ | surakkhiā | T | Protection, safety |
-| Verification | ਤਸਦੀਕ | tasdeeq | T | Validation, confirmation |
+| Verification | ਤਸਦੀਕ | tasdīq | T | Validation, confirmation |
 | Standard | ਮਿਆਰ | miyār | T | Benchmark, criterion |
 | Requirement | ਲੋੜ | loṛ | T | Need, specification |
 | Architecture | ਆਰਕੀਟੈਕਚਰ | ārkīṭaikchar | L | System design |
@@ -142,7 +142,7 @@ These specific terms need community input. If you have a preference, include it 
 
 | English | Current Choice | Alternative | Your Preference? |
 |---------|---------------|-------------|-----------------|
-| Verification | ਤਸਦੀਕ (tasdeeq) | ਪੜਤਾਲ (paṛtāl) | ? |
+| Verification | ਤਸਦੀਕ (tasdīq) | ਪੜਤਾਲ (paṛtāl) | ? |
 | Requirement | ਲੋੜ (loṛ) | ਸ਼ਰਤ (shart) | ? |
 | Vulnerability | ਕਮਜ਼ੋਰੀ (kamzorī) | ਖ਼ਾਮੀ (khāmī) | ? |
 | Threat Modeling | ਖ਼ਤਰਾ ਮਾਡਲਿੰਗ | ਖ਼ਤਰਾ ਨਮੂਨਾਕਰਨ | ? |
