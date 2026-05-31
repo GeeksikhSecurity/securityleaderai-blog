@@ -2,16 +2,15 @@ import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
-  CalendarIcon,
-  ClockIcon,
   ShieldIcon,
   LayersIcon,
   PackageIcon,
   WorkflowIcon,
 } from '@/components/icons';
-import { ResearchCard } from '@/components/research-card';
-import { getPublicPosts } from '@/lib/posts';
+import { PostCard } from '@/components/post-card';
+import { getPublicPosts, getAvailableTranslations } from '@/lib/posts';
 import { getResearchItems, getResearchTopics } from '@/lib/research';
+import { LOCALES, LOCALE_META } from '@/lib/locales';
 
 const topicIcons = {
   shield: ShieldIcon,
@@ -74,9 +73,24 @@ export default function Home() {
           </div>
 
           <div className="grid grid-3">
-            {researchHighlights.map((item) => (
-              <ResearchCard key={item.slug} {...item} />
-            ))}
+            {researchHighlights.map((item) => {
+              // ResearchItem.readTime is a string (e.g. "4"); PostCard expects
+              // a number. Coerce safely, falling back to undefined on parse-fail.
+              const minutes = item.readTime ? Number.parseInt(item.readTime, 10) : undefined;
+              return (
+                <PostCard
+                  key={item.slug}
+                  href={`/research/${item.slug}`}
+                  title={item.title}
+                  excerpt={item.summary}
+                  date={item.date}
+                  readingTime={Number.isFinite(minutes) ? minutes : undefined}
+                  type={item.type}
+                  tags={item.tags}
+                  ctaLabel="Read research →"
+                />
+              );
+            })}
           </div>
         </div>
       </section>
@@ -123,48 +137,58 @@ export default function Home() {
 
       <section className="py-20 bg-neutral-50">
         <div className="container flex flex-col gap-10">
-          <div>
-            <h2>Latest insights</h2>
-            <p className="text-muted mb-0">
-              Strategic viewpoints for CISOs, AI security leads, and product teams.
-            </p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2>Latest insights</h2>
+              <p className="text-muted mb-0">
+                Strategic viewpoints for CISOs, AI security leads, and product teams.
+              </p>
+            </div>
+            {/* Site-wide language CTAs — discoverability of pa-in posts from the homepage. */}
+            <div className="flex flex-wrap items-center gap-3 text-sm">
+              <span className="text-muted" aria-hidden="true">🌐</span>
+              <span className="text-muted">Read in:</span>
+              <Link href="/blog" className="font-semibold text-primary-700 link-underline">
+                English
+              </Link>
+              {LOCALES.map((locale) => (
+                <span key={locale} className="inline-flex items-center gap-3">
+                  <span className="text-muted" aria-hidden="true">·</span>
+                  <Link
+                    href={`/blog/${locale}`}
+                    hrefLang={LOCALE_META[locale].hreflang}
+                    className="text-primary-600 link-underline"
+                  >
+                    {LOCALE_META[locale].nativeName}
+                  </Link>
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-3">
             {posts.map((post) => (
-              <Card
+              <PostCard
                 key={post.slug}
-                className="group card-clickable h-full flex flex-col gap-4"
-              >
-                <span className="badge badge-primary w-fit !normal-case">
-                  Insight
-                </span>
-                <div className="space-y-3">
-                  <h3 className="text-xl text-primary-800 group-hover:text-primary-600">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted text-sm line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-4 small text-muted">
-                  <span className="inline-flex items-center gap-2">
-                    <CalendarIcon className="h-4 w-4 text-primary-600" />
-                    {post.date}
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <ClockIcon className="h-4 w-4 text-primary-600" />
-                    {post.readingTime} min read
-                  </span>
-                </div>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="mt-auto text-primary-600 link-underline"
-                >
-                  Read article →
-                </Link>
-              </Card>
+                href={`/blog/${post.slug}`}
+                title={post.title}
+                excerpt={post.excerpt}
+                date={post.date}
+                readingTime={post.readingTime}
+                type="insight"
+                tags={post.tags}
+                availableLocales={getAvailableTranslations(post.slug)}
+              />
             ))}
+          </div>
+
+          <div className="flex justify-end">
+            <Link
+              href="/blog"
+              className={buttonVariants({ variant: 'secondary', size: 'sm' })}
+            >
+              View all insights →
+            </Link>
           </div>
         </div>
       </section>

@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { Card } from '@/components/ui/card';
-import { CalendarIcon, ClockIcon } from '@/components/icons';
+import { PostCard } from '@/components/post-card';
 import { getPublicPosts, getAvailableTranslations } from '@/lib/posts';
-import { LOCALE_META, LOCALES, postUrl } from '@/lib/locales';
+import { LOCALE_META, LOCALES } from '@/lib/locales';
 
 export default function BlogPage() {
   const posts = getPublicPosts();
@@ -44,52 +43,19 @@ export default function BlogPage() {
         </div>
 
         <div className="grid grid-3">
-          {posts.map((post) => {
-            const siblings = getAvailableTranslations(post.slug);
-            const href = `/blog/${post.slug}`;
-            return (
-              <Link
-                key={post.slug}
-                href={href}
-                aria-label={`Read: ${post.title}`}
-                className="block focus:outline-none"
-              >
-                <Card className="group card-clickable h-full flex flex-col gap-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="badge badge-primary !normal-case">Insight</span>
-                    {siblings.map((locale) => (
-                      <span
-                        key={locale}
-                        className="badge badge-outline !normal-case"
-                        title={`Also available in ${LOCALE_META[locale].englishName}`}
-                      >
-                        {LOCALE_META[locale].nativeName}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="text-xl text-primary-800 group-hover:text-primary-600 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted text-sm line-clamp-3">{post.excerpt}</p>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-4 small text-muted">
-                    <span className="inline-flex items-center gap-2">
-                      <CalendarIcon className="h-4 w-4 text-primary-600" />
-                      {post.date}
-                    </span>
-                    <span className="inline-flex items-center gap-2">
-                      <ClockIcon className="h-4 w-4 text-primary-600" />
-                      {post.readingTime} min read
-                    </span>
-                  </div>
-                  <span className="mt-auto text-primary-600 link-underline group-hover:text-primary-700">
-                    Read article →
-                  </span>
-                </Card>
-              </Link>
-            );
-          })}
+          {posts.map((post) => (
+            <PostCard
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              title={post.title}
+              excerpt={post.excerpt}
+              date={post.date}
+              readingTime={post.readingTime}
+              type="insight"
+              tags={post.tags}
+              availableLocales={getAvailableTranslations(post.slug)}
+            />
+          ))}
         </div>
 
         {/* Footer cross-link to each locale index. */}
