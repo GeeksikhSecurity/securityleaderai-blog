@@ -11,7 +11,7 @@ translation_status: "human_reviewed"
 
 *What happens when 130 million speakers can finally read the security requirements their applications need to meet?*
 
-> **Executive Summary:** The OWASP Application Security Verification Standard (ASVS) 5.0 — the global benchmark for application security requirements — now has its first-ever Panjabi translation underway. Using a bilingual English/Gurmukhi format with a 70-term security glossary, this open-source project (PR #3254) makes 350 security requirements accessible to Panjabi-speaking developers and security professionals worldwide. Phase A is complete; Phase B is actively in progress on V6 Authentication and V8 Authorization. Reviewers needed — no GitHub experience required.
+> **Executive Summary:** The OWASP Application Security Verification Standard (ASVS) 5.0 — the global benchmark for application security requirements — now has its first-ever Panjabi translation underway, and the first translation into any South Asian language. Using a bilingual English/Gurmukhi format with a 70-term security glossary, this open-source project (PR #3254) makes 350 security requirements accessible to Panjabi-speaking developers and security professionals worldwide. Eight chapters are complete and bilingual; two more are in progress. Reviewers needed — no GitHub experience required.
 
 There are over 130 million Panjabi speakers worldwide. Until now, none of them could read the OWASP Application Security Verification Standard in their own language.
 
@@ -183,19 +183,30 @@ A major inspiration for this glossary work is Sikhri's [Guru Granth Sahib Dictio
 
 ## What's Done, What's Next
 
-**Phase A is complete** and live in [PR #3254](https://github.com/OWASP/ASVS/pull/3254):
+As of this update, **eight chapters are bilingual and complete**, two more are actively in progress, and the work is live in [PR #3254](https://github.com/OWASP/ASVS/pull/3254):
 
-- Bilingual title page with full project credits
-- Bilingual introduction covering ASVS 5.0 principles, levels, and scope
-- 100+ term security glossary with Gurmukhi translations and romanization
-- Translation notes with QA checklist and terminology decision log
-- Peer review plan for security researchers
+**Complete (8):**
 
-**Phase B (in progress, 2026)** covers core chapters: Architecture & Threat Modeling, Authentication, Session Management, and Access Control. *What-is-the-ASVS* (0x03), *Assessment & Certification* (0x04), and *For Users of 4.0* (0x05) are bilingual; *V6 Authentication* (0x15) and *V8 Authorization* (0x17) are actively translating now.
+- Frontispiece — bilingual title page with full project credits
+- Preface — ASVS 5.0 principles, levels, and scope
+- Assessment & Certification
+- For Users of 4.0 (changes from v4.x)
+- V5 File Handling
+- V8 Authorization
+- V9 Self-contained Tokens
+- V12 Secure Communication
 
-**Phase C** covers the remaining security-requirement chapters — Cryptography, OAuth/OIDC, Configuration, Data Protection, Secure Coding, Logging, WebRTC, and others.
+**In progress (2):** What-is-the-ASVS (0x03) and V6 Authentication (0x15) — headings and structure are bilingual; bodies are being completed now.
 
-**Phase D** is appendices, final QA, PDF generation, and a 4-week community review window.
+**Supporting material:** a 70-term security glossary with Gurmukhi translations and IAST romanization, a translation-rules file encoding the Gurmat language constraints and dictionary-lookup order, a reviewer-notes briefing, and an open-questions log tracking every deferred terminology decision.
+
+**Still to come:** the remaining security-requirement chapters (Encoding, Validation, Web Frontend, API, Session Management, OAuth/OIDC, Cryptography, Configuration, Data Protection, Secure Coding, Logging, WebRTC) plus appendices, final QA, and a community review window. Cadence is two to three chapters a week, smallest-first.
+
+### Built for review, in the open
+
+Every chapter ships under a review-in-public model. An adversarial QA pass (run with the latest Claude Opus model) checks each chapter for script purity, terminology consistency, sentence-end orthography, and the Gurmat language constraints before it lands. The corpus is currently clean on all mechanical checks — the open items are genuine translation-judgment calls that *need human eyes*, which is exactly where you come in.
+
+The single biggest open decision right now is structural: should every chapter use a full dual-block layout (English first, complete Panjabi mirror below), or a more compact code-switched style for the introductory chapters? That choice shapes the whole standard, and it's deliberately left open for the community to weigh in on. The full comparison, plus eleven terminology questions, lives in the [open-questions log on the PR](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/OPEN-QUESTIONS.md).
 
 ## The Bigger Picture: Digital Seva
 
@@ -213,7 +224,7 @@ See a term that should be translated differently? Spot a Gurmukhi error? Just em
 
 ### Option 2: GitHub PR Review (For the Git-comfortable)
 
-Open [PR #3254](https://github.com/OWASP/ASVS/pull/3254), click "Files changed," and leave inline comments on any file in `5.0/pa-IN/`.
+Open [PR #3254](https://github.com/OWASP/ASVS/pull/3254), click "Files changed," and leave inline comments on any file in `5.0/pa-IN/`. Start with the [reviewer-notes briefing](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/REVIEWER-NOTES.md) — it tells you which chapters are ready, what to look for, and where the open decisions are.
 
 ### What Reviewers Should Focus On
 
