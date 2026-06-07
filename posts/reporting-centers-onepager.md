@@ -1,7 +1,7 @@
 ---
 title: "Where to Report Cyber Fraud — Global Directory"
 date: "2026-05-27"
-excerpt: "Official government cybercrime reporting agencies across five regions — US, Canada, UK, Australia, India. Verified URLs, phone numbers, and what each agency handles. Bilingual companion post in Panjabi linked at top."
+excerpt: "Official cybercrime reporting agencies across five regions — US, Canada, UK, Australia, India: verified URLs, phone numbers, and what each handles. Bilingual Panjabi companion linked at top."
 author: "Gurvinder Singh"
 tags: ["fraud", "cybercrime", "reporting", "digital-seva", "awareness"]
 translation_status: "human_reviewed"

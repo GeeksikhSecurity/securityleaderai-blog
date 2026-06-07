@@ -1,7 +1,7 @@
 ---
 title: "Why I'm Translating OWASP's Security Standard Into Panjabi — And Why It Matters"
 date: "2026-02-26"
-excerpt: "The OWASP Application Security Verification Standard reaches 130+ million Panjabi speakers for the first time, through a bilingual translation that keeps technical precision intact while making security accessible in Gurmukhi script. Includes the complete security terminology glossary."
+excerpt: "The OWASP ASVS reaches 130+ million Panjabi speakers for the first time — a bilingual Gurmukhi translation that keeps technical precision while making security requirements accessible."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "application-security", "open-source", "diversity-in-security", "glossary"]
 translation_status: "human_reviewed"

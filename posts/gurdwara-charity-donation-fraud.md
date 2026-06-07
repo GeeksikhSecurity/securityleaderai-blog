@@ -1,7 +1,7 @@
 ---
 title: "Gurdwara & Charity Donation Fraud — Protecting the Seva Ecosystem"
 date: "2026-05-28"
-excerpt: "A GoFundMe campaign appears in your family WhatsApp group — Langar fund for the local gurdwara, urgent need, please donate. The campaign looks real. The gurdwara knows nothing about it. This post explains how charity fraud targets our community's spirit of seva — and the one verification step that defeats it."
+excerpt: "A fake Langar/gurdwara fundraiser spreads in your family WhatsApp — it looks real, but the gurdwara knows nothing of it. How charity fraud exploits seva, and the one check that defeats it."
 author: "Gurvinder Singh"
 tags: ["charity-fraud", "gurdwara", "sikh-community", "digital-seva", "vand-chhakna"]
 translation_status: "human_reviewed"

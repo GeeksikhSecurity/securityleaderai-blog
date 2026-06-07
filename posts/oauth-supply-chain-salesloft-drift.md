@@ -1,7 +1,7 @@
 ---
 title: "Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist"
 date: "2026-02-08"
-excerpt: "Analysis of the UNC6395 campaign that weaponized OAuth tokens from Salesloft/Drift to access 700+ Salesforce environments, bypassing MFA entirely. A forensic deconstruction with GWAPT-aligned penetration testing methodology."
+excerpt: "How the UNC6395 campaign weaponized OAuth tokens from Salesloft/Drift to reach 700+ Salesforce environments, bypassing MFA — a forensic breakdown with GWAPT-aligned penetration-testing methodology."
 author: "Gurvinder Singh"
 tags: ["OAuth Security", "Supply Chain", "Identity Security", "MITRE ATT&CK", "Penetration Testing"]
 ---

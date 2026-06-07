@@ -1,7 +1,7 @@
 ---
 title: "Tech Support Scams Target Our Elders — What Every Panjabi Family Needs to Know"
 date: "2026-05-28"
-excerpt: "A Microsoft technician calls — the caller ID says MICROSOFT SUPPORT. Your parent hands over remote access. Within minutes, their bank account is drained. This post explains exactly how tech support scams work, and the single rule that defeats every one of them."
+excerpt: "A caller claims to be Microsoft Support; your parent grants remote access and their bank account is drained. How tech-support scams work — and the single rule that defeats every one."
 author: "Gurvinder Singh"
 tags: ["scam-awareness", "elder-safety", "digital-seva", "tech-support-fraud", "fbi-ic3"]
 translation_status: "human_reviewed"

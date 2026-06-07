@@ -1,7 +1,7 @@
 ---
 title: "The Pipeline Is the Perimeter — and GitHub Just Admitted It"
 date: "2026-04-12"
-excerpt: "GitHub's 2026 Actions security roadmap confirms what CVE-2025-30066 proved: your CI/CD pipeline is a Tier-0 attack surface. SHA pinning, OIDC federation, and immutable releases are no longer optional. Here's what to do this week."
+excerpt: "GitHub's 2026 Actions roadmap confirms what CVE-2025-30066 proved: your CI/CD pipeline is a Tier-0 attack surface. SHA pinning, OIDC, and immutable releases are no longer optional — here's what to do."
 author: "Gurvinder Singh"
 tags: ["Supply Chain Security", "GitHub Actions", "CI/CD Security", "OIDC", "DevSecOps"]
 ---

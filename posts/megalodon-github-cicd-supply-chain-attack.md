@@ -1,7 +1,7 @@
 ---
 title: "Megalodon — What 5,718 Backdoored GitHub Repositories Reveal About CI/CD as Attack Surface"
 date: "2026-05-28"
-excerpt: "On May 18, 2026, an automated campaign designated Megalodon pushed 5,718 malicious commits across 5,561 GitHub repositories in six hours, weaponizing GitHub Actions to exfiltrate cloud credentials, OIDC tokens, and source-code secrets to a single command-and-control endpoint. No software vulnerability was exploited. The attack surface was developer trust in commit messages that look like routine CI maintenance — and the operational reality that CI pipelines already hold root-equivalent access to everything an organization values."
+excerpt: "On 18 May 2026, Megalodon pushed 5,718 malicious commits to 5,561 GitHub repos in six hours, abusing GitHub Actions to steal cloud credentials, OIDC tokens, and secrets. No exploit — just trust in CI."
 category: "Supply Chain Research"
 authors:
   - name: "Gurvinder Singh"

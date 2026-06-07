@@ -1,7 +1,7 @@
 ---
 title: "WhatsApp Family Emergency Scams — 'I Have a New Number'"
 date: "2026-05-28"
-excerpt: "A WhatsApp message arrives from an unknown number: 'Mummy, my phone broke, this is my new number, I need money urgently.' The message sounds exactly like your child. This is the most common scam hitting Panjabi family groups right now — and there is one rule that defeats it every time."
+excerpt: "'Mummy, my phone broke, this is my new number, I need money urgently' — it sounds exactly like your child. The scam hitting Panjabi family WhatsApp groups now, and the one rule that defeats it."
 author: "Gurvinder Singh"
 tags: ["whatsapp", "scam-awareness", "family-safety", "digital-seva", "impersonation-fraud"]
 translation_status: "human_reviewed"

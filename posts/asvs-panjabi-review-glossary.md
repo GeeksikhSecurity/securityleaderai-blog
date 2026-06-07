@@ -1,7 +1,7 @@
 ---
 title: "ASVS Panjabi Review — Glossary (ਸ਼ਬਦਾਵਲੀ)"
 date: "2026-02-26"
-excerpt: "100+ security terms translated into Panjabi (Gurmukhi) for the OWASP ASVS 5.0 translation. Includes pronunciation guide, translation approach classification, and open terminology questions for community review."
+excerpt: "100+ OWASP ASVS 5.0 security terms translated into Panjabi (Gurmukhi), with pronunciation, translation-approach classification, and open terminology questions for community review."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "review", "glossary"]
 hidden: true
