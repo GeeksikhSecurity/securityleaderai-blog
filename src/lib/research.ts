@@ -230,6 +230,9 @@ export function getResearchItems(
 
       return haystack.includes(normalizedQuery);
     })
+    // Newest first, so homepage "Latest research" is consistent with the
+    // date-sorted "Latest insights" section (both surface the most recent).
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .map(
       ({
         slug,
@@ -257,31 +260,28 @@ export function getResearchArticle(slug: string): ResearchArticle | undefined {
   return researchArticles.find((article) => article.slug === slug);
 }
 
+/**
+ * Topic definitions with a keyword matcher. Counts are DERIVED from the live
+ * research corpus so the "Research by topic" cards can never drift out of sync
+ * with what's actually published. (Kept dependency-free — research.ts is also
+ * imported by client components, so it must not pull in `fs`/posts.ts.)
+ */
+const TOPIC_DEFS = [
+  { name: 'LLM Threats', slug: 'llm-security', icon: 'shield', match: /\b(llm|ai security|threat model|prompt injection|agent)\b/i },
+  { name: 'Model Context Protocol', slug: 'mcp', icon: 'layers', match: /\bmcp\b|model context protocol/i },
+  { name: 'Supply Chain', slug: 'supply-chain', icon: 'package', match: /supply.?chain|oauth|dependency|sbom|provenance/i },
+  { name: 'Automation & Tools', slug: 'automation', icon: 'workflow', match: /automation|tooling|scanner|pipeline|ci\/?cd|framework/i },
+] as const;
+
 export function getResearchTopics() {
-  return [
-    {
-      name: 'LLM Threats',
-      slug: 'llm-security',
-      icon: 'shield',
-      count: 4,
-    },
-    {
-      name: 'Model Context Protocol',
-      slug: 'mcp',
-      icon: 'layers',
-      count: 3,
-    },
-    {
-      name: 'Supply Chain',
-      slug: 'supply-chain',
-      icon: 'package',
-      count: 4,
-    },
-    {
-      name: 'Automation & Tools',
-      slug: 'automation',
-      icon: 'workflow',
-      count: 4,
-    },
-  ];
+  const corpus = researchArticles.map((a) =>
+    [a.title, a.summary, a.tags.join(' '), a.type].join(' '),
+  );
+
+  return TOPIC_DEFS.map((t) => ({
+    name: t.name,
+    slug: t.slug,
+    icon: t.icon,
+    count: corpus.filter((entry) => t.match.test(entry)).length,
+  }));
 }

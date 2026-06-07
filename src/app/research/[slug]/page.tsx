@@ -1,6 +1,15 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
+import { JsonLd } from '@/components/json-ld';
+import {
+  SITE_ORIGIN,
+  buildArticleMetadata,
+  articleJsonLd,
+  breadcrumbJsonLd,
+  toIsoDate,
+} from '@/lib/seo';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
@@ -29,6 +38,27 @@ const typeLabels: Record<ResearchType, string> = {
   tool: 'Tool / Framework',
 };
 
+export async function generateMetadata({
+  params,
+}: ResearchArticlePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getResearchArticle(slug);
+  if (!article) return {};
+
+  return {
+    ...buildArticleMetadata({
+      title: article.title,
+      description: article.summary,
+      urlPath: `/research/${slug}`,
+      locale: 'en',
+      publishedTime: toIsoDate(article.date),
+      tags: article.tags,
+      image: article.heroImage,
+    }),
+    alternates: { canonical: `${SITE_ORIGIN}/research/${slug}` },
+  };
+}
+
 export default async function ResearchArticle({ params }: ResearchArticlePageProps) {
   const { slug } = await params;
   const article = getResearchArticle(slug);
@@ -39,6 +69,25 @@ export default async function ResearchArticle({ params }: ResearchArticlePagePro
 
   return (
     <article className="bg-neutral-50">
+      <JsonLd
+        data={[
+          articleJsonLd({
+            title: article.title,
+            description: article.summary,
+            urlPath: `/research/${slug}`,
+            locale: 'en',
+            datePublished: toIsoDate(article.date),
+            tags: article.tags,
+            image: article.heroImage,
+            section: typeLabels[article.type] ?? article.type,
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', urlPath: '/' },
+            { name: 'Research', urlPath: '/research' },
+            { name: article.title, urlPath: `/research/${slug}` },
+          ]),
+        ]}
+      />
       <ScrollProgress />
 
       <div className="article-accent-line" />

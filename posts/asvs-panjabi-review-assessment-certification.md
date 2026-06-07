@@ -1,6 +1,6 @@
 ---
 title: "ASVS Panjabi Review — Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ)"
-date: "2026-06-06"
+date: "2026-06-07"
 excerpt: "Bilingual chapter on assessment and certification from the OWASP ASVS 5.0 Panjabi translation, in English and Gurmukhi."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "review"]

@@ -1,6 +1,6 @@
 ---
 title: "ASVS Panjabi Review — V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ)"
-date: "2026-06-06"
+date: "2026-06-07"
 excerpt: "Bilingual V12 Secure Communication requirements from the OWASP ASVS 5.0 Panjabi translation, in English and Gurmukhi."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "review"]

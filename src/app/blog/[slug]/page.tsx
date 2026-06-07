@@ -11,9 +11,14 @@ import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
 import { LocaleBlogIndex } from '@/components/locale-blog-index';
 import { AuthorByline } from '@/components/author-byline';
+import { JsonLd } from '@/components/json-ld';
 import { LOCALE_META, LOCALES, isLocale, postUrl } from '@/lib/locales';
-
-const SITE_ORIGIN = 'https://securityleader.ai';
+import {
+  SITE_ORIGIN,
+  buildArticleMetadata,
+  articleJsonLd,
+  breadcrumbJsonLd,
+} from '@/lib/seo';
 
 export async function generateStaticParams() {
   // This route handles two URL shapes that share the same dynamic segment
@@ -67,9 +72,18 @@ export async function generateMetadata({
     languages[LOCALE_META[loc].hreflang] = `${SITE_ORIGIN}${postUrl(slug, loc)}`;
   }
 
+  const authorNames = post.authors?.map((a) => a.name) ?? (post.author ? [post.author] : undefined);
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    ...buildArticleMetadata({
+      title: post.title,
+      description: post.excerpt,
+      urlPath: postUrl(slug, 'en'),
+      locale: 'en',
+      publishedTime: post.date,
+      tags: post.tags,
+      authorNames,
+    }),
     alternates: {
       canonical: `${SITE_ORIGIN}${postUrl(slug, 'en')}`,
       languages,
@@ -100,8 +114,29 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     .process(contentWithoutH1);
   const contentHtml = processedContent.toString();
 
+  const authorNames = post.authors?.map((a) => a.name) ?? (post.author ? [post.author] : undefined);
+
   return (
     <article className="bg-neutral-50">
+      <JsonLd
+        data={[
+          articleJsonLd({
+            title: post.title,
+            description: post.excerpt,
+            urlPath: postUrl(slug, 'en'),
+            locale: 'en',
+            datePublished: post.date,
+            tags: post.tags,
+            authorNames,
+            section: post.category,
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', urlPath: '/' },
+            { name: 'Blog', urlPath: '/blog' },
+            { name: post.title, urlPath: postUrl(slug, 'en') },
+          ]),
+        ]}
+      />
       <ScrollProgress />
 
       <div className="article-accent-line" />

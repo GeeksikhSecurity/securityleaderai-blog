@@ -1,6 +1,6 @@
 ---
 title: "ASVS Panjabi Review — V5 File Handling (V5 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ)"
-date: "2026-06-06"
+date: "2026-06-07"
 excerpt: "Bilingual V5 File Handling requirements from the OWASP ASVS 5.0 Panjabi translation, in English and Gurmukhi."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "review"]

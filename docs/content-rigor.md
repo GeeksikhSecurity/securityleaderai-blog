@@ -46,6 +46,8 @@ Locales follow BCP 47 (`pa-in` for Panjabi/India Gurmukhi). The locale dir-name 
 | R21 | `pa-in` standalone fraud term uses `ਠੱਗੀ` (not `ਫ਼ਰਾਡ` / `ਘੋਟਾਲਾ`); `ਰੋਮਾਂਸ ਫ਼ਰਾਡ` is the sole hybrid exception | Translation | **AUTO** |
 | R22 | `pa-in` "community" uses `ਭਾਈਚਾਰਾ` (not `ਸੰਗਤ` / `ਸਮਾਜ`) outside named Sikh religious contexts | Translation | **REVIEW** |
 | R23 | `pa-in` romanization uses IAST canonical (`ṭhaggī`, `tasdīq`, `naklī`); no `thaggee` / `tasdeeq` / `naklee` style | Translation | **AUTO** |
+| R24 | `excerpt` length 50–200 chars (drives `<meta description>` + `og:description`) | SEO | **AUTO (notice)** |
+| R25 | `tags` count 2–8 (drives keywords, article tags, topic mapping) | SEO | **AUTO (notice)** |
 
 ---
 
@@ -247,6 +249,16 @@ CI runs `npm run lint:content` on every PR and every push to `main`. Failures bl
 3. If it changes the lint contract, bump rule IDs only at the end (do not renumber — IDs are referenced from commits).
 4. Add a fixture under `tests/content-rigor/` if the logic is non-trivial.
 
+## R24 — SEO description length  **AUTO (notice)**
+
+`excerpt` is the single source for the page's `<meta name="description">` and `og:description` (see `src/lib/seo.ts` → `buildArticleMetadata`). Aim for **50–200 characters**: under 50 is too thin for search/answer-engine snippets; over ~200 gets truncated. Notice-only — it never blocks a build, it flags drift.
+
+## R25 — SEO tag count  **AUTO (notice)**
+
+`tags` drive `keywords`, OpenGraph `article:tag`, the schema.org `keywords` field, and the "Research by topic" counts. Aim for **2–8** tags: one is too sparse to map to a topic; more than eight dilutes relevance. Notice-only.
+
+> R24–R25 encode the inputs that `src/lib/seo.ts`, `src/app/sitemap.ts`, and `src/app/robots.ts` turn into machine-readable metadata for search engines and answer-engine LLM crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). Keep them green so every post is citable.
+
 ## Allowlisting a known false positive
 
 Add an HTML comment on the offending line:
@@ -261,4 +273,4 @@ The lint reads inline `<!-- rigor: allow R# -->` markers and skips the matching 
 
 ## Authored by
 
-Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.0` — 2026-05-28.
+Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.1` — 2026-06-07 (added R24–R25 SEO/LLM metadata rules).

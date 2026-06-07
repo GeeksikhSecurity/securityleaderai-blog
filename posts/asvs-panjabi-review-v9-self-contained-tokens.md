@@ -1,6 +1,6 @@
 ---
 title: "ASVS Panjabi Review — V9 Self-contained Tokens (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ)"
-date: "2026-06-06"
+date: "2026-06-07"
 excerpt: "Bilingual V9 Self-contained Tokens requirements from the OWASP ASVS 5.0 Panjabi translation, in English and Gurmukhi."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "review"]

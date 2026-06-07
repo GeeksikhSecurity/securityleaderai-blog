@@ -16,8 +16,13 @@ import { ScrollProgress } from '@/components/scroll-progress';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
 import { AuthorByline } from '@/components/author-byline';
-
-const SITE_ORIGIN = 'https://securityleader.ai';
+import { JsonLd } from '@/components/json-ld';
+import {
+  SITE_ORIGIN,
+  buildArticleMetadata,
+  articleJsonLd,
+  breadcrumbJsonLd,
+} from '@/lib/seo';
 
 /**
  * Locale-prefixed post page: /blog/<locale>/<post-slug>
@@ -61,9 +66,18 @@ export async function generateMetadata({
   };
   alternates[LOCALE_META[localeSegment].hreflang] = `${SITE_ORIGIN}${postUrl(postSlug, localeSegment)}`;
 
+  const authorNames = post.authors?.map((a) => a.name) ?? (post.author ? [post.author] : undefined);
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    ...buildArticleMetadata({
+      title: post.title,
+      description: post.excerpt,
+      urlPath: postUrl(postSlug, localeSegment),
+      locale: localeSegment,
+      publishedTime: post.date,
+      tags: post.tags,
+      authorNames,
+    }),
     alternates: {
       canonical: `${SITE_ORIGIN}${postUrl(postSlug, localeSegment)}`,
       languages: alternates,
@@ -103,8 +117,30 @@ export default async function LocaleBlogPost({
     (l) => l !== validLocale && translationExists(postSlug, l),
   );
 
+  const authorNames = post.authors?.map((a) => a.name) ?? (post.author ? [post.author] : undefined);
+
   return (
     <article className="bg-neutral-50" lang={meta.hreflang}>
+      <JsonLd
+        data={[
+          articleJsonLd({
+            title: post.title,
+            description: post.excerpt,
+            urlPath: postUrl(postSlug, validLocale),
+            locale: validLocale,
+            datePublished: post.date,
+            tags: post.tags,
+            authorNames,
+            section: post.category,
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', urlPath: '/' },
+            { name: 'Blog', urlPath: '/blog' },
+            { name: meta.nativeName, urlPath: `/blog/${validLocale}` },
+            { name: post.title, urlPath: postUrl(postSlug, validLocale) },
+          ]),
+        ]}
+      />
       <ScrollProgress />
 
       <div className="article-accent-line" />

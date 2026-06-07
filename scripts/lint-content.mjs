@@ -195,6 +195,19 @@ function lintFrontmatter(doc, parsed) {
   if (date && !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     reportErr('R11', doc.path, 1, `date "${date}" is not ISO YYYY-MM-DD`);
   }
+  // R24 — SEO description length: excerpt feeds <meta description> + og:description.
+  const excerpt = parsed.frontmatter.excerpt;
+  if (typeof excerpt === 'string' && excerpt !== '') {
+    const len = excerpt.length;
+    if (len < 50 || len > 200) {
+      reportNotice('R24', doc.path, 1, `excerpt is ${len} chars; aim for 50–200 for SEO/OpenGraph description quality`);
+    }
+  }
+  // R25 — SEO tag count: tags feed keywords, og:article:tag, JSON-LD, topic counts.
+  const tags = parsed.frontmatter.tags;
+  if (Array.isArray(tags) && (tags.length < 2 || tags.length > 8)) {
+    reportNotice('R25', doc.path, 1, `${tags.length} tag(s); aim for 2–8 for SEO keywords + topic mapping`);
+  }
 }
 
 function lintBodyShared(doc, parsed) {

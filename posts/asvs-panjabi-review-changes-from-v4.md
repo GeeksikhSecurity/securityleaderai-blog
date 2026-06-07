@@ -1,6 +1,6 @@
 ---
 title: "ASVS Panjabi Review — Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ)"
-date: "2026-06-06"
+date: "2026-06-07"
 excerpt: "Bilingual guide to what changed from ASVS v4.x, from the OWASP ASVS 5.0 Panjabi translation, in English and Gurmukhi."
 author: "Gurvinder Singh"
 tags: ["owasp", "asvs", "panjabi", "translation", "review"]
