@@ -1,0 +1,24 @@
+posts/owasp-asvs-panjabi-translation.md
+  s_cf58c4b00ea3fb::t_0ad3e6c183872f 283,287-292
+posts/asvs-panjabi-review-hub.md
+  s_cf58c4b00ea3fb::t_6412bfaafb15ba 62-63
+  s_cf58c4b00ea3fb::t_667d1ba4193944 24,28-36
+posts/asvs-panjabi-review-glossary.md
+  s_cf58c4b00ea3fb::t_84b0fc51fbc57c 154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "68c4eea582599abe0ca2c4e084f35355361b75d3",
+  "prompts": {},
+  "sessions": {
+    "s_cf58c4b00ea3fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3653105d-d550-4ca8-9791-7e7412030740",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
