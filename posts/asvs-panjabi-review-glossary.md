@@ -151,4 +151,4 @@ These specific terms need community input. If you have a preference, include it 
 
 ---
 
-[← Previous: Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface) | [Back to Review Hub](/blog/asvs-panjabi-review-hub)
+[← Previous: V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ)](/blog/asvs-panjabi-review-v12-secure-communication) | [Back to Review Hub](/blog/asvs-panjabi-review-hub)

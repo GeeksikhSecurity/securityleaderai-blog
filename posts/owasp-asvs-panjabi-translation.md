@@ -280,10 +280,16 @@ Security knowledge should be accessible to all.
 - [OWASP ASVS 5.0](https://github.com/OWASP/ASVS)
 - [Guru Granth Sahib Dictionary (Sikhri)](https://gurugranthsahibdictionary.io/) — inspiration for Gurmukhi digital accessibility
 
-**Read and review the translated content:**
+**Read and review the translated content** (no GitHub account needed):
 - [Review Hub — Start Here](/blog/asvs-panjabi-review-hub)
 - [Title Page (ਮੁੱਖ ਪੰਨਾ)](/blog/asvs-panjabi-review-frontispiece)
 - [Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface)
+- [Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ)](/blog/asvs-panjabi-review-assessment-certification)
+- [Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ)](/blog/asvs-panjabi-review-changes-from-v4)
+- [V5 File Handling (V5 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v5-file-handling)
+- [V8 Authorization (V8 ਅਧਿਕਾਰੀਕਰਨ)](/blog/asvs-panjabi-review-v8-authorization)
+- [V9 Self-contained Tokens (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ)](/blog/asvs-panjabi-review-v9-self-contained-tokens)
+- [V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ)](/blog/asvs-panjabi-review-v12-secure-communication)
 - [Glossary (ਸ਼ਬਦਾਵਲੀ)](/blog/asvs-panjabi-review-glossary)
 - [Translation Notes](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/TRANSLATION-NOTES.md)
 - [Review Plan](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/REVIEW-PLAN.md)

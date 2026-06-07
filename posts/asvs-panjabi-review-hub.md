@@ -21,13 +21,19 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 
 ## What to Review
 
-Phase A is complete. Three documents are ready for review:
+**Eight bilingual chapters are ready for review**, plus the glossary. Read them in any order:
 
 | Document | What It Contains | Link |
 |----------|-----------------|------|
-| **Title Page** (ਮੁੱਖ ਪੰਨਾ) | Project credits, copyright, license, contributors | [Read Title Page](/blog/asvs-panjabi-review-frontispiece) |
-| **Introduction** (ਮੁਖਬੰਧ) | ASVS 5.0 introduction, principles, levels, scope | [Read Introduction](/blog/asvs-panjabi-review-preface) |
-| **Glossary** (ਸ਼ਬਦਾਵਲੀ) | 70 security terms with Gurmukhi translations | [Read Glossary](/blog/asvs-panjabi-review-glossary) |
+| **Title Page** (ਮੁੱਖ ਪੰਨਾ) | Project credits, copyright, license, contributors | [Read](/blog/asvs-panjabi-review-frontispiece) |
+| **Introduction** (ਮੁਖਬੰਧ) | ASVS 5.0 introduction, principles, levels, scope | [Read](/blog/asvs-panjabi-review-preface) |
+| **Assessment & Certification** (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ) | How ASVS is assessed and certified | [Read](/blog/asvs-panjabi-review-assessment-certification) |
+| **Changes from v4.x** (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ) | What changed for users of ASVS 4.0 | [Read](/blog/asvs-panjabi-review-changes-from-v4) |
+| **V5 File Handling** (V5 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ) | File upload, storage, and download requirements | [Read](/blog/asvs-panjabi-review-v5-file-handling) |
+| **V8 Authorization** (V8 ਅਧਿਕਾਰੀਕਰਨ) | Access control and authorization requirements | [Read](/blog/asvs-panjabi-review-v8-authorization) |
+| **V9 Self-contained Tokens** (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ) | JWT / self-contained token validation requirements | [Read](/blog/asvs-panjabi-review-v9-self-contained-tokens) |
+| **V12 Secure Communication** (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ) | TLS and secure communication requirements | [Read](/blog/asvs-panjabi-review-v12-secure-communication) |
+| **Glossary** (ਸ਼ਬਦਾਵਲੀ) | 70 security terms with Gurmukhi translations | [Read](/blog/asvs-panjabi-review-glossary) |
 
 ## Who Should Review
 
@@ -53,8 +59,8 @@ Every translated term in the glossary is classified by its translation approach 
 | Phase | Content | Target |
 |-------|---------|--------|
 | **A** (Complete) | Title Page, Introduction, Glossary, Translation Notes, Review Plan | February 2026 |
-| **B** (In Progress) | Core chapters: *What-is-the-ASVS*, *Assessment & Certification*, *For Users of 4.0* bilingual; *V6 Authentication* and *V8 Authorization* actively translating | 2026 |
-| **C** | Remaining 14 security-requirement chapters: Encoding, Validation, Web Frontend, API & Web Service, File Handling, Session Management, Tokens, OAuth/OIDC, Cryptography, Communication, Configuration, Data Protection, Secure Coding, Logging, WebRTC | 2026 |
+| **B** (Complete) | *Assessment & Certification*, *Changes from v4.x*, *V5 File Handling*, *V8 Authorization*, *V9 Self-contained Tokens*, *V12 Secure Communication* — now bilingual | June 2026 |
+| **C** (In Progress) | *What-is-the-ASVS* and *V6 Authentication* actively translating; remaining security-requirement chapters: Encoding, Validation, Web Frontend, API & Web Service, Session Management, OAuth/OIDC, Cryptography, Configuration, Data Protection, Secure Coding, Logging, WebRTC | 2026 |
 | **D** | Appendices, final quality checks, PDF generation, community review window | 2026 |
 
 ## How to Send Feedback
