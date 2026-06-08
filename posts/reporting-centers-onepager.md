@@ -21,7 +21,7 @@ This directory covers five regions where the Sikh diaspora and broader Panjabi-s
 2. **Save evidence** — take screenshots of messages, emails, websites, and transaction details *before deleting anything*. Date and time stamps matter.
 3. **Report to the agency below** for your country.
 4. **Report to your local police** as well, especially if money is involved. The local police can act on local jurisdiction; the federal agency tracks the pattern.
-5. **Tell your family** — particularly elders and anyone else who may receive similar messages. Most cyber fraud succeeds because the victim does not know to ask.
+5. **Tell your family** — particularly elders and anyone else who may receive similar messages. Most cyber fraud succeeds because the person targeted does not know to ask.
 
 ---
 

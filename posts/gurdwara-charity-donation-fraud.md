@@ -117,7 +117,7 @@ Verifying a charity before donating is not a lack of faith or generosity. It is 
 
 ## Disclaimer
 
-*This post provides general security awareness education and does not constitute legal or financial advice. If you have been victimized, contact your bank and local law enforcement immediately.*
+*This post provides general security awareness education and does not constitute legal or financial advice. If you have been scammed, contact your bank and local law enforcement immediately.*
 
 ---
 

@@ -13,7 +13,7 @@ translation_status: "human_reviewed"
 
 ---
 
-> **Executive Summary:** The UK's Report Fraud service (formerly Action Fraud) recorded over £1.5 million in losses from WhatsApp family impersonation scams in 2023 alone — and that figure undercounts actual losses because many victims do not report. The scam is simple: an unknown number claims to be a family member with a new phone, creates urgency, and requests immediate payment. The complete defense is one step: before sending any money, call your family member on their original number. If they do not answer, wait. Real emergencies can wait 10 minutes for a callback.
+> **Executive Summary:** The UK's Report Fraud service (formerly Action Fraud) recorded over £1.5 million in losses from WhatsApp family impersonation scams in 2023 alone — and that figure undercounts actual losses because many people who are targeted do not report. The scam is simple: an unknown number claims to be a family member with a new phone, creates urgency, and requests immediate payment. The complete defense is one step: before sending any money, call your family member on their original number. If they do not answer, wait. Real emergencies can wait 10 minutes for a callback.
 
 ---
 
@@ -125,7 +125,7 @@ For a complete bilingual reporting directory, see *[Where to Report Cyber Fraud 
 
 ## Disclaimer
 
-*This post provides general security awareness education and does not constitute legal or financial advice. If you have been victimized, contact your bank and local law enforcement immediately.*
+*This post provides general security awareness education and does not constitute legal or financial advice. If you have been scammed, contact your bank and local law enforcement immediately.*
 
 ---
 

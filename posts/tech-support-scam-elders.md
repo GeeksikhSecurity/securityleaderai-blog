@@ -13,7 +13,7 @@ translation_status: "human_reviewed"
 
 ---
 
-> **Executive Summary:** The FBI's Internet Crime Complaint Center (IC3) recorded over $924 million in tech support scam losses in 2024, with adults over 60 accounting for 58% of victims. Scammers impersonate Microsoft, Apple, banks, and government agencies using fake pop-ups, spoofed caller IDs, and psychological pressure. The defense is simple: hang up and call back using a number you find yourself, never one the caller provides.
+> **Executive Summary:** The FBI's Internet Crime Complaint Center (IC3) recorded over $924 million in tech support scam losses in 2024, with adults over 60 accounting for 58% of those targeted. Scammers impersonate Microsoft, Apple, banks, and government agencies using fake pop-ups, spoofed caller IDs, and psychological pressure. The defense is simple: hang up and call back using a number you find yourself, never one the caller provides.
 
 ---
 
@@ -23,9 +23,9 @@ Tech support scams follow a predictable script. Understanding the script is the 
 
 **Step 1 — The hook.** A pop-up appears on the computer claiming the device is infected. It plays a loud alarm sound and displays a phone number. The pop-up may freeze the browser. This is not a real warning from Microsoft or Apple — it is a webpage designed to look like one.
 
-**Step 2 — The call.** The victim calls the number, or a scammer calls them directly with a spoofed caller ID. The "technician" speaks authoritatively, may speak Panjabi or Hindi to build trust, and claims they can fix the problem remotely.
+**Step 2 — The call.** The person calls the number, or a scammer calls them directly with a spoofed caller ID. The "technician" speaks authoritatively, may speak Panjabi or Hindi to build trust, and claims they can fix the problem remotely.
 
-**Step 3 — Remote access.** The scammer asks the victim to install a remote access program — AnyDesk, TeamViewer, or ScreenConnect. Once installed, the attacker sees everything: banking sites, saved passwords, email, and can transfer files.
+**Step 3 — Remote access.** The scammer asks the person to install a remote access program — AnyDesk, TeamViewer, or ScreenConnect. Once installed, the attacker sees everything: banking sites, saved passwords, email, and can transfer files.
 
 **Step 4 — The payment.** The "technician" claims the repair costs $299–$499. They insist on gift cards (Amazon, Google Play, Apple iTunes) or wire transfers — payment methods that cannot be reversed.
 
@@ -43,7 +43,7 @@ Every tech support scam exploits one or more of these six patterns (Bank of Amer
 
 **4. Rewards or Threats.** Either: "We'll fix everything for free if you act now" — or: "If you don't act, the police will be involved." Both are manipulation. Real technicians don't offer free crisis resolution and don't threaten arrest.
 
-**5. Deception.** The scammer may open Windows Event Viewer and show the victim "errors" — every Windows system shows these, they are normal. This false evidence is designed to make the fake problem seem real.
+**5. Deception.** The scammer may open Windows Event Viewer and show the person "errors" — every Windows system shows these, they are normal. This false evidence is designed to make the fake problem seem real.
 
 **6. Unusual Payment Method.** Gift cards, wire transfers, cryptocurrency, Zelle. No legitimate company charges for technical support using gift cards. If someone asks you to scratch the back of a gift card and read them the numbers — it is a scam, 100% of the time.
 
@@ -121,7 +121,7 @@ For a complete bilingual directory, see *[Where to Report Cyber Fraud — Global
 
 ## Disclaimer
 
-*This post provides general security awareness education and does not constitute legal or financial advice. Examples are composite cases based on publicly reported patterns. If you have been victimized, contact your bank and local law enforcement immediately.*
+*This post provides general security awareness education and does not constitute legal or financial advice. Examples are composite cases based on publicly reported patterns. If you have been scammed, contact your bank and local law enforcement immediately.*
 
 ---
 
