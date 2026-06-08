@@ -1,0 +1,27 @@
+docs/content-rigor.md
+  s_cf58c4b00ea3fb::t_f21db5b5e1f43a 289
+  s_cf58c4b00ea3fb::t_52f81cc01b365a 51-53
+  s_cf58c4b00ea3fb::t_3baca329286931 265-274
+scripts/lint-content.mjs
+  s_cf58c4b00ea3fb::t_457979ac8ae0d6 23-34
+  s_cf58c4b00ea3fb::t_7a57e666f6de63 449
+  s_cf58c4b00ea3fb::t_6269b45559dc1d 401-429
+docs/inclusive-language-apa.md
+  s_cf58c4b00ea3fb::t_e9f23d183bda55 1-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "f89288c2c1b4b6b65c610ab52839a88ebdb438ea",
+  "prompts": {},
+  "sessions": {
+    "s_cf58c4b00ea3fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3653105d-d550-4ca8-9791-7e7412030740",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
