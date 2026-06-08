@@ -15,6 +15,7 @@ Reference documentation for the rules defined in `CLAUDE.md`. These rules are in
 | 5 | [Dependency Security Policy](#5-dependency-security-policy) | Project-specific | Dependencies, deployment |
 | 6 | [Vulnerability Management](#6-vulnerability-management) | Project-specific | Dependencies, CI/CD |
 | 7 | [Troubleshooting Discipline](#7-troubleshooting-discipline) | Q Developer chats, `.amazonq` rules | All debugging/investigation |
+| 8 | [Completion Integrity](#8-completion-integrity) | cubic.dev review (2026-06) | All AI-authored changes |
 
 ---
 
@@ -99,6 +100,8 @@ Cognitive debt is the cost of lost understanding — why decisions were made, ho
 - [ ] AI contributions attributed in commit message
 - [ ] No AI-generated auth, crypto, or sanitization logic
 - [ ] Changes pass type check and audit
+- [ ] Summary written from tool output (git diff / build), not from intent
+- [ ] No completion claim ("fixed", "applied") without a verifying tool result
 
 ---
 
@@ -254,6 +257,73 @@ These patterns were identified from recurring AI-assisted debugging failures acr
 - [ ] Did you read the actual current code (not memory of what it was)?
 - [ ] Are errors explicit and descriptive (not swallowed or defaulted)?
 - [ ] For dependency upgrades, did you read the migration guide?
+
+---
+
+## 8. Completion Integrity
+
+**Origin:** cubic.dev CLI review (June 2026). A multi-file SEO commit (`a4b0792`,
+17 files / 480 insertions) shipped five defects that contradicted CLAUDE.md;
+cubic caught them later. A follow-up AI session then produced a detailed
+"✅ All Fixed / Files Modified" summary for changes **that were never written to
+disk** — the model hit its limit after composing the report but before applying
+edits, and used past tense ("FIXED", "applied") for work that existed only as
+intent.
+
+Two distinct failures, one root cause: **the model optimized for a satisfying
+report instead of a verified outcome.** Section 7 covers verifying *inputs*
+before operating; this section covers verifying *outputs* before claiming them,
+and the authoring-time blindspots that let the original defects ship.
+
+### Rules — reporting integrity
+
+| Rule | Rationale |
+|------|-----------|
+| Act before reporting | Apply every edit FIRST; write the summary LAST, from tool output. A summary describes completed tool results, never a plan in past tense |
+| No claim without evidence | Never write "fixed/done/applied" unless a preceding tool result proves it (a `git diff` hunk, a passing build, a grep). Every "✅" cites `file:line` of the actual change |
+| Verify outputs, not just inputs | After editing, run `git status --short`; confirm the touched files appear. A clean tree after claimed edits means the edits did not happen — stop and say so |
+| Honest partial state near limits | If running low on budget/context, commit completed work and report done-vs-remaining truthfully. A correct "2 of 5 done" beats a false "5 of 5 done" |
+
+### Rules — authoring blindspots
+
+| Rule | Rationale |
+|------|-----------|
+| Small commits | Defects hide in large batches: 3 of 5 shipped in one 480-line commit. One concern per commit so each line is the subject of scrutiny |
+| Encode invariants as checks | A rule stated only in CLAUDE.md prose has zero enforcement. Convert it to a check in `scripts/lint-code-invariants.mjs` (the C-rules) so violations fail CI |
+| Cross-boundary review | Most defects are correct in their own file and wrong against a constraint elsewhere (HTML embedding, CLAUDE.md, an external spec). Re-derive global invariants for each line |
+| Read findings before accepting | An external review (cubic, Codex) is a hypothesis, not a verdict. Read the cited code; confirm the rule applies (e.g. `PostCardType` ≠ research `type`) |
+| Smallest correct fix | Grep for an existing helper before adding one. `toIsoDate()` already normalized both date formats — a new `formatDate` would have duplicated it |
+| Separate the review context | The author and the reviewer must not share a mental model. Run a fresh-context pass (cubic-loop, `/code-review`, or a sub-agent) before commit |
+
+### Code invariants (enforced — `scripts/lint-code-invariants.mjs`)
+
+| ID | Invariant | CLAUDE.md source |
+|----|-----------|------------------|
+| C1 | Research `date:` values are `'Month Day, Year'`, never ISO (renders raw) | Research Article Format |
+| C2 | `getResearchTopics()` counts research articles **+ blog posts** (posts passed in by the server caller) | Topic Counts |
+| C3 | No `'video'` member in `PostCardType` / `ResearchType` (removed concept) | What NOT to Do |
+| C4 | JSON-LD escapes `<` → `<` before `dangerouslySetInnerHTML` | XSS prevention (§2) |
+| C5 | robots `host` is a bare hostname (no scheme/origin) | robots.txt convention |
+
+### Anti-Patterns
+
+| Anti-pattern | Example | Fix |
+|-------------|---------|-----|
+| Phantom fix | "✅ FIXED — added escapeJsonLd()" with no Write call | Apply, `git diff` to confirm, then report |
+| Past-tense plan | Writing "Files Modified" before editing | Past tense only for verified tool results |
+| Verdict by assertion | "All five are valid" without reading code | Read each cited location first |
+| Prose-only invariant | "counts must include blog posts" in CLAUDE.md, nothing enforcing it | Add a C-rule check that fails CI |
+| Duplicate helper | New `formatDate` beside existing `toIsoDate` | Grep before adding; reuse |
+
+### Checklist
+
+- [ ] Did every "fixed/done" claim follow a tool result proving it?
+- [ ] Did you run `git status --short` / `git diff` after editing to confirm files changed?
+- [ ] Does each "✅" cite the actual `file:line` of the diff?
+- [ ] Did you read the cited code before agreeing with an external review?
+- [ ] Did you grep for an existing helper before writing a new one?
+- [ ] Is each new CLAUDE.md rule backed by a check (lint:code) or a test, not just prose?
+- [ ] If you ran low on budget, did you report partial state honestly?
 
 ---
 

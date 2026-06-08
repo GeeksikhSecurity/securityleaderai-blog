@@ -21,8 +21,12 @@ const topicIcons = {
 
 export default function Home() {
   const researchHighlights = getResearchItems().slice(0, 3);
-  const posts = getPublicPosts().slice(0, 3);
-  const topics = getResearchTopics();
+  const allPosts = getPublicPosts();
+  const posts = allPosts.slice(0, 3);
+  // Topic counts span research articles + ALL public posts (CLAUDE.md: Topic Counts).
+  const topics = getResearchTopics(
+    allPosts.map((p) => ({ title: p.title, summary: p.excerpt, tags: p.tags })),
+  );
 
   return (
     <main>

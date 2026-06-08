@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "lint:content": "node scripts/lint-content.mjs"
+    "lint:content": "node scripts/lint-content.mjs",
+    "lint:code": "node scripts/lint-code-invariants.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

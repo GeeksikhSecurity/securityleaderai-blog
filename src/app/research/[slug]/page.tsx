@@ -33,7 +33,6 @@ export function generateStaticParams() {
 
 const typeLabels: Record<ResearchType, string> = {
   paper: 'Research Paper',
-  video: 'Video & Demo',
   insight: 'Insight',
   tool: 'Tool / Framework',
 };
