@@ -209,7 +209,7 @@ export default async function LocaleBlogPost({
 
       <footer className="border-t border-color bg-neutral-50 py-10">
         <div className="container text-center small text-secondary">
-          <p className="mb-2">&copy; 2026 SecurityLeader.ai. All rights reserved.</p>
+          <p className="mb-2">&copy; {new Date().getFullYear()} SecurityLeader.ai. All rights reserved.</p>
           <a
             href="https://www.linkedin.com/in/gurvindersinghb"
             target="_blank"
