@@ -1,0 +1,42 @@
+src/lib/research.ts
+  s_f46ef473a8be7f::t_aef36f410a74d6 56,87,145,169,193
+  s_f46ef473a8be7f::t_04945a9dc0fc09 1
+  s_f46ef473a8be7f::t_f1e9ecc9c159c9 280-302
+  s_f46ef473a8be7f::t_cf384c1d35c2a3 121
+src/app/page.tsx
+  s_f46ef473a8be7f::t_41e28c2b2cd30a 24-29
+src/components/post-card.tsx
+  s_f46ef473a8be7f::t_ff250a095b7723 19
+src/components/json-ld.tsx
+  s_f46ef473a8be7f::t_40779dc35e755a 12
+  s_f46ef473a8be7f::t_8aa9a581c587e1 5-9,11,13-14,23
+src/app/robots.ts
+  s_f46ef473a8be7f::t_fbefc546687b4a 30-31
+scripts/lint-code-invariants.mjs
+  s_f46ef473a8be7f::t_a91abd02cef8f3 1-84,86-87,100-157
+  s_f46ef473a8be7f::t_9004d603cb2628 85,88-99
+.github/workflows/code-quality.yml
+  s_f46ef473a8be7f::t_73246d214af628 1-54
+package.json
+  s_f46ef473a8be7f::t_ddd147ed5f959a 10-11
+RULES.md
+  s_f46ef473a8be7f::t_d40b3734ec12e4 103-104
+  s_f46ef473a8be7f::t_88eb0abb961cba 18
+  s_f46ef473a8be7f::t_bbdc060fce5026 263-329
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "4d7151c64abf7b5be63d545e976010a638e3a510",
+  "prompts": {},
+  "sessions": {
+    "s_f46ef473a8be7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e40eda9-169f-48ae-b6de-9fd8ab8bd496",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
