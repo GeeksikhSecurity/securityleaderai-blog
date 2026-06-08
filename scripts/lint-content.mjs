@@ -20,6 +20,18 @@ const REQUIRED_FRONTMATTER = ['title', 'date', 'excerpt', 'author', 'tags'];
 const VALID_TRANSLATION_STATUS = new Set(['ai_draft', 'human_reviewed', 'community_reviewed']);
 const FEEDBACK_CONTACT = 'gurvinder@securityleader.ai';
 
+// R26–R28 (APA inclusive language) apply to SECURITY-AWARENESS posts only —
+// identified by these tags. Research/technical posts are intentionally exempt
+// (see docs/inclusive-language-apa.md).
+const AWARENESS_TAGS = new Set([
+  'digital-seva', 'scam-awareness', 'awareness',
+  'elder-safety', 'family-safety', 'charity-fraud',
+]);
+function isAwarenessPost(frontmatter) {
+  const t = frontmatter.tags;
+  return Array.isArray(t) && t.some((x) => AWARENESS_TAGS.has(String(x).toLowerCase()));
+}
+
 // R8 — locale-suffix patterns we consider stale.
 const LEGACY_LOCALE_SUFFIXES = ['pa', 'fr', 'es', 'de', 'pt', 'it', 'zh', 'ja', 'ko'];
 const LEGACY_URL_RE = new RegExp(
@@ -386,6 +398,35 @@ function lintDirectional(doc, parsed) {
   });
 }
 
+// R26–R28 — APA inclusive language, SECURITY-AWARENESS posts only.
+function lintAwarenessLanguage(doc, parsed) {
+  if (!isAwarenessPost(parsed.frontmatter)) return;
+  const offset = parsed.fmLines;
+  parsed.lines.forEach((line, i) => {
+    const lineNo = i + 1 + offset;
+
+    // R26 — person-first for people affected (EN + pa-in).
+    if (!lineHasAllowance(line, 'R26') && (/\bvictim(s|ized|ised)?\b/i.test(line) || /ਪੀੜਤ/.test(line))) {
+      reportNotice('R26', doc.path, lineNo,
+        'awareness post: prefer person-first ("people targeted" / "those targeted" / "scammed"; pa-in "ਨਿਸ਼ਾਨਾ ਬਣੇ ਲੋਕ") over "victim" / "ਪੀੜਤ"');
+    }
+
+    // R27 — no disability / mental-health metaphors.
+    if (!lineHasAllowance(line, 'R27')) {
+      const m = line.match(/\b(blind to|deaf to|crazy|insane|lame|cripple[ds]?|tone-deaf|sanity check|dumb)\b/i);
+      if (m) reportNotice('R27', doc.path, lineNo,
+        `awareness post: avoid disability/mental-health metaphor "${m[0]}" — use a literal term (e.g. "cannot detect", "quick check")`);
+    }
+
+    // R28 — age: avoid othering terms; "elders" / "older adults" / "adults over N" are fine.
+    if (!lineHasAllowance(line, 'R28')) {
+      const m = line.match(/\bthe elderly\b|\bsenior citizens?\b|\baging dependents?\b/i);
+      if (m) reportNotice('R28', doc.path, lineNo,
+        `awareness post: "${m[0]}" — prefer "older adults" (note: "elders" / "ਬਜ਼ੁਰਗ" is respectful and fine here)`);
+    }
+  });
+}
+
 function main() {
   const { en, i18n } = gatherDocs();
   const allDocs = [...en, ...i18n];
@@ -405,6 +446,7 @@ function main() {
     lintFrontmatter(doc, parsed);
     lintBodyShared(doc, parsed);
     lintLocaleSpecific(doc, parsed);
+    lintAwarenessLanguage(doc, parsed);
     lintDirectional(doc, parsed);
   }
 

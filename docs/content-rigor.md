@@ -48,6 +48,9 @@ Locales follow BCP 47 (`pa-in` for Panjabi/India Gurmukhi). The locale dir-name 
 | R23 | `pa-in` romanization uses IAST canonical (`ṭhaggī`, `tasdīq`, `naklī`); no `thaggee` / `tasdeeq` / `naklee` style | Translation | **AUTO** |
 | R24 | `excerpt` length 50–200 chars (drives `<meta description>` + `og:description`) | SEO | **AUTO (notice)** |
 | R25 | `tags` count 2–8 (drives keywords, article tags, topic mapping) | SEO | **AUTO (notice)** |
+| R26 | Person-first language (no "victim"/`ਪੀੜਤ`) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
+| R27 | No disability/mental-health metaphors ("blind to", "sanity check"…) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
+| R28 | Age: avoid "the elderly"/"senior citizens" ("elders"/"ਬਜ਼ੁਰਗ" OK) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
 
 ---
 
@@ -259,6 +262,16 @@ CI runs `npm run lint:content` on every PR and every push to `main`. Failures bl
 
 > R24–R25 encode the inputs that `src/lib/seo.ts`, `src/app/sitemap.ts`, and `src/app/robots.ts` turn into machine-readable metadata for search engines and answer-engine LLM crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). Keep them green so every post is citable.
 
+## R26–R28 — APA inclusive language (awareness posts only)  **AUTO (notice)**
+
+Apply APA bias-free language to **security-awareness** posts (tags include `digital-seva`, `scam-awareness`, `awareness`, `elder-safety`, `family-safety`, or `charity-fraud`). Research/technical posts are exempt by design. Full term tables and the jasgur.com migration plan live in [`inclusive-language-apa.md`](inclusive-language-apa.md).
+
+- **R26 (person-first):** flags "victim"/"victimized" (EN) and `ਪੀੜਤ` (pa-in). Prefer "people targeted" / "those targeted" / "scammed" / `ਨਿਸ਼ਾਨਾ ਬਣੇ ਲੋਕ`.
+- **R27 (no disability metaphor):** flags "blind to", "deaf to", "crazy", "insane", "lame", "cripple(d)", "tone-deaf", "sanity check", "dumb". Use a literal term.
+- **R28 (age):** flags "the elderly", "senior citizens", "aging dependents" → "older adults". **"elders" / "ਬਜ਼ੁਰਗ" and "adults over N" are intentionally allowed** (culturally respectful, specific).
+
+> Not covered by these rules: "master key" / skeleton-key metaphors (locksmithing, intentionally kept) and `whitelist → allowlist` (house style / R-class glossary, not APA scope).
+
 ## Allowlisting a known false positive
 
 Add an HTML comment on the offending line:
@@ -273,4 +286,4 @@ The lint reads inline `<!-- rigor: allow R# -->` markers and skips the matching 
 
 ## Authored by
 
-Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.1` — 2026-06-07 (added R24–R25 SEO/LLM metadata rules).
+Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.2` — 2026-06-07 (added R26–R28 APA inclusive-language rules, awareness-scoped; see `inclusive-language-apa.md`).
