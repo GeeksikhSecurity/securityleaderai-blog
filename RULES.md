@@ -16,6 +16,8 @@ Reference documentation for the rules defined in `CLAUDE.md`. These rules are in
 | 6 | [Vulnerability Management](#6-vulnerability-management) | Project-specific | Dependencies, CI/CD |
 | 7 | [Troubleshooting Discipline](#7-troubleshooting-discipline) | Q Developer chats, `.amazonq` rules | All debugging/investigation |
 | 8 | [Completion Integrity](#8-completion-integrity) | cubic.dev review (2026-06) | All AI-authored changes |
+| 9 | [Optimizer & Metric Integrity](#9-optimizer--metric-integrity) | cubic.dev review (2026-06) | Any metric-driven / automated tuning |
+| 10 | [Using AI Code Review](#10-using-ai-code-review) | cubic.dev + session practice | Pre-merge review workflow |
 
 ---
 
@@ -324,6 +326,87 @@ and the authoring-time blindspots that let the original defects ship.
 - [ ] Did you grep for an existing helper before writing a new one?
 - [ ] Is each new CLAUDE.md rule backed by a check (lint:code) or a test, not just prose?
 - [ ] If you ran low on budget, did you report partial state honestly?
+
+---
+
+## 9. Optimizer & Metric Integrity
+
+**Origin:** cubic.dev review (June 2026), mcp-sentinel-scanner. An automated
+`optimize(triage)` loop raised the secret-detector entropy floor (4.8 → 4.85 →
+5.0 → 5.5 → 6.0) to improve an "efficiency" metric, silently disabling CWE-798
+hardcoded-secret detection — the scanner's core purpose. Per-character Shannon
+entropy is bounded by `log2(len)`, so real secrets cap near ~4.75 bits; at the
+6.0 floor, 0 of 6 realistic secrets were detected. The loop's only safety gate
+watched CRITICAL count, but secret findings are HIGH — the gate sat on the wrong
+side of a severity boundary and never saw the loss.
+
+This is Goodhart's Law in code: when a measure becomes the target, it stops being
+a good measure. The optimizer maximized a proxy ("fewer findings = efficient")
+by deleting true positives.
+
+### Rules
+
+| Rule | Rationale |
+|------|-----------|
+| Guardrail spans the blast radius | A safety gate must observe EVERY axis the change can move. Tuning that affects HIGH findings cannot be gated on CRITICAL count. Match the gate's severity/category space to the knob's reach |
+| Protect the true goal, not a proxy | When optimizing a proxy (speed, efficiency, finding-count, token-cost), add a hard gate on the REAL objective (detection recall, correctness). For a detector: no config may reduce findings without human review |
+| Automated commits need a recall floor | Any loop that auto-commits must revert on loss of the thing the tool exists to produce — not just on a convenience metric. "Fewer findings" is a red flag, never a green one, for a detector |
+| Thresholds need a reachability check | Before raising a numeric gate, verify the value is achievable by real inputs. A floor above an input's mathematical maximum silently disables the feature. Encode the ceiling as a fail-loud guard |
+| Make degradation loud | A control that can be turned off by config must WARN when it is effectively off. Silent coverage loss is the worst failure mode |
+
+### Anti-Patterns
+
+| Anti-pattern | Example | Fix |
+|-------------|---------|-----|
+| Goodhart optimizer | "efficiency +X%, CRITICAL unchanged" while HIGH secrets vanish | Gate the real objective; revert on recall loss |
+| Guardrail blind spot | Gate watches CRITICAL, change moves HIGH | Gate spans all affected severities/categories |
+| Unreachable threshold | entropy floor 6.0 vs real max ~5.0 | Reachability assertion + fail-loud warning |
+| Ratchet by tiny steps | 4.8→4.85→5.0→5.5→6.0, each "safe" | Guard the cumulative invariant, not the per-step delta |
+
+### Checklist
+
+- [ ] Does every automated/optimizing change gate the REAL objective, not just a proxy?
+- [ ] Does the guardrail observe every severity/category the change can affect?
+- [ ] For any raised threshold: is the new value reachable by real inputs?
+- [ ] Does a disabled/weakened control warn loudly that coverage dropped?
+- [ ] For a security tool: is "findings decreased" treated as a regression until proven noise?
+
+---
+
+## 10. Using AI Code Review
+
+**Origin:** cubic.dev review practice + this session. cubic (an AI reviewer)
+caught real, severe issues authoring missed — including a security regression an
+automated optimizer created and the project's own gates were blind to. That
+validates AI review as an independent adversarial lens. But the same session
+showed the failure modes: cubic was non-deterministic (findings differed between
+runs), a screenshot finding was a misread (`PostCardType` ≠ research `type`), and
+one was over-engineered. The lesson is to use AI review as a *hypothesis
+generator with a different lens*, verified against code — never as a verdict.
+
+Context: AI reviewers (cubic, Codex, Gemini) validate reachability/exploitability
+rather than pattern-matching versions, which cuts the ~90% false-positive triage
+burden of traditional SAST/SCA. They do not replace dynamic scanning,
+dependency-malware detection, or SBOM generation — keep those specialized tools
+(this repo: the `sbom` skill).
+
+### Rules
+
+| Rule | Rationale |
+|------|-----------|
+| Findings are hypotheses, not verdicts | Read the cited code before accepting. Confirm the rule actually applies. cubic mis-reads and drifts run-to-run; verification is yours |
+| Separate the review context | The reviewer must not share the author's mental model. AI review's value IS the independent lens — run it fresh-context (cubic-loop, `/code-review`, a sub-agent) as a standing pre-merge step for security-relevant changes |
+| Re-run; don't trust a stale capture | AI review is non-deterministic. Re-run against current code to get the complete, current finding set — a screenshot may be scrolled past higher-priority findings |
+| Convert each accepted finding into a guard | The review finds it once; a test / lint check / fail-loud warning prevents recurrence. Land the fix AND the guard |
+| AI review augments, not replaces | Keep specialized tools for dynamic analysis, dependency malware, and SBOM. Position AI review as the validation/triage layer over them |
+
+### Checklist
+
+- [ ] Did you read the cited code for every finding before acting?
+- [ ] Did you re-run the review against current code (not just trust a capture)?
+- [ ] Did each real fix land with a guard (test/lint/warning) preventing recurrence?
+- [ ] Was the review run with a context separate from the author's?
+- [ ] For security work: are SBOM / dependency-malware / dynamic scanning still covered by their own tools?
 
 ---
 
