@@ -7,7 +7,6 @@ import {
   CalendarIcon,
   ClockIcon,
   FileTextIcon,
-  VideoIcon,
   CodeIcon,
 } from '@/components/icons';
 import type { ResearchItem } from '@/lib/research';
@@ -16,21 +15,18 @@ type ResearchCardProps = ResearchItem;
 
 const cardIcons: Record<ResearchItem['type'], ComponentType<{ className?: string }>> = {
   paper: FileTextIcon,
-  video: VideoIcon,
   insight: FileTextIcon,
   tool: CodeIcon,
 };
 
 const typeLabels: Record<ResearchItem['type'], string> = {
   paper: 'Research Paper',
-  video: 'Video & Demo',
   insight: 'Insight',
   tool: 'Tool / Framework',
 };
 
 const badgeClasses: Record<ResearchItem['type'], string> = {
   paper: 'badge-research-paper',
-  video: 'badge-video',
   insight: 'badge-insight',
   tool: 'badge-tool',
 };
@@ -65,13 +61,6 @@ export function ResearchCard({
               {typeLabels[type]}
             </Badge>
           </div>
-          {type === 'video' && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-primary-600 shadow-lg transition-transform duration-200 group-hover:scale-110">
-                <VideoIcon className="h-7 w-7" />
-              </div>
-            </div>
-          )}
         </div>
 
         <div className="flex flex-1 flex-col gap-4 p-6">

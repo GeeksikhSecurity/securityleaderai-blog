@@ -15,6 +15,9 @@ Reference documentation for the rules defined in `CLAUDE.md`. These rules are in
 | 5 | [Dependency Security Policy](#5-dependency-security-policy) | Project-specific | Dependencies, deployment |
 | 6 | [Vulnerability Management](#6-vulnerability-management) | Project-specific | Dependencies, CI/CD |
 | 7 | [Troubleshooting Discipline](#7-troubleshooting-discipline) | Q Developer chats, `.amazonq` rules | All debugging/investigation |
+| 8 | [Completion Integrity](#8-completion-integrity) | cubic.dev review (2026-06) | All AI-authored changes |
+| 9 | [Optimizer & Metric Integrity](#9-optimizer--metric-integrity) | cubic.dev review (2026-06) | Any metric-driven / automated tuning |
+| 10 | [Using AI Code Review](#10-using-ai-code-review) | cubic.dev + session practice | Pre-merge review workflow |
 
 ---
 
@@ -99,6 +102,8 @@ Cognitive debt is the cost of lost understanding — why decisions were made, ho
 - [ ] AI contributions attributed in commit message
 - [ ] No AI-generated auth, crypto, or sanitization logic
 - [ ] Changes pass type check and audit
+- [ ] Summary written from tool output (git diff / build), not from intent
+- [ ] No completion claim ("fixed", "applied") without a verifying tool result
 
 ---
 
@@ -254,6 +259,154 @@ These patterns were identified from recurring AI-assisted debugging failures acr
 - [ ] Did you read the actual current code (not memory of what it was)?
 - [ ] Are errors explicit and descriptive (not swallowed or defaulted)?
 - [ ] For dependency upgrades, did you read the migration guide?
+
+---
+
+## 8. Completion Integrity
+
+**Origin:** cubic.dev CLI review (June 2026). A multi-file SEO commit (`a4b0792`,
+17 files / 480 insertions) shipped five defects that contradicted CLAUDE.md;
+cubic caught them later. A follow-up AI session then produced a detailed
+"✅ All Fixed / Files Modified" summary for changes **that were never written to
+disk** — the model hit its limit after composing the report but before applying
+edits, and used past tense ("FIXED", "applied") for work that existed only as
+intent.
+
+Two distinct failures, one root cause: **the model optimized for a satisfying
+report instead of a verified outcome.** Section 7 covers verifying *inputs*
+before operating; this section covers verifying *outputs* before claiming them,
+and the authoring-time blindspots that let the original defects ship.
+
+### Rules — reporting integrity
+
+| Rule | Rationale |
+|------|-----------|
+| Act before reporting | Apply every edit FIRST; write the summary LAST, from tool output. A summary describes completed tool results, never a plan in past tense |
+| No claim without evidence | Never write "fixed/done/applied" unless a preceding tool result proves it (a `git diff` hunk, a passing build, a grep). Every "✅" cites `file:line` of the actual change |
+| Verify outputs, not just inputs | After editing, run `git status --short`; confirm the touched files appear. A clean tree after claimed edits means the edits did not happen — stop and say so |
+| Honest partial state near limits | If running low on budget/context, commit completed work and report done-vs-remaining truthfully. A correct "2 of 5 done" beats a false "5 of 5 done" |
+
+### Rules — authoring blindspots
+
+| Rule | Rationale |
+|------|-----------|
+| Small commits | Defects hide in large batches: 3 of 5 shipped in one 480-line commit. One concern per commit so each line is the subject of scrutiny |
+| Encode invariants as checks | A rule stated only in CLAUDE.md prose has zero enforcement. Convert it to a check in `scripts/lint-code-invariants.mjs` (the C-rules) so violations fail CI |
+| Cross-boundary review | Most defects are correct in their own file and wrong against a constraint elsewhere (HTML embedding, CLAUDE.md, an external spec). Re-derive global invariants for each line |
+| Read findings before accepting | An external review (cubic, Codex) is a hypothesis, not a verdict. Read the cited code; confirm the rule applies (e.g. `PostCardType` ≠ research `type`) |
+| Smallest correct fix | Grep for an existing helper before adding one. `toIsoDate()` already normalized both date formats — a new `formatDate` would have duplicated it |
+| Separate the review context | The author and the reviewer must not share a mental model. Run a fresh-context pass (cubic-loop, `/code-review`, or a sub-agent) before commit |
+
+### Code invariants (enforced — `scripts/lint-code-invariants.mjs`)
+
+| ID | Invariant | CLAUDE.md source |
+|----|-----------|------------------|
+| C1 | Research `date:` values are `'Month Day, Year'`, never ISO (renders raw) | Research Article Format |
+| C2 | `getResearchTopics()` counts research articles **+ blog posts** (posts passed in by the server caller) | Topic Counts |
+| C3 | No `'video'` member in `PostCardType` / `ResearchType` (removed concept) | What NOT to Do |
+| C4 | JSON-LD escapes `<` → `<` before `dangerouslySetInnerHTML` | XSS prevention (§2) |
+| C5 | robots `host` is a bare hostname (no scheme/origin) | robots.txt convention |
+
+### Anti-Patterns
+
+| Anti-pattern | Example | Fix |
+|-------------|---------|-----|
+| Phantom fix | "✅ FIXED — added escapeJsonLd()" with no Write call | Apply, `git diff` to confirm, then report |
+| Past-tense plan | Writing "Files Modified" before editing | Past tense only for verified tool results |
+| Verdict by assertion | "All five are valid" without reading code | Read each cited location first |
+| Prose-only invariant | "counts must include blog posts" in CLAUDE.md, nothing enforcing it | Add a C-rule check that fails CI |
+| Duplicate helper | New `formatDate` beside existing `toIsoDate` | Grep before adding; reuse |
+
+### Checklist
+
+- [ ] Did every "fixed/done" claim follow a tool result proving it?
+- [ ] Did you run `git status --short` / `git diff` after editing to confirm files changed?
+- [ ] Does each "✅" cite the actual `file:line` of the diff?
+- [ ] Did you read the cited code before agreeing with an external review?
+- [ ] Did you grep for an existing helper before writing a new one?
+- [ ] Is each new CLAUDE.md rule backed by a check (lint:code) or a test, not just prose?
+- [ ] If you ran low on budget, did you report partial state honestly?
+
+---
+
+## 9. Optimizer & Metric Integrity
+
+**Origin:** cubic.dev review (June 2026), mcp-sentinel-scanner. An automated
+`optimize(triage)` loop raised the secret-detector entropy floor (4.8 → 4.85 →
+5.0 → 5.5 → 6.0) to improve an "efficiency" metric, silently disabling CWE-798
+hardcoded-secret detection — the scanner's core purpose. Per-character Shannon
+entropy is bounded by `log2(len)`, so real secrets cap near ~4.75 bits; at the
+6.0 floor, 0 of 6 realistic secrets were detected. The loop's only safety gate
+watched CRITICAL count, but secret findings are HIGH — the gate sat on the wrong
+side of a severity boundary and never saw the loss.
+
+This is Goodhart's Law in code: when a measure becomes the target, it stops being
+a good measure. The optimizer maximized a proxy ("fewer findings = efficient")
+by deleting true positives.
+
+### Rules
+
+| Rule | Rationale |
+|------|-----------|
+| Guardrail spans the blast radius | A safety gate must observe EVERY axis the change can move. Tuning that affects HIGH findings cannot be gated on CRITICAL count. Match the gate's severity/category space to the knob's reach |
+| Protect the true goal, not a proxy | When optimizing a proxy (speed, efficiency, finding-count, token-cost), add a hard gate on the REAL objective (detection recall, correctness). For a detector: no config may reduce findings without human review |
+| Automated commits need a recall floor | Any loop that auto-commits must revert on loss of the thing the tool exists to produce — not just on a convenience metric. "Fewer findings" is a red flag, never a green one, for a detector |
+| Thresholds need a reachability check | Before raising a numeric gate, verify the value is achievable by real inputs. A floor above an input's mathematical maximum silently disables the feature. Encode the ceiling as a fail-loud guard |
+| Make degradation loud | A control that can be turned off by config must WARN when it is effectively off. Silent coverage loss is the worst failure mode |
+
+### Anti-Patterns
+
+| Anti-pattern | Example | Fix |
+|-------------|---------|-----|
+| Goodhart optimizer | "efficiency +X%, CRITICAL unchanged" while HIGH secrets vanish | Gate the real objective; revert on recall loss |
+| Guardrail blind spot | Gate watches CRITICAL, change moves HIGH | Gate spans all affected severities/categories |
+| Unreachable threshold | entropy floor 6.0 vs real max ~5.0 | Reachability assertion + fail-loud warning |
+| Ratchet by tiny steps | 4.8→4.85→5.0→5.5→6.0, each "safe" | Guard the cumulative invariant, not the per-step delta |
+
+### Checklist
+
+- [ ] Does every automated/optimizing change gate the REAL objective, not just a proxy?
+- [ ] Does the guardrail observe every severity/category the change can affect?
+- [ ] For any raised threshold: is the new value reachable by real inputs?
+- [ ] Does a disabled/weakened control warn loudly that coverage dropped?
+- [ ] For a security tool: is "findings decreased" treated as a regression until proven noise?
+
+---
+
+## 10. Using AI Code Review
+
+**Origin:** cubic.dev review practice + this session. cubic (an AI reviewer)
+caught real, severe issues authoring missed — including a security regression an
+automated optimizer created and the project's own gates were blind to. That
+validates AI review as an independent adversarial lens. But the same session
+showed the failure modes: cubic was non-deterministic (findings differed between
+runs), a screenshot finding was a misread (`PostCardType` ≠ research `type`), and
+one was over-engineered. The lesson is to use AI review as a *hypothesis
+generator with a different lens*, verified against code — never as a verdict.
+
+Context: AI reviewers (cubic, Codex, Gemini) validate reachability/exploitability
+rather than pattern-matching versions, which cuts the ~90% false-positive triage
+burden of traditional SAST/SCA. They do not replace dynamic scanning,
+dependency-malware detection, or SBOM generation — keep those specialized tools
+(this repo: the `sbom` skill).
+
+### Rules
+
+| Rule | Rationale |
+|------|-----------|
+| Findings are hypotheses, not verdicts | Read the cited code before accepting. Confirm the rule actually applies. cubic mis-reads and drifts run-to-run; verification is yours |
+| Separate the review context | The reviewer must not share the author's mental model. AI review's value IS the independent lens — run it fresh-context (cubic-loop, `/code-review`, a sub-agent) as a standing pre-merge step for security-relevant changes |
+| Re-run; don't trust a stale capture | AI review is non-deterministic. Re-run against current code to get the complete, current finding set — a screenshot may be scrolled past higher-priority findings |
+| Convert each accepted finding into a guard | The review finds it once; a test / lint check / fail-loud warning prevents recurrence. Land the fix AND the guard |
+| AI review augments, not replaces | Keep specialized tools for dynamic analysis, dependency malware, and SBOM. Position AI review as the validation/triage layer over them |
+
+### Checklist
+
+- [ ] Did you read the cited code for every finding before acting?
+- [ ] Did you re-run the review against current code (not just trust a capture)?
+- [ ] Did each real fix land with a guard (test/lint/warning) preventing recurrence?
+- [ ] Was the review run with a context separate from the author's?
+- [ ] For security work: are SBOM / dependency-malware / dynamic scanning still covered by their own tools?
 
 ---
 

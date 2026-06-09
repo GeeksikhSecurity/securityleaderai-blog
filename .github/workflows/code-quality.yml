@@ -1,0 +1,54 @@
+# Code Quality — application-code invariants, type safety, and build gate.
+# Runs on every push/PR to main. Failures block deploy.
+#
+# WHY: three defects (ISO dates, topic counts excluding posts, robots host)
+# shipped in one large commit because the rules that made them wrong lived only
+# in CLAUDE.md prose, with no CI enforcement. content-rigor.yml guards prose and
+# vercel-security-monitor.yml guards dependencies — neither type-checks or builds
+# the app. This workflow closes that gap. See RULES.md §8.
+#
+# Rule catalog:  CLAUDE.md + RULES.md §8
+# Invariants:    scripts/lint-code-invariants.mjs (zero npm deps)
+
+name: Code Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  code-quality:
+    name: Invariants, type-check, build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Code-invariant gate FIRST — fast (zero deps), and the most likely to
+      # catch a CLAUDE.md violation reintroduced by an AI-assisted change.
+      - name: Lint code invariants (CLAUDE.md / RULES.md §8)
+        run: npm run lint:code
+
+      - name: Type check (tsc --noEmit)
+        run: npm run lint
+
+      - name: Production build
+        run: npm run build

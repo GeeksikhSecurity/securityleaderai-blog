@@ -27,6 +27,7 @@ export default function robots(): MetadataRoute.Robots {
       ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/' })),
     ],
     sitemap: `${SITE_ORIGIN}/sitemap.xml`,
-    host: SITE_ORIGIN,
+    // host directive expects a bare hostname, not a full origin (no scheme).
+    host: new URL(SITE_ORIGIN).hostname,
   };
 }
