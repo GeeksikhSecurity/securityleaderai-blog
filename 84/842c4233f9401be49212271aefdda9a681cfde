@@ -1,0 +1,20 @@
+RULES.md
+  s_f46ef473a8be7f::t_f7df0048b4b949 19-20
+  s_f46ef473a8be7f::t_a36e791a1037d5 332-412
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "84842c4233f9401be49212271aefdda9a681cfde",
+  "prompts": {},
+  "sessions": {
+    "s_f46ef473a8be7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e40eda9-169f-48ae-b6de-9fd8ab8bd496",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
