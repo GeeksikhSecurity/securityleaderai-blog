@@ -207,31 +207,6 @@ export default async function ResearchArticle({ params }: ResearchArticlePagePro
           </div>
         )}
 
-        {article.videos && article.videos.length > 0 && (
-          <section className="mt-16 space-y-8">
-            <h2 className="text-3xl font-bold text-primary-800">Video demonstrations</h2>
-            {article.videos.map((video) => (
-              <div
-                key={video.url}
-                className="overflow-hidden rounded-lg border border-color bg-black shadow-lg"
-              >
-                <div className="relative aspect-video">
-                  <iframe
-                    src={video.url}
-                    title={video.title}
-                    className="h-full w-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="border-t border-color px-6 py-4 text-sm text-muted">
-                  {video.title}
-                </div>
-              </div>
-            ))}
-          </section>
-        )}
-
         {article.repositories && article.repositories.length > 0 && (
           <section className="mt-16 space-y-6">
             <h2 className="text-3xl font-bold text-primary-800">Tools &amp; code</h2>

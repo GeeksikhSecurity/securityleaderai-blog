@@ -52,15 +52,6 @@ export function FileTextIcon(props: IconProps) {
   );
 }
 
-export function VideoIcon(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" {...baseProps} {...props}>
-      <rect x="2" y="7" width="15" height="10" rx="2" ry="2" />
-      <polygon points="17 11 22 7 22 17 17 13" />
-    </svg>
-  );
-}
-
 export function CodeIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" {...baseProps} {...props}>

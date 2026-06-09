@@ -5,11 +5,6 @@ interface ResearchSection {
   title: string;
 }
 
-interface ResearchVideo {
-  title: string;
-  url: string;
-}
-
 interface ResearchRepository {
   name: string;
   description: string;
@@ -36,7 +31,6 @@ export interface ResearchArticle extends ResearchItem {
   githubUrl?: string;
   sections?: ResearchSection[];
   content: string[];
-  videos?: ResearchVideo[];
   repositories?: ResearchRepository[];
 }
 
