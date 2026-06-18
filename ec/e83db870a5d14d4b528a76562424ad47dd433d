@@ -1,0 +1,25 @@
+posts/whatsapp-family-emergency-scams.md
+  s_a4ca36f6a169f5::t_503962beb2bce4 28
+posts/tech-support-scam-elders.md
+  s_a4ca36f6a169f5::t_076a4425417234 76
+posts-i18n/pa-in/tech-support-scam-elders.md
+  s_a4ca36f6a169f5::t_0f2b5d08a7eafd 78
+posts-i18n/pa-in/whatsapp-family-emergency-scams.md
+  s_a4ca36f6a169f5::t_927e53a6477ee0 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "ece83db870a5d14d4b528a76562424ad47dd433d",
+  "prompts": {},
+  "sessions": {
+    "s_a4ca36f6a169f5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93937175-5b17-4c86-9e59-a4797776f48e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
