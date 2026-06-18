@@ -25,7 +25,7 @@ translation_status: "human_reviewed"
 
 It is almost the same words in every family:
 
-> *"Mum / Dad, it's me. My phone broke and I'm using a friend's phone. Please save this new number. I need to pay a bill urgently — can you send me the money? I'll explain when I see you. Don't call the old number, it isn't working."*
+> *Mum / Dad, it's me. My phone broke and I'm using a friend's phone. Please save this new number. I need to pay a bill urgently — can you send me the money? I'll explain when I see you. Don't call the old number, it isn't working.*
 
 The whole message is built to stop you from doing the one thing that catches them: phoning the old number. Notice how it tells you not to.
 

@@ -73,7 +73,7 @@ Almost every scam of this kind uses one or more of these six tricks.
 
 Share this with your parents and grandparents this week. The most important thing to teach them is one sentence:
 
-> **"Real companies and government agencies will not phone you about your computer. If someone phones — hang up."**
+> Real companies and government agencies will not phone you about your computer. If someone phones — hang up.
 
 ---
 
