@@ -51,6 +51,7 @@ Locales follow BCP 47 (`pa-in` for Panjabi/India Gurmukhi). The locale dir-name 
 | R26 | Person-first language (no "victim"/`ਪੀੜਤ`) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
 | R27 | No disability/mental-health metaphors ("blind to", "sanity check"…) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
 | R28 | Age: avoid "the elderly"/"senior citizens" ("elders"/"ਬਜ਼ੁਰਗ" OK) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
+| R29 | Country names use the Gurmukhi proper-noun glossary in `pa-in` body (UK → `ਯੂ.ਕੇ.`, USA → `ਅਮਰੀਕਾ`…) — citations/URLs allowlisted | Consistency (pa-in) | **AUTO** |
 
 ---
 
@@ -272,6 +273,22 @@ Apply APA bias-free language to **security-awareness** posts (tags include `digi
 
 > Not covered by these rules: "master key" / skeleton-key metaphors (locksmithing, intentionally kept) and `whitelist → allowlist` (house style / R-class glossary, not APA scope).
 
+## R29 — Country-name script consistency in `pa-in`  **AUTO**
+
+Country names with a canonical Gurmukhi form must use it in Gurmukhi body prose, so the country list reads consistently (USA/Canada/Australia/India were always Gurmukhi; the UK was the lone Latin holdout). The proper-noun glossary lives in `scripts/lint-content.mjs` (`COUNTRY_GLOSSARY`):
+
+| Latin | Gurmukhi | Note |
+|-------|----------|------|
+| UK | `ਯੂ.ਕੇ.` | Transliteration (matches the ASVS loan-word style, e.g. `API → ਏ.ਪੀ.ਆਈ.`). **Deliberately not** `ਇੰਗਲੈਂਡ`/England — the UK-wide data covers Scotland, Wales & N. Ireland too. |
+| USA | `ਅਮਰੀਕਾ` | |
+| England | `ਇੰਗਲੈਂਡ` | Only when England specifically is meant (e.g. "England and Wales" jurisdiction). |
+| Britain | `ਬਰਤਾਨੀਆ` | |
+| Australia | `ਆਸਟ੍ਰੇਲੀਆ` | |
+| Canada | `ਕੈਨੇਡਾ` | |
+| India | `ਭਾਰਤ` | |
+
+**Allowlisted** (Latin country names are expected and fine here): the References/`ਹਵਾਲੇ` section, the Sources/`ਸਰੋਤ` line, and markdown link targets/URLs (e.g. `reportfraud.police.uk`). Agency proper nouns that embed a country — `National Fraud Database (UK)`, `Charity Commission for England and Wales` — belong in those zones; if one must appear in body prose, add `<!-- rigor: allow R29 -->`.
+
 ## Allowlisting a known false positive
 
 Add an HTML comment on the offending line:
@@ -286,4 +303,4 @@ The lint reads inline `<!-- rigor: allow R# -->` markers and skips the matching 
 
 ## Authored by
 
-Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.2` — 2026-06-07 (added R26–R28 APA inclusive-language rules, awareness-scoped; see `inclusive-language-apa.md`).
+Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.3` — 2026-06-20 (added R29 country-name script-consistency rule + proper-noun glossary for `pa-in`). Prior: `v1.2` 2026-06-07 (R26–R28 APA inclusive-language rules, awareness-scoped; see `inclusive-language-apa.md`).

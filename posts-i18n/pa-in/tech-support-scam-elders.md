@@ -87,7 +87,7 @@ translation_status: "ai_draft"
 | --------- | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | ਅਮਰੀਕਾ    | AARP Fraud Watch Network — **877-908-3360**        | FBI IC3 [ic3.gov](https://www.ic3.gov) · FTC [reportfraud.ftc.gov](https://reportfraud.ftc.gov) |
 | ਕੈਨੇਡਾ    | Canadian Anti-Fraud Centre — **1-888-495-8501**    | [antifraudcentre-centreantifraude.ca](https://antifraudcentre-centreantifraude.ca) |
-| UK        | Citizens Advice ਹੈਲਪਲਾਈਨ — **0808 223 1133**       | Action Fraud **0300 123 2040** · [reportfraud.police.uk](https://www.reportfraud.police.uk) |
+| ਯੂ.ਕੇ.        | Citizens Advice ਹੈਲਪਲਾਈਨ — **0808 223 1133**       | Action Fraud **0300 123 2040** · [reportfraud.police.uk](https://www.reportfraud.police.uk) |
 | ਆਸਟ੍ਰੇਲੀਆ | IDCARE — **1800 595 160** (ਨਿਊਜ਼ੀਲੈਂਡ ਵੀ)          | Scamwatch [scamwatch.gov.au](https://www.scamwatch.gov.au)                          |
 
 ਇਨ੍ਹਾਂ ਵਿੱਚੋਂ ਕਿਸੇ ਦਾ ਮੈਂਬਰ ਹੋਣਾ ਜ਼ਰੂਰੀ ਨਹੀਂ। ਹੈਲਪਲਾਈਨਾਂ ਮੁਫ਼ਤ ਹਨ।
