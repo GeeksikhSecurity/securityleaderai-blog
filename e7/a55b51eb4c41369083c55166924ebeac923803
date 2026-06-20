@@ -1,0 +1,21 @@
+posts-i18n/pa-in/global-scam-alert-2026.md
+  s_7b03e56eab1551::t_139f08d81effc7 1-150
+posts/global-scam-alert-2026.md
+  s_7b03e56eab1551::t_af5486d8216ba6 1-146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "e7a55b51eb4c41369083c55166924ebeac923803",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
