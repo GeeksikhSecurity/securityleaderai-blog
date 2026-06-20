@@ -1,0 +1,30 @@
+README.md
+  s_7b03e56eab1551::t_2551148beabb2f 7,11,15,17-19
+CLAUDE.md
+  s_7b03e56eab1551::t_3ca2a5825f1eb4 9
+  s_7b03e56eab1551::t_2085a7f85b6777 248
+  s_7b03e56eab1551::t_38311c2b6f10ac 332
+  s_7b03e56eab1551::t_3072893da6461a 307-316
+  s_7b03e56eab1551::t_796380e235554a 170
+  s_7b03e56eab1551::t_303c0ecf59c90c 321
+  s_7b03e56eab1551::t_3352eac6570d78 397
+  s_7b03e56eab1551::t_53067d10b020e4 172
+RULES.md
+  s_7b03e56eab1551::t_6a8eecca2b35c0 218-224,228
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "00594da7a2fe52194eb2864b301d3e1a2b9cc251",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
