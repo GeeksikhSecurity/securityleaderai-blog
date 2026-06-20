@@ -1,0 +1,19 @@
+tsconfig.json
+  s_7b03e56eab1551::t_665ac1a50a7aa5 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "3064dfd0b27790cb7ff6948f0d20aa9a27a3f30f",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
