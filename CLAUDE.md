@@ -6,9 +6,9 @@ These are the canonical standards for all content and code changes on this site.
 
 ## Site Architecture
 
-- **Framework:** Next.js 15.5.12 App Router / TypeScript / Tailwind CSS
+- **Framework:** Next.js 16.2.x App Router / TypeScript / Tailwind CSS
 - **Hosting:** Vercel Pro (`prj_XEHglLkPPqmYgRvVJ2OoKcCiQeEc`, team `team_YLxnYBWvoiSIwseaAAFuf9Kd`)
-- **Blog posts:** Markdown files in `/posts/` with gray-matter frontmatter
+- **Blog posts:** Markdown files in `/posts/` with YAML frontmatter (parsed by the in-house `parseFrontmatter` in `src/lib/posts.ts`)
 - **Research articles:** Hardcoded in `src/lib/research.ts` (not markdown)
 - **Blog listing:** `/blog` (src/app/blog/page.tsx)
 - **Research hub:** `/research` with tabbed filtering (client component)
@@ -35,7 +35,7 @@ tags: ["Tag1", "Tag2", "Tag3"]
 
 ### Content Structure (in order)
 
-1. **H1 title** — matches frontmatter title. The H1 **must** remain in the markdown for standalone readability (e.g., on GitHub), but the blog template (`src/app/blog/[slug]/page.tsx`) strips it before rendering to avoid duplication with the template-rendered `<h1>`. The strip uses `post.content.replace(/^\s*# .+\n+/, '')` — the `\s*` is required because gray-matter returns content with a leading newline. Do NOT remove the H1 from markdown files. Do NOT render it twice in the template. After any build, verify with `grep -c '<h1' .next/server/app/blog/<slug>.html` — the count must be **1**.
+1. **H1 title** — matches frontmatter title. The H1 **must** remain in the markdown for standalone readability (e.g., on GitHub), but the blog template (`src/app/blog/[slug]/page.tsx`) strips it before rendering to avoid duplication with the template-rendered `<h1>`. The strip uses `post.content.replace(/^\s*# .+\n+/, '')` — the `\s*` is required because the frontmatter parser (`parseFrontmatter` in `src/lib/posts.ts`) returns content with a leading newline. Do NOT remove the H1 from markdown files. Do NOT render it twice in the template. After any build, verify with `grep -c '<h1' .next/server/app/blog/<slug>.html` — the count must be **1**.
 2. **Italic hook question** — CSO-level, challenges the reader directly. Format: `*Question that makes the executive stop scrolling?*`
 3. **Executive Summary blockquote** — `> **Executive Summary**` followed by 2-3 sentences with key data points
 4. **Body sections** — H2 headings, scan-friendly, data-driven
@@ -167,9 +167,9 @@ Cognitive debt is the cost of lost understanding — why decisions were made, ho
 - Validate at system boundaries: URL parameters, query strings, any data from external sources.
 - Blog slugs from `[slug]` routes must be validated against `generateStaticParams()` output — Next.js SSG handles this, but any future dynamic routes must validate explicitly.
 
-### Next.js 15 / React 19 Patterns
+### Next.js 16 / React 19 Patterns
 
-- **Async params:** In Next.js 15, dynamic route `params` are `Promise` objects. Always use `const { slug } = await params;` — never access `params.slug` directly.
+- **Async params:** In Next.js 15+, dynamic route `params` are `Promise` objects. Always use `const { slug } = await params;` — never access `params.slug` directly.
 - **React 19 `cloneElement` typing:** `cloneElement` requires explicit generic type parameters for props. Use `isValidElement<{ className?: string }>(child)` and cast spread props as `Record<string, unknown>` when needed.
 
 ---
@@ -217,10 +217,10 @@ These patterns were identified from recurring AI-assisted debugging failures acr
 - Handle parse errors explicitly — wrap `JSON.parse()` in try/catch with a clear error message.
 - Research article data in `src/lib/research.ts` uses TypeScript objects (not JSON files). Maintain the existing type shape; do not introduce parallel data formats.
 
-### Frontmatter (gray-matter)
+### Frontmatter (in-house YAML parser)
 
-- Blog post frontmatter is parsed by `gray-matter`. All required fields are validated by the rendering pipeline — missing fields will cause build failures (this is intentional; fail fast).
-- **Known behavior:** `gray-matter` returns `content` with a leading `\n` before the first line of markdown. Any regex that anchors on `^` (e.g., stripping the H1) must account for this with `^\s*`. This caused a duplicate H1 bug in production — do not regress.
+- Blog post frontmatter is parsed by the small `parseFrontmatter()` helper in `src/lib/posts.ts` (backed by `js-yaml`'s `load`), **not** by `gray-matter` — which was removed in June 2026 to drop its vulnerable bundled js-yaml 3.x (GHSA-h67p-54hq-rp68; gray-matter 4.0.3 can't use the patched js-yaml 4.x because it calls the removed `safeLoad`). Required fields are validated downstream — missing fields cause build failures (intentional; fail fast).
+- **Known behavior (preserved from gray-matter — do not regress):** the parser returns `content` with a leading `\n` before the first line of markdown. Any regex that anchors on `^` (e.g., stripping the H1) must account for this with `^\s*`. This caused a duplicate H1 bug in production. The parser intentionally mirrors gray-matter's split so the `/^\s*# .+\n+/` H1-strip stays correct.
 - Date format in frontmatter: `YYYY-MM-DD` (ISO 8601). No other formats.
 
 ---
@@ -245,7 +245,7 @@ Run a link audit on any changed content. Check:
 
 - Update topic counts in `getResearchTopics()` if content changes affect tag distributions
 - Verify `generateStaticParams()` returns all valid slugs
-- Run `npm run build` to confirm all static pages generate (currently 22 pages)
+- Run `npm run build` to confirm all static pages generate (currently 43 pages)
 
 ---
 
@@ -259,9 +259,9 @@ This project maintains a **minimal dependency footprint**. Fewer packages = smal
 
 | Package | Purpose | Upgrade policy |
 |---------|---------|----------------|
-| `next` | Framework | Stay on latest **15.x** patch. Monitor for critical CVEs. |
+| `next` | Framework | Stay on latest **16.x** patch. Monitor for critical CVEs. |
 | `react` / `react-dom` | UI runtime | Stay on **^19.x** |
-| `gray-matter` | Markdown frontmatter parsing | Patch updates only |
+| `js-yaml` | YAML frontmatter parsing (via in-house `parseFrontmatter`) | Stay on **^4.2.0+** (4.2.0 fixes GHSA-h67p-54hq-rp68; do not drop to 3.x) |
 | `remark` / `remark-html` | Markdown → HTML rendering | Patch updates only |
 
 ### Allowed Dependencies (dev)
@@ -304,12 +304,19 @@ Do NOT remove these overrides unless the parent packages (e.g., sucrase via Tail
 
 ### Known Accepted Risks
 
-None. All CVEs resolved as of Next.js 15.5.12 upgrade (February 2026). `npm audit` returns 0 vulnerabilities.
+**None as of June 20, 2026 — `npm audit` returns 0 vulnerabilities (verified, not assumed). Re-run `npm audit` before restating this; it was falsely "0" once while actually 5.**
+
+This was reached by remediating the June 19 finding of 5 vulnerabilities (2 high, 3 moderate) in two phases:
+
+- **Phase A (non-breaking):** `npm audit fix` cleared the high-severity `next` and `picomatch` advisories; a `postcss: ^8.5.10` entry in `overrides` (plus bumping the direct `postcss` devDependency) forced Next's nested copy off the vulnerable `<8.5.10` XSS range (GHSA-qx2v-qp2m-jg93).
+- **Phase B (the gray-matter → js-yaml DoS, GHSA-h67p-54hq-rp68):** not a version bump — the only patched `js-yaml` (4.2.0) removed the `safeLoad`/`safeDump` that `gray-matter@4.0.3` (latest) calls, and npm's "fix" was a major **downgrade** to gray-matter 2.0.1. Resolved instead by **removing gray-matter entirely** and replacing it with a ~15-line `parseFrontmatter()` in `src/lib/posts.ts` backed by `js-yaml@4.2.0`'s `load` (per the "Remove over upgrade" rule + lean-deps policy — net dependency *reduction*). The parser preserves gray-matter's `content` leading-`\n` contract so the H1-strip invariant holds.
+
+Verified after each phase: `tsc --noEmit` clean, 43-page build, `<h1>` count = 1 on both new posts, hidden-post exclusion + tag/array parsing intact, `npm audit` = 0.
 
 ### Quarterly Review
 
 Every 3 months, review:
-1. Are there new Next.js 15.x patches? Apply them.
+1. Are there new Next.js 16.x patches? Apply them.
 2. Run `npm audit` and `npm outdated` — address any new findings.
 3. Check if `overrides` can be removed (parent packages may have updated).
 
@@ -320,7 +327,7 @@ Every 3 months, review:
 1. `npm audit` — zero critical/high in production deps (dev dep warnings are acceptable)
 2. `npm run lint` (`tsc --noEmit`) — zero type errors
 3. `npm run build` — must succeed with zero errors
-4. Verify page count matches expected (currently 22)
+4. Verify page count matches expected (43 pages as of June 2026; grows as content is added — confirm against the build output, not a fixed number)
 5. Review AI-generated changes for understanding — can you explain every diff?
 6. `git add` specific files (never `git add -A`)
 7. Commit with descriptive message (conventional style: `feat:`, `fix:`, `docs:`, `security:`)
@@ -342,6 +349,26 @@ Every 3 months, review:
 ---
 
 ## ASVS Panjabi Review Pages — Plain Language Standards
+
+### Translation Resources & Validation (all bilingual content)
+
+Applies to every `posts-i18n/pa-in/` translation and glossary — the Digital Seva
+scam-awareness series as well as the ASVS review pages.
+
+- **Authoritative dictionary:** RCPLT, Punjabi University Patiala — Gurmukhi/
+  Shahmukhi → English dictionary with fuzzy search: <https://dic.learnpunjabi.org>.
+  This is the academic reference for Punjabi computational linguistics. Use it to
+  validate Gurmukhi spelling, confirm a term exists (vs. an AI-invented coinage),
+  and choose between near-synonyms before committing a glossary row.
+- **Workflow for the T/L/R/H glossary tables:** for each security term, look it up
+  at the source above. If a faithful Gurmukhi term exists, mark it `T` (Translated);
+  if only a loan word is in real use, mark it `L` and say so in Notes; never present
+  an unverified coinage as established usage. The Notes column should cite the basis
+  (e.g., Persian/Arabic origin, common loan) so a human reviewer can check it.
+- **AI drafts stay `ai_draft`.** A dictionary lookup raises confidence but does not
+  replace sangat review — keep `translation_status: ai_draft` until a Panjabi
+  speaker confirms. The dictionary validates *words*; only a human validates *tone*
+  and whether an elder would actually understand the sentence.
 
 ### Context
 
@@ -385,7 +412,7 @@ When writing or editing the ASVS review page wrapper text, apply these substitut
 
 ### Current Page Count
 
-With 4 hidden review pages, expected build output is **22 pages** (was 18). Update if review pages are added or removed.
+As of June 2026 the build generates **43 pages**. This grows as content is added — the ASVS Panjabi review series alone is now **10 hidden posts** (the original 4 wrapper pages plus v5, v8, v9, v12, assessment-certification, and changes-from-v4). Do not treat any fixed number as authoritative; confirm against `npm run build` output after content changes.
 
 ---
 

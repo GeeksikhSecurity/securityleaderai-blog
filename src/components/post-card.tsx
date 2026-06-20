@@ -16,18 +16,16 @@ import { LOCALE_META, type Locale } from '@/lib/locales';
  * clickable by definition.
  */
 
-export type PostCardType = 'paper' | 'video' | 'insight' | 'tool';
+export type PostCardType = 'paper' | 'insight' | 'tool';
 
 const TYPE_LABELS: Record<PostCardType, string> = {
   paper: 'Research Paper',
-  video: 'Video & Demo',
   insight: 'Insight',
   tool: 'Tool / Framework',
 };
 
 const TYPE_BADGES: Record<PostCardType, string> = {
   paper: 'badge-research-paper',
-  video: 'badge-video',
   insight: 'badge-insight',
   tool: 'badge-tool',
 };

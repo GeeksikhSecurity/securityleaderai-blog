@@ -1249,11 +1249,6 @@ pre code {
   border: 1px solid #f59e0b;
 }
 
-.badge-video {
-  background-color: var(--neutral-800);
-  color: #ffffff;
-}
-
 /* ============================================
    SCROLL PROGRESS BAR
    ============================================ */
