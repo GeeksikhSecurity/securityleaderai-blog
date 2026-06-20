@@ -1,0 +1,34 @@
+posts-i18n/pa-in/tech-support-scam-elders.md
+  s_7b03e56eab1551::t_3b3353bf5fb0d9 90
+posts-i18n/pa-in/whatsapp-family-emergency-scams.md
+  s_7b03e56eab1551::t_3b3353bf5fb0d9 22,89
+posts-i18n/pa-in/global-scam-alert-2026.md
+  s_7b03e56eab1551::t_3b3353bf5fb0d9 4,16,38,45,91
+scripts/lint-content.mjs
+  s_7b03e56eab1551::t_7b683e88e9332f 100-117
+  s_7b03e56eab1551::t_53255a9d66f5c2 389-410
+docs/content-rigor.md
+  s_7b03e56eab1551::t_82cd264ce758ce 306
+  s_7b03e56eab1551::t_1645779b3de18f 276-291
+  s_7b03e56eab1551::t_2aedbcd8e1691f 54
+posts-i18n/pa-in/reporting-centers-onepager.md
+  s_7b03e56eab1551::t_3b3353bf5fb0d9 4,28,72,82
+posts-i18n/pa-in/gurdwara-charity-donation-fraud.md
+  s_7b03e56eab1551::t_3b3353bf5fb0d9 72,96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "dacb0d5deea3c07edffdf927cc7826a8ed1bef06",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
