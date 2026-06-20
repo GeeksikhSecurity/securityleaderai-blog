@@ -350,6 +350,26 @@ Every 3 months, review:
 
 ## ASVS Panjabi Review Pages — Plain Language Standards
 
+### Translation Resources & Validation (all bilingual content)
+
+Applies to every `posts-i18n/pa-in/` translation and glossary — the Digital Seva
+scam-awareness series as well as the ASVS review pages.
+
+- **Authoritative dictionary:** RCPLT, Punjabi University Patiala — Gurmukhi/
+  Shahmukhi → English dictionary with fuzzy search: <https://dic.learnpunjabi.org>.
+  This is the academic reference for Punjabi computational linguistics. Use it to
+  validate Gurmukhi spelling, confirm a term exists (vs. an AI-invented coinage),
+  and choose between near-synonyms before committing a glossary row.
+- **Workflow for the T/L/R/H glossary tables:** for each security term, look it up
+  at the source above. If a faithful Gurmukhi term exists, mark it `T` (Translated);
+  if only a loan word is in real use, mark it `L` and say so in Notes; never present
+  an unverified coinage as established usage. The Notes column should cite the basis
+  (e.g., Persian/Arabic origin, common loan) so a human reviewer can check it.
+- **AI drafts stay `ai_draft`.** A dictionary lookup raises confidence but does not
+  replace sangat review — keep `translation_status: ai_draft` until a Panjabi
+  speaker confirms. The dictionary validates *words*; only a human validates *tone*
+  and whether an elder would actually understand the sentence.
+
 ### Context
 
 The 4 hidden review pages (`asvs-panjabi-review-hub`, `asvs-panjabi-review-frontispiece`, `asvs-panjabi-review-preface`, `asvs-panjabi-review-glossary`) target Panjabi speakers who may never use GitHub, may not work in tech, and may be reached via LinkedIn, WhatsApp, or Sikh community channels. The wrapper/navigation/instructional text must use plain language. The ASVS source content (bilingual frontispiece, preface body) is verbatim from OWASP and must not be simplified.
