@@ -1,0 +1,36 @@
+RULES.md
+  s_7b03e56eab1551::t_014169eb906cc7 218,220-222,224
+  s_7b03e56eab1551::t_ca9b0413321232 151,153
+  s_7b03e56eab1551::t_853149cfb1bb2a 122
+README.md
+  s_7b03e56eab1551::t_9d7bbe6d5ba540 17
+package.json
+  s_7b03e56eab1551::t_7f145e0a0686e2 14
+  s_7b03e56eab1551::t_e8575d60b137f3 24
+src/lib/posts.ts
+  s_7b03e56eab1551::t_bf7d4fa0838c69 100
+  s_7b03e56eab1551::t_829b88239d3625 3,7-25,27-28,30-31,33-38
+  s_7b03e56eab1551::t_fda1575daa36cd 26,29
+CLAUDE.md
+  s_7b03e56eab1551::t_608bf9c7913fe9 38
+  s_7b03e56eab1551::t_d6211ef7827746 220,222-223
+  s_7b03e56eab1551::t_2593b4f89ac437 262,264
+  s_7b03e56eab1551::t_aa836ec847cc08 11
+  s_7b03e56eab1551::t_a28aaf0ab2ef23 307,309,311-312,314
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "3f5e554e37eea341d29aa3ac0487a937e81b0585",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
