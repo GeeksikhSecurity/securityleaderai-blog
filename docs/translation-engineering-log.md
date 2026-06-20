@@ -69,3 +69,16 @@ Tracked here so incoming research integrates cleanly into the *single* glossary 
 ## Roadmap (tracked in Linear)
 
 - **Spoken-Panjabi TTS for bilingual posts** (Gemini natural spoken Panjabi via NotebookLM) — embed a single-voice read-aloud of the *translated* post instead of NotebookLM's default two-speaker "audio overview." Tracked in Linear: **SAY-372** (*SecurityLeader.ai Research & Standards*).
+- **APA 7th bilingual citation standard for Panjabi sources + AnmolLipi legacy decode** — research at [`Adapting Punjabi Citations to APA Style.md`](Adapting%20Punjabi%20Citations%20to%20APA%20Style.md). Transliterate non-Latin title + `[English translation]`, romanize author/publisher, period (not Dandi) in references. **Must reuse IAST (R23) romanization — do not add a second scheme.** Tracked in Linear: **SAY-373**.
+
+## Cross-project scope (this is a shared framework, not a securityleader.ai feature)
+
+The translation standards captured here — proper-noun glossary, T/L/R/H, R23 IAST romanization, R26–R29 rules, BBC plain-language style, AnmolLipi handling, APA bilingual citations — are a **portable framework** consumed by:
+
+- **securityleader.ai blog** (this repo) — the Digital Seva bilingual series.
+- **OWASP ASVS Panjabi translation** — `5.0/pa-IN/CLAUDE.md` already encodes T/L/R/H, danda, the Patiala/Gurbani dictionary order.
+- **PDL `pdl-translation-bench`** — Panjabi↔English transliteration + transliteration-tolerant search (the romanization engine).
+- **PDL `pdl-ai-enrichment`** — index-time enrichment ("Cap 0 — transliteration keys"); natural home for AnmolLipi decode + APA citation generation.
+- **singhskaurs.com** — Gurbani bilingual blog (Master Bilingual Gurbani prompt; SGGS-page citations).
+
+When a standard changes, change it once in the portable spec and propagate — never per-project forks of the same rule.
