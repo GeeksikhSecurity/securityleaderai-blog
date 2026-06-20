@@ -97,6 +97,34 @@ const ROMANIZATION_DISALLOWED = [
   { re: /\bshakkee\b/i,    suggest: 'shakkī' },
 ];
 
+// R29 — proper-noun (country) glossary for pa-in. Country names that have a
+// canonical Gurmukhi form must use it in Gurmukhi body prose, so the country
+// list reads consistently (USA/Canada/Australia/India are always Gurmukhi; the
+// UK was the lone Latin holdout). UK → ਯੂ.ਕੇ. (transliteration) keeps the
+// UK-wide meaning accurate — deliberately NOT England/ਇੰਗਲੈਂਡ, which is
+// factually narrower (the data covers all of Britain). Agency citations that
+// embed a country (e.g. "National Fraud Database (UK)") are allowlisted: they
+// live in the References/ਹਵਾਲੇ section, the Sources (ਸਰੋਤ) line, or a link URL.
+//
+// Each entry lists EVERY common Latin spelling so the rule is robust corpus-wide
+// — "UK", "U.K." and "United Kingdom" all map to one Gurmukhi form. Add new
+// variants here (not per-post fixes) when a new rendering shows up.
+const COUNTRY_GLOSSARY = [
+  { variants: ['UK', 'U.K.', 'United Kingdom'],                       gurmukhi: 'ਯੂ.ਕੇ.' },
+  { variants: ['USA', 'U.S.A.', 'U.S.', 'United States', 'America'],  gurmukhi: 'ਅਮਰੀਕਾ' },
+  { variants: ['England'],                                           gurmukhi: 'ਇੰਗਲੈਂਡ' },
+  { variants: ['Britain', 'Great Britain'],                          gurmukhi: 'ਬਰਤਾਨੀਆ' },
+  { variants: ['Australia'],                                         gurmukhi: 'ਆਸਟ੍ਰੇਲੀਆ' },
+  { variants: ['Canada'],                                            gurmukhi: 'ਕੈਨੇਡਾ' },
+  { variants: ['India'],                                             gurmukhi: 'ਭਾਰਤ' },
+];
+
+// Escape regex metacharacters so multi-word / dotted variants (e.g. "U.K.")
+// match literally. Word edges use lookarounds, not \b, because a variant can end
+// in punctuation (the "." in "U.K.") where \b would fail before a following space.
+function reEscape(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function countryVariantRe(variant) { return new RegExp(`(?<![\\w])${reEscape(variant)}(?![\\w])`); }
+
 const errors = [];
 const notices = [];
 
@@ -365,6 +393,29 @@ function lintLocaleSpecific(doc, parsed) {
         const m = line.match(re);
         if (m) {
           reportErr('R23', doc.path, lineNo, `English-style romanization "${m[0]}" — IAST canonical is "${suggest}"`);
+        }
+      }
+    });
+
+    // R29 — country-name script consistency (proper-noun glossary).
+    // A Latin country name in Gurmukhi body prose must use its canonical
+    // Gurmukhi form. Allowlisted zones, where an agency citation may embed a
+    // country in Latin: the References/ਹਵਾਲੇ section (everything from that
+    // heading on), the Sources (ਸਰੋਤ) line, markdown link targets/URLs, and any
+    // line carrying `<!-- rigor: allow R29 -->`.
+    const refStart = parsed.lines.findIndex((l) => /^#{1,6}\s+.*(References|ਹਵਾਲੇ)/.test(l));
+    parsed.lines.forEach((line, i) => {
+      if (refStart !== -1 && i >= refStart) return;
+      if (/^\*?\s*(ਸਰੋਤ|Sources)\s*[:：]/.test(line)) return;
+      if (lineHasAllowance(line, 'R29')) return;
+      const lineNo = i + 1 + offset;
+      // Drop link targets and bare URLs so domains never trip the check.
+      const scrubbed = line.replace(/\]\([^)]*\)/g, ']()').replace(/https?:\/\/\S+/g, '');
+      for (const { variants, gurmukhi } of COUNTRY_GLOSSARY) {
+        const hit = variants.find((v) => countryVariantRe(v).test(scrubbed));
+        if (hit) {
+          reportErr('R29', doc.path, lineNo,
+            `Latin country name "${hit}" in Gurmukhi body — use "${gurmukhi}" (proper-noun glossary). For an agency citation, move it to the References section or add <!-- rigor: allow R29 -->`);
         }
       }
     });
