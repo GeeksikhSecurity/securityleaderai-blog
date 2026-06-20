@@ -1,0 +1,26 @@
+CLAUDE.md
+  s_7b03e56eab1551::t_1bf0d5879dc195 307,309,311-317
+RULES.md
+  s_7b03e56eab1551::t_65e637371ab939 218,220-221
+package.json
+  s_7b03e56eab1551::t_9482d905f4f729 34-35
+  s_7b03e56eab1551::t_5e5eba0725f78c 28
+package-lock.json
+  s_7b03e56eab1551::t_386bff2661c341 25,559-561,565-567,581-583,597-599,603-605,616-618,622-624,635-637,641-643,654-656,660-662,673-675,689-691,2450-2452,2468-2470,2473,2487-2494,2571-2573,2604-2606,2624,3288-3290
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "58a3b4e0d113273cc0685359788424ac97bc6b25",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
