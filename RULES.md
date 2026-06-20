@@ -215,11 +215,10 @@ New vulnerability found
 
 ### Known Accepted Risks (current)
 
-**As of June 19, 2026, `npm audit` reports 5 vulnerabilities (2 high, 3 moderate) — not 0. Remediation pending.** Summary (full table with GHSA IDs and fix paths is in `CLAUDE.md` → Known Accepted Risks):
+**As of June 19, 2026, `npm audit` reports 2 moderate vulnerabilities (0 high) — down from 5 (2 high) after Phase A. Full detail in `CLAUDE.md` → Known Accepted Risks.**
 
-- `next` (high) — multiple DoS / middleware-bypass / cache-poisoning / XSS / SSRF advisories ≤16.3.0; fix via non-breaking `npm audit fix` to a patched 16.x.
-- `picomatch` (high, dev transitive) and `postcss` (moderate, dev) — fixed by non-breaking `npm audit fix`.
-- `gray-matter` → `js-yaml` (moderate, **prod**) — YAML merge-key DoS; fix needs **breaking** `gray-matter@2.0.1`. Do not `--force`; evaluate the 2.x API first. Low real-world exposure (frontmatter is author-controlled, not user input).
+- **Phase A (resolved):** non-breaking `npm audit fix` cleared the high-severity `next` and `picomatch` advisories; a `postcss: ^8.5.10` override + devDependency bump cleared the postcss XSS (including Next's nested copy). Verified by 43-page build + H1 invariant + `tsc`.
+- **Remaining (2 moderate, same root):** `gray-matter` → `js-yaml` YAML merge-key DoS (GHSA-h67p-54hq-rp68, **prod**, frontmatter parsing). Not a simple bump — the patched `js-yaml@4.2.0` removed `safeLoad`/`safeDump` that `gray-matter@4.0.3` depends on, and npm's `gray-matter@2.0.1` "fix" is a major downgrade. Phase B in progress. Low exposure: frontmatter is author-controlled, build-time only.
 
 Do not restore a "0 vulnerabilities" claim without re-running `npm audit` and confirming.
 

@@ -304,16 +304,17 @@ Do NOT remove these overrides unless the parent packages (e.g., sucrase via Tail
 
 ### Known Accepted Risks
 
-**Status as of June 19, 2026 — `npm audit` reports 5 vulnerabilities (2 high, 3 moderate). Remediation pending — see below. The previous "0 vulnerabilities" claim is no longer true; do not restore it without re-running `npm audit`.**
+**Status as of June 19, 2026 — `npm audit` reports 2 moderate vulnerabilities (0 high). Down from 5 (2 high) after Phase A remediation. Do not restore a "0 vulnerabilities" claim without re-running `npm audit`.**
 
-| Package | Severity | Issue | Prod/Dev | Fix path |
-|---------|----------|-------|----------|----------|
-| `next` | High | DoS (Server Components, Image Optimization, Cache Components), middleware/proxy bypass, cache poisoning, SSRF, XSS via CSP nonces — multiple GHSA advisories affecting ≤16.3.0 | Prod | Non-breaking: `npm audit fix` bumps to patched 16.x (installed 16.2.9). Verify build + page count after. |
-| `picomatch` | High | Method injection in POSIX classes + ReDoS via extglob (GHSA-3v7f-55p6-f55p, GHSA-c2c7-rcm5-vvqj) | Dev (transitive via tinyglobby/Tailwind toolchain) | Non-breaking `npm audit fix`, or add an `overrides` pin once a safe range is confirmed. |
-| `postcss` | Moderate | XSS via unescaped `</style>` in CSS stringify output (GHSA-qx2v-qp2m-jg93) | Dev (Tailwind/Next build) | Non-breaking `npm audit fix` → ≥8.5.10. |
-| `gray-matter` → `js-yaml` | Moderate | Quadratic-complexity DoS in YAML merge-key handling (GHSA-h67p-54hq-rp68) | **Prod** (frontmatter parsing) | **Breaking** — fix requires `gray-matter@2.0.1` (major bump). Per "Remove over upgrade," evaluate the 2.x API against `src/lib/posts.ts` before upgrading; do NOT `npm audit fix --force` blindly. Mitigation until then: frontmatter is author-controlled (not user input), so DoS exposure is low. |
+**Phase A (resolved, non-breaking):** `npm audit fix` cleared the high-severity `next` and `picomatch` advisories; a `postcss: ^8.5.10` entry in `overrides` (plus bumping the direct `postcss` devDependency) forced Next's nested copy off the vulnerable `<8.5.10` range. Verified: 43-page build, `<h1>` count = 1 on both new posts, `tsc` clean.
 
-Remediation is tracked as a separate task (it needs build re-verification and a breaking-change decision on gray-matter) — keep it out of unrelated content/doc commits.
+**Remaining (2 moderate — same root, counted twice):**
+
+| Package | Severity | Issue | Prod/Dev | Status |
+|---------|----------|-------|----------|--------|
+| `gray-matter` → `js-yaml` | Moderate | Quadratic-complexity DoS in YAML merge-key handling (GHSA-h67p-54hq-rp68) | **Prod** (frontmatter parsing) | Phase B in progress — see below. |
+
+**Why it's not a simple version bump:** the only `js-yaml` without this CVE is `4.2.0`, but `js-yaml` 4.x removed `safeLoad`/`safeDump`, which `gray-matter@4.0.3` (the latest gray-matter) calls in `lib/engines.js`. No `js-yaml` version both has the API gray-matter needs *and* is patched — so a global `js-yaml` override breaks gray-matter, and npm's suggested `gray-matter@2.0.1` is a major **downgrade** (4.x → 2.x), not an upgrade. Real-world exposure is low regardless: frontmatter is author-controlled and parsed only at build time, never from user input.
 
 ### Quarterly Review
 
