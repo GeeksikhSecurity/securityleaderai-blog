@@ -119,7 +119,7 @@ Cognitive debt is the cost of lost understanding — why decisions were made, ho
 | Explicit error handling | Wrap `JSON.parse()` in try/catch with clear error messages |
 | Existing type shapes | Research data in `src/lib/research.ts` uses TypeScript objects. No parallel formats |
 
-### Frontmatter (gray-matter)
+### Frontmatter (in-house YAML parser, `src/lib/posts.ts`)
 
 | Rule | Detail |
 |------|--------|
@@ -148,9 +148,9 @@ Minimal dependency footprint. Fewer packages = smaller attack surface = easier m
 
 | Package | Purpose | Policy |
 |---------|---------|--------|
-| `next` | Framework | Latest **15.x** patch |
+| `next` | Framework | Latest **16.x** patch |
 | `react` / `react-dom` | UI runtime | **^19.x** |
-| `gray-matter` | Frontmatter parsing | Patch only |
+| `js-yaml` | YAML frontmatter parsing (via in-house `parseFrontmatter`) | **^4.2.0+** (never 3.x — CVE) |
 | `remark` / `remark-html` | Markdown rendering | Patch only |
 
 ### Allowed Dev Dependencies
@@ -215,12 +215,13 @@ New vulnerability found
 
 ### Known Accepted Risks (current)
 
-**As of June 19, 2026, `npm audit` reports 2 moderate vulnerabilities (0 high) — down from 5 (2 high) after Phase A. Full detail in `CLAUDE.md` → Known Accepted Risks.**
+**None as of June 20, 2026 — `npm audit` returns 0 vulnerabilities (verified). Full detail in `CLAUDE.md` → Known Accepted Risks.**
 
-- **Phase A (resolved):** non-breaking `npm audit fix` cleared the high-severity `next` and `picomatch` advisories; a `postcss: ^8.5.10` override + devDependency bump cleared the postcss XSS (including Next's nested copy). Verified by 43-page build + H1 invariant + `tsc`.
-- **Remaining (2 moderate, same root):** `gray-matter` → `js-yaml` YAML merge-key DoS (GHSA-h67p-54hq-rp68, **prod**, frontmatter parsing). Not a simple bump — the patched `js-yaml@4.2.0` removed `safeLoad`/`safeDump` that `gray-matter@4.0.3` depends on, and npm's `gray-matter@2.0.1` "fix" is a major downgrade. Phase B in progress. Low exposure: frontmatter is author-controlled, build-time only.
+Remediated the June 19 finding of 5 vulns (2 high, 3 moderate) in two phases:
+- **Phase A (non-breaking):** `npm audit fix` cleared high-severity `next` + `picomatch`; a `postcss: ^8.5.10` override + devDependency bump cleared the postcss XSS (incl. Next's nested copy).
+- **Phase B:** the `gray-matter` → `js-yaml` DoS (GHSA-h67p-54hq-rp68) had no clean bump (patched js-yaml 4.2.0 dropped the `safeLoad` gray-matter needs; npm's "fix" was a major downgrade). **Removed gray-matter** and replaced it with an in-house `parseFrontmatter()` backed by `js-yaml@4.2.0` — a net dependency reduction, per "Remove over upgrade."
 
-Do not restore a "0 vulnerabilities" claim without re-running `npm audit` and confirming.
+Verified each phase: `tsc` clean, 43-page build, H1 invariant, hidden-post/tag parsing intact, `npm audit` = 0. Do not restate "0" without re-running `npm audit` (it was once falsely "0" while actually 5).
 
 ### Quarterly Review
 

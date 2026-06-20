@@ -8,7 +8,7 @@ These are the canonical standards for all content and code changes on this site.
 
 - **Framework:** Next.js 16.2.x App Router / TypeScript / Tailwind CSS
 - **Hosting:** Vercel Pro (`prj_XEHglLkPPqmYgRvVJ2OoKcCiQeEc`, team `team_YLxnYBWvoiSIwseaAAFuf9Kd`)
-- **Blog posts:** Markdown files in `/posts/` with gray-matter frontmatter
+- **Blog posts:** Markdown files in `/posts/` with YAML frontmatter (parsed by the in-house `parseFrontmatter` in `src/lib/posts.ts`)
 - **Research articles:** Hardcoded in `src/lib/research.ts` (not markdown)
 - **Blog listing:** `/blog` (src/app/blog/page.tsx)
 - **Research hub:** `/research` with tabbed filtering (client component)
@@ -35,7 +35,7 @@ tags: ["Tag1", "Tag2", "Tag3"]
 
 ### Content Structure (in order)
 
-1. **H1 title** — matches frontmatter title. The H1 **must** remain in the markdown for standalone readability (e.g., on GitHub), but the blog template (`src/app/blog/[slug]/page.tsx`) strips it before rendering to avoid duplication with the template-rendered `<h1>`. The strip uses `post.content.replace(/^\s*# .+\n+/, '')` — the `\s*` is required because gray-matter returns content with a leading newline. Do NOT remove the H1 from markdown files. Do NOT render it twice in the template. After any build, verify with `grep -c '<h1' .next/server/app/blog/<slug>.html` — the count must be **1**.
+1. **H1 title** — matches frontmatter title. The H1 **must** remain in the markdown for standalone readability (e.g., on GitHub), but the blog template (`src/app/blog/[slug]/page.tsx`) strips it before rendering to avoid duplication with the template-rendered `<h1>`. The strip uses `post.content.replace(/^\s*# .+\n+/, '')` — the `\s*` is required because the frontmatter parser (`parseFrontmatter` in `src/lib/posts.ts`) returns content with a leading newline. Do NOT remove the H1 from markdown files. Do NOT render it twice in the template. After any build, verify with `grep -c '<h1' .next/server/app/blog/<slug>.html` — the count must be **1**.
 2. **Italic hook question** — CSO-level, challenges the reader directly. Format: `*Question that makes the executive stop scrolling?*`
 3. **Executive Summary blockquote** — `> **Executive Summary**` followed by 2-3 sentences with key data points
 4. **Body sections** — H2 headings, scan-friendly, data-driven
@@ -217,10 +217,10 @@ These patterns were identified from recurring AI-assisted debugging failures acr
 - Handle parse errors explicitly — wrap `JSON.parse()` in try/catch with a clear error message.
 - Research article data in `src/lib/research.ts` uses TypeScript objects (not JSON files). Maintain the existing type shape; do not introduce parallel data formats.
 
-### Frontmatter (gray-matter)
+### Frontmatter (in-house YAML parser)
 
-- Blog post frontmatter is parsed by `gray-matter`. All required fields are validated by the rendering pipeline — missing fields will cause build failures (this is intentional; fail fast).
-- **Known behavior:** `gray-matter` returns `content` with a leading `\n` before the first line of markdown. Any regex that anchors on `^` (e.g., stripping the H1) must account for this with `^\s*`. This caused a duplicate H1 bug in production — do not regress.
+- Blog post frontmatter is parsed by the small `parseFrontmatter()` helper in `src/lib/posts.ts` (backed by `js-yaml`'s `load`), **not** by `gray-matter` — which was removed in June 2026 to drop its vulnerable bundled js-yaml 3.x (GHSA-h67p-54hq-rp68; gray-matter 4.0.3 can't use the patched js-yaml 4.x because it calls the removed `safeLoad`). Required fields are validated downstream — missing fields cause build failures (intentional; fail fast).
+- **Known behavior (preserved from gray-matter — do not regress):** the parser returns `content` with a leading `\n` before the first line of markdown. Any regex that anchors on `^` (e.g., stripping the H1) must account for this with `^\s*`. This caused a duplicate H1 bug in production. The parser intentionally mirrors gray-matter's split so the `/^\s*# .+\n+/` H1-strip stays correct.
 - Date format in frontmatter: `YYYY-MM-DD` (ISO 8601). No other formats.
 
 ---
@@ -259,9 +259,9 @@ This project maintains a **minimal dependency footprint**. Fewer packages = smal
 
 | Package | Purpose | Upgrade policy |
 |---------|---------|----------------|
-| `next` | Framework | Stay on latest **15.x** patch. Monitor for critical CVEs. |
+| `next` | Framework | Stay on latest **16.x** patch. Monitor for critical CVEs. |
 | `react` / `react-dom` | UI runtime | Stay on **^19.x** |
-| `gray-matter` | Markdown frontmatter parsing | Patch updates only |
+| `js-yaml` | YAML frontmatter parsing (via in-house `parseFrontmatter`) | Stay on **^4.2.0+** (4.2.0 fixes GHSA-h67p-54hq-rp68; do not drop to 3.x) |
 | `remark` / `remark-html` | Markdown → HTML rendering | Patch updates only |
 
 ### Allowed Dependencies (dev)
@@ -304,17 +304,14 @@ Do NOT remove these overrides unless the parent packages (e.g., sucrase via Tail
 
 ### Known Accepted Risks
 
-**Status as of June 19, 2026 — `npm audit` reports 2 moderate vulnerabilities (0 high). Down from 5 (2 high) after Phase A remediation. Do not restore a "0 vulnerabilities" claim without re-running `npm audit`.**
+**None as of June 20, 2026 — `npm audit` returns 0 vulnerabilities (verified, not assumed). Re-run `npm audit` before restating this; it was falsely "0" once while actually 5.**
 
-**Phase A (resolved, non-breaking):** `npm audit fix` cleared the high-severity `next` and `picomatch` advisories; a `postcss: ^8.5.10` entry in `overrides` (plus bumping the direct `postcss` devDependency) forced Next's nested copy off the vulnerable `<8.5.10` range. Verified: 43-page build, `<h1>` count = 1 on both new posts, `tsc` clean.
+This was reached by remediating the June 19 finding of 5 vulnerabilities (2 high, 3 moderate) in two phases:
 
-**Remaining (2 moderate — same root, counted twice):**
+- **Phase A (non-breaking):** `npm audit fix` cleared the high-severity `next` and `picomatch` advisories; a `postcss: ^8.5.10` entry in `overrides` (plus bumping the direct `postcss` devDependency) forced Next's nested copy off the vulnerable `<8.5.10` XSS range (GHSA-qx2v-qp2m-jg93).
+- **Phase B (the gray-matter → js-yaml DoS, GHSA-h67p-54hq-rp68):** not a version bump — the only patched `js-yaml` (4.2.0) removed the `safeLoad`/`safeDump` that `gray-matter@4.0.3` (latest) calls, and npm's "fix" was a major **downgrade** to gray-matter 2.0.1. Resolved instead by **removing gray-matter entirely** and replacing it with a ~15-line `parseFrontmatter()` in `src/lib/posts.ts` backed by `js-yaml@4.2.0`'s `load` (per the "Remove over upgrade" rule + lean-deps policy — net dependency *reduction*). The parser preserves gray-matter's `content` leading-`\n` contract so the H1-strip invariant holds.
 
-| Package | Severity | Issue | Prod/Dev | Status |
-|---------|----------|-------|----------|--------|
-| `gray-matter` → `js-yaml` | Moderate | Quadratic-complexity DoS in YAML merge-key handling (GHSA-h67p-54hq-rp68) | **Prod** (frontmatter parsing) | Phase B in progress — see below. |
-
-**Why it's not a simple version bump:** the only `js-yaml` without this CVE is `4.2.0`, but `js-yaml` 4.x removed `safeLoad`/`safeDump`, which `gray-matter@4.0.3` (the latest gray-matter) calls in `lib/engines.js`. No `js-yaml` version both has the API gray-matter needs *and* is patched — so a global `js-yaml` override breaks gray-matter, and npm's suggested `gray-matter@2.0.1` is a major **downgrade** (4.x → 2.x), not an upgrade. Real-world exposure is low regardless: frontmatter is author-controlled and parsed only at build time, never from user input.
+Verified after each phase: `tsc --noEmit` clean, 43-page build, `<h1>` count = 1 on both new posts, hidden-post exclusion + tag/array parsing intact, `npm audit` = 0.
 
 ### Quarterly Review
 

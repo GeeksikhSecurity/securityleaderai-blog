@@ -1,9 +1,41 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import { load as parseYaml } from 'js-yaml';
 import { LOCALES, type Locale, isLocale } from './locales';
 
 const WORDS_PER_MINUTE = 200;
+
+/**
+ * Minimal YAML frontmatter parser — replaces `gray-matter`.
+ *
+ * Why hand-rolled: gray-matter's latest release (4.0.3) bundles js-yaml ^3.x
+ * via `lib/engines.js`, which calls `yaml.safeLoad`/`safeDump`. The only
+ * patched js-yaml line — 4.2.0 — REMOVED those methods (GHSA-h67p-54hq-rp68,
+ * quadratic-complexity DoS in merge-key handling), so gray-matter cannot
+ * consume a fixed js-yaml, and npm's suggested "fix" is a major downgrade.
+ * Parsing the `---` block ourselves with js-yaml@4.2.0's `load` (equivalent to
+ * the old `safeLoad`: default schema, no arbitrary JS type construction)
+ * removes the vulnerable transitive dependency entirely.
+ *
+ * Contract preserved from gray-matter so the rest of the pipeline is
+ * unchanged: `content` is everything after the closing `---` delimiter,
+ * KEEPING the leading newline that the blog template's H1-strip regex
+ * (`/^\s*# .+\n+/`, see CLAUDE.md gray-matter note) relies on.
+ */
+function parseFrontmatter(input: string): {
+  // `data` is intentionally loosely typed (`any`) to mirror gray-matter's prior
+  // data contract; field shapes are validated by scripts/lint-content.mjs and
+  // coerced at the call sites below.
+  data: Record<string, any>;
+  content: string;
+} {
+  const str = input.replace(/^\uFEFF/, ''); // strip UTF-8 BOM, as gray-matter does
+  const match = /^---\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/.exec(str);
+  if (!match) return { data: {}, content: str };
+  const parsed = parseYaml(match[1]);
+  const data = parsed && typeof parsed === 'object' ? (parsed as Record<string, any>) : {};
+  return { data, content: str.slice(match[0].length) };
+}
 const postsDirectory = path.join(process.cwd(), 'posts');
 const postsI18nDirectory = path.join(process.cwd(), 'posts-i18n');
 
@@ -65,7 +97,7 @@ function parseAuthors(data: Record<string, unknown>): Author[] | undefined {
 
 function readPostFile(fullPath: string, slug: string): Post {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data, content } = parseFrontmatter(fileContents);
 
   const wordCount = content.split(/\s+/g).length;
   const readingTime = Math.ceil(wordCount / WORDS_PER_MINUTE);
