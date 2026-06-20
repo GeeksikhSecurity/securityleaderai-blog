@@ -105,15 +105,25 @@ const ROMANIZATION_DISALLOWED = [
 // factually narrower (the data covers all of Britain). Agency citations that
 // embed a country (e.g. "National Fraud Database (UK)") are allowlisted: they
 // live in the References/ਹਵਾਲੇ section, the Sources (ਸਰੋਤ) line, or a link URL.
-const COUNTRY_GLOSSARY = {
-  UK: 'ਯੂ.ਕੇ.',
-  USA: 'ਅਮਰੀਕਾ',
-  England: 'ਇੰਗਲੈਂਡ',
-  Britain: 'ਬਰਤਾਨੀਆ',
-  Australia: 'ਆਸਟ੍ਰੇਲੀਆ',
-  Canada: 'ਕੈਨੇਡਾ',
-  India: 'ਭਾਰਤ',
-};
+//
+// Each entry lists EVERY common Latin spelling so the rule is robust corpus-wide
+// — "UK", "U.K." and "United Kingdom" all map to one Gurmukhi form. Add new
+// variants here (not per-post fixes) when a new rendering shows up.
+const COUNTRY_GLOSSARY = [
+  { variants: ['UK', 'U.K.', 'United Kingdom'],                       gurmukhi: 'ਯੂ.ਕੇ.' },
+  { variants: ['USA', 'U.S.A.', 'U.S.', 'United States', 'America'],  gurmukhi: 'ਅਮਰੀਕਾ' },
+  { variants: ['England'],                                           gurmukhi: 'ਇੰਗਲੈਂਡ' },
+  { variants: ['Britain', 'Great Britain'],                          gurmukhi: 'ਬਰਤਾਨੀਆ' },
+  { variants: ['Australia'],                                         gurmukhi: 'ਆਸਟ੍ਰੇਲੀਆ' },
+  { variants: ['Canada'],                                            gurmukhi: 'ਕੈਨੇਡਾ' },
+  { variants: ['India'],                                             gurmukhi: 'ਭਾਰਤ' },
+];
+
+// Escape regex metacharacters so multi-word / dotted variants (e.g. "U.K.")
+// match literally. Word edges use lookarounds, not \b, because a variant can end
+// in punctuation (the "." in "U.K.") where \b would fail before a following space.
+function reEscape(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function countryVariantRe(variant) { return new RegExp(`(?<![\\w])${reEscape(variant)}(?![\\w])`); }
 
 const errors = [];
 const notices = [];
@@ -401,10 +411,11 @@ function lintLocaleSpecific(doc, parsed) {
       const lineNo = i + 1 + offset;
       // Drop link targets and bare URLs so domains never trip the check.
       const scrubbed = line.replace(/\]\([^)]*\)/g, ']()').replace(/https?:\/\/\S+/g, '');
-      for (const [latin, gurmukhi] of Object.entries(COUNTRY_GLOSSARY)) {
-        if (new RegExp(`\\b${latin}\\b`).test(scrubbed)) {
+      for (const { variants, gurmukhi } of COUNTRY_GLOSSARY) {
+        const hit = variants.find((v) => countryVariantRe(v).test(scrubbed));
+        if (hit) {
           reportErr('R29', doc.path, lineNo,
-            `Latin country name "${latin}" in Gurmukhi body — use "${gurmukhi}" (proper-noun glossary). For an agency citation, move it to the References section or add <!-- rigor: allow R29 -->`);
+            `Latin country name "${hit}" in Gurmukhi body — use "${gurmukhi}" (proper-noun glossary). For an agency citation, move it to the References section or add <!-- rigor: allow R29 -->`);
         }
       }
     });

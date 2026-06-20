@@ -275,14 +275,14 @@ Apply APA bias-free language to **security-awareness** posts (tags include `digi
 
 ## R29 — Country-name script consistency in `pa-in`  **AUTO**
 
-Country names with a canonical Gurmukhi form must use it in Gurmukhi body prose, so the country list reads consistently (USA/Canada/Australia/India were always Gurmukhi; the UK was the lone Latin holdout). The proper-noun glossary lives in `scripts/lint-content.mjs` (`COUNTRY_GLOSSARY`):
+Country names with a canonical Gurmukhi form must use it in Gurmukhi body prose, so the country list reads consistently (USA/Canada/Australia/India were always Gurmukhi; the UK was the lone Latin holdout). The proper-noun glossary lives in `scripts/lint-content.mjs` (`COUNTRY_GLOSSARY`). Each row lists **every common Latin spelling** so the rule is robust corpus-wide — when a new rendering appears, add the variant here rather than fixing posts one-off:
 
-| Latin | Gurmukhi | Note |
-|-------|----------|------|
-| UK | `ਯੂ.ਕੇ.` | Transliteration (matches the ASVS loan-word style, e.g. `API → ਏ.ਪੀ.ਆਈ.`). **Deliberately not** `ਇੰਗਲੈਂਡ`/England — the UK-wide data covers Scotland, Wales & N. Ireland too. |
-| USA | `ਅਮਰੀਕਾ` | |
+| Latin variants (all caught) | Gurmukhi | Note |
+|-----------------------------|----------|------|
+| UK · U.K. · United Kingdom | `ਯੂ.ਕੇ.` | Transliteration (matches the ASVS loan-word style, e.g. `API → ਏ.ਪੀ.ਆਈ.`). **Deliberately not** `ਇੰਗਲੈਂਡ`/England — the UK-wide data covers Scotland, Wales & N. Ireland too. |
+| USA · U.S.A. · U.S. · United States · America | `ਅਮਰੀਕਾ` | |
 | England | `ਇੰਗਲੈਂਡ` | Only when England specifically is meant (e.g. "England and Wales" jurisdiction). |
-| Britain | `ਬਰਤਾਨੀਆ` | |
+| Britain · Great Britain | `ਬਰਤਾਨੀਆ` | |
 | Australia | `ਆਸਟ੍ਰੇਲੀਆ` | |
 | Canada | `ਕੈਨੇਡਾ` | |
 | India | `ਭਾਰਤ` | |
