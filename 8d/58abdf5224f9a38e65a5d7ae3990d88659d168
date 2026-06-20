@@ -1,0 +1,22 @@
+scripts/lint-content.mjs
+  s_7b03e56eab1551::t_2aba2744e5db6d 108-126
+  s_7b03e56eab1551::t_39d693c2b98bca 414-416,418
+docs/content-rigor.md
+  s_7b03e56eab1551::t_a0b5257e9f1443 278,280-283,285
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "8d58abdf5224f9a38e65a5d7ae3990d88659d168",
+  "prompts": {},
+  "sessions": {
+    "s_7b03e56eab1551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "712b6e21-2702-4055-8ccf-a185f757f266",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
