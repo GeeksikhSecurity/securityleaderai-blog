@@ -6,7 +6,7 @@ These are the canonical standards for all content and code changes on this site.
 
 ## Site Architecture
 
-- **Framework:** Next.js 15.5.12 App Router / TypeScript / Tailwind CSS
+- **Framework:** Next.js 16.2.x App Router / TypeScript / Tailwind CSS
 - **Hosting:** Vercel Pro (`prj_XEHglLkPPqmYgRvVJ2OoKcCiQeEc`, team `team_YLxnYBWvoiSIwseaAAFuf9Kd`)
 - **Blog posts:** Markdown files in `/posts/` with gray-matter frontmatter
 - **Research articles:** Hardcoded in `src/lib/research.ts` (not markdown)
@@ -167,9 +167,9 @@ Cognitive debt is the cost of lost understanding — why decisions were made, ho
 - Validate at system boundaries: URL parameters, query strings, any data from external sources.
 - Blog slugs from `[slug]` routes must be validated against `generateStaticParams()` output — Next.js SSG handles this, but any future dynamic routes must validate explicitly.
 
-### Next.js 15 / React 19 Patterns
+### Next.js 16 / React 19 Patterns
 
-- **Async params:** In Next.js 15, dynamic route `params` are `Promise` objects. Always use `const { slug } = await params;` — never access `params.slug` directly.
+- **Async params:** In Next.js 15+, dynamic route `params` are `Promise` objects. Always use `const { slug } = await params;` — never access `params.slug` directly.
 - **React 19 `cloneElement` typing:** `cloneElement` requires explicit generic type parameters for props. Use `isValidElement<{ className?: string }>(child)` and cast spread props as `Record<string, unknown>` when needed.
 
 ---
@@ -245,7 +245,7 @@ Run a link audit on any changed content. Check:
 
 - Update topic counts in `getResearchTopics()` if content changes affect tag distributions
 - Verify `generateStaticParams()` returns all valid slugs
-- Run `npm run build` to confirm all static pages generate (currently 22 pages)
+- Run `npm run build` to confirm all static pages generate (currently 43 pages)
 
 ---
 
@@ -304,12 +304,21 @@ Do NOT remove these overrides unless the parent packages (e.g., sucrase via Tail
 
 ### Known Accepted Risks
 
-None. All CVEs resolved as of Next.js 15.5.12 upgrade (February 2026). `npm audit` returns 0 vulnerabilities.
+**Status as of June 19, 2026 — `npm audit` reports 5 vulnerabilities (2 high, 3 moderate). Remediation pending — see below. The previous "0 vulnerabilities" claim is no longer true; do not restore it without re-running `npm audit`.**
+
+| Package | Severity | Issue | Prod/Dev | Fix path |
+|---------|----------|-------|----------|----------|
+| `next` | High | DoS (Server Components, Image Optimization, Cache Components), middleware/proxy bypass, cache poisoning, SSRF, XSS via CSP nonces — multiple GHSA advisories affecting ≤16.3.0 | Prod | Non-breaking: `npm audit fix` bumps to patched 16.x (installed 16.2.9). Verify build + page count after. |
+| `picomatch` | High | Method injection in POSIX classes + ReDoS via extglob (GHSA-3v7f-55p6-f55p, GHSA-c2c7-rcm5-vvqj) | Dev (transitive via tinyglobby/Tailwind toolchain) | Non-breaking `npm audit fix`, or add an `overrides` pin once a safe range is confirmed. |
+| `postcss` | Moderate | XSS via unescaped `</style>` in CSS stringify output (GHSA-qx2v-qp2m-jg93) | Dev (Tailwind/Next build) | Non-breaking `npm audit fix` → ≥8.5.10. |
+| `gray-matter` → `js-yaml` | Moderate | Quadratic-complexity DoS in YAML merge-key handling (GHSA-h67p-54hq-rp68) | **Prod** (frontmatter parsing) | **Breaking** — fix requires `gray-matter@2.0.1` (major bump). Per "Remove over upgrade," evaluate the 2.x API against `src/lib/posts.ts` before upgrading; do NOT `npm audit fix --force` blindly. Mitigation until then: frontmatter is author-controlled (not user input), so DoS exposure is low. |
+
+Remediation is tracked as a separate task (it needs build re-verification and a breaking-change decision on gray-matter) — keep it out of unrelated content/doc commits.
 
 ### Quarterly Review
 
 Every 3 months, review:
-1. Are there new Next.js 15.x patches? Apply them.
+1. Are there new Next.js 16.x patches? Apply them.
 2. Run `npm audit` and `npm outdated` — address any new findings.
 3. Check if `overrides` can be removed (parent packages may have updated).
 
@@ -320,7 +329,7 @@ Every 3 months, review:
 1. `npm audit` — zero critical/high in production deps (dev dep warnings are acceptable)
 2. `npm run lint` (`tsc --noEmit`) — zero type errors
 3. `npm run build` — must succeed with zero errors
-4. Verify page count matches expected (currently 22)
+4. Verify page count matches expected (43 pages as of June 2026; grows as content is added — confirm against the build output, not a fixed number)
 5. Review AI-generated changes for understanding — can you explain every diff?
 6. `git add` specific files (never `git add -A`)
 7. Commit with descriptive message (conventional style: `feat:`, `fix:`, `docs:`, `security:`)
@@ -385,7 +394,7 @@ When writing or editing the ASVS review page wrapper text, apply these substitut
 
 ### Current Page Count
 
-With 4 hidden review pages, expected build output is **22 pages** (was 18). Update if review pages are added or removed.
+As of June 2026 the build generates **43 pages**. This grows as content is added — the ASVS Panjabi review series alone is now **10 hidden posts** (the original 4 wrapper pages plus v5, v8, v9, v12, assessment-certification, and changes-from-v4). Do not treat any fixed number as authoritative; confirm against `npm run build` output after content changes.
 
 ---
 

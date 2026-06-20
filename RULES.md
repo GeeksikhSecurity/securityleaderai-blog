@@ -215,11 +215,17 @@ New vulnerability found
 
 ### Known Accepted Risks (current)
 
-None. All CVEs resolved as of Next.js 15.5.12 upgrade (February 2026). `npm audit` returns 0 vulnerabilities.
+**As of June 19, 2026, `npm audit` reports 5 vulnerabilities (2 high, 3 moderate) — not 0. Remediation pending.** Summary (full table with GHSA IDs and fix paths is in `CLAUDE.md` → Known Accepted Risks):
+
+- `next` (high) — multiple DoS / middleware-bypass / cache-poisoning / XSS / SSRF advisories ≤16.3.0; fix via non-breaking `npm audit fix` to a patched 16.x.
+- `picomatch` (high, dev transitive) and `postcss` (moderate, dev) — fixed by non-breaking `npm audit fix`.
+- `gray-matter` → `js-yaml` (moderate, **prod**) — YAML merge-key DoS; fix needs **breaking** `gray-matter@2.0.1`. Do not `--force`; evaluate the 2.x API first. Low real-world exposure (frontmatter is author-controlled, not user input).
+
+Do not restore a "0 vulnerabilities" claim without re-running `npm audit` and confirming.
 
 ### Quarterly Review
 
-1. Check for new Next.js 15.x patches
+1. Check for new Next.js 16.x patches
 2. Run `npm audit` + `npm outdated`
 3. Check if overrides can be removed
 
