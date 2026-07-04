@@ -97,6 +97,15 @@ const ROMANIZATION_DISALLOWED = [
   { re: /\bshakkee\b/i,    suggest: 'shakkī' },
 ];
 
+// R30 — post audio files (audio_url / audio_kind frontmatter).
+// Extensions must stay in sync with MIME_BY_EXT in
+// src/components/audio-overview.tsx (.m4a = NotebookLM overview exports,
+// .mp3 = TTS pipeline output).
+const PUBLIC_DIR = path.join(ROOT, 'public');
+const AUDIO_URL_PREFIX = '/audio/';
+const AUDIO_EXTENSIONS = new Set(['.mp3', '.m4a']);
+const VALID_AUDIO_KINDS = new Set(['overview', 'read_aloud']);
+
 const errors = [];
 const notices = [];
 
@@ -219,6 +228,29 @@ function lintFrontmatter(doc, parsed) {
   const tags = parsed.frontmatter.tags;
   if (Array.isArray(tags) && (tags.length < 2 || tags.length > 8)) {
     reportNotice('R25', doc.path, 1, `${tags.length} tag(s); aim for 2–8 for SEO keywords + topic mapping`);
+  }
+
+  // R30 — audio_url must resolve to a real, supported file under /public.
+  // A mapping without its file is a silently broken player in production;
+  // fail the build instead (fail fast, fail loud).
+  const audioUrl = parsed.frontmatter.audio_url;
+  const audioKind = parsed.frontmatter.audio_kind;
+  if (typeof audioUrl === 'string' && audioUrl !== '') {
+    if (!audioUrl.startsWith(AUDIO_URL_PREFIX)) {
+      reportErr('R30', doc.path, 1, `audio_url "${audioUrl}" must start with ${AUDIO_URL_PREFIX} (site-relative, under public/audio/)`);
+    } else {
+      const ext = path.extname(audioUrl).toLowerCase();
+      if (!AUDIO_EXTENSIONS.has(ext)) {
+        reportErr('R30', doc.path, 1, `audio_url extension "${ext}" unsupported — use ${[...AUDIO_EXTENSIONS].join(' or ')}`);
+      } else if (!fs.existsSync(path.join(PUBLIC_DIR, audioUrl))) {
+        reportErr('R30', doc.path, 1, `audio_url "${audioUrl}" has no file at public${audioUrl}`);
+      }
+    }
+    if (audioKind !== undefined && !VALID_AUDIO_KINDS.has(audioKind)) {
+      reportErr('R30', doc.path, 1, `invalid audio_kind "${audioKind}" — must be one of: ${[...VALID_AUDIO_KINDS].join(', ')}`);
+    }
+  } else if (audioKind !== undefined) {
+    reportErr('R30', doc.path, 1, `audio_kind is set but audio_url is missing`);
   }
 }
 
@@ -468,6 +500,29 @@ function main() {
     const enParsed = parsedCache.get(enDoc.path);
     for (const sibDoc of sibs) {
       lintTranslation(enDoc, sibDoc, enParsed, parsedCache.get(sibDoc.path));
+    }
+  }
+
+  // R30 (reverse direction) — audio files no post references. A notice, not
+  // an error: staging a file ahead of its post is legitimate, but an orphan
+  // usually means the frontmatter mapping was forgotten.
+  const referencedAudio = new Set();
+  for (const doc of allDocs) {
+    const u = parsedCache.get(doc.path).frontmatter.audio_url;
+    if (typeof u === 'string' && u !== '') referencedAudio.add(u);
+  }
+  const audioDir = path.join(PUBLIC_DIR, 'audio');
+  const walkAudio = (dir) =>
+    fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+      const p = path.join(dir, e.name);
+      return e.isDirectory() ? walkAudio(p) : [p];
+    });
+  if (fs.existsSync(audioDir)) {
+    for (const file of walkAudio(audioDir)) {
+      const urlPath = '/' + path.relative(PUBLIC_DIR, file).split(path.sep).join('/');
+      if (!referencedAudio.has(urlPath)) {
+        reportNotice('R30', file, 1, `audio file is not referenced by any post's audio_url — forgotten mapping?`);
+      }
     }
   }
 

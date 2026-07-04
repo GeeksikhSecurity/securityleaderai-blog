@@ -9,6 +9,7 @@ import { CalendarIcon, ClockIcon } from '@/components/icons';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
+import { AudioOverview } from '@/components/audio-overview';
 import { LocaleBlogIndex } from '@/components/locale-blog-index';
 import { AuthorByline } from '@/components/author-byline';
 import { JsonLd } from '@/components/json-ld';
@@ -173,6 +174,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <div className="container max-w-3xl py-16">
         <TranslationBanner locale="en" status={post.translation_status} />
+
+        {post.audioUrl && (
+          <AudioOverview url={post.audioUrl} kind={post.audioKind} locale="en" />
+        )}
 
         <div
           className="prose prose-lg max-w-none text-secondary"

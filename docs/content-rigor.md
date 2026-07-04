@@ -51,6 +51,8 @@ Locales follow BCP 47 (`pa-in` for Panjabi/India Gurmukhi). The locale dir-name 
 | R26 | Person-first language (no "victim"/`ਪੀੜਤ`) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
 | R27 | No disability/mental-health metaphors ("blind to", "sanity check"…) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
 | R28 | Age: avoid "the elderly"/"senior citizens" ("elders"/"ਬਜ਼ੁਰਗ" OK) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
+| R29 | *Reserved* — country-name Gurmukhi consistency (`ਯੂ.ਕੇ.`), introduced by PR #2 | Translation | **AUTO** |
+| R30 | `audio_url` resolves to a real `.mp3`/`.m4a` under `public/audio/`; orphaned audio files flagged | Document | **AUTO** |
 
 ---
 
@@ -272,6 +274,15 @@ Apply APA bias-free language to **security-awareness** posts (tags include `digi
 
 > Not covered by these rules: "master key" / skeleton-key metaphors (locksmithing, intentionally kept) and `whitelist → allowlist` (house style / R-class glossary, not APA scope).
 
+## R30 — Post audio files (`audio_url` / `audio_kind`)  **AUTO**
+
+Posts may attach an audio track via frontmatter (see CLAUDE.md → Blog Post Format → Audio). The rule enforces both directions of the mapping:
+
+- **ERROR** when `audio_url` is set but: it doesn't start with `/audio/`, its extension isn't `.mp3`/`.m4a`, the file doesn't exist under `public/`, or `audio_kind` isn't `overview`/`read_aloud`. Also errors on `audio_kind` without `audio_url`.
+- **NOTICE** when a file under `public/audio/` is referenced by no post — usually a forgotten frontmatter mapping (staging a file ahead of its post is legitimate, hence not an error).
+
+Why it exists: the first audio integration attempt (SAY-372, June 2026) failed silently — player code and mappings can each exist without the other and nothing complains until a reader hits a dead player. This rule makes every half-wired state loud at build time. Supported extensions live in one place per layer: `AUDIO_EXTENSIONS` in `scripts/lint-content.mjs`, kept in sync with `MIME_BY_EXT` in `src/components/audio-overview.tsx`.
+
 ## Allowlisting a known false positive
 
 Add an HTML comment on the offending line:
@@ -286,4 +297,4 @@ The lint reads inline `<!-- rigor: allow R# -->` markers and skips the matching 
 
 ## Authored by
 
-Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.2` — 2026-06-07 (added R26–R28 APA inclusive-language rules, awareness-scoped; see `inclusive-language-apa.md`).
+Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.4` — 2026-07-04 (added R30 post-audio integrity; R29 reserved for the country-name consistency rule arriving in PR #2 / catalog v1.3).
