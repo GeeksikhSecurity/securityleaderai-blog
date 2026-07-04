@@ -416,6 +416,29 @@ As of June 2026 the build generates **43 pages**. This grows as content is added
 
 ---
 
+## Daily Decision Digest (Work Log)
+
+Capture *why* decisions were made while the work is fresh, then roll them up into one human-readable digest per day. Design choice: **end-of-day rollup with lightweight decision capture during work**, not real-time logging — real-time logging becomes noisy and fragile. The live notes stay small and automatic; the end-of-day digest is the real artifact (ADHD-friendly: no heavy in-flight ceremony).
+
+### During work (every session)
+
+After each meaningful task, append a short decision note to `work/decision-log/YYYY-MM-DD.md` (create the file on the first note of the day; note format is in `work/decision-log/README.md`). Plain English, no jargon, a few lines per note:
+
+- What was being worked on
+- What options were considered
+- What path was chosen, and what was skipped and why (in plain English)
+- What files or systems changed
+- Verification results (lint/build/tests)
+- Any follow-up needed
+
+### End of day (summarizer)
+
+The `/daily-decision-digest` skill (`.claude/skills/daily-decision-digest/`) — run manually or by a daily scheduled trigger — reads the day's decision notes, `git log`/`git diff` for the day, and recorded verification results, then writes `outputs/daily-summary-YYYY-MM-DD.md` with: High-Level Overview, Decisions Made (decision / why / other path considered / why skipped / changed / result), Paths Not Taken, and Follow-Ups. If no work happened that day, no digest is produced.
+
+**The summarizer only summarizes.** The coding agent keeps doing the work and making the decisions; the digest must be traceable to the notes and the git history — never invent rationale after the fact.
+
+---
+
 ## What NOT to Do
 
 ### Content and UX
