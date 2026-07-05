@@ -35,3 +35,6 @@ next-env.d.ts
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# python bytecode (scripts/generate-audio-parler.py compile checks)
+__pycache__/
