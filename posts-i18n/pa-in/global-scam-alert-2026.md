@@ -5,6 +5,8 @@ excerpt: "ਅਮਰੀਕਾ, UK, ਆਸਟ੍ਰੇਲੀਆ, ਕੈਨੇਡ�
 author: "Gurvinder Singh"
 tags: ["scam-awareness", "family-safety", "digital-seva", "panjabi", "ai-voice-cloning"]
 translation_status: "ai_draft"
+audio_url: "/audio/pa-in/global-scam-alert-2026-overview.mp3"
+audio_kind: "overview"
 ---
 
 # ਗਲੋਬਲ ਠੱਗੀ ਚੇਤਾਵਨੀ 2026 — ਪੰਜ ਦੇਸ਼, ਇੱਕੋ ਚਾਲ

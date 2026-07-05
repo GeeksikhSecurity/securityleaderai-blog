@@ -5,6 +5,8 @@ excerpt: "Microsoft ਸਪੋਰਟ ਹੋਣ ਦਾ ਦਾਅਵਾ ਕਰਦ�
 author: "Gurvinder Singh"
 tags: ["scam-awareness", "elder-safety", "digital-seva", "tech-support-fraud", "panjabi"]
 translation_status: "ai_draft"
+audio_url: "/audio/pa-in/tech-support-scam-elders-overview.mp3"
+audio_kind: "overview"
 ---
 
 # ਟੈੱਕ ਸਪੋਰਟ ਠੱਗੀ ਸਾਡੇ ਬਜ਼ੁਰਗਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾਉਂਦੀ ਹੈ — ਹਰ ਪੰਜਾਬੀ ਪਰਿਵਾਰ ਨੂੰ ਜੋ ਜਾਣਨਾ ਚਾਹੀਦਾ ਹੈ

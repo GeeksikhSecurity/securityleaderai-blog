@@ -5,6 +5,8 @@ excerpt: "ਪੰਜ ਖੇਤਰਾਂ ਵਿੱਚ ਸਾਈਬਰ ਠੱਗੀ
 author: "Gurvinder Singh"
 tags: ["fraud", "cybercrime", "reporting", "digital-seva", "awareness", "panjabi"]
 translation_status: "ai_draft"
+audio_url: "/audio/pa-in/reporting-centers-onepager-overview.mp3"
+audio_kind: "overview"
 ---
 
 # ਸਾਈਬਰ ਠੱਗੀ ਦੀ ਰਿਪੋਰਟ ਕਿੱਥੇ ਕਰਨੀ ਹੈ — ਗਲੋਬਲ ਡਾਇਰੈਕਟਰੀ
