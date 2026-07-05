@@ -15,6 +15,7 @@ import { CalendarIcon, ClockIcon } from '@/components/icons';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { TranslationBanner } from '@/components/translation-banner';
+import { AudioOverview } from '@/components/audio-overview';
 import { AuthorByline } from '@/components/author-byline';
 import { JsonLd } from '@/components/json-ld';
 import {
@@ -187,6 +188,10 @@ export default async function LocaleBlogPost({
 
       <div className="container max-w-3xl py-16">
         <TranslationBanner locale={validLocale} status={post.translation_status} />
+
+        {post.audioUrl && (
+          <AudioOverview url={post.audioUrl} kind={post.audioKind} locale={validLocale} />
+        )}
 
         <div
           className="prose prose-lg max-w-none text-secondary"

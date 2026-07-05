@@ -47,6 +47,24 @@ tags: ["Tag1", "Tag2", "Tag3"]
 
 Blog post reading time is **automatically calculated** at 200 words/minute in `src/lib/posts.ts`. Do NOT hardcode it.
 
+### Audio (optional frontmatter)
+
+Posts may carry an audio track, rendered by `<AudioOverview />` (native browser
+`<audio>` controls — no custom player, no client JS) above the article body:
+
+```yaml
+audio_url: "/audio/pa-in/whatsapp-family-emergency-scams.m4a"  # must exist under /public
+audio_kind: "overview"   # 'overview' (NotebookLM-style AI discussion ABOUT the post)
+                         # | 'read_aloud' (verbatim narration of the post)
+```
+
+- `audio_kind` defaults to `overview`. The two kinds get different labels because
+  they are different things: an overview is an AI-generated two-host discussion and
+  is labeled as such; only a verbatim narration may be labeled "listen to this article."
+- Lint rule **R30** fails the build if `audio_url` points at a missing file or an
+  unsupported format (.mp3/.m4a only), and warns about orphaned files under
+  `public/audio/`. Never ship a mapping without its file, or vice versa.
+
 ---
 
 ## Research Article Format (TypeScript)
@@ -171,6 +189,24 @@ Cognitive debt is the cost of lost understanding — why decisions were made, ho
 
 - **Async params:** In Next.js 15+, dynamic route `params` are `Promise` objects. Always use `const { slug } = await params;` — never access `params.slug` directly.
 - **React 19 `cloneElement` typing:** `cloneElement` requires explicit generic type parameters for props. Use `isValidElement<{ className?: string }>(child)` and cast spread props as `Record<string, unknown>` when needed.
+
+---
+
+## Decision Capture & Daily Digest
+
+Working memory for AI-assisted sessions lives on disk, not in the chat context.
+
+- **During work:** after each meaningful task, append a short decision note to
+  `work/decision-log/YYYY-MM-DD.md`. Plain English, no jargon. Include: what
+  changed, why, what alternatives were considered, what was skipped and why,
+  verification results, and follow-ups. Keep a **"Do not retry"** section for
+  approaches that failed with a known root cause (licensing, auth, API limits)
+  so no future session rediscovers the same dead end.
+- **End of day:** the `decision-digest` sub-agent (`.claude/agents/decision-digest.md`)
+  summarizes that file into `outputs/daily-summary-YYYY-MM-DD.md`. The sub-agent
+  only summarizes — the main session makes the decisions.
+- Both directories are committed: the log is the loop's on-disk memory; the next
+  session picks up from it instead of re-deriving state.
 
 ---
 

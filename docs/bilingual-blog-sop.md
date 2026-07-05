@@ -165,6 +165,26 @@ curl -s  https://securityleader.ai/blog/pa-in/<slug> | grep -F 'ai_draft'   # ex
 
 If any of these fail, **do not push a quick-fix commit**. Read the build log AND the runtime log first (L12), and re-run the preflight gate (Step 7) against the next attempted fix.
 
+### Step 12 — Audio track (optional, per SAY-372)
+
+Attach spoken audio to either sibling of a bilingual post. Two kinds, labeled differently on the page — never conflate them:
+
+- **`overview`** — NotebookLM-style AI discussion *about* the post (engagement layer). Export from NotebookLM as `.m4a`.
+- **`read_aloud`** — verbatim narration of the post (accessibility layer). Engine: Indic Parler-TTS (Apache-2.0). Do **not** use MMS-TTS (`mms-tts-pan`) — CC-BY-NC, not usable on a commercial site.
+
+Workflow (both steps required — R30 fails the build on a half-wired state):
+
+1. Drop the file at `public/audio/<locale>/<slug>.m4a` (or `.mp3`).
+2. Add to that post's frontmatter:
+   ```yaml
+   audio_url: "/audio/pa-in/<slug>.m4a"
+   audio_kind: "overview"   # or "read_aloud"
+   ```
+3. `npm run lint:content` — R30 verifies the mapping ↔ file in both directions.
+4. After build, confirm the player: `grep -c '<audio' .next/server/app/blog/pa-in/<slug>.html` → **1**, and `<h1>` count still **1**.
+
+The page renders `<AudioOverview />` (native `<audio>` controls, no client JS) above the article body with an honesty note: an overview is announced as an AI-made discussion, not as the article itself. Panjabi label strings live in `LOCALE_META.audioLabels` (`src/lib/locales.ts`) — sangat-review them like any pa-in copy.
+
 ---
 
 ## 3. Translation Reference

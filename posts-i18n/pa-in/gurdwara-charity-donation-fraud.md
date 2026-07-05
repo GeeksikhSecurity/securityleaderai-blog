@@ -5,6 +5,8 @@ excerpt: "ਪਰਿਵਾਰਕ ਵਟਸਐਪ ਗਰੁੱਪ ਵਿੱਚ ਜ
 author: "Gurvinder Singh"
 tags: ["charity-fraud", "gurdwara", "sikh-community", "digital-seva", "panjabi"]
 translation_status: "ai_draft"
+audio_url: "/audio/pa-in/gurdwara-charity-donation-fraud.mp3"
+audio_kind: "read_aloud"
 ---
 
 # ਗੁਰਦੁਆਰਾ ਤੇ ਚੈਰਿਟੀ ਦਾਨ ਠੱਗੀ — ਸੇਵਾ ਦੇ ਭਾਈਚਾਰੇ ਦੀ ਰੱਖਿਆ

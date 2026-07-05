@@ -5,6 +5,8 @@ excerpt: "ਅਣਜਾਣ ਨੰਬਰ ਤੋਂ ਸੁਨੇਹਾ: 'ਮੰਮ�
 author: "Gurvinder Singh"
 tags: ["whatsapp", "scam-awareness", "family-safety", "digital-seva", "panjabi"]
 translation_status: "ai_draft"
+audio_url: "/audio/pa-in/whatsapp-family-emergency-scams-overview.mp3"
+audio_kind: "overview"
 ---
 
 # ਵਟਸਐਪ ਪਰਿਵਾਰਕ ਐਮਰਜੈਂਸੀ ਠੱਗੀ — 'ਮੇਰਾ ਨਵਾਂ ਨੰਬਰ ਹੈ'

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { load as parseYaml } from 'js-yaml';
-import { LOCALES, type Locale, isLocale } from './locales';
+import { LOCALES, type Locale, type AudioKind, isLocale } from './locales';
 
 const WORDS_PER_MINUTE = 200;
 
@@ -65,6 +65,14 @@ export interface Post {
   translations?: Locale[];
   /** Editorial review status. ai_draft posts render a sangat-review banner. */
   translation_status?: 'human_reviewed' | 'ai_draft';
+  /**
+   * Site-relative audio file under /public (e.g. /audio/pa-in/<slug>.m4a).
+   * Existence and format are enforced at build time by lint rule R30 —
+   * a mapping without its file fails the build, never ships a broken player.
+   */
+  audioUrl?: string;
+  /** Defaults to 'overview' in <AudioOverview /> when audioUrl is set. */
+  audioKind?: AudioKind;
 }
 
 function parseAuthors(data: Record<string, unknown>): Author[] | undefined {
@@ -120,6 +128,12 @@ function readPostFile(fullPath: string, slug: string): Post {
     translation_status:
       data.translation_status === 'ai_draft' || data.translation_status === 'human_reviewed'
         ? data.translation_status
+        : undefined,
+    audioUrl:
+      typeof data.audio_url === 'string' && data.audio_url !== '' ? data.audio_url : undefined,
+    audioKind:
+      data.audio_kind === 'overview' || data.audio_kind === 'read_aloud'
+        ? data.audio_kind
         : undefined,
   };
 }
