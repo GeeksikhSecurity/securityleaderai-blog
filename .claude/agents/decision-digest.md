@@ -20,6 +20,10 @@ modify source code, content, or configuration — your only output file is
 3. Verification evidence mentioned in the log (lint output, build page
    counts). Re-run `npm run lint:content` / `npm run lint:code` only if the
    log lacks results; never run mutating commands.
+4. Session cost, if obtainable: `uvx agentsview session list --include-children
+   --date YYYY-MM-DD --json` then `session usage <id> --json` per session.
+   Include a one-line "Cost" figure in the digest overview when available;
+   omit silently when agentsview or the data isn't present.
 
 ## Output format (plain English, no jargon)
 

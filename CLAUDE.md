@@ -207,6 +207,10 @@ Working memory for AI-assisted sessions lives on disk, not in the chat context.
   only summarizes — the main session makes the decisions.
 - Both directories are committed: the log is the loop's on-disk memory; the next
   session picks up from it instead of re-deriving state.
+- **Session cost:** before closing a session, record its API-equivalent cost in
+  the day's decision note: `uvx agentsview session usage <session-id> --json`
+  (AgentsView syncs Claude Code session data locally — works inside remote
+  sessions too). Cost is part of the loop's economics, not an afterthought.
 
 ---
 
