@@ -1,0 +1,35 @@
+scripts/asvs/qa-pa-chapter.py
+  s_21052939ff28e5::t_ecd6401e5da156 54,56
+posts/asvs-panjabi-review-assessment-certification.md
+  s_21052939ff28e5::t_a7d97dc1f8917d 2,4,10,12,18-19,21,23,25,27,29-30,32,34,36-37,39,41,43-44,46,48,50,52,54,56,58-59,61,63,65,67-101,105
+posts/asvs-panjabi-review-changes-from-v4.md
+  s_21052939ff28e5::t_c3f042a87604e6 2,4,10,12,18-19,21,23,25-31,34-61,63,65,67,69-70,72,74,76-77,79-80,82,84,86,88,90-92,94-96,98,100,102,104,106-107,109,111,113,115,117-128,131-153,155,157-158,160,162,164,166,168,170,172-173,175,177,179,181,185
+posts/asvs-panjabi-review-frontispiece.md
+  s_21052939ff28e5::t_1140c9c671cb86 80,82
+posts/asvs-panjabi-review-hub.md
+  s_21052939ff28e5::t_138b6a0407e7cb 31-32
+posts/asvs-panjabi-review-v1-encoding-and-sanitization.md
+  s_21052939ff28e5::t_d6f5b75fb68313 204
+posts/asvs-panjabi-review-v9-self-contained-tokens.md
+  s_21052939ff28e5::t_cc205921c5c956 80
+posts/asvs-panjabi-review-what-is-the-asvs.md
+  s_21052939ff28e5::t_c74073445bd928 198,378
+posts/owasp-asvs-panjabi-translation.md
+  s_21052939ff28e5::t_9a6891fc53d39d 45,186,188,190-192,194,196,200,202,255,281-282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "dd028bd27061e40e66b9dce5776cb3e6e0ab2568",
+  "prompts": {},
+  "sessions": {
+    "s_21052939ff28e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0873349-b76f-4de0-b92c-0f88f5d0c74c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
