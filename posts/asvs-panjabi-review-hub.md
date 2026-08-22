@@ -28,8 +28,8 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 | **Title Page** (ਮੁੱਖ ਪੰਨਾ) | Project credits, copyright, license, contributors | [Read](/blog/asvs-panjabi-review-frontispiece) |
 | **Introduction** (ਮੁਖਬੰਧ) | ASVS 5.0 introduction, principles, levels, scope | [Read](/blog/asvs-panjabi-review-preface) |
 | **What is the ASVS?** (ASVS ਕੀ ਹੈ?) | What the ASVS covers, its three levels, and how to use it | [Read](/blog/asvs-panjabi-review-what-is-the-asvs) |
-| **Assessment & Certification** (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ) | How ASVS is assessed and certified | [Read](/blog/asvs-panjabi-review-assessment-certification) |
-| **Changes from v4.x** (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ) | What changed for users of ASVS 4.0 | [Read](/blog/asvs-panjabi-review-changes-from-v4) |
+| **Assessment and Certification** (ਮੁਲਾਂਕਣ ਅਤੇ ਸਰਟੀਫ਼ਿਕੇਸ਼ਨ) | How ASVS is assessed and certified | [Read](/blog/asvs-panjabi-review-assessment-certification) |
+| **Changes Compared to v4.x** (v4.x ਦੇ ਮੁਕਾਬਲੇ ਤਬਦੀਲੀਆਂ) | What changed for users of ASVS 4.0 | [Read](/blog/asvs-panjabi-review-changes-from-v4) |
 | **V1 Encoding and Sanitization** (V1 ਏਨਕੋਡਿੰਗ ਅਤੇ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ) | Output encoding and input sanitization requirements (injection defence) | [Read](/blog/asvs-panjabi-review-v1-encoding-and-sanitization) |
 | **V2 Validation and Business Logic** (V2 ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਕਾਰੋਬਾਰੀ ਤਰਕ) | Input validation and business logic requirements | [Read](/blog/asvs-panjabi-review-v2-validation-and-business-logic) |
 | **V3 Web Frontend Security** (V3 ਵੈੱਬ ਫਰੰਟਐਂਡ ਸੁਰੱਖਿਆ) | Browser security headers, cookies, and frontend protections | [Read](/blog/asvs-panjabi-review-v3-web-frontend-security) |

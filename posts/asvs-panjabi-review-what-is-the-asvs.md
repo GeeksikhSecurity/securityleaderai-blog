@@ -195,7 +195,7 @@ In addition to the first layer of defense requirements, some requirements have l
 
 Level 1 is not necessarily penetration testable by an external tester without internal access to documentation or code (such as "black box" testing), although the lower number of requirements should make it easier to verify.
 
-ਪੱਧਰ 1 ਜ਼ਰੂਰੀ ਤੌਰ 'ਤੇ ਦਸਤਾਵੇਜ਼ ਜਾਂ ਕੋਡ ਤੱਕ ਅੰਦਰੂਨੀ ਪਹੁੰਚ ਤੋਂ ਬਿਨਾਂ ਕਿਸੇ ਬਾਹਰੀ ਟੈਸਟਰ ਦੁਆਰਾ ਪੈਨੀਟ੍ਰੇਸ਼ਨ ਟੈਸਟ ਕਰਨ ਯੋਗ ਨਹੀਂ ਹੈ (ਜਿਵੇਂ ਕਿ "ਬਲੈਕ ਬਾਕਸ" ਟੈਸਟਿੰਗ), ਹਾਲਾਂਕਿ ਲੋੜਾਂ ਦੀ ਘੱਟ ਗਿਣਤੀ ਇਸ ਦੀ ਤਸਦੀਕ ਨੂੰ ਆਸਾਨ ਬਣਾਉਣੀ ਚਾਹੀਦੀ ਹੈ।
+ਪੱਧਰ 1 ਜ਼ਰੂਰੀ ਤੌਰ 'ਤੇ ਦਸਤਾਵੇਜ਼ ਜਾਂ ਕੋਡ ਤੱਕ ਅੰਦਰੂਨੀ ਪਹੁੰਚ ਤੋਂ ਬਿਨਾਂ ਕਿਸੇ ਬਾਹਰੀ ਟੈਸਟਰ ਦੁਆਰਾ ਪੈਨੇਟ੍ਰੇਸ਼ਨ ਟੈਸਟ ਕਰਨ ਯੋਗ ਨਹੀਂ ਹੈ (ਜਿਵੇਂ ਕਿ "ਬਲੈਕ ਬਾਕਸ" ਟੈਸਟਿੰਗ), ਹਾਲਾਂਕਿ ਲੋੜਾਂ ਦੀ ਘੱਟ ਗਿਣਤੀ ਇਸ ਦੀ ਤਸਦੀਕ ਨੂੰ ਆਸਾਨ ਬਣਾਉਣੀ ਚਾਹੀਦੀ ਹੈ।
 
 ### Level 2
 ### ਪੱਧਰ 2
@@ -375,4 +375,4 @@ Organizations are strongly encouraged to look deeply at their unique risk charac
 
 ---
 
-[← Previous: Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ) →](/blog/asvs-panjabi-review-assessment-certification)
+[← Previous: Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Assessment and Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਸਰਟੀਫ਼ਿਕੇਸ਼ਨ) →](/blog/asvs-panjabi-review-assessment-certification)

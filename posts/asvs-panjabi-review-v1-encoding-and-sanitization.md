@@ -201,4 +201,4 @@ For more information, specifically on deserialization or parsing issues, please 
 
 ---
 
-[← Previous: Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ)](/blog/asvs-panjabi-review-changes-from-v4) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V2 Validation and Business Logic (V2 ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਕਾਰੋਬਾਰੀ ਤਰਕ) →](/blog/asvs-panjabi-review-v2-validation-and-business-logic)
+[← Previous: Changes Compared to v4.x (v4.x ਦੇ ਮੁਕਾਬਲੇ ਤਬਦੀਲੀਆਂ)](/blog/asvs-panjabi-review-changes-from-v4) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V2 Validation and Business Logic (V2 ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਕਾਰੋਬਾਰੀ ਤਰਕ) →](/blog/asvs-panjabi-review-v2-validation-and-business-logic)

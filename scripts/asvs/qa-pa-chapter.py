@@ -51,9 +51,9 @@ for rid, rows in pa_rows.items():
         if en_lvl and en_lvl.group(1) != lvl: issues.append(f'requirement {rid}: level {lvl} != EN {en_lvl.group(1)}')
 # 7 headings: every EN heading (## / ###) must be followed by a Gurmukhi heading of same level
 lines = pa.splitlines()
-en_heads = [h for h in re.findall(r'^(#{1,3} .+)$', en, re.M)]
+en_heads = [h for h in re.findall(r"^(#{1,4} .+)$", en, re.M)]
 for i, l in enumerate(lines):
-    m = re.match(r'^(#{1,3}) (.+)$', l)
+    m = re.match(r"^(#{1,4}) (.+)$", l)
     if m and not has_g(l):
         nxt = lines[i+1] if i+1 < len(lines) else ''
         if not (nxt.startswith(m.group(1) + ' ') and has_g(nxt)):
