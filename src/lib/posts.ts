@@ -158,6 +158,11 @@ export function getPublicPosts(): Post[] {
   return getAllPosts().filter((post) => !post.hidden);
 }
 
+/** True when a default-locale post file exists for this slug (guards direct-URL 500s). */
+export function postExists(slug: string): boolean {
+  return fs.existsSync(path.join(postsDirectory, `${slug}.md`));
+}
+
 export function getPostBySlug(slug: string): Post {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   return readPostFile(fullPath, slug);
