@@ -1,0 +1,23 @@
+scripts/asvs/README.md
+  s_21052939ff28e5::t_4af65495f40a76 23-36
+scripts/asvs/briefs/REVIEWER-BRIEF.md
+  s_21052939ff28e5::t_4c3b407bf4a1fd 1-33
+scripts/asvs/briefs/TRANSLATOR-BRIEF.md
+  s_21052939ff28e5::t_6ff90289edba36 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "966923540f28c9f57a1f7fbcbc742bf5127fea71",
+  "prompts": {},
+  "sessions": {
+    "s_21052939ff28e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0873349-b76f-4de0-b92c-0f88f5d0c74c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
