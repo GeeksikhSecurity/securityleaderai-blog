@@ -21,15 +21,22 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 
 ## What to Review
 
-**Eight bilingual chapters are ready for review**, plus the glossary. Read them in any order:
+**Fifteen bilingual chapters are ready for review**, plus the glossary. Read them in any order:
 
 | Document | What It Contains | Link |
 |----------|-----------------|------|
 | **Title Page** (ਮੁੱਖ ਪੰਨਾ) | Project credits, copyright, license, contributors | [Read](/blog/asvs-panjabi-review-frontispiece) |
 | **Introduction** (ਮੁਖਬੰਧ) | ASVS 5.0 introduction, principles, levels, scope | [Read](/blog/asvs-panjabi-review-preface) |
+| **What is the ASVS?** (ASVS ਕੀ ਹੈ?) | What the ASVS covers, its three levels, and how to use it | [Read](/blog/asvs-panjabi-review-what-is-the-asvs) |
 | **Assessment & Certification** (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ) | How ASVS is assessed and certified | [Read](/blog/asvs-panjabi-review-assessment-certification) |
 | **Changes from v4.x** (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ) | What changed for users of ASVS 4.0 | [Read](/blog/asvs-panjabi-review-changes-from-v4) |
+| **V1 Encoding and Sanitization** (V1 ਏਨਕੋਡਿੰਗ ਅਤੇ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ) | Output encoding and input sanitization requirements (injection defence) | [Read](/blog/asvs-panjabi-review-v1-encoding-and-sanitization) |
+| **V2 Validation and Business Logic** (V2 ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਕਾਰੋਬਾਰੀ ਤਰਕ) | Input validation and business logic requirements | [Read](/blog/asvs-panjabi-review-v2-validation-and-business-logic) |
+| **V3 Web Frontend Security** (V3 ਵੈੱਬ ਫਰੰਟਐਂਡ ਸੁਰੱਖਿਆ) | Browser security headers, cookies, and frontend protections | [Read](/blog/asvs-panjabi-review-v3-web-frontend-security) |
+| **V4 API and Web Service** (V4 API ਅਤੇ ਵੈੱਬ ਸੇਵਾ) | REST, GraphQL, and WebSocket API security requirements | [Read](/blog/asvs-panjabi-review-v4-api-and-web-service) |
 | **V5 File Handling** (V5 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ) | File upload, storage, and download requirements | [Read](/blog/asvs-panjabi-review-v5-file-handling) |
+| **V6 Authentication** (V6 ਪ੍ਰਮਾਣੀਕਰਨ) | Passwords, multi-factor, and credential lifecycle requirements | [Read](/blog/asvs-panjabi-review-v6-authentication) |
+| **V7 Session Management** (V7 ਸੈਸ਼ਨ ਪ੍ਰਬੰਧਨ) | Session creation, timeout, and termination requirements | [Read](/blog/asvs-panjabi-review-v7-session-management) |
 | **V8 Authorization** (V8 ਅਧਿਕਾਰੀਕਰਨ) | Access control and authorization requirements | [Read](/blog/asvs-panjabi-review-v8-authorization) |
 | **V9 Self-contained Tokens** (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ) | JWT / self-contained token validation requirements | [Read](/blog/asvs-panjabi-review-v9-self-contained-tokens) |
 | **V12 Secure Communication** (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ) | TLS and secure communication requirements | [Read](/blog/asvs-panjabi-review-v12-secure-communication) |
@@ -60,7 +67,7 @@ Every translated term in the glossary is classified by its translation approach 
 |-------|---------|--------|
 | **A** (Complete) | Title Page, Introduction, Glossary, Translation Notes, Review Plan | February 2026 |
 | **B** (Complete) | *Assessment & Certification*, *Changes from v4.x*, *V5 File Handling*, *V8 Authorization*, *V9 Self-contained Tokens*, *V12 Secure Communication* — now bilingual | June 2026 |
-| **C** (In Progress) | *What-is-the-ASVS* and *V6 Authentication* actively translating; remaining security-requirement chapters: Encoding, Validation, Web Frontend, API & Web Service, Session Management, OAuth/OIDC, Cryptography, Configuration, Data Protection, Secure Coding, Logging, WebRTC | 2026 |
+| **C** (In Progress) | Now bilingual: *What is the ASVS?*, *V1 Encoding and Sanitization*, *V2 Validation and Business Logic*, *V3 Web Frontend Security*, *V4 API and Web Service*, *V6 Authentication*, *V7 Session Management* (August 2026). Remaining: V10 OAuth and OIDC, V11 Cryptography, V13 Configuration, V14 Data Protection, V15 Secure Coding and Architecture, V16 Security Logging and Error Handling, V17 WebRTC | 2026 |
 | **D** | Appendices, final quality checks, PDF generation, community review window | 2026 |
 
 ## How to Send Feedback

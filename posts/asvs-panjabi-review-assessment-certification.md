@@ -63,4 +63,4 @@ ASVS requirements ਦੀ ਪੁਸ਼ਟੀ ਲਈ automation ਦਾ ਵਰਤ�
 
 ---
 
-[← Previous: Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ) →](/blog/asvs-panjabi-review-changes-from-v4)
+[← Previous: What is the ASVS? (ASVS ਕੀ ਹੈ?)](/blog/asvs-panjabi-review-what-is-the-asvs) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ) →](/blog/asvs-panjabi-review-changes-from-v4)

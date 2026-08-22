@@ -106,4 +106,4 @@ Prescriptive, risk-based levels ਦਾ ਵਰਤੋਂ ਜੋ ਕੁਝ applicat
 
 ---
 
-[← Previous: Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ)](/blog/asvs-panjabi-review-assessment-certification) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V5 File Handling (V5 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ) →](/blog/asvs-panjabi-review-v5-file-handling)
+[← Previous: Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ)](/blog/asvs-panjabi-review-assessment-certification) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V1 Encoding and Sanitization (V1 ਏਨਕੋਡਿੰਗ ਅਤੇ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ) →](/blog/asvs-panjabi-review-v1-encoding-and-sanitization)

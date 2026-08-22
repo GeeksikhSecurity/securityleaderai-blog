@@ -20,7 +20,7 @@ hidden: true
 
 The use of files can present a variety of risks to the application, including denial of service, unauthorized access, and storage exhaustion. This chapter includes requirements to address these risks.
 
-ਫ਼ਾਈਲਾਂ ਦੀ ਵਰਤੋਂ ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਕਈ ਤਰ੍ਹਾਂ ਦੇ ਖ਼ਤਰੇ ਪੇਸ਼ ਕਰ ਸਕਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਸੇਵਾ-ਇਨਕਾਰ (denial of service), ਅਣਅਧਿਕਾਰਤ ਪਹੁੰਚ, ਅਤੇ ਭੰਡਾਰਨ ਥਕਾਵਟ ਸ਼ਾਮਲ ਹਨ। ਇਸ ਅਧਿਆਇ ਵਿੱਚ ਇਹਨਾਂ ਖ਼ਤਰਿਆਂ ਨੂੰ ਹੱਲ ਕਰਨ ਲਈ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ।
+ਫ਼ਾਈਲਾਂ ਦੀ ਵਰਤੋਂ ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਕਈ ਤਰ੍ਹਾਂ ਦੇ ਖ਼ਤਰੇ ਪੇਸ਼ ਕਰ ਸਕਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਸੇਵਾ-ਇਨਕਾਰ (denial of service), ਅਣਅਧਿਕਾਰਤ ਪਹੁੰਚ, ਅਤੇ ਭੰਡਾਰਨ ਖ਼ਤਮ ਹੋ ਜਾਣਾ ਸ਼ਾਮਲ ਹਨ। ਇਸ ਅਧਿਆਇ ਵਿੱਚ ਇਹਨਾਂ ਖ਼ਤਰਿਆਂ ਨੂੰ ਹੱਲ ਕਰਨ ਲਈ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ।
 
 ## V5.1 File Handling Documentation
 ## V5.1 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ ਦਸਤਾਵੇਜ਼ੀਕਰਨ
@@ -113,4 +113,4 @@ For more information, see also:
 
 ---
 
-[← Previous: Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ)](/blog/asvs-panjabi-review-changes-from-v4) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V8 Authorization (V8 ਅਧਿਕਾਰੀਕਰਨ) →](/blog/asvs-panjabi-review-v8-authorization)
+[← Previous: V4 API and Web Service (V4 API ਅਤੇ ਵੈੱਬ ਸੇਵਾ)](/blog/asvs-panjabi-review-v4-api-and-web-service) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V6 Authentication (V6 ਪ੍ਰਮਾਣੀਕਰਨ) →](/blog/asvs-panjabi-review-v6-authentication)

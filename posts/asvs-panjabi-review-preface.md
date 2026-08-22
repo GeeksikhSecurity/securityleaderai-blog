@@ -70,4 +70,4 @@ ASVS 5.0 ਸੁਰੱਖਿਅਤ ਸਾਫ਼ਟਵੇਅਰ ਵਿਕਾਸ �
 
 ---
 
-[← Previous: Title Page (ਮੁੱਖ ਪੰਨਾ)](/blog/asvs-panjabi-review-frontispiece) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ) →](/blog/asvs-panjabi-review-assessment-certification)
+[← Previous: Title Page (ਮੁੱਖ ਪੰਨਾ)](/blog/asvs-panjabi-review-frontispiece) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: What is the ASVS? (ASVS ਕੀ ਹੈ?) →](/blog/asvs-panjabi-review-what-is-the-asvs)

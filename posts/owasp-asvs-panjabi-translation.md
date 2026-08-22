@@ -259,7 +259,7 @@ Security knowledge should be accessible to all.
 
 - **Security leaders:** Share this with Panjabi-speaking team members or forward the glossary to your localization team as a model for multilingual security documentation.
 - **Panjabi-speaking professionals:** Email gurvinder@securityleader.ai with "ASVS Panjabi Review" in the subject — even one term correction makes a difference.
-- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. Phase B chapters (V6 Authentication, V8 Authorization) are actively translating now and ready for in-progress review.
+- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. 10 security-requirement chapters (V1–V9 and V12) are now bilingual and ready for review; V10 OAuth and OIDC, V11 Cryptography, V13 Configuration, V14 Data Protection, V15 Secure Coding and Architecture, V16 Security Logging and Error Handling, V17 WebRTC are next.
 
 ## Board Talking Points
 
@@ -284,9 +284,16 @@ Security knowledge should be accessible to all.
 - [Review Hub — Start Here](/blog/asvs-panjabi-review-hub)
 - [Title Page (ਮੁੱਖ ਪੰਨਾ)](/blog/asvs-panjabi-review-frontispiece)
 - [Introduction (ਮੁਖਬੰਧ)](/blog/asvs-panjabi-review-preface)
+- [What is the ASVS? (ASVS ਕੀ ਹੈ?)](/blog/asvs-panjabi-review-what-is-the-asvs)
 - [Assessment & Certification (ਮੁਲਾਂਕਣ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ)](/blog/asvs-panjabi-review-assessment-certification)
 - [Changes from v4.x (v4.x ਤੋਂ ਤਬਦੀਲੀਆਂ)](/blog/asvs-panjabi-review-changes-from-v4)
+- [V1 Encoding and Sanitization (V1 ਏਨਕੋਡਿੰਗ ਅਤੇ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ)](/blog/asvs-panjabi-review-v1-encoding-and-sanitization)
+- [V2 Validation and Business Logic (V2 ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਕਾਰੋਬਾਰੀ ਤਰਕ)](/blog/asvs-panjabi-review-v2-validation-and-business-logic)
+- [V3 Web Frontend Security (V3 ਵੈੱਬ ਫਰੰਟਐਂਡ ਸੁਰੱਖਿਆ)](/blog/asvs-panjabi-review-v3-web-frontend-security)
+- [V4 API and Web Service (V4 API ਅਤੇ ਵੈੱਬ ਸੇਵਾ)](/blog/asvs-panjabi-review-v4-api-and-web-service)
 - [V5 File Handling (V5 ਫ਼ਾਈਲ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v5-file-handling)
+- [V6 Authentication (V6 ਪ੍ਰਮਾਣੀਕਰਨ)](/blog/asvs-panjabi-review-v6-authentication)
+- [V7 Session Management (V7 ਸੈਸ਼ਨ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v7-session-management)
 - [V8 Authorization (V8 ਅਧਿਕਾਰੀਕਰਨ)](/blog/asvs-panjabi-review-v8-authorization)
 - [V9 Self-contained Tokens (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ)](/blog/asvs-panjabi-review-v9-self-contained-tokens)
 - [V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ)](/blog/asvs-panjabi-review-v12-secure-communication)
