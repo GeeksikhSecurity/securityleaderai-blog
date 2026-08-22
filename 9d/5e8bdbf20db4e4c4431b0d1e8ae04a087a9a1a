@@ -1,0 +1,57 @@
+CLAUDE.md
+  s_21052939ff28e5::t_62ae77fbae4c26 451
+posts/asvs-panjabi-review-assessment-certification.md
+  s_21052939ff28e5::t_e709ec7cd6efb8 66
+posts/asvs-panjabi-review-changes-from-v4.md
+  s_21052939ff28e5::t_b98a06a61c04a2 109
+posts/asvs-panjabi-review-hub.md
+  s_21052939ff28e5::t_a241fcc5427272 24,30,33-36,38-39,70
+posts/asvs-panjabi-review-preface.md
+  s_21052939ff28e5::t_6294e7049dbf21 73
+posts/asvs-panjabi-review-v1-encoding-and-sanitization.md
+  s_21052939ff28e5::t_ad8dc296563915 1-204
+posts/asvs-panjabi-review-v2-validation-and-business-logic.md
+  s_21052939ff28e5::t_59c3406a7f36da 1-152
+posts/asvs-panjabi-review-v3-web-frontend-security.md
+  s_21052939ff28e5::t_47a2580e138e35 1-202
+posts/asvs-panjabi-review-v4-api-and-web-service.md
+  s_21052939ff28e5::t_cb133e95ea39c4 1-135
+posts/asvs-panjabi-review-v5-file-handling.md
+  s_21052939ff28e5::t_d8807a300e91d4 23,116
+posts/asvs-panjabi-review-v6-authentication.md
+  s_21052939ff28e5::t_9af3d3dc8ca003 1-330
+posts/asvs-panjabi-review-v7-session-management.md
+  s_21052939ff28e5::t_662635cc135d39 1-189
+posts/asvs-panjabi-review-v8-authorization.md
+  s_21052939ff28e5::t_b339196e3307d2 107,121
+posts/asvs-panjabi-review-v9-self-contained-tokens.md
+  s_21052939ff28e5::t_351cef286acdcf 34
+posts/asvs-panjabi-review-what-is-the-asvs.md
+  s_21052939ff28e5::t_9c862e6d790da0 1-378
+posts/owasp-asvs-panjabi-translation.md
+  s_21052939ff28e5::t_6e8afb6bb2b793 262,287,290-293,295-296
+scripts/asvs/README.md
+  s_21052939ff28e5::t_fea47070897463 1-22
+scripts/asvs/build-review-posts.py
+  s_21052939ff28e5::t_c01b9baeddd160 1-99
+scripts/asvs/qa-pa-chapter.py
+  s_21052939ff28e5::t_f314e12ff252ed 1-76
+scripts/asvs/update-review-hub.py
+  s_21052939ff28e5::t_01763691b85226 1-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "9d5e8bdbf20db4e4c4431b0d1e8ae04a087a9a1a",
+  "prompts": {},
+  "sessions": {
+    "s_21052939ff28e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0873349-b76f-4de0-b92c-0f88f5d0c74c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
