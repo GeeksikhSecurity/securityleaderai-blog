@@ -1,0 +1,51 @@
+CLAUDE.md
+  s_21052939ff28e5::t_245496a4c26e99 451
+posts/asvs-panjabi-review-glossary.md
+  s_21052939ff28e5::t_c206cad182f3cf 154
+posts/asvs-panjabi-review-hub.md
+  s_21052939ff28e5::t_38451eb0848246 24,42-43,45-49,77
+posts/asvs-panjabi-review-v10-oauth-and-oidc.md
+  s_21052939ff28e5::t_81ccb5482d7469 1-325
+posts/asvs-panjabi-review-v11-cryptography.md
+  s_21052939ff28e5::t_01d162d8a16bed 1-218
+posts/asvs-panjabi-review-v12-secure-communication.md
+  s_21052939ff28e5::t_a07fb4f87c578f 122
+posts/asvs-panjabi-review-v13-configuration.md
+  s_21052939ff28e5::t_458ce16e53df42 1-146
+posts/asvs-panjabi-review-v14-data-protection.md
+  s_21052939ff28e5::t_dd51a10493912e 1-122
+posts/asvs-panjabi-review-v15-secure-coding-and-architecture.md
+  s_21052939ff28e5::t_c524b762570be3 1-161
+posts/asvs-panjabi-review-v16-security-logging-and-error-handling.md
+  s_21052939ff28e5::t_93bc6d047ec80c 1-174
+posts/asvs-panjabi-review-v17-webrtc.md
+  s_21052939ff28e5::t_8fcf8c33555d10 1-154
+posts/asvs-panjabi-review-v2-validation-and-business-logic.md
+  s_21052939ff28e5::t_4f5a06d44e610f 134
+posts/asvs-panjabi-review-v9-self-contained-tokens.md
+  s_21052939ff28e5::t_b1725cad7c3a05 86
+posts/asvs-panjabi-review-what-is-the-asvs.md
+  s_21052939ff28e5::t_5d537a6d3c2515 46
+posts/owasp-asvs-panjabi-translation.md
+  s_21052939ff28e5::t_172433197a5504 255,292-293,295-299
+scripts/asvs/build-review-posts.py
+  s_21052939ff28e5::t_e46c104dbfbe84 22-23,25-29,60-62
+scripts/asvs/update-review-hub.py
+  s_21052939ff28e5::t_0ef8f8e9d34e59 20-21,23-27,39,48-52,59-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "d3d16c9c98a049c69d4912c165d368152c05e1f7",
+  "prompts": {},
+  "sessions": {
+    "s_21052939ff28e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0873349-b76f-4de0-b92c-0f88f5d0c74c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
