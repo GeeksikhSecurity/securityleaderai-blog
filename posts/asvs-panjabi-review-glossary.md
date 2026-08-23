@@ -151,4 +151,4 @@ These specific terms need community input. If you have a preference, include it 
 
 ---
 
-[← Previous: V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ)](/blog/asvs-panjabi-review-v12-secure-communication) | [Back to Review Hub](/blog/asvs-panjabi-review-hub)
+[← Previous: V17 WebRTC (ਵੈੱਬਆਰਟੀਸੀ)](/blog/asvs-panjabi-review-v17-webrtc) | [Back to Review Hub](/blog/asvs-panjabi-review-hub)

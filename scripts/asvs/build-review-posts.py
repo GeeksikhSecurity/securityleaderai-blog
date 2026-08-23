@@ -19,7 +19,14 @@ CHAIN = [
     ('v7-session-management', '0x16-V7-Session-Management.md'),
     ('v8-authorization', '0x17-V8-Authorization.md'),
     ('v9-self-contained-tokens', '0x18-V9-Self-contained-Tokens.md'),
+    ('v10-oauth-and-oidc', '0x19-V10-OAuth-and-OIDC.md'),
+    ('v11-cryptography', '0x20-V11-Cryptography.md'),
     ('v12-secure-communication', '0x21-V12-Secure-Communication.md'),
+    ('v13-configuration', '0x22-V13-Configuration.md'),
+    ('v14-data-protection', '0x23-V14-Data-Protection.md'),
+    ('v15-secure-coding-and-architecture', '0x24-V15-Secure-Coding-and-Architecture.md'),
+    ('v16-security-logging-and-error-handling', '0x25-V16-Security-Logging-and-Error-Handling.md'),
+    ('v17-webrtc', '0x26-V17-WebRTC.md'),
     ('glossary', None),
 ]
 CUSTOM_LABELS = {'frontispiece': 'Title Page (ਮੁੱਖ ਪੰਨਾ)', 'preface': 'Introduction (ਮੁਖਬੰਧ)', 'glossary': 'Glossary (ਸ਼ਬਦਾਵਲੀ)'}
@@ -50,7 +57,9 @@ for slug, fname in CHAIN:
         print(f'SKIP {slug}: fork file missing or not marked Complete'); items.append(dict(slug=slug, avail=False)); continue
     en, pa = h1s(s)
     existing = fm(post_path(slug)) if os.path.exists(post_path(slug)) else {}
-    label = existing.get('title', '').replace('ASVS Panjabi Review — ', '') or f'{en} ({pa})'
+    pa_disp = pa[len(en):].strip() if pa.startswith(en) else pa  # avoid 'V17 WebRTC (V17 WebRTC (...))' when the PA H1 repeats the EN prefix (retained-term chapters, Q14)
+    if pa_disp.startswith('(') and pa_disp.endswith(')'): pa_disp = pa_disp[1:-1]  # PA H1 already parenthesised its gloss
+    label = existing.get('title', '').replace('ASVS Panjabi Review — ', '') or f'{en} ({pa_disp})'
     items.append(dict(slug=slug, custom=False, body=s, en=en, pa=pa, label=label, existing=existing, avail=True))
 avail = [it for it in items if it['avail']]
 def nav(i):

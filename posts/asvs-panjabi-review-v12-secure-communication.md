@@ -119,4 +119,4 @@ For more information, see also:
 
 ---
 
-[← Previous: V9 Self-contained Tokens (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ)](/blog/asvs-panjabi-review-v9-self-contained-tokens) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Glossary (ਸ਼ਬਦਾਵਲੀ) →](/blog/asvs-panjabi-review-glossary)
+[← Previous: V11 Cryptography (V11 ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ)](/blog/asvs-panjabi-review-v11-cryptography) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V13 Configuration (V13 ਸੰਰਚਨਾ) →](/blog/asvs-panjabi-review-v13-configuration)

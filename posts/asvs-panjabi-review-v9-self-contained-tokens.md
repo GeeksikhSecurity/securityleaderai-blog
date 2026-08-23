@@ -83,4 +83,4 @@ For more information, see also:
 
 ---
 
-[← Previous: V8 Authorization (V8 ਅਧਿਕਾਰੀਕਰਨ)](/blog/asvs-panjabi-review-v8-authorization) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ) →](/blog/asvs-panjabi-review-v12-secure-communication)
+[← Previous: V8 Authorization (V8 ਅਧਿਕਾਰੀਕਰਨ)](/blog/asvs-panjabi-review-v8-authorization) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: V10 OAuth and OIDC (V10 OAuth ਅਤੇ OIDC) →](/blog/asvs-panjabi-review-v10-oauth-and-oidc)

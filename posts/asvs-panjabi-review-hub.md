@@ -21,7 +21,7 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 
 ## What to Review
 
-**Fifteen bilingual chapters are ready for review**, plus the glossary. Read them in any order:
+**Twenty-two bilingual chapters are ready for review**, plus the glossary. Read them in any order:
 
 | Document | What It Contains | Link |
 |----------|-----------------|------|
@@ -39,7 +39,14 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 | **V7 Session Management** (V7 ਸੈਸ਼ਨ ਪ੍ਰਬੰਧਨ) | Session creation, timeout, and termination requirements | [Read](/blog/asvs-panjabi-review-v7-session-management) |
 | **V8 Authorization** (V8 ਅਧਿਕਾਰੀਕਰਨ) | Access control and authorization requirements | [Read](/blog/asvs-panjabi-review-v8-authorization) |
 | **V9 Self-contained Tokens** (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ) | JWT / self-contained token validation requirements | [Read](/blog/asvs-panjabi-review-v9-self-contained-tokens) |
+| **V10 OAuth and OIDC** (V10 OAuth ਅਤੇ OIDC) | OAuth 2.0 and OpenID Connect client, server, and token requirements | [Read](/blog/asvs-panjabi-review-v10-oauth-and-oidc) |
+| **V11 Cryptography** (V11 ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ) | Algorithms, key management, and randomness requirements | [Read](/blog/asvs-panjabi-review-v11-cryptography) |
 | **V12 Secure Communication** (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ) | TLS and secure communication requirements | [Read](/blog/asvs-panjabi-review-v12-secure-communication) |
+| **V13 Configuration** (V13 ਸੰਰਚਨਾ) | Secure configuration, secrets, and dependency requirements | [Read](/blog/asvs-panjabi-review-v13-configuration) |
+| **V14 Data Protection** (V14 ਡਾਟਾ ਸੁਰੱਖਿਆ) | Sensitive-data classification, storage, and caching requirements | [Read](/blog/asvs-panjabi-review-v14-data-protection) |
+| **V15 Secure Coding and Architecture** (V15 ਸੁਰੱਖਿਅਤ ਕੋਡਿੰਗ ਅਤੇ ਆਰਕੀਟੈਕਚਰ) | Architecture, safe coding, and defensive-design requirements | [Read](/blog/asvs-panjabi-review-v15-secure-coding-and-architecture) |
+| **V16 Security Logging and Error Handling** (V16 ਸੁਰੱਖਿਆ ਲੌਗਿੰਗ ਅਤੇ ਗਲਤੀ ਪ੍ਰਬੰਧਨ) | Security logging, log protection, and error-handling requirements | [Read](/blog/asvs-panjabi-review-v16-security-logging-and-error-handling) |
+| **V17 WebRTC** (ਵੈੱਬਆਰਟੀਸੀ) | WebRTC signaling, TURN, and media-security requirements | [Read](/blog/asvs-panjabi-review-v17-webrtc) |
 | **Glossary** (ਸ਼ਬਦਾਵਲੀ) | 70 security terms with Gurmukhi translations | [Read](/blog/asvs-panjabi-review-glossary) |
 
 ## Who Should Review
@@ -67,7 +74,7 @@ Every translated term in the glossary is classified by its translation approach 
 |-------|---------|--------|
 | **A** (Complete) | Title Page, Introduction, Glossary, Translation Notes, Review Plan | February 2026 |
 | **B** (Complete) | *Assessment & Certification*, *Changes from v4.x*, *V5 File Handling*, *V8 Authorization*, *V9 Self-contained Tokens*, *V12 Secure Communication* — now bilingual | June 2026 |
-| **C** (In Progress) | Now bilingual: *What is the ASVS?*, *V1 Encoding and Sanitization*, *V2 Validation and Business Logic*, *V3 Web Frontend Security*, *V4 API and Web Service*, *V6 Authentication*, *V7 Session Management* (August 2026). Remaining: V10 OAuth and OIDC, V11 Cryptography, V13 Configuration, V14 Data Protection, V15 Secure Coding and Architecture, V16 Security Logging and Error Handling, V17 WebRTC | 2026 |
+| **C** (Complete) | All 17 security-requirement chapters (V1–V17) and *What is the ASVS?* are bilingual | August 2026 |
 | **D** | Appendices, final quality checks, PDF generation, community review window | 2026 |
 
 ## How to Send Feedback

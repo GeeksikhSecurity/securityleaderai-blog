@@ -252,7 +252,7 @@ Security knowledge should be accessible to all.
 
 - **Security leaders:** Share this with Panjabi-speaking team members or forward the glossary to your localization team as a model for multilingual security documentation.
 - **Panjabi-speaking professionals:** Email gurvinder@securityleader.ai with "ASVS Panjabi Review" in the subject — even one term correction makes a difference.
-- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. Fifteen files — the introductory chapters plus V1–V9 and V12 — are now bilingual and ready for review; V10 OAuth and OIDC, V11 Cryptography, V13 Configuration, V14 Data Protection, V15 Secure Coding and Architecture, V16 Security Logging and Error Handling, V17 WebRTC are next.
+- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. All seventeen security-requirement chapters (V1–V17) plus the introductory chapters are now bilingual and ready for review; the appendices are next.
 
 ## Board Talking Points
 
@@ -289,7 +289,14 @@ Security knowledge should be accessible to all.
 - [V7 Session Management (V7 ਸੈਸ਼ਨ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v7-session-management)
 - [V8 Authorization (V8 ਅਧਿਕਾਰੀਕਰਨ)](/blog/asvs-panjabi-review-v8-authorization)
 - [V9 Self-contained Tokens (V9 ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ)](/blog/asvs-panjabi-review-v9-self-contained-tokens)
+- [V10 OAuth and OIDC (V10 OAuth ਅਤੇ OIDC)](/blog/asvs-panjabi-review-v10-oauth-and-oidc)
+- [V11 Cryptography (V11 ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ)](/blog/asvs-panjabi-review-v11-cryptography)
 - [V12 Secure Communication (V12 ਸੁਰੱਖਿਅਤ ਸੰਚਾਰ)](/blog/asvs-panjabi-review-v12-secure-communication)
+- [V13 Configuration (V13 ਸੰਰਚਨਾ)](/blog/asvs-panjabi-review-v13-configuration)
+- [V14 Data Protection (V14 ਡਾਟਾ ਸੁਰੱਖਿਆ)](/blog/asvs-panjabi-review-v14-data-protection)
+- [V15 Secure Coding and Architecture (V15 ਸੁਰੱਖਿਅਤ ਕੋਡਿੰਗ ਅਤੇ ਆਰਕੀਟੈਕਚਰ)](/blog/asvs-panjabi-review-v15-secure-coding-and-architecture)
+- [V16 Security Logging and Error Handling (V16 ਸੁਰੱਖਿਆ ਲੌਗਿੰਗ ਅਤੇ ਗਲਤੀ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v16-security-logging-and-error-handling)
+- [V17 WebRTC (ਵੈੱਬਆਰਟੀਸੀ)](/blog/asvs-panjabi-review-v17-webrtc)
 - [Glossary (ਸ਼ਬਦਾਵਲੀ)](/blog/asvs-panjabi-review-glossary)
 - [Translation Notes](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/TRANSLATION-NOTES.md)
 - [Review Plan](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/REVIEW-PLAN.md)
