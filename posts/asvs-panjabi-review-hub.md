@@ -99,6 +99,7 @@ Include any of the following:
 - [Translation submission — PR #3254 on GitHub](https://github.com/OWASP/ASVS/pull/3254)
 - [GeeksikhSecurity working copy](https://github.com/GeeksikhSecurity/ASVS/tree/panjabi-translation-v5)
 - [Full blog post: Why I'm Translating OWASP's Security Standard Into Panjabi](/blog/owasp-asvs-panjabi-translation)
+- [AISVS Panjabi Review Hub](/blog/aisvs-panjabi-review-hub) — the sibling AI-security translation, same bilingual methodology
 
 ---
 

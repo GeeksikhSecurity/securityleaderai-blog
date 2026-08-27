@@ -448,7 +448,7 @@ When writing or editing the ASVS review page wrapper text, apply these substitut
 
 ### Current Page Count
 
-As of June 2026 the build generates **43 pages**. This grows as content is added — the ASVS Panjabi review series alone is now **29 hidden posts** (hub, glossary, title page, introduction, plus 25 chapter pages regenerated from the fork by the converter — see docs/asvs-review-pages-plan.md). Do not treat any fixed number as authoritative; confirm against `npm run build` output after content changes.
+As of August 2026 the build generates **62 pages**. This grows as content is added — the ASVS Panjabi review series is **29 hidden posts** (hub, glossary, title page, introduction, plus 25 chapter/appendix pages regenerated from the fork by the converter — see docs/asvs-review-pages-plan.md, scripts/asvs/). The sibling AISVS Panjabi review series is **19 hidden posts** (hub + all 18 chapter/appendix pages — scripts/aisvs/), submitted upstream as OWASP/AISVS#1128. Do not treat any fixed number as authoritative; confirm against `npm run build` output after content changes.
 
 ---
 
