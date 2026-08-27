@@ -1,0 +1,65 @@
+scripts/aisvs/build-review-posts.py
+  s_ebfa2d511743e2::t_3a10888f1b7ce9 1-7,10-91,93-103
+  s_ebfa2d511743e2::t_6ccf3d257a7dbe 8-9
+  s_ebfa2d511743e2::t_070efc9e71f51a 92
+posts/aisvs-panjabi-review-hub.md
+  s_ebfa2d511743e2::t_dc95ec75469d41 1-93
+posts/asvs-panjabi-review-hub.md
+  s_ebfa2d511743e2::t_0d0d6e60ac6bd9 102
+CLAUDE.md
+  s_ebfa2d511743e2::t_cbd1492296aa92 451
+scripts/aisvs/README.md
+  s_ebfa2d511743e2::t_583c18891b0164 1-24
+posts/aisvs-panjabi-review-appendix-a-glossary.md
+  s_ebfa2d511743e2::t_ea7b1bc75454cd 1-480
+posts/aisvs-panjabi-review-appendix-b-controls-inventory.md
+  s_ebfa2d511743e2::t_15ef8d660d1b85 1-785
+posts/aisvs-panjabi-review-appendix-c-ai-code-generation.md
+  s_ebfa2d511743e2::t_84eea0008c2d12 1-519
+posts/aisvs-panjabi-review-c1-training-data-integrity.md
+  s_ebfa2d511743e2::t_4c07d6840abb4d 1-109
+posts/aisvs-panjabi-review-c10-mcp-security.md
+  s_ebfa2d511743e2::t_657a246a791afc 1-144
+posts/aisvs-panjabi-review-c11-adversarial-robustness.md
+  s_ebfa2d511743e2::t_221facf21b80ff 1-132
+posts/aisvs-panjabi-review-c12-monitoring-and-logging.md
+  s_ebfa2d511743e2::t_50ede9285c9346 1-156
+posts/aisvs-panjabi-review-c2-input-validation.md
+  s_ebfa2d511743e2::t_06813bf45d117c 1-91
+posts/aisvs-panjabi-review-c3-model-lifecycle-management.md
+  s_ebfa2d511743e2::t_a483c874b46caa 1-143
+posts/aisvs-panjabi-review-c4-infrastructure.md
+  s_ebfa2d511743e2::t_491d8510740934 1-110
+posts/aisvs-panjabi-review-c5-access-control-and-identity.md
+  s_ebfa2d511743e2::t_c2008a0a143cd2 1-105
+posts/aisvs-panjabi-review-c6-supply-chain.md
+  s_ebfa2d511743e2::t_2fe99b39cc9902 1-82
+posts/aisvs-panjabi-review-c7-model-behavior.md
+  s_ebfa2d511743e2::t_1a3677d9d76d10 1-124
+posts/aisvs-panjabi-review-c8-memory-embeddings-and-vector-database.md
+  s_ebfa2d511743e2::t_11065aefcc5806 1-105
+posts/aisvs-panjabi-review-c9-orchestration-and-agentic-action.md
+  s_ebfa2d511743e2::t_76511add169f2f 1-196
+posts/aisvs-panjabi-review-frontispiece.md
+  s_ebfa2d511743e2::t_bb4d70636e3eef 1-115
+posts/aisvs-panjabi-review-preface.md
+  s_ebfa2d511743e2::t_5802f8248dd1fa 1-70
+posts/aisvs-panjabi-review-using-aisvs.md
+  s_ebfa2d511743e2::t_b91f05326fb6b9 1-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "a736f23062675af0c36c8332cd8992e393263ff3",
+  "prompts": {},
+  "sessions": {
+    "s_ebfa2d511743e2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5989f08f-b813-4693-b68f-b31ed849ab3c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
