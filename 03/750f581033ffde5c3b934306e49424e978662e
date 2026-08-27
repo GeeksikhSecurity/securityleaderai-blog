@@ -1,0 +1,65 @@
+CLAUDE.md
+  s_ebfa2d511743e2::t_273d30c065f1c3 451
+scripts/asvs/build-review-posts.py
+  s_ebfa2d511743e2::t_0a9c626173a74e 30-34
+scripts/asvs/update-review-hub.py
+  s_ebfa2d511743e2::t_7b684547656560 28-32
+  s_ebfa2d511743e2::t_7e189ed6089abe 44
+posts/owasp-asvs-panjabi-translation.md
+  s_ebfa2d511743e2::t_273d30c065f1c3 300-304
+  s_ebfa2d511743e2::t_23a94769cca8f7 255
+posts/asvs-panjabi-review-hub.md
+  s_ebfa2d511743e2::t_273d30c065f1c3 50-54
+  s_ebfa2d511743e2::t_72fe9af13856b4 24
+  s_ebfa2d511743e2::t_c281fbde7f2331 83
+posts/asvs-panjabi-review-appendix-a-glossary.md
+  s_ebfa2d511743e2::t_92eb383b845a6f 1-196
+posts/asvs-panjabi-review-appendix-b-references.md
+  s_ebfa2d511743e2::t_33cb9e5b55f164 1-75
+posts/asvs-panjabi-review-appendix-c-cryptography.md
+  s_ebfa2d511743e2::t_bfbf14f713245e 1-613
+posts/asvs-panjabi-review-appendix-d-recommendations.md
+  s_ebfa2d511743e2::t_aabdfcf3833a58 1-113
+posts/asvs-panjabi-review-appendix-e-contributors.md
+  s_ebfa2d511743e2::t_3db7fc0b1833aa 1-94
+posts/asvs-panjabi-review-glossary.md
+  s_ebfa2d511743e2::t_87c82a815b3090 154
+posts/asvs-panjabi-review-v1-encoding-and-sanitization.md
+  s_ebfa2d511743e2::t_7241b11c6d1483 175
+posts/asvs-panjabi-review-v10-oauth-and-oidc.md
+  s_ebfa2d511743e2::t_6c524339a1a45d 264
+posts/asvs-panjabi-review-v11-cryptography.md
+  s_ebfa2d511743e2::t_50d8d3d6eb20cf 144,184
+posts/asvs-panjabi-review-v12-secure-communication.md
+  s_ebfa2d511743e2::t_31c8f562da4195 102,106
+posts/asvs-panjabi-review-v13-configuration.md
+  s_ebfa2d511743e2::t_1bdf30c4b5353e 99
+posts/asvs-panjabi-review-v15-secure-coding-and-architecture.md
+  s_ebfa2d511743e2::t_877836e164445e 46
+posts/asvs-panjabi-review-v16-security-logging-and-error-handling.md
+  s_ebfa2d511743e2::t_3d33df41a5c525 27
+posts/asvs-panjabi-review-v17-webrtc.md
+  s_ebfa2d511743e2::t_e15d44d99f61cf 154
+posts/asvs-panjabi-review-v3-web-frontend-security.md
+  s_ebfa2d511743e2::t_7c008d3620cce8 107
+posts/asvs-panjabi-review-v6-authentication.md
+  s_ebfa2d511743e2::t_938a5cd6798a48 101,168,256
+posts/asvs-panjabi-review-v9-self-contained-tokens.md
+  s_ebfa2d511743e2::t_b74142338b3192 23,45,68-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "03750f581033ffde5c3b934306e49424e978662e",
+  "prompts": {},
+  "sessions": {
+    "s_ebfa2d511743e2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5989f08f-b813-4693-b68f-b31ed849ab3c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
