@@ -24,7 +24,7 @@ Security logs are distinct from error or performance logs and are used to record
 
 Logs should not include sensitive personal data unless legally required, and any logged data must be protected as a high-value asset. Logging must not compromise privacy or system security. Applications must also fail securely, avoiding unnecessary disclosure or disruption.
 
-ਲੌਗਾਂ ਵਿੱਚ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ ਜਦੋਂ ਤੱਕ ਕਾਨੂੰਨੀ ਤੌਰ 'ਤੇ ਲੋੜੀਂਦਾ ਨਾ ਹੋਵੇ, ਅਤੇ ਕਿਸੇ ਵੀ ਲੌਗ ਕੀਤੇ ਡਾਟੇ ਨੂੰ ਇੱਕ ਉੱਚ-ਮੁੱਲ ਸੰਪਤੀ ਵਜੋਂ ਸੁਰੱਖਿਅਤ ਰੱਖਣਾ ਲਾਜ਼ਮੀ ਹੈ। ਲੌਗਿੰਗ ਨੂੰ ਨਿੱਜਤਾ ਜਾਂ ਸਿਸਟਮ ਸੁਰੱਖਿਆ ਨਾਲ ਸਮਝੌਤਾ ਨਹੀਂ ਕਰਨਾ ਚਾਹੀਦਾ। ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਢੰਗ ਨਾਲ ਅਸਫਲ ਹੋਣਾ (fail securely) ਵੀ ਲਾਜ਼ਮੀ ਹੈ, ਬੇਲੋੜੇ ਖੁਲਾਸੇ ਜਾਂ ਵਿਘਨ ਤੋਂ ਬਚਦੇ ਹੋਏ।
+ਲੌਗਾਂ ਵਿੱਚ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ ਜਦੋਂ ਤੱਕ ਕਾਨੂੰਨੀ ਤੌਰ 'ਤੇ ਲੋੜੀਂਦਾ ਨਾ ਹੋਵੇ, ਅਤੇ ਕਿਸੇ ਵੀ ਲੌਗ ਕੀਤੇ ਡਾਟੇ ਨੂੰ ਇੱਕ ਉੱਚ-ਮੁੱਲ ਸੰਪਤੀ ਵਜੋਂ ਸੁਰੱਖਿਅਤ ਰੱਖਣਾ ਲਾਜ਼ਮੀ ਹੈ। ਲੌਗਿੰਗ ਨੂੰ ਨਿੱਜਤਾ ਜਾਂ ਸਿਸਟਮ ਸੁਰੱਖਿਆ ਨਾਲ ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਸਮਝੌਤਾ ਨਹੀਂ ਕਰਨਾ ਚਾਹੀਦਾ। ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਢੰਗ ਨਾਲ ਅਸਫਲ ਹੋਣਾ (fail securely) ਵੀ ਲਾਜ਼ਮੀ ਹੈ, ਬੇਲੋੜੇ ਖੁਲਾਸੇ ਜਾਂ ਵਿਘਨ ਤੋਂ ਬਚਦੇ ਹੋਏ।
 
 For detailed implementation guidance, refer to the OWASP Cheat Sheets in the references section.
 

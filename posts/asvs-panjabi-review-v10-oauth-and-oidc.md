@@ -261,7 +261,7 @@ Note that if using the ID Token flow (not the code flow), no access tokens are i
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :---: | :--- | :---: |
-| **10.6.1** | ਤਸਦੀਕ ਕਰੋ ਕਿ OpenID Provider response mode ਲਈ ਸਿਰਫ਼ 'code', 'ciba', 'id_token', ਜਾਂ 'id_token code' ਮੁੱਲਾਂ ਦੀ ਹੀ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ। ਧਿਆਨ ਦਿਓ ਕਿ 'code' ਨੂੰ 'id_token code' (OIDC Hybrid flow) ਨਾਲੋਂ ਤਰਜੀਹ ਦਿੱਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ 'token' (ਕੋਈ ਵੀ Implicit flow) ਨਹੀਂ ਵਰਤਿਆ ਜਾਣਾ ਚਾਹੀਦਾ। | 2 |
+| **10.6.1** | ਤਸਦੀਕ ਕਰੋ ਕਿ OpenID Provider response mode ਲਈ ਸਿਰਫ਼ 'code', 'ciba', 'id_token', ਜਾਂ 'id_token code' ਮੁੱਲਾਂ ਦੀ ਹੀ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ। ਧਿਆਨ ਦਿਓ ਕਿ 'code' ਨੂੰ 'id_token code' (OIDC Hybrid flow) ਨਾਲੋਂ ਤਰਜੀਹ ਦਿੱਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ 'token' (ਕੋਈ ਵੀ Implicit flow) ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਨਹੀਂ ਵਰਤਿਆ ਜਾਣਾ ਚਾਹੀਦਾ। | 2 |
 | **10.6.2** | ਤਸਦੀਕ ਕਰੋ ਕਿ OpenID Provider ਜ਼ਬਰਦਸਤੀ ਲੌਗਆਊਟ ਰਾਹੀਂ ਸੇਵਾ-ਇਨਕਾਰ ਨੂੰ ਘਟਾਉਂਦਾ ਹੈ। ਅੰਤਮ-ਉਪਭੋਗਤਾ ਤੋਂ ਸਪੱਸ਼ਟ ਪੁਸ਼ਟੀ ਪ੍ਰਾਪਤ ਕਰਕੇ ਜਾਂ, ਜੇ ਮੌਜੂਦ ਹੋਣ, ਤਾਂ (ਨਿਰਭਰ ਧਿਰ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀ) ਲੌਗਆਊਟ ਬੇਨਤੀ ਵਿੱਚ ਪੈਰਾਮੀਟਰਾਂ, ਜਿਵੇਂ ਕਿ 'id_token_hint', ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਕੇ। | 2 |
 
 ## V10.7 Consent Management

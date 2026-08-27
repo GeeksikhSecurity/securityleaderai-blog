@@ -151,4 +151,4 @@ These specific terms need community input. If you have a preference, include it 
 
 ---
 
-[← Previous: V17 WebRTC (ਵੈੱਬਆਰਟੀਸੀ)](/blog/asvs-panjabi-review-v17-webrtc) | [Back to Review Hub](/blog/asvs-panjabi-review-hub)
+[← Previous: Appendix E - Contributors (ਅੰਤਿਕਾ E - ਯੋਗਦਾਨੀ)](/blog/asvs-panjabi-review-appendix-e-contributors) | [Back to Review Hub](/blog/asvs-panjabi-review-hub)

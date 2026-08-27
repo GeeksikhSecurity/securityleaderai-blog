@@ -21,7 +21,7 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 
 ## What to Review
 
-**Twenty-two bilingual chapters are ready for review**, plus the glossary. Read them in any order:
+**All twenty-seven bilingual documents are ready for review** — every chapter and every appendix — plus the glossary. Read them in any order:
 
 | Document | What It Contains | Link |
 |----------|-----------------|------|
@@ -47,6 +47,11 @@ The translation is being submitted to the official OWASP ASVS repository as [a p
 | **V15 Secure Coding and Architecture** (V15 ਸੁਰੱਖਿਅਤ ਕੋਡਿੰਗ ਅਤੇ ਆਰਕੀਟੈਕਚਰ) | Architecture, safe coding, and defensive-design requirements | [Read](/blog/asvs-panjabi-review-v15-secure-coding-and-architecture) |
 | **V16 Security Logging and Error Handling** (V16 ਸੁਰੱਖਿਆ ਲੌਗਿੰਗ ਅਤੇ ਗਲਤੀ ਪ੍ਰਬੰਧਨ) | Security logging, log protection, and error-handling requirements | [Read](/blog/asvs-panjabi-review-v16-security-logging-and-error-handling) |
 | **V17 WebRTC** (ਵੈੱਬਆਰਟੀਸੀ) | WebRTC signaling, TURN, and media-security requirements | [Read](/blog/asvs-panjabi-review-v17-webrtc) |
+| **Appendix A: Glossary** (ਅੰਤਿਕਾ A: ਸ਼ਬਦਾਵਲੀ) | Glossary of ASVS terms in English and Gurmukhi | [Read](/blog/asvs-panjabi-review-appendix-a-glossary) |
+| **Appendix B: References** (ਅੰਤਿਕਾ B: ਹਵਾਲੇ) | Related OWASP projects and external references | [Read](/blog/asvs-panjabi-review-appendix-b-references) |
+| **Appendix C: Cryptography Standards** (ਅੰਤਿਕਾ C: ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ ਮਿਆਰ) | Cryptographic algorithm and key-strength recommendations | [Read](/blog/asvs-panjabi-review-appendix-c-cryptography) |
+| **Appendix D: Recommendations** (ਅੰਤਿਕਾ D: ਸਿਫ਼ਾਰਸ਼ਾਂ) | Further recommendations for verifiers and implementers | [Read](/blog/asvs-panjabi-review-appendix-d-recommendations) |
+| **Appendix E - Contributors** (ਅੰਤਿਕਾ E - ਯੋਗਦਾਨੀ) | Contributors since the ASVS 4.0.0 release | [Read](/blog/asvs-panjabi-review-appendix-e-contributors) |
 | **Glossary** (ਸ਼ਬਦਾਵਲੀ) | 70 security terms with Gurmukhi translations | [Read](/blog/asvs-panjabi-review-glossary) |
 
 ## Who Should Review
@@ -75,7 +80,7 @@ Every translated term in the glossary is classified by its translation approach 
 | **A** (Complete) | Title Page, Introduction, Glossary, Translation Notes, Review Plan | February 2026 |
 | **B** (Complete) | *Assessment & Certification*, *Changes from v4.x*, *V5 File Handling*, *V8 Authorization*, *V9 Self-contained Tokens*, *V12 Secure Communication* — now bilingual | June 2026 |
 | **C** (Complete) | All 17 security-requirement chapters (V1–V17) and *What is the ASVS?* are bilingual | August 2026 |
-| **D** | Appendices, final quality checks, PDF generation, community review window | 2026 |
+| **D** (Complete) | *Appendix A: Glossary*, *Appendix B: References*, *Appendix C: Cryptography Standards*, *Appendix D: Recommendations*, *Appendix E: Contributors* — now bilingual. The full ASVS 5.0 translation (27 documents) is ready for sangat review. | August 2026 |
 
 ## How to Send Feedback
 

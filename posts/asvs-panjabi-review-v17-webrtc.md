@@ -151,4 +151,4 @@ For more information, see also:
 
 ---
 
-[← Previous: V16 Security Logging and Error Handling (V16 ਸੁਰੱਖਿਆ ਲੌਗਿੰਗ ਅਤੇ ਗਲਤੀ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v16-security-logging-and-error-handling) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Glossary (ਸ਼ਬਦਾਵਲੀ) →](/blog/asvs-panjabi-review-glossary)
+[← Previous: V16 Security Logging and Error Handling (V16 ਸੁਰੱਖਿਆ ਲੌਗਿੰਗ ਅਤੇ ਗਲਤੀ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v16-security-logging-and-error-handling) | [Back to Review Hub](/blog/asvs-panjabi-review-hub) | [Next: Appendix A: Glossary (ਅੰਤਿਕਾ A: ਸ਼ਬਦਾਵਲੀ) →](/blog/asvs-panjabi-review-appendix-a-glossary)

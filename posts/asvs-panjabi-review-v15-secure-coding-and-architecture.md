@@ -43,7 +43,7 @@ A component with "dangerous functionality" may be an internally developed or thi
 
 A "risky component" is a 3rd party library (i.e., not internally developed) with missing or poorly implemented security controls around its development processes or functionality. Examples include components that are poorly maintained, unsupported, at the end-of-life stage, or have a history of significant vulnerabilities.
 
-"ਜੋਖਮ ਭਰਿਆ ਘਟਕ" ਇੱਕ ਤੀਜੀ-ਧਿਰ ਲਾਇਬ੍ਰੇਰੀ (ਭਾਵ, ਅੰਦਰੂਨੀ ਤੌਰ 'ਤੇ ਵਿਕਸਿਤ ਨਹੀਂ ਕੀਤੀ ਗਈ) ਹੈ ਜਿਸ ਦੀਆਂ ਵਿਕਾਸ ਪ੍ਰਕਿਰਿਆਵਾਂ ਜਾਂ ਕਾਰਜਸ਼ੀਲਤਾ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਸੁਰੱਖਿਆ ਨਿਯੰਤਰਣ ਗ਼ਾਇਬ ਹਨ ਜਾਂ ਮਾੜੇ ਢੰਗ ਨਾਲ ਲਾਗੂ ਕੀਤੇ ਗਏ ਹਨ। ਉਦਾਹਰਣਾਂ ਵਿੱਚ ਉਹ ਘਟਕ ਸ਼ਾਮਲ ਹਨ ਜੋ ਮਾੜੇ ਢੰਗ ਨਾਲ ਸਾਂਭੇ ਜਾਂਦੇ ਹਨ, ਗ਼ੈਰ-ਸਮਰਥਿਤ ਹਨ, ਜੀਵਨ-ਅੰਤ (end-of-life) ਪੜਾਅ 'ਤੇ ਹਨ, ਜਾਂ ਜਿਨ੍ਹਾਂ ਦਾ ਮਹੱਤਵਪੂਰਨ ਕਮਜ਼ੋਰੀਆਂ ਦਾ ਇਤਿਹਾਸ ਹੈ।
+"ਜੋਖਮ ਭਰਿਆ ਘਟਕ" ਇੱਕ ਤੀਜੀ-ਧਿਰ ਲਾਇਬ੍ਰੇਰੀ (ਭਾਵ, ਅੰਦਰੂਨੀ ਤੌਰ 'ਤੇ ਵਿਕਸਿਤ ਨਹੀਂ ਕੀਤੀ ਗਈ) ਹੈ ਜਿਸ ਦੀਆਂ ਵਿਕਾਸ ਪ੍ਰਕਿਰਿਆਵਾਂ ਜਾਂ ਕਾਰਜਸ਼ੀਲਤਾ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਸੁਰੱਖਿਆ ਨਿਯੰਤਰਣ ਗ਼ਾਇਬ ਹਨ ਜਾਂ ਮਾੜੇ ਢੰਗ ਨਾਲ ਲਾਗੂ ਕੀਤੇ ਗਏ ਹਨ। ਉਦਾਹਰਨਾਂ ਵਿੱਚ ਉਹ ਘਟਕ ਸ਼ਾਮਲ ਹਨ ਜੋ ਮਾੜੇ ਢੰਗ ਨਾਲ ਸਾਂਭੇ ਜਾਂਦੇ ਹਨ, ਗ਼ੈਰ-ਸਮਰਥਿਤ ਹਨ, ਜੀਵਨ-ਅੰਤ (end-of-life) ਪੜਾਅ 'ਤੇ ਹਨ, ਜਾਂ ਜਿਨ੍ਹਾਂ ਦਾ ਮਹੱਤਵਪੂਰਨ ਕਮਜ਼ੋਰੀਆਂ ਦਾ ਇਤਿਹਾਸ ਹੈ।
 
 This section also emphasizes the importance of defining appropriate timeframes for addressing vulnerabilities in third-party components.
 

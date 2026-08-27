@@ -27,6 +27,11 @@ CHAIN = [
     ('v15-secure-coding-and-architecture', '0x24-V15-Secure-Coding-and-Architecture.md'),
     ('v16-security-logging-and-error-handling', '0x25-V16-Security-Logging-and-Error-Handling.md'),
     ('v17-webrtc', '0x26-V17-WebRTC.md'),
+    ('appendix-a-glossary', '0x90-Appendix-A_Glossary.md'),
+    ('appendix-b-references', '0x91-Appendix-B_References.md'),
+    ('appendix-c-cryptography', '0x92-Appendix-C_Cryptography.md'),
+    ('appendix-d-recommendations', '0x93-Appendix-D_Recommendations.md'),
+    ('appendix-e-contributors', '0x94-Appendix-E_Contributors.md'),
     ('glossary', None),
 ]
 CUSTOM_LABELS = {'frontispiece': 'Title Page (ਮੁੱਖ ਪੰਨਾ)', 'preface': 'Introduction (ਮੁਖਬੰਧ)', 'glossary': 'Glossary (ਸ਼ਬਦਾਵਲੀ)'}

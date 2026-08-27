@@ -252,7 +252,7 @@ Security knowledge should be accessible to all.
 
 - **Security leaders:** Share this with Panjabi-speaking team members or forward the glossary to your localization team as a model for multilingual security documentation.
 - **Panjabi-speaking professionals:** Email gurvinder@securityleader.ai with "ASVS Panjabi Review" in the subject — even one term correction makes a difference.
-- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. All seventeen security-requirement chapters (V1–V17) plus the introductory chapters are now bilingual and ready for review; the appendices are next.
+- **OWASP community members:** Review [PR #3254](https://github.com/OWASP/ASVS/pull/3254) and leave inline comments. The full translation — all seventeen security-requirement chapters (V1–V17), the introductory chapters, and all five appendices — is now bilingual and ready for review.
 
 ## Board Talking Points
 
@@ -297,6 +297,11 @@ Security knowledge should be accessible to all.
 - [V15 Secure Coding and Architecture (V15 ਸੁਰੱਖਿਅਤ ਕੋਡਿੰਗ ਅਤੇ ਆਰਕੀਟੈਕਚਰ)](/blog/asvs-panjabi-review-v15-secure-coding-and-architecture)
 - [V16 Security Logging and Error Handling (V16 ਸੁਰੱਖਿਆ ਲੌਗਿੰਗ ਅਤੇ ਗਲਤੀ ਪ੍ਰਬੰਧਨ)](/blog/asvs-panjabi-review-v16-security-logging-and-error-handling)
 - [V17 WebRTC (ਵੈੱਬਆਰਟੀਸੀ)](/blog/asvs-panjabi-review-v17-webrtc)
+- [Appendix A: Glossary (ਅੰਤਿਕਾ A: ਸ਼ਬਦਾਵਲੀ)](/blog/asvs-panjabi-review-appendix-a-glossary)
+- [Appendix B: References (ਅੰਤਿਕਾ B: ਹਵਾਲੇ)](/blog/asvs-panjabi-review-appendix-b-references)
+- [Appendix C: Cryptography Standards (ਅੰਤਿਕਾ C: ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ ਮਿਆਰ)](/blog/asvs-panjabi-review-appendix-c-cryptography)
+- [Appendix D: Recommendations (ਅੰਤਿਕਾ D: ਸਿਫ਼ਾਰਸ਼ਾਂ)](/blog/asvs-panjabi-review-appendix-d-recommendations)
+- [Appendix E - Contributors (ਅੰਤਿਕਾ E - ਯੋਗਦਾਨੀ)](/blog/asvs-panjabi-review-appendix-e-contributors)
 - [Glossary (ਸ਼ਬਦਾਵਲੀ)](/blog/asvs-panjabi-review-glossary)
 - [Translation Notes](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/TRANSLATION-NOTES.md)
 - [Review Plan](https://github.com/GeeksikhSecurity/ASVS/blob/panjabi-translation-v5/5.0/pa-IN/REVIEW-PLAN.md)

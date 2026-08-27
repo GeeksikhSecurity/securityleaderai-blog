@@ -20,7 +20,7 @@ hidden: true
 
 The concept of a self-contained token is mentioned in the original RFC 6749 OAuth 2.0 from 2012. It refers to a token containing data or claims on which a receiving service will rely to make security decisions. This should be differentiated from a simple token containing only an identifier, which a receiving service uses to look up data locally. The most common examples of self-contained tokens are JSON Web Tokens (JWTs) and SAML assertions.
 
-ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ (Self-contained Token) ਦਾ ਸੰਕਲਪ 2012 ਦੇ ਮੂਲ RFC 6749 OAuth 2.0 ਵਿੱਚ ਜ਼ਿਕਰ ਕੀਤਾ ਗਿਆ ਹੈ। ਇਹ ਅਜਿਹੇ ਟੋਕਨ ਦਾ ਹਵਾਲਾ ਦਿੰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਡਾਟਾ ਜਾਂ ਦਾਅਵੇ (claims) ਸ਼ਾਮਲ ਹੁੰਦੇ ਹਨ, ਜਿਨ੍ਹਾਂ ਉੱਤੇ ਪ੍ਰਾਪਤਕਰਤਾ ਸੇਵਾ ਸੁਰੱਖਿਆ ਫ਼ੈਸਲੇ ਲੈਣ ਲਈ ਨਿਰਭਰ ਕਰੇਗੀ। ਇਸ ਨੂੰ ਉਸ ਸਾਧਾਰਨ ਟੋਕਨ ਤੋਂ ਵੱਖ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਸਿਰਫ਼ ਇੱਕ ਪਛਾਣਕਰਤਾ (identifier) ਹੁੰਦਾ ਹੈ, ਜਿਸ ਨੂੰ ਪ੍ਰਾਪਤਕਰਤਾ ਸੇਵਾ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਡਾਟਾ ਲੱਭਣ ਲਈ ਵਰਤਦੀ ਹੈ। ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨਾਂ ਦੀਆਂ ਸਭ ਤੋਂ ਆਮ ਉਦਾਹਰਣਾਂ JSON Web Tokens (JWTs) ਅਤੇ SAML assertions ਹਨ।
+ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ (Self-contained Token) ਦਾ ਸੰਕਲਪ 2012 ਦੇ ਮੂਲ RFC 6749 OAuth 2.0 ਵਿੱਚ ਜ਼ਿਕਰ ਕੀਤਾ ਗਿਆ ਹੈ। ਇਹ ਅਜਿਹੇ ਟੋਕਨ ਦਾ ਹਵਾਲਾ ਦਿੰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਡਾਟਾ ਜਾਂ ਦਾਅਵੇ (claims) ਸ਼ਾਮਲ ਹੁੰਦੇ ਹਨ, ਜਿਨ੍ਹਾਂ ਉੱਤੇ ਪ੍ਰਾਪਤਕਰਤਾ ਸੇਵਾ ਸੁਰੱਖਿਆ ਫ਼ੈਸਲੇ ਲੈਣ ਲਈ ਨਿਰਭਰ ਕਰੇਗੀ। ਇਸ ਨੂੰ ਉਸ ਸਾਧਾਰਨ ਟੋਕਨ ਤੋਂ ਵੱਖ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਸਿਰਫ਼ ਇੱਕ ਪਛਾਣਕਰਤਾ (identifier) ਹੁੰਦਾ ਹੈ, ਜਿਸ ਨੂੰ ਪ੍ਰਾਪਤਕਰਤਾ ਸੇਵਾ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਡਾਟਾ ਲੱਭਣ ਲਈ ਵਰਤਦੀ ਹੈ। ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨਾਂ ਦੀਆਂ ਸਭ ਤੋਂ ਆਮ ਉਦਾਹਰਨਾਂ JSON Web Tokens (JWTs) ਅਤੇ SAML assertions ਹਨ।
 
 The use of self-contained tokens has become very widespread, even outside of OAuth and OIDC. At the same time, the security of this mechanism relies on the ability to validate the integrity of the token and to ensure that the token is valid for a particular context. There are many pitfalls with this process, and this chapter provides specific details of the mechanisms that applications should have in place to prevent them.
 
@@ -42,7 +42,7 @@ This section includes requirements to ensure that the token has been produced by
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :---: | :--- | :---: |
 | **9.1.1** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨਾਂ ਨੂੰ ਟੋਕਨ ਦੀ ਸਮੱਗਰੀ ਸਵੀਕਾਰ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਛੇੜਛਾੜ ਤੋਂ ਬਚਾਉਣ ਲਈ ਉਹਨਾਂ ਦੇ ਡਿਜੀਟਲ ਦਸਤਖ਼ਤ (digital signature) ਜਾਂ MAC ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **9.1.2** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਕਿਸੇ ਦਿੱਤੇ ਸੰਦਰਭ ਲਈ, ਸਿਰਫ਼ allowlist ਉੱਤੇ ਮੌਜੂਦ algorithms ਹੀ ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ ਬਣਾਉਣ ਅਤੇ ਤਸਦੀਕ ਕਰਨ ਲਈ ਵਰਤੇ ਜਾ ਸਕਦੇ ਹਨ। Allowlist ਵਿੱਚ ਪ੍ਰਵਾਨਿਤ algorithms ਸ਼ਾਮਲ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ, ਆਦਰਸ਼ਕ ਤੌਰ 'ਤੇ ਜਾਂ ਤਾਂ ਸਿਰਫ਼ symmetric ਜਾਂ ਸਿਰਫ਼ asymmetric algorithms, ਅਤੇ ਇਸ ਵਿੱਚ 'None' algorithm ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ। ਜੇਕਰ symmetric ਅਤੇ asymmetric ਦੋਵਾਂ ਦਾ ਸਮਰਥਨ ਕਰਨਾ ਜ਼ਰੂਰੀ ਹੈ, ਤਾਂ key confusion ਨੂੰ ਰੋਕਣ ਲਈ ਵਾਧੂ ਨਿਯੰਤਰਣਾਂ ਦੀ ਲੋੜ ਪਵੇਗੀ। | 1 |
+| **9.1.2** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਕਿਸੇ ਦਿੱਤੇ ਸੰਦਰਭ ਲਈ, ਸਿਰਫ਼ allowlist ਉੱਤੇ ਮੌਜੂਦ algorithms ਹੀ ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨ ਬਣਾਉਣ ਅਤੇ ਤਸਦੀਕ ਕਰਨ ਲਈ ਵਰਤੇ ਜਾ ਸਕਦੇ ਹਨ। Allowlist ਵਿੱਚ ਪ੍ਰਵਾਨਿਤ algorithms ਸ਼ਾਮਲ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ, ਆਦਰਸ਼ਕ ਤੌਰ 'ਤੇ ਜਾਂ ਤਾਂ ਸਿਰਫ਼ symmetric ਜਾਂ ਸਿਰਫ਼ asymmetric algorithms, ਅਤੇ ਇਸ ਵਿੱਚ 'None' algorithm ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ। ਜੇਕਰ symmetric ਅਤੇ asymmetric ਦੋਵਾਂ ਦਾ ਸਮਰਥਨ ਕਰਨਾ ਜ਼ਰੂਰੀ ਹੈ, ਤਾਂ key confusion ਨੂੰ ਰੋਕਣ ਲਈ ਵਾਧੂ ਨਿਯੰਤਰਣਾਂ ਦੀ ਲੋੜ ਪਵੇਗੀ। | 1 |
 | **9.1.3** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਸਵੈ-ਨਿਰਭਰ ਟੋਕਨਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਨ ਲਈ ਵਰਤੀ ਜਾਂਦੀ key material ਟੋਕਨ ਜਾਰੀਕਰਤਾ (token issuer) ਲਈ ਭਰੋਸੇਯੋਗ ਪਹਿਲਾਂ ਤੋਂ ਸੰਰਚਿਤ ਸਰੋਤਾਂ ਤੋਂ ਆਉਂਦੀ ਹੈ, ਜੋ ਹਮਲਾਵਰਾਂ ਨੂੰ ਅਣਭਰੋਸੇਯੋਗ ਸਰੋਤ ਅਤੇ ਕੁੰਜੀਆਂ ਨਿਰਧਾਰਤ ਕਰਨ ਤੋਂ ਰੋਕਦੀ ਹੈ। JWTs ਅਤੇ ਹੋਰ JWS structures ਲਈ, 'jku', 'x5u', ਅਤੇ 'jwk' ਵਰਗੇ headers ਨੂੰ ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਦੀ allowlist ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। | 1 |
 
 ## V9.2 Token content
@@ -65,8 +65,8 @@ OAuth ਅਤੇ OIDC ਲਈ ਖ਼ਾਸ ਲੋੜਾਂ ਸਮਰਪਿਤ ਅ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :---: | :--- | :---: |
-| **9.2.1** | ਤਸਦੀਕ ਕਰੋ ਕਿ, ਜੇਕਰ ਟੋਕਨ ਡਾਟਾ ਵਿੱਚ ਜਾਇਜ਼ਤਾ ਸਮਾਂ-ਸੀਮਾ ਮੌਜੂਦ ਹੈ, ਤਾਂ ਟੋਕਨ ਅਤੇ ਉਸ ਦੀ ਸਮੱਗਰੀ ਨੂੰ ਉਦੋਂ ਹੀ ਸਵੀਕਾਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਜੇਕਰ ਤਸਦੀਕ ਦਾ ਸਮਾਂ ਇਸ ਜਾਇਜ਼ਤਾ ਸਮਾਂ-ਸੀਮਾ ਦੇ ਅੰਦਰ ਹੈ। ਉਦਾਹਰਣ ਲਈ, JWTs ਲਈ, 'nbf' ਅਤੇ 'exp' claims ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਨਾ ਲਾਜ਼ਮੀ ਹੈ। | 1 |
-| **9.2.2** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਟੋਕਨ ਪ੍ਰਾਪਤ ਕਰਨ ਵਾਲੀ ਸੇਵਾ ਟੋਕਨ ਦੀ ਸਮੱਗਰੀ ਸਵੀਕਾਰ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਟੋਕਨ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ ਕਰਦੀ ਹੈ ਕਿ ਇਹ ਸਹੀ ਕਿਸਮ ਦਾ ਹੈ ਅਤੇ ਨਿਰਧਾਰਿਤ ਉਦੇਸ਼ ਲਈ ਹੈ। ਉਦਾਹਰਣ ਲਈ, ਅਧਿਕਾਰ (authorization) ਫ਼ੈਸਲਿਆਂ ਲਈ ਸਿਰਫ਼ access tokens ਸਵੀਕਾਰ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ ਅਤੇ ਉਪਭੋਗਤਾ ਪ੍ਰਮਾਣੀਕਰਨ ਸਾਬਤ ਕਰਨ ਲਈ ਸਿਰਫ਼ ID Tokens ਵਰਤੇ ਜਾ ਸਕਦੇ ਹਨ। | 2 |
+| **9.2.1** | ਤਸਦੀਕ ਕਰੋ ਕਿ, ਜੇਕਰ ਟੋਕਨ ਡਾਟਾ ਵਿੱਚ ਜਾਇਜ਼ਤਾ ਸਮਾਂ-ਸੀਮਾ ਮੌਜੂਦ ਹੈ, ਤਾਂ ਟੋਕਨ ਅਤੇ ਉਸ ਦੀ ਸਮੱਗਰੀ ਨੂੰ ਉਦੋਂ ਹੀ ਸਵੀਕਾਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਜੇਕਰ ਤਸਦੀਕ ਦਾ ਸਮਾਂ ਇਸ ਜਾਇਜ਼ਤਾ ਸਮਾਂ-ਸੀਮਾ ਦੇ ਅੰਦਰ ਹੈ। ਉਦਾਹਰਨ ਲਈ, JWTs ਲਈ, 'nbf' ਅਤੇ 'exp' claims ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਨਾ ਲਾਜ਼ਮੀ ਹੈ। | 1 |
+| **9.2.2** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਟੋਕਨ ਪ੍ਰਾਪਤ ਕਰਨ ਵਾਲੀ ਸੇਵਾ ਟੋਕਨ ਦੀ ਸਮੱਗਰੀ ਸਵੀਕਾਰ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਟੋਕਨ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ ਕਰਦੀ ਹੈ ਕਿ ਇਹ ਸਹੀ ਕਿਸਮ ਦਾ ਹੈ ਅਤੇ ਨਿਰਧਾਰਿਤ ਉਦੇਸ਼ ਲਈ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਅਧਿਕਾਰ (authorization) ਫ਼ੈਸਲਿਆਂ ਲਈ ਸਿਰਫ਼ access tokens ਸਵੀਕਾਰ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ ਅਤੇ ਉਪਭੋਗਤਾ ਪ੍ਰਮਾਣੀਕਰਨ ਸਾਬਤ ਕਰਨ ਲਈ ਸਿਰਫ਼ ID Tokens ਵਰਤੇ ਜਾ ਸਕਦੇ ਹਨ। | 2 |
 | **9.2.3** | ਤਸਦੀਕ ਕਰੋ ਕਿ ਸੇਵਾ ਸਿਰਫ਼ ਉਹਨਾਂ ਟੋਕਨਾਂ ਨੂੰ ਸਵੀਕਾਰ ਕਰਦੀ ਹੈ ਜੋ ਉਸ ਸੇਵਾ ਨਾਲ ਵਰਤੋਂ ਲਈ ਹਨ (audience)। JWTs ਲਈ, ਇਹ ਸੇਵਾ ਵਿੱਚ ਪਰਿਭਾਸ਼ਿਤ allowlist ਦੇ ਵਿਰੁੱਧ 'aud' claim ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਕੇ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | 2 |
 | **9.2.4** | ਤਸਦੀਕ ਕਰੋ ਕਿ, ਜੇਕਰ ਕੋਈ ਟੋਕਨ ਜਾਰੀਕਰਤਾ ਵੱਖ-ਵੱਖ audiences ਨੂੰ ਟੋਕਨ ਜਾਰੀ ਕਰਨ ਲਈ ਇੱਕੋ private key ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ, ਤਾਂ ਜਾਰੀ ਕੀਤੇ ਟੋਕਨਾਂ ਵਿੱਚ audience ਪਾਬੰਦੀ ਸ਼ਾਮਲ ਹੁੰਦੀ ਹੈ ਜੋ ਨਿਰਧਾਰਿਤ audiences ਦੀ ਵਿਲੱਖਣ ਪਛਾਣ ਕਰਦੀ ਹੈ। ਇਹ ਟੋਕਨ ਨੂੰ ਕਿਸੇ ਅਣ-ਨਿਰਧਾਰਿਤ audience ਨਾਲ ਮੁੜ-ਵਰਤੋਂ ਤੋਂ ਰੋਕੇਗਾ। ਜੇਕਰ audience identifier ਨੂੰ ਗਤੀਸ਼ੀਲ ਰੂਪ ਵਿੱਚ ਪ੍ਰਦਾਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਟੋਕਨ ਜਾਰੀਕਰਤਾ ਨੂੰ ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਇਹਨਾਂ audiences ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਨਾ ਲਾਜ਼ਮੀ ਹੈ ਕਿ ਉਹ audience impersonation ਦਾ ਨਤੀਜਾ ਨਹੀਂ ਬਣਦੀਆਂ। | 2 |
 
