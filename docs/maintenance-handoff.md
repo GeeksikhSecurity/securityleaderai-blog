@@ -5,6 +5,18 @@ changes — new lint rule, new frontmatter field, new pipeline step. This is
 the doc a future session (or a human who hasn't touched this repo in months)
 should read first to understand how content gets from idea to published page.
 
+**Superseded/refined by a concrete spec:** this doc was written the same day
+as, but *before*, the site owner supplied the actual Notion-sourced handoff —
+`docs/content-maintenance-visual-automation-handoff.md`. That doc is now the
+authoritative punch list (6 tasks, in-progress tracking, Notion integration);
+four of the six gaps below (Mermaid, curation gate enforcement, frontmatter
+traceability, retire flagging) turned out to be the same gaps, now with
+concrete specs instead of this doc's speculative ones. Read that doc for
+current task status; keep reading this one for the parts it doesn't cover
+(the decision-log/digest/lint-content system baseline in §1, the Miessler
+comparison in §3, and Artifact-logging + session-continuity conventions,
+which aren't part of the Notion punch list).
+
 **Origin session:** this document, and the six gaps below, were written up in
 [Claude session `018AXSV6NqHZuiaMd5Edptgc`](https://claude.ai/code/session_018AXSV6NqHZuiaMd5Edptgc).
 If something here is unclear or seems to contradict the code, that session's

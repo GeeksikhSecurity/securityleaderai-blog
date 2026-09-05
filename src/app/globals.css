@@ -1226,6 +1226,23 @@ pre code {
   line-height: 1.7;
 }
 
+/* Stray double-quote fix (maintenance scan, 2026-09-05): @tailwindcss/typography's
+   `.prose` styles put a decorative curly quote before/after the first and last
+   <p> in every blockquote (its default "this is a pull-quote" treatment), via
+   the `quotes` property + `content: open-quote`/`close-quote` below. Every
+   blockquote on this site is a callout (Executive Summary, "one rule" edict,
+   translation-status banner) — not a literal quotation — and several already
+   contain their own literal "..." text (e.g. a feedback-subject-line callout),
+   so the auto-quote stacked a second, mismatched (curly vs. straight) quote
+   mark around the whole paragraph. Disabling it is the documented Tailwind
+   Typography opt-out; no markdown content changes needed.
+   Repro before this fix: /blog/tech-support-scam-elders, the translation-notice
+   callout with the "Digital Seva Review — Tech Support Scams" subject line. */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
 /* ============================================
    DISTINCT CONTENT TYPE BADGES
    ============================================ */

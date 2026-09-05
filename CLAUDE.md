@@ -214,6 +214,12 @@ Working memory for AI-assisted sessions lives on disk, not in the chat context.
   retire flagging, and the origin-session pointer convention. Read it before
   changing how content moves from draft to published; update it when the
   system itself changes.
+- **Content Maintenance & Visual Automation punch list:**
+  `docs/content-maintenance-visual-automation-handoff.md` is the current,
+  owner-supplied 6-task plan (repo scan, Mermaid-diagram skill, Notion
+  Visual Artifacts logging, curation gate, frontmatter↔Notion traceability,
+  stale/retire flagging) — status-tracked per task. Task 1's findings are in
+  `docs/maintenance-scan-2026-09-05.md`.
 
 ---
 

@@ -89,4 +89,4 @@ A weekly deployment health check verifies security headers and robots.txt AI bot
 
 *Gurvinder Singh, CISSP, CISA, GWAPT is the founder of SecurityLeader.ai and Information Security Manager at the American Psychological Association. He writes about supply chain security, AI security governance, and building security programs that practitioners can actually use.*
 
-*Previously: [Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist](/posts/oauth-supply-chain-salesloft-drift) | [MCP Sentinel Scanner: Automated Security for AI Tool Pipelines](/posts/mcp-sentinel-scanner)*
+*Previously: [Master Keys & Shadow Trust: The $1B OAuth Supply-Chain Heist](/blog/oauth-supply-chain-salesloft-drift) | [MCP Sentinel Scanner: Automated Security for AI Tool Pipelines](/blog/mcp-sentinel-scanner)*
