@@ -207,6 +207,13 @@ Working memory for AI-assisted sessions lives on disk, not in the chat context.
   only summarizes — the main session makes the decisions.
 - Both directories are committed: the log is the loop's on-disk memory; the next
   session picks up from it instead of re-deriving state.
+- **Maintenance system reference:** `docs/maintenance-handoff.md` is the
+  living map of this whole system (decision log, digest, content lint, ASVS/
+  AISVS pipeline) plus tracked gaps — Mermaid pipeline diagram, Artifact
+  logging convention, curation gate enforcement, frontmatter traceability,
+  retire flagging, and the origin-session pointer convention. Read it before
+  changing how content moves from draft to published; update it when the
+  system itself changes.
 
 ---
 
