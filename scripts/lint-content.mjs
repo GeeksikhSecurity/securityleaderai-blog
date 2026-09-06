@@ -252,6 +252,31 @@ function lintFrontmatter(doc, parsed) {
   } else if (audioKind !== undefined) {
     reportErr('R30', doc.path, 1, `audio_kind is set but audio_url is missing`);
   }
+
+  // R31 — retired:true must always carry a reason. Mirrors R9's pattern
+  // (ai_draft requires a feedback contact): an unexplained flag is as bad
+  // as no flag, since a future editor can't tell "why" without re-deriving
+  // it. Task 6, docs/content-maintenance-visual-automation-handoff.md —
+  // retired content is excluded from /blog and the homepage the same way
+  // hidden content is (see getPublicPosts() in src/lib/posts.ts), but
+  // stays reachable at its direct URL and on GitHub for the historical record.
+  // NOTE: parseDoc()'s hand-rolled frontmatter parser (unlike js-yaml in
+  // src/lib/posts.ts) keeps every scalar as a string — `retired: true`
+  // parses to the string "true", not the boolean. Compare against the
+  // string here, not `=== true`.
+  const retired = parsed.frontmatter.retired;
+  const retiredReason = parsed.frontmatter.retired_reason;
+  const retiredDate = parsed.frontmatter.retired_date;
+  if (retired === 'true') {
+    if (typeof retiredReason !== 'string' || retiredReason.trim() === '') {
+      reportErr('R31', doc.path, 1, `retired: true requires a retired_reason (why is this no longer current?)`);
+    }
+    if (typeof retiredDate !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(retiredDate)) {
+      reportErr('R31', doc.path, 1, `retired: true requires retired_date in ISO YYYY-MM-DD`);
+    }
+  } else if (retiredReason !== undefined || retiredDate !== undefined) {
+    reportErr('R31', doc.path, 1, `retired_reason/retired_date set without retired: true`);
+  }
 }
 
 function lintBodyShared(doc, parsed) {

@@ -73,6 +73,27 @@ export interface Post {
   audioUrl?: string;
   /** Defaults to 'overview' in <AudioOverview /> when audioUrl is set. */
   audioKind?: AudioKind;
+  /**
+   * Traceability back to this post's source row in the Notion content
+   * workflow (Content Maintenance & Visual Automation, Task 5 —
+   * docs/content-maintenance-visual-automation-handoff.md). Not rendered
+   * anywhere on the page; purely for tooling that needs to go from a
+   * published post back to its Notion idea/draft record. Stamped by
+   * scripts/mermaid/render.mjs's --post/--notion-url flags, or added by
+   * hand — either is fine, this field has no build-time enforcement (no
+   * Notion IDs exist to validate it against from inside this repo).
+   */
+  notionUrl?: string;
+  /**
+   * Content-level counterpart to CLAUDE.md's Retired Projects table (which
+   * covers retired sibling codebases, not posts). Excluded from
+   * getPublicPosts() the same way `hidden` is, but — unlike `hidden` —
+   * always carries a reason: lint rule R31 rejects `retired: true` without
+   * a non-empty `retiredReason` and an ISO `retiredDate`.
+   */
+  retired?: boolean;
+  retiredDate?: string;
+  retiredReason?: string;
 }
 
 function parseAuthors(data: Record<string, unknown>): Author[] | undefined {
@@ -135,6 +156,11 @@ function readPostFile(fullPath: string, slug: string): Post {
       data.audio_kind === 'overview' || data.audio_kind === 'read_aloud'
         ? data.audio_kind
         : undefined,
+    notionUrl:
+      typeof data.notion_url === 'string' && data.notion_url !== '' ? data.notion_url : undefined,
+    retired: data.retired === true,
+    retiredDate: typeof data.retired_date === 'string' ? data.retired_date : undefined,
+    retiredReason: typeof data.retired_reason === 'string' ? data.retired_reason : undefined,
   };
 }
 
@@ -153,9 +179,9 @@ export function getAllPosts(): Post[] {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-/** Returns only public (non-hidden) posts for listing pages. */
+/** Returns only public (non-hidden, non-retired) posts for listing pages. */
 export function getPublicPosts(): Post[] {
-  return getAllPosts().filter((post) => !post.hidden);
+  return getAllPosts().filter((post) => !post.hidden && !post.retired);
 }
 
 /** True when a default-locale post file exists for this slug (guards direct-URL 500s). */
@@ -187,9 +213,9 @@ export function getAllLocalePosts(locale: Locale): Post[] {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-/** Returns only public (non-hidden) posts for a locale's listing page. */
+/** Returns only public (non-hidden, non-retired) posts for a locale's listing page. */
 export function getPublicLocalePosts(locale: Locale): Post[] {
-  return getAllLocalePosts(locale).filter((post) => !post.hidden);
+  return getAllLocalePosts(locale).filter((post) => !post.hidden && !post.retired);
 }
 
 /**

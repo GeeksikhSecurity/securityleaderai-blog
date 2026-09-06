@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "tsc --noEmit",
     "lint:content": "node scripts/lint-content.mjs",
-    "lint:code": "node scripts/lint-code-invariants.mjs"
+    "lint:code": "node scripts/lint-code-invariants.mjs",
+    "check:stale": "node scripts/check-stale-content.mjs"
   },
   "dependencies": {
     "js-yaml": "^4.2.0",

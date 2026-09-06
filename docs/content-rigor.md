@@ -53,6 +53,7 @@ Locales follow BCP 47 (`pa-in` for Panjabi/India Gurmukhi). The locale dir-name 
 | R28 | Age: avoid "the elderly"/"senior citizens" ("elders"/"ਬਜ਼ੁਰਗ" OK) — **awareness posts only** | Inclusive (APA) | **AUTO (notice)** |
 | R29 | *Reserved* — country-name Gurmukhi consistency (`ਯੂ.ਕੇ.`), introduced by PR #2 | Translation | **AUTO** |
 | R30 | `audio_url` resolves to a real `.mp3`/`.m4a` under `public/audio/`; orphaned audio files flagged | Document | **AUTO** |
+| R31 | `retired: true` requires `retired_reason` + ISO `retired_date`; those fields require `retired: true` | Document | **AUTO** |
 
 ---
 
@@ -283,6 +284,15 @@ Posts may attach an audio track via frontmatter (see CLAUDE.md → Blog Post For
 
 Why it exists: the first audio integration attempt (SAY-372, June 2026) failed silently — player code and mappings can each exist without the other and nothing complains until a reader hits a dead player. This rule makes every half-wired state loud at build time. Supported extensions live in one place per layer: `AUDIO_EXTENSIONS` in `scripts/lint-content.mjs`, kept in sync with `MIME_BY_EXT` in `src/components/audio-overview.tsx`.
 
+## R31 — Retired content (`retired` / `retired_date` / `retired_reason`)  **AUTO**
+
+Frontmatter flag for a post that's no longer current but is kept for the historical record (a fixed CVE, a superseded tool recommendation) — the content equivalent of `CLAUDE.md`'s *Retired Projects* table, which covers retired sibling codebases, not content. Mirrors R9's "an unexplained flag is as bad as no flag" pattern:
+
+- **ERROR** when `retired: true` is set without a non-empty `retired_reason` string, or without an ISO `retired_date`.
+- **ERROR** when `retired_reason`/`retired_date` are set without `retired: true` (half-applied flag).
+
+`retired: true` posts are excluded from `/blog` and the homepage by `getPublicPosts()` in `src/lib/posts.ts` — same mechanism as `hidden: true` — but stay reachable at their direct URL and via `getAllPosts()`/`generateStaticParams()`, same as hidden posts. Introduced for Task 6 of `docs/content-maintenance-visual-automation-handoff.md` (stale/retire flagging); see `scripts/check-stale-content.mjs` for the automation that surfaces *candidates* — this rule only validates a flag once a human has actually set one.
+
 ## Allowlisting a known false positive
 
 Add an HTML comment on the offending line:
@@ -297,4 +307,4 @@ The lint reads inline `<!-- rigor: allow R# -->` markers and skips the matching 
 
 ## Authored by
 
-Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.4` — 2026-07-04 (added R30 post-audio integrity; R29 reserved for the country-name consistency rule arriving in PR #2 / catalog v1.3).
+Gurvinder Singh (SecurityLeader.ai). Rule catalog version `v1.5` — 2026-09-06 (added R31 retired-content flagging). Previously `v1.4` — 2026-07-04 (added R30 post-audio integrity; R29 reserved for the country-name consistency rule arriving in PR #2 / catalog v1.3).

@@ -65,6 +65,57 @@ audio_kind: "overview"   # 'overview' (NotebookLM-style AI discussion ABOUT the 
   unsupported format (.mp3/.m4a only), and warns about orphaned files under
   `public/audio/`. Never ship a mapping without its file, or vice versa.
 
+### Diagrams (optional, via the mermaid-diagram skill)
+
+A post whose content has real structure (numbered steps, an attack chain, a
+decision point) may include a generated diagram:
+
+```markdown
+![Diagram: <describes what the flow shows>](/images/diagrams/<slug>.svg)
+```
+
+Generate it with the `mermaid-diagram` Claude Code skill
+(`.claude/skills/mermaid-diagram/SKILL.md`) — never hand-author or
+hand-style an SVG here. Source lives at `content/diagrams/<slug>.mmd`;
+`scripts/mermaid/render.mjs` renders it with the site's fixed
+Google-Cloud-style theme (palette/typography/corner-radius/curve — all
+defined once in that script, not per post) and refuses to write a file if
+Mermaid reports a syntax error, rather than silently shipping a broken
+diagram.
+
+### Notion traceability (optional frontmatter)
+
+```yaml
+notion_url: "https://notion.so/<page-id>"
+```
+
+Points back to this post's source row in the Notion content workflow (see
+`docs/content-maintenance-visual-automation-handoff.md` Task 5). Not
+rendered anywhere; pure tooling traceability. `scripts/mermaid/render.mjs
+--post <file> --notion-url <url>` stamps this automatically in the same
+step a diagram is generated, so it's rarely written by hand.
+
+### Retiring a post (optional frontmatter)
+
+```yaml
+retired: true
+retired_date: "2026-09-06"      # ISO — when it was retired
+retired_reason: "CVE remediated upstream; kept for the historical record."
+```
+
+The content-level counterpart to the *Retired Projects* table further down
+this file (which covers retired sibling codebases, not posts). A retired
+post is excluded from `/blog` and the homepage exactly like `hidden: true`
+— see `getPublicPosts()` in `src/lib/posts.ts` — but stays reachable at its
+direct URL and via `generateStaticParams()`, for anyone who linked to it
+before. Unlike `hidden`, `retired: true` always requires a reason: lint
+rule **R31** fails the build on a `retired: true` post with no
+`retired_reason` or no ISO `retired_date`, and equally fails if
+`retired_reason`/`retired_date` are set without `retired: true` — no
+half-applied flag either way. `scripts/check-stale-content.mjs` (Task 6)
+surfaces *candidates* (90+ days since last commit); a human still decides
+whether to actually set the flag — the script never sets it itself.
+
 ---
 
 ## Research Article Format (TypeScript)

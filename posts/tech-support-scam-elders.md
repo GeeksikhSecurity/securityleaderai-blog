@@ -25,6 +25,8 @@ translation_status: "human_reviewed"
 
 The scam follows the same four steps every time. Once you know them, it is easy to spot.
 
+![Diagram: the tech-support scam's four-step chain from fake virus warning to gift-card payment, with the safe-number-list decision point that stops it](/images/diagrams/tech-support-scam-elders.svg)
+
 **Step 1 — The scare.** A warning appears on the computer screen and says the computer has a virus. It may play a loud alarm and show a phone number. The screen may freeze. This is not a real warning from Microsoft or Apple. It is a fake page made to look real. Real warnings never give you a phone number to call.
 
 **Step 2 — The phone.** The person phones the number on the screen — or a stranger phones them out of the blue. The number your phone shows can be faked, so it may look real. The stranger sounds calm and helpful. Sometimes they speak Panjabi or Hindi so you feel at ease. They say they can fix the problem for you.

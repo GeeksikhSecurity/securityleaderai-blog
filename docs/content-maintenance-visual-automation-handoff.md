@@ -47,7 +47,39 @@ Run against `securityleaderai-blog`:
 
 ## Task 2 — Mermaid-generation skill
 
-**Status: not started.**
+**Status: done, 2026-09-06.** Skill: `.claude/skills/mermaid-diagram/SKILL.md`.
+Renderer: `scripts/mermaid/render.mjs`. Worked example (a real post, not a
+synthetic test): `content/diagrams/tech-support-scam-elders.mmd` →
+`public/images/diagrams/tech-support-scam-elders.svg`, embedded in
+`posts/tech-support-scam-elders.md`'s "How the Scam Works" section and
+verified rendering correctly on the live page (Playwright screenshot).
+
+**Decisions made (both were left open by this task's own text):**
+- **Styling mechanism: `themeVariables` + `themeCSS`, not a post-render SVG
+  pass.** Baking the whole spec into the render step's init config means
+  every diagram is byte-for-byte reproducible from its `.mmd` source alone
+  — a post-render pass would be a second, driftable place the styling
+  could get out of sync with itself.
+- **Path convention:** source `content/diagrams/<slug>.mmd`, rendered
+  `public/images/diagrams/<slug>.svg` (SVG only — vector, matches
+  `research.ts`'s existing `/images/<slug>.svg` convention for visuals; a
+  `.png` fallback wasn't built since nothing on this site needs a raster
+  image and it would be a second artifact to keep in sync).
+- **Zero new npm dependencies, honoring CLAUDE.md's lean-deps policy:**
+  neither `mermaid` nor a headless-browser package was added to
+  `package.json`. The render script fetches the mermaid UMD bundle
+  straight from the npm registry into a local cache (not an installed
+  dependency) and drives a locally-cached Chromium via `playwright`,
+  resolved from a global toolchain location, not `node_modules` — the same
+  "external tool, not a project dependency" pattern `scripts/asvs/*.py`
+  already uses for Python.
+- **Fail loud, not silent:** Mermaid's own failure mode for bad syntax is
+  a *successfully rendered* "Syntax error in text" placeholder image, not
+  a thrown error — the render script detects that string in the output SVG
+  and exits non-zero instead of writing a broken-looking diagram that
+  "succeeded." (Caught this the hard way: the first real attempt used an
+  escaped `\"` inside a quoted node label, which Mermaid doesn't support —
+  fixed by rephrasing, not by adding an escape-translation layer.)
 
 Build a Claude Code skill: input = a finished blog post (markdown). Output = a diagram.
 
@@ -59,36 +91,94 @@ Build a Claude Code skill: input = a finished blog post (markdown). Output = a d
 
 ## Task 3 — Visual Artifacts logging automation
 
-**Status: not started.** Depends on Task 2's output existing.
+**Status: staged, blocked on live Notion access.** This session's Notion
+MCP connection was disconnected throughout (confirmed unavailable, not
+just unused) — so the repo-side half is built and the Notion-side half is
+specified but not executed, rather than faked.
 
-- After a diagram renders, auto-create the corresponding row in the Notion **Visual Artifacts** database (Artifact Type = `Automated Skill Render (Mermaid)`, Synthesis Date = render date, Screenshot = rendered file).
-- Add a relation property on Visual Artifacts pointing to **Research Items** / **Knowledge Graph** (doesn't exist yet) so each artifact links back to the idea/post that spawned it.
+- **Built:** every successful diagram render appends one record to
+  `docs/visual-artifacts-log.jsonl` — `artifactType`, `synthesisDate`,
+  `mmdSource`, `svgOutput`, `sourcePost`, `notionUrl`, and
+  `notionSyncStatus: "pending"`. Shaped exactly like the intended Notion
+  row (see `appendArtifactLog()` in `scripts/mermaid/render.mjs`).
+- **Not built:** the sync step that reads this log from a Notion-connected
+  session and actually creates/updates the Visual Artifacts rows (setting
+  `notionSyncStatus: "synced"` once done), and the relation property to
+  **Research Items** / **Knowledge Graph** (Notion schema work — that
+  database doesn't exist yet per this doc's own Context section, so the
+  relation can't be wired up regardless of session connectivity).
+- **Next step:** from a session with live Notion access, read
+  `docs/visual-artifacts-log.jsonl`, create one Visual Artifacts row per
+  `pending` entry, then mark it synced (or delete the line — decide when
+  you get there; both are fine, the log is a queue, not a permanent record).
 
 ## Task 4 — Curation gate enforcement
 
-**Status: not started.** Pure Notion schema/view work — no repo dependency.
+**Status: decided, not implemented — blocked on live Notion access** (same
+constraint as Task 3: no Notion MCP connection this session).
 
-Currently a written rule only ("before a draft is written, the source idea must be linked to a related Knowledge Graph note or an existing post it extends/supersedes") — not enforced by any schema or view.
+**Decision: soft gate**, not hard. Reasoning: a hard gate (can't mark
+"ready to draft" without the relation filled) blocks on a Notion schema
+property from the moment an idea is captured — good for discipline, bad
+for the "quick idea before I forget it" capture pattern the workflow's own
+Stage 1 (Capture) exists to support. A soft gate (a filtered view
+surfacing unlinked items) gets the same visibility without turning a
+30-second capture into a form to fill out correctly. If unlinked items
+pile up in that view unaddressed, that's the signal to reconsider and
+tighten to a hard gate later — cheap to change once real usage data exists,
+expensive to loosen once relationships are already being enforced.
 
-Decide and implement one of:
-- **Hard gate:** item can't be marked "ready to draft" in Notion without that relation filled.
-- **Soft gate:** a filtered Notion view surfacing unlinked items for manual review.
+**Concrete spec for whoever has Notion access next:** create a filtered
+view on the source-idea database showing items where "Ready to Draft" is
+true (or about to be set) AND the Knowledge-Graph/related-post relation
+property is empty. Surface it prominently (pinned view, or a Notion
+automation that comments/notifies) rather than a view nobody opens — a
+soft gate nobody looks at isn't a gate.
 
 ## Task 5 — Frontmatter ↔ Notion traceability
 
-**Status: not started.** Cheap; unblocks Task 3.
+**Status: done, 2026-09-06.** Field: `notion_url` (chose the URL form over
+a bare `notion_id`, since the URL is directly clickable from a rendered
+post's frontmatter and both round-trip to the same Notion page).
 
-- Define a frontmatter key (e.g. `notion_id:` or `notion_url:`) that every post carries, pointing back to its Notion row.
-- Decide whether this is added manually or auto-inserted by the same skill that generates the Mermaid diagram (likely the latter, same pipeline step).
+- `Post.notionUrl` in `src/lib/posts.ts` (parsed from `notion_url:`
+  frontmatter, optional, not rendered anywhere — pure tooling traceability).
+- **Auto-inserted by the Mermaid render step**, as this task's own text
+  guessed was more likely: `scripts/mermaid/render.mjs --post <file>
+  --notion-url <url>` stamps/updates the field in the same step a diagram
+  is generated. `--post` and `--notion-url` must be given together or not
+  at all (fails loud on a mismatched pair rather than silently no-op'ing).
+- Documented in `CLAUDE.md` → Blog Post Format → "Notion traceability."
 
 ## Task 6 — Stale/retire flagging automation
 
-**Status: not started.** Can reuse Task 1's scan logic and its stale-post
-list (`docs/maintenance-scan-2026-09-05.md` §5) as a starting input.
+**Status: done, 2026-09-06.** Script: `scripts/check-stale-content.mjs`
+(`npm run check:stale`) — reuses Task 1's exact git-log-driven staleness
+method (no second method invented) plus a research.ts-specific check
+against each article's hardcoded `date:` field. Threshold: 90 days, a named
+constant (`STALE_THRESHOLD_DAYS`) matching the cadence below.
 
-- Script that reads `last_reviewed` / publish dates across the repo and flags anything 90+ days old.
-- Decide where the flag surfaces: a Notion view, an auto-filed GitHub issue, or as output appended to the Task 1 maintenance report.
-- This should eventually run on a recurring cadence (folds into the existing monthly review rhythm), not just once.
+- **Surface decision: a dated report under `outputs/`** (same convention
+  as the decision-digest agent's `outputs/daily-summary-*.md`) **plus a
+  monthly auto-filed GitHub issue** — not a Notion view, since Notion
+  wasn't reachable this session and a GitHub issue needs no external
+  service beyond the repo's own `GITHUB_TOKEN`. If Notion access exists
+  later, the committed report is a ready-made input for a Notion sync,
+  same pattern as Task 3.
+- **Recurring cadence: built.**
+  `.github/workflows/monthly-content-review.yml` — runs on the 1st of
+  every month (cron) or on demand (`workflow_dispatch`), commits the
+  report, and files a `Monthly Content Review — YYYY-MM` issue with the
+  findings. Verified against this repo's own `vercel-security-monitor.yml`
+  pin-integrity check (its exact grep logic was run locally against the
+  new workflow file) — passes: `actions/github-script@v7` is tag-pinned,
+  which that check explicitly allows for `actions/*` publishers.
+- This script never sets `retired: true` itself — it produces *candidates*
+  for a human to review, per the "Retiring a post" section of `CLAUDE.md`.
+  The `retired` / `retired_date` / `retired_reason` frontmatter mechanism
+  and lint rule **R31** (enforcing that a reason always accompanies the
+  flag) were built alongside this so there's something to actually do with
+  the candidate list.
 
 ---
 
