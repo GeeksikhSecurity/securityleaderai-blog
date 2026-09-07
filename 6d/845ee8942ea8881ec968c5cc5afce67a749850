@@ -1,0 +1,25 @@
+posts/agent-git-baseline.md
+  s_b5770ba419a427::t_c597f195496a57 1-56
+posts/secrets-echo-guard.md
+  s_b5770ba419a427::t_1b851ae83b0c76 1-53
+work/decision-log/2026-09-06.md
+  s_b5770ba419a427::t_b7d57c701e1543 1-72
+posts/tool-poisoning-guard.md
+  s_b5770ba419a427::t_17878ec32cdd97 1-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "6d845ee8942ea8881ec968c5cc5afce67a749850",
+  "prompts": {},
+  "sessions": {
+    "s_b5770ba419a427": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d2e6d12-cee9-445d-9118-6ba500aa7942",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "GeeksikhSecurity <gurvinder@sayvainc.com>"
+    }
+  }
+}
